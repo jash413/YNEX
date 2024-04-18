@@ -8,8 +8,6 @@ const nextConfig = {
   },
   trailingSlash: true,
   swcMinify: true,
-  basePath: isProd ? "/" : undefined,
-  assetPrefix : isProd ? "/" : undefined,
   images: {
     loader: "imgix",
     path: "/",
