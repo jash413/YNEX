@@ -9,7 +9,7 @@ const nextConfig = {
   trailingSlash: true,
   swcMinify: true,
   basePath: isProd ? "/ynex-js/preview" : undefined,
-  assetPrefix : isProd ? "https://nextjs.spruko.com/ynex-js/preview/" : undefined,
+  assetPrefix : isProd ? "/ynex-js/preview/" : undefined,
   images: {
     loader: "imgix",
     path: "/",
