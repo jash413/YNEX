@@ -8,7 +8,8 @@ const nextConfig = {
   },
   trailingSlash: true,
   swcMinify: true,
-  assetPrefix : isProd ? "/ynex-js/preview/" : undefined,
+  basePath: undefined,
+  assetPrefix : undefined,
   images: {
     loader: "imgix",
     path: "/",
