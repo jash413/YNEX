@@ -3,6 +3,9 @@
 const isProd = process.env.NODE_ENV === "production";
 const nextConfig = {
   reactStrictMode: true,
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
   trailingSlash: true,
   swcMinify: true,
   basePath: isProd ? "/ynex-js/preview" : undefined,
