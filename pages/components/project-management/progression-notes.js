@@ -29,4 +29,4 @@ const ProgressionNotes = () => {
 }
 ProgressionNotes.layout = "ProgressionNotes"
 
-export default AboutUs
+export default ProgressionNotes
