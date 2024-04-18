@@ -49,7 +49,6 @@
       "react/no-unknown-property":"off",
       "no-unused-vars":"off",
       "eslint no-lone-blocks": "off",
-      "react/no-unescaped-entities": "off",
-      "eslint no-mixed-spaces-and-tabs": [2, "smart-tabs"]
+      "react/no-unescaped-entities": "off"
   }
 }
