@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import axios from "axios";
 import { TransactionsStatistics } from "@/shared/data/apps/crypto/transactiondata";
+import { network } from "@/config";
 
 const ViewBids = () => {
   const [bidsData, setBidsData] = useState([]);
@@ -75,7 +76,7 @@ const ViewBids = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3000/api/bidData/")
+      .get(`${network.serverUrl}api/bidData/`)
       .then((response) => {
         setBidsData(response.data);
         setCompletedBids(

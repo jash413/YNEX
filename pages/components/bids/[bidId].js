@@ -4,6 +4,7 @@ import axios from "axios";
 import Pageheader from "@/shared/layout-components/page-header/pageheader";
 import Seo from "@/shared/layout-components/seo/seo";
 import Link from "next/link";
+import { network } from "@/config";
 
 const BidDetails = () => {
   const router = useRouter();
@@ -15,7 +16,7 @@ const BidDetails = () => {
       const fetchBidDetails = async () => {
         try {
           const response = await axios.get(
-            `http://localhost:3000/api/${bidId}`
+            `${network.serverUrl}${bidId}`
           );
           setBidDetails(response.data);
         } catch (error) {

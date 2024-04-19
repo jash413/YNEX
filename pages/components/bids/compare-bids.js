@@ -11,6 +11,7 @@ import axios from "axios";
 import Rating from "@mui/material/Rating";
 import Stack from "@mui/material/Stack";
 import { addDays, setHours, setMinutes } from "date-fns";
+import { network } from "@/config";
 //filepond
 import { FilePond, registerPlugin } from "react-filepond";
 import FilePondPluginImageExifOrientation from "filepond-plugin-image-exif-orientation";
@@ -74,7 +75,7 @@ const CompareBids = () => {
       );
     } else {
       axios
-        .get("http://localhost:3000/api/bidData/")
+        .get(`${network.serverUrl}api/bidData/`)
         .then((response) => {
           const tradeType = new Set(
             response.data.map((item) => item.task_name)
