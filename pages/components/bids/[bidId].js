@@ -4,7 +4,7 @@ import axios from "axios";
 import Pageheader from "@/shared/layout-components/page-header/pageheader";
 import Seo from "@/shared/layout-components/seo/seo";
 import Link from "next/link";
-import { network } from "@/config";
+import network from "@/config";
 
 const BidDetails = () => {
   const router = useRouter();
@@ -15,9 +15,7 @@ const BidDetails = () => {
     if (bidId) {
       const fetchBidDetails = async () => {
         try {
-          const response = await axios.get(
-            `${network.serverUrl}${bidId}`
-          );
+          const response = await axios.get(`${network.serverUrl}${bidId}`);
           setBidDetails(response.data);
         } catch (error) {
           console.error(error);
@@ -35,7 +33,7 @@ const BidDetails = () => {
         activepage="Bids"
         mainpage="Bid Details"
       />
-         <div className="box">
+      <div className="box">
         <div className="box-body">
           <h1 className="box-title font-semibold !mb-1 !text-[1rem]">
             {" "}
@@ -823,6 +821,6 @@ const BidDetails = () => {
   );
 };
 
-BidDetails.layout = "Contentlayout"
+BidDetails.layout = "Contentlayout";
 
 export default BidDetails;

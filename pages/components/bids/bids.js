@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import axios from "axios";
 import { TransactionsStatistics } from "@/shared/data/apps/crypto/transactiondata";
-import { network } from "@/config";
+import network from "@/config";
 
 const ViewBids = () => {
   const [bidsData, setBidsData] = useState([]);

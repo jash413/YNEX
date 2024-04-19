@@ -11,7 +11,7 @@ import axios from "axios";
 import Rating from "@mui/material/Rating";
 import Stack from "@mui/material/Stack";
 import { addDays, setHours, setMinutes } from "date-fns";
-import { network } from "@/config";
+import network from "@/config";
 //filepond
 import { FilePond, registerPlugin } from "react-filepond";
 import FilePondPluginImageExifOrientation from "filepond-plugin-image-exif-orientation";
