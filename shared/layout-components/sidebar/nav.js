@@ -62,7 +62,6 @@ export const MenuItems = [
 
                 {path: "/components/bids/create-bid", type: "link", active: false, selected: false, title: "Create Bid" },
                 {path: "/components/bids/bids", type: "link", active: false, selected: false, title: "View bids" },
-                {path: "/components/bids/compare-bids", type: "link", active: false, selected: false, title: "Compare Bids" },
                 ]
             }, 
             { icon: DollarIcon, title: "Finances", type: "sub", active: false, selected: false, children: [
