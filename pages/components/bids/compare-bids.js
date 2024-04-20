@@ -7,9 +7,9 @@ import Rating from "@mui/material/Rating";
 import Stack from "@mui/material/Stack";
 
 const CompareBids = () => {
-
   const [compareBids, setCompareBids] = useState([]);
   const [selectedTask, setSelectedTask] = useState("");
+  const [selectedProject, setSelectedProject] = useState(null);
 
   useEffect(() => {
     const addToCompareBidValue = JSON.parse(
@@ -21,6 +21,11 @@ const CompareBids = () => {
     }
   }, []);
 
+  const getDataFromLocalStorage = () => {
+    const selectedProject = JSON.parse(localStorage.getItem("selectedProject"));
+    setSelectedProject(selectedProject);
+  };
+
   return (
     <div>
       <Seo title={"Compare Bids"} />
@@ -28,6 +33,7 @@ const CompareBids = () => {
         currentpage="Compare Bids"
         activepage="Bids"
         mainpage="Compare Bids"
+        loadProjectData={getDataFromLocalStorage}
       />
       <div className="box">
         <div className="box-body">
@@ -56,10 +62,7 @@ const CompareBids = () => {
               </div>
               <div className="kanban-tasks " id="new-tasks">
                 <PerfectScrollbar style={{ height: "560px" }}>
-                  <div
-                    className="firstdrag"
-                    data-view-btn="new-tasks"
-                  >
+                  <div className="firstdrag" data-view-btn="new-tasks">
                     <div className="box kanban-tasks new">
                       <div className="box-body !p-0">
                         <div className="p-4 kanban-board-head">
@@ -75,49 +78,7 @@ const CompareBids = () => {
                               <span className="badge bg-light text-default">
                                 {bid.bid_id}
                               </span>
-                              {/* <span className="ms-1 badge bg-primary/10 text-primary">
-                                    {bid.tradeType}
-                                  </span> */}
                             </div>
-                            {/* <div className="hs-dropdown ti-dropdown ltr:[--placement:bottom-right] rtl:[--placement:bottom-left]">
-                                  <Link
-                                    aria-label="anchor"
-                                    href="#!"
-                                    className="ti-btn ti-btn-icon ti-btn-sm ti-btn-light"
-                                    aria-expanded="false"
-                                  >
-                                    <i className="fe fe-more-vertical"></i>
-                                  </Link>
-                                  <ul className="hs-dropdown-menu ti-dropdown-menu hidden">
-                                    <li>
-                                      <Link
-                                        className="ti-dropdown-item !py-2 !px-[0.9375rem] !text-[0.8125rem] !font-medium !inline-flex"
-                                        href="#!"
-                                      >
-                                        <i className="ri-eye-line me-1 align-middle"></i>
-                                        View
-                                      </Link>
-                                    </li>
-                                    <li>
-                                      <Link
-                                        className="ti-dropdown-item !py-2 !px-[0.9375rem] !text-[0.8125rem] !font-medium !inline-flex"
-                                        href="#!"
-                                      >
-                                        <i className="ri-delete-bin-line me-1 align-middle"></i>
-                                        Delete
-                                      </Link>
-                                    </li>
-                                    <li>
-                                      <Link
-                                        className="ti-dropdown-item !py-2 !px-[0.9375rem] !text-[0.8125rem] !font-medium !inline-flex"
-                                        href="#!"
-                                      >
-                                        <i className="ri-edit-line me-1 align-middle"></i>
-                                        Edit
-                                      </Link>
-                                    </li>
-                                  </ul>
-                                </div> */}
                           </div>
                           <div className="kanban-content !mt-1">
                             <h6 className="mb-1 text-[.9375rem]">
@@ -126,24 +87,12 @@ const CompareBids = () => {
                               </span>{" "}
                               {bid.subcontractor_id["Name"]}
                             </h6>
-                            {/* <h6 className="mb-1 text-[.9375rem]">
-                                  <span className="font-semibold">
-                                    Bid Name:
-                                  </span>{" "}
-                                  {bid.bidName}
-                                </h6> */}
                             <h6 className="mb-1 text-[.9375rem]">
                               <span className="font-semibold">
                                 Price Quoted:
                               </span>{" "}
                               ${bid.bid_amount_from_sub}
                             </h6>
-                            {/* <h6 className="mb-1 text-[.9375rem]">
-                                  <span className="font-semibold">Status:</span>{" "}
-                                  <span className={statusColor(bid.status)}>
-                                    {bid.status}
-                                  </span>
-                                </h6> */}
                             <h6 className="mb-1 text-[.9375rem]">
                               <span className="font-semibold">In Scope:</span>{" "}
                               {bid.bid_inscope}
@@ -160,26 +109,6 @@ const CompareBids = () => {
                               </span>{" "}
                               {bid.bid_payment_terms}
                             </h6>
-                            {/* <h6 className="mb-1 text-[.9375rem]">
-                                  <span className="font-semibold">
-                                    Reviews:
-                                  </span>{" "}
-                                  {bid.reviews.length > 0 &&
-                                    bid.reviews.map((review) => (
-                                      // New line for each review
-                                      <div key={review}>
-                                        <i className="angle fe fe-chevron-right side-menu__angle"></i>{" "}
-                                        {review}
-                                        <br />
-                                      </div>
-                                    ))}
-                                </h6> */}
-                            {/* <h6 className="mb-1 text-[.9375rem]">
-                                  <span className="font-semibold">
-                                    Comments:
-                                  </span>{" "}
-                                  {bid.comments}
-                                </h6> */}
                             <div id="stars-unlimited">
                               <Stack
                                 spacing={1}

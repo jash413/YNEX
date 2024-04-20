@@ -3,7 +3,6 @@ import { useRouter } from "next/router";
 import axios from "axios";
 import Pageheader from "@/shared/layout-components/page-header/pageheader";
 import Seo from "@/shared/layout-components/seo/seo";
-import Link from "next/link";
 import network from "@/config";
 
 const BidDetails = () => {

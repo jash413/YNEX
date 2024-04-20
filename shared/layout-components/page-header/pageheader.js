@@ -1,27 +1,30 @@
-
-import React, { Fragment,useState } from 'react'
-import Select from 'react-select'
-
+import React, { Fragment, useState, useEffect } from "react";
+import Select from "react-select";
+import axios from "axios";
+import network from "@/config";
 
 const Pageheader = (props) => {
-  const { projectData } = props; // Destructure projectData from props
-  const [selectedProject, setSelectedProject] = useState(null);
-  const [formData, setFormData] = useState({
-    selectedProject: "",
-  });
-const handleProjectSelect = (e) => {
-  const selectedProject = projectData.find(
-    (project) => project.project_id === e.value
-  );
-  setSelectedProject(selectedProject);
-  setFormData((prevState) => ({
-    ...prevState,
-    selectedProject: selectedProject.project_name,
-  }));
+  const loadProjectData = props?.loadProjectData;
+  const [projectData, setProjectData] = useState([]);
 
-  // Save the selected project to localStorage
-  localStorage.setItem("selectedProject", JSON.stringify(selectedProject));
-};
+  useEffect(() => {
+    axios
+      .get(`${network.serverUrl}api/projectdata/`)
+      .then((response) => {
+        const data = response.data;
+        setProjectData(data);
+      })
+      .catch((error) => console.error("Error fetching data:", error));
+  }, []);
+
+  const handleProjectSelect = (e) => {
+    const selectedProject = projectData.find(
+      (project) => project.project_id === e.value
+    );
+    // Save the selected project to localStorage
+    localStorage.setItem("selectedProject", JSON.stringify(selectedProject));
+    loadProjectData();
+  };
   return (
     <Fragment>
       <div className="block justify-between page-header md:flex">
@@ -42,13 +45,12 @@ const handleProjectSelect = (e) => {
             menuPlacement="auto"
             classNamePrefix="Select2"
             placeholder="Select Project"
-            
             onChange={handleProjectSelect}
           />
         </ol>
       </div>
     </Fragment>
   );
-}
+};
 
 export default Pageheader;

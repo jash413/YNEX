@@ -1,12 +1,8 @@
 import Pageheader from "@/shared/layout-components/page-header/pageheader";
 import Seo from "@/shared/layout-components/seo/seo";
-import dynamic from "next/dynamic";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Select from "react-select";
-import network from "@/config";
-import axios from "axios";
-import {z} from "zod";
-const CountUp = dynamic(() => import("react-countup"), { ssr: false });
+import { z } from "zod";
 const today = new Date();
 const isoDate = today.toISOString();
 
@@ -49,66 +45,43 @@ const CreateBid = () => {
     bid_notes: "",
   });
   const [selectedProject, setSelectedProject] = useState(null);
-
-  const [projectData, setProjectData] = useState([]);
   const [selectedTaskCostCodes, setSelectedTaskCostCodes] = useState([]);
 
   const handleInputChange = (event) => {
     setFormData({ ...formData, [event.target.id]: event.target.value });
   };
 
-  useEffect(() => {
-    axios
-      .get(`${network.serverUrl}api/projectdata/`)
-      .then((response) => {
-        const data = response.data;
-        console.log("data of API", data);
-        setProjectData(data);
-      })
-      .catch((error) => console.error("Error fetching data:", error));
-  }, []);
-  let project;
-  if (typeof window !== "undefined") {
-    project = localStorage.getItem("selectedProject");
-  }
-  
-  useEffect(() => {
-    if (project) {
-      setSelectedProject(JSON.parse(project));
-      setFormData((prevState) => ({
-        ...prevState,
-        selectedProject: project.project_name,
-      }));
+  const getDataFromLocalStorage = () => {
+    const selectedProject = JSON.parse(localStorage.getItem("selectedProject"));
+    setSelectedProject(selectedProject);
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    try {
+      formDataSchema.parse(formData);
+
+      setFormData({
+        selectedProject: "",
+        selectedTask: "",
+        cost_code_id: "",
+        description: "",
+        budget_amount: "",
+        bid_amount_from_sub: "",
+        bid_details_from_sub: "",
+        bid_inscope: "",
+        bid_outscope: "",
+        bid_payment_terms: "",
+        bid_recieved_date: "",
+        bid_status: "",
+        subcontractor_id: "",
+        bid_notes: "",
+      });
+    } catch (error) {
+      console.log(error);
     }
-  },[project]);
-
-const handleSubmit = (event) => {
-  event.preventDefault();
-
-  try {
-    formDataSchema.parse(formData);
-
-    
-    setFormData({
-      selectedProject: "",
-      selectedTask: "",
-      cost_code_id: "",
-      description: "",
-      budget_amount: "",
-      bid_amount_from_sub: "",
-      bid_details_from_sub: "",
-      bid_inscope: "",
-      bid_outscope: "",
-      bid_payment_terms: "",
-      bid_recieved_date: "",
-      bid_status: "",
-      subcontractor_id: "",
-      bid_notes: "",
-    });
-  } catch (error) {
-    console.log(error);
-  }
-};
+  };
   return (
     <div>
       <Seo title={"Create Bid"} />
@@ -116,73 +89,69 @@ const handleSubmit = (event) => {
         currentpage="Create View"
         activepage="Bids"
         mainpage="Create View"
-        projectData={projectData}
+        loadProjectData={getDataFromLocalStorage}
       />
       <div className="flex justify-between">
         <div className="ml-auto"></div>
       </div>
-      <div className="box">
-        <div className="box-body">
-          <div className="box custom-box">
-            <div className="box-header">
-              <div className="box-title">Select Your Project and Task</div>
-            </div>
-            <div className="grid grid-cols-12 sm:gap-x-6 sm:gap-y-4 p-4">
-              <div className="md:col-span-6 col-span-12 mb-4">
-                <label className="form-label">Select Task/Trade Name</label>
-                <Select
-                  name="task"
-                  isDisabled={! selectedProject}
-                  options={
-                    selectedProject
-                      ? selectedProject.tasks.map((task) => ({
-                          value: task.task_id,
-                          label: task.task_name,
-                        }))
-                      : []
-                  }
-                  className="js-example-basic-single w-full"
-                  isSearchable
-                  menuPlacement="auto"
-                  classNamePrefix="Select2"
-                  placeholder="Select Task"
-                  onChange={(e) => {
-                    const selectedTask = selectedProject.tasks.find(
-                      (task) => task.task_id === e.value
-                    );
-                    setFormData((prevState) => ({
-                      ...prevState,
-                      selectedTask: selectedTask.task_name,
-                      selectedCostCode: selectedTask.cost_code_id,
-                    }));
-                    setSelectedTaskCostCodes([selectedTask.cost_code_id]);
-                  }}
-                />
-              </div>
-              <div className="md:col-span-6 col-span-12 mb-4">
-                <label className="form-label">Cost Code</label>
-                <Select
-                  name="cost_code"
-                  id="cost_code_id"
-                  isDisabled={selectedTaskCostCodes.length === 0}
-                  options={selectedTaskCostCodes.map((cost_code) => ({
-                    value: cost_code,
-                    label: cost_code,
-                  }))}
-                  className="js-example-basic-single w-full"
-                  isSearchable
-                  menuPlacement="auto"
-                  classNamePrefix="Select2"
-                  placeholder="Select Cost Code"
-                  onChange={(e) => {
-                    setFormData((prevState) => ({
-                      ...prevState,
-                      cost_code_id: e.value,
-                    }));
-                  }}
-                />
-              </div>
-            </div>
+      <div className="box custom-box">
+        <div className="box-header">
+          <div className="box-title">Select Your Project and Task</div>
+        </div>
+        <div className="grid grid-cols-12 sm:gap-x-6 sm:gap-y-4 p-4">
+          <div className="md:col-span-6 col-span-12 mb-4">
+            <label className="form-label">Select Task/Trade Name</label>
+            <Select
+              name="task"
+              className="js-example-basic-single w-full"
+              isDisabled={!selectedProject}
+              isSearchable
+              menuPlacement="auto"
+              classNamePrefix="Select2"
+              placeholder="Select Task"
+              onChange={(e) => {
+                const selectedTask = selectedProject.tasks.find(
+                  (task) => task.task_id === e.value
+                );
+                setFormData((prevState) => ({
+                  ...prevState,
+                  selectedTask: selectedTask.task_name,
+                  selectedCostCode: selectedTask.cost_code_id,
+                }));
+                setSelectedTaskCostCodes([selectedTask.cost_code_id]);
+              }}
+              onClick={getDataFromLocalStorage}
+              options={
+                selectedProject &&
+                selectedProject.tasks.map((task) => ({
+                  value: task.task_id,
+                  label: task.task_name,
+                }))
+              }
+            />
+          </div>
+          <div className="md:col-span-6 col-span-12 mb-4">
+            <label className="form-label">Cost Code</label>
+            <Select
+              name="cost_code"
+              id="cost_code_id"
+              isDisabled={selectedTaskCostCodes.length === 0}
+              options={selectedTaskCostCodes.map((cost_code) => ({
+                value: cost_code,
+                label: cost_code,
+              }))}
+              className="js-example-basic-single w-full"
+              isSearchable
+              menuPlacement="auto"
+              classNamePrefix="Select2"
+              placeholder="Select Cost Code"
+              onChange={(e) => {
+                setFormData((prevState) => ({
+                  ...prevState,
+                  cost_code_id: e.value,
+                }));
+              }}
+            />
           </div>
         </div>
       </div>
@@ -193,7 +162,6 @@ const handleSubmit = (event) => {
         <div className="box-body">
           <form onSubmit={handleSubmit}>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-
               <div className="mb-4">
                 <label htmlFor="budget_amount" className="form-label">
                   Budget Amount
