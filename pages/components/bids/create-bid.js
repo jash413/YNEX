@@ -5,7 +5,31 @@ import React, { useEffect, useState } from "react";
 import Select from "react-select";
 import network from "@/config";
 import axios from "axios";
+import {z} from "zod";
 const CountUp = dynamic(() => import("react-countup"), { ssr: false });
+const today = new Date();
+const isoDate = today.toISOString();
+
+const formDataSchema = z.object({
+  budget_amount: z.string().nonempty({ message: "Budget Amount is required" }),
+  bid_amount_from_sub: z
+    .string()
+    .nonempty({ message: "Bid Amount From Sub is required" }),
+  bid_status: z.string().nonempty({ message: "Bid Status is required" }),
+  description: z.string().nonempty({ message: "Description is required" }),
+  bid_details_from_sub: z
+    .string()
+    .nonempty({ message: "Bid Details From Sub is required" }),
+  bid_outscope: z.string().nonempty({ message: "Bid Outscope is required" }),
+  bid_inscope: z.string().nonempty({ message: "Bid Inscope is required" }),
+  subcontractor_id: z
+    .string()
+    .nonempty({ message: "Subcontractor ID is required" }),
+  bid_notes: z.string().nonempty({ message: "Bid Notes is required" }),
+  bid_payment_terms: z
+    .string()
+    .nonempty({ message: "Bid Payment Terms is required" }),
+});
 
 const CreateBid = () => {
   const [formData, setFormData] = useState({
@@ -19,11 +43,7 @@ const CreateBid = () => {
     bid_inscope: "",
     bid_outscope: "",
     bid_payment_terms: "",
-    bid_expiration_date: "",
-    bid_recieved_date: "",
-    builder_markup: "",
-    builder_markup_percentage: "",
-    builder_notes: "",
+    bid_recieved_date: isoDate,
     bid_status: "",
     subcontractor_id: "",
     bid_notes: "",
@@ -31,6 +51,7 @@ const CreateBid = () => {
   const [selectedProject, setSelectedProject] = useState(null);
 
   const [projectData, setProjectData] = useState([]);
+  const [selectedTaskCostCodes, setSelectedTaskCostCodes] = useState([]);
 
   const handleInputChange = (event) => {
     setFormData({ ...formData, [event.target.id]: event.target.value });
@@ -41,17 +62,33 @@ const CreateBid = () => {
       .get(`${network.serverUrl}api/projectdata/`)
       .then((response) => {
         const data = response.data;
-        console.log("Data from API:", data); // This line will print the data to the console
+        console.log("data of API", data);
         setProjectData(data);
       })
       .catch((error) => console.error("Error fetching data:", error));
   }, []);
+  let project;
+  if (typeof window !== "undefined") {
+    project = localStorage.getItem("selectedProject");
+  }
+  
+  useEffect(() => {
+    if (project) {
+      setSelectedProject(JSON.parse(project));
+      setFormData((prevState) => ({
+        ...prevState,
+        selectedProject: project.project_name,
+      }));
+    }
+  },[project]);
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
+const handleSubmit = (event) => {
+  event.preventDefault();
 
-    // Reset formData state
+  try {
+    formDataSchema.parse(formData);
 
+    
     setFormData({
       selectedProject: "",
       selectedTask: "",
@@ -63,17 +100,15 @@ const CreateBid = () => {
       bid_inscope: "",
       bid_outscope: "",
       bid_payment_terms: "",
-      bid_expiration_date: "",
       bid_recieved_date: "",
-      builder_markup: "",
-      builder_markup_percentage: "",
-      builder_notes: "",
       bid_status: "",
       subcontractor_id: "",
       bid_notes: "",
     });
-  };
-
+  } catch (error) {
+    console.log(error);
+  }
+};
   return (
     <div>
       <Seo title={"Create Bid"} />
@@ -81,7 +116,11 @@ const CreateBid = () => {
         currentpage="Create View"
         activepage="Bids"
         mainpage="Create View"
+        projectData={projectData}
       />
+      <div className="flex justify-between">
+        <div className="ml-auto"></div>
+      </div>
       <div className="box">
         <div className="box-body">
           <div className="box custom-box">
@@ -90,34 +129,10 @@ const CreateBid = () => {
             </div>
             <div className="grid grid-cols-12 sm:gap-x-6 sm:gap-y-4 p-4">
               <div className="md:col-span-6 col-span-12 mb-4">
-                <label className="form-label">Select Project</label>
-                <Select
-                  name="project"
-                  options={projectData.map((project) => ({
-                    value: project.project_id,
-                    label: project.project_name,
-                  }))}
-                  className="js-example-basic-single w-full"
-                  isSearchable
-                  menuPlacement="auto"
-                  classNamePrefix="Select2"
-                  placeholder="Select Project"
-                  onChange={(e) => {
-                    const selectedProject = projectData.find(
-                      (project) => project.project_id === e.value
-                    );
-                    setSelectedProject(selectedProject);
-                    setFormData((prevState) => ({
-                      ...prevState,
-                      selectedProject: selectedProject.project_name,
-                    }));
-                  }}
-                />
-              </div>
-              <div className="md:col-span-6 col-span-12 mb-4">
                 <label className="form-label">Select Task/Trade Name</label>
                 <Select
                   name="task"
+                  isDisabled={! selectedProject}
                   options={
                     selectedProject
                       ? selectedProject.tasks.map((task) => ({
@@ -138,6 +153,31 @@ const CreateBid = () => {
                     setFormData((prevState) => ({
                       ...prevState,
                       selectedTask: selectedTask.task_name,
+                      selectedCostCode: selectedTask.cost_code_id,
+                    }));
+                    setSelectedTaskCostCodes([selectedTask.cost_code_id]);
+                  }}
+                />
+              </div>
+              <div className="md:col-span-6 col-span-12 mb-4">
+                <label className="form-label">Cost Code</label>
+                <Select
+                  name="cost_code"
+                  id="cost_code_id"
+                  isDisabled={selectedTaskCostCodes.length === 0}
+                  options={selectedTaskCostCodes.map((cost_code) => ({
+                    value: cost_code,
+                    label: cost_code,
+                  }))}
+                  className="js-example-basic-single w-full"
+                  isSearchable
+                  menuPlacement="auto"
+                  classNamePrefix="Select2"
+                  placeholder="Select Cost Code"
+                  onChange={(e) => {
+                    setFormData((prevState) => ({
+                      ...prevState,
+                      cost_code_id: e.value,
                     }));
                   }}
                 />
@@ -153,18 +193,6 @@ const CreateBid = () => {
         <div className="box-body">
           <form onSubmit={handleSubmit}>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="mb-4">
-                <label htmlFor="cost_code_id" className="form-label">
-                  Cost Code ID
-                </label>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="cost_code_id"
-                  value={formData.cost_code_id}
-                  onChange={handleInputChange}
-                />
-              </div>
 
               <div className="mb-4">
                 <label htmlFor="budget_amount" className="form-label">
@@ -244,7 +272,6 @@ const CreateBid = () => {
                     value={formData.bid_outscope}
                     onChange={handleInputChange}
                   />
-                  
                 </div>
               </div>
               <div className="mb-4">
@@ -259,91 +286,7 @@ const CreateBid = () => {
                     value={formData.bid_inscope}
                     onChange={handleInputChange}
                   />
-                  
                 </div>
-              </div>
-
-              <div className="mb-4">
-                <label htmlFor="bid_expiration_date" className="form-label">
-                  Bid Expiration Date
-                </label>
-                <input
-                  type="date"
-                  className="form-control"
-                  id="bid_expiration_date"
-                  value={formData.bid_expiration_date}
-                  onChange={handleInputChange}
-                />
-              </div>
-
-              <div className="mb-4">
-                <label htmlFor="bid_recieved_date" className="form-label">
-                  Bid Received Date
-                </label>
-                <input
-                  type="date"
-                  className="form-control"
-                  id="bid_recieved_date"
-                  value={formData.bid_recieved_date}
-                  onChange={handleInputChange}
-                />
-              </div>
-
-              <div className="mb-4">
-                <label htmlFor="builder_markup" className="form-label">
-                  Builder Markup
-                </label>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="builder_markup"
-                  value={formData.builder_markup}
-                  onChange={handleInputChange}
-                />
-              </div>
-
-              <div className="mb-4">
-                <label
-                  htmlFor="builder_markup_percentage"
-                  className="form-label"
-                >
-                  Builder Markup Percentage
-                </label>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="builder_markup_percentage"
-                  value={formData.builder_markup_percentage}
-                  onChange={handleInputChange}
-                />
-              </div>
-
-              <div className="mb-4">
-                <label htmlFor="bid_payment_terms" className="form-label">
-                  Bid Payment Terms
-                </label>
-                <textarea
-                  className="form-control"
-                  id="bid_payment_terms"
-                  rows="3"
-                  cols="50"
-                  value={formData.bid_payment_terms}
-                  onChange={handleInputChange}
-                />
-              </div>
-
-              <div className="mb-4">
-                <label htmlFor="builder_notes" className="form-label">
-                  Builder Notes
-                </label>
-                <textarea
-                  className="form-control"
-                  id="builder_notes"
-                  rows="3"
-                  cols="50"
-                  value={formData.builder_notes}
-                  onChange={handleInputChange}
-                />
               </div>
 
               <div className="mb-4">
@@ -368,6 +311,20 @@ const CreateBid = () => {
                   className="form-control"
                   id="bid_notes"
                   value={formData.bid_notes}
+                  onChange={handleInputChange}
+                />
+              </div>
+
+              <div className="mb-4">
+                <label htmlFor="bid_payment_terms" className="form-label">
+                  Bid Payment Terms
+                </label>
+                <textarea
+                  className="form-control"
+                  id="bid_payment_terms"
+                  rows="3"
+                  cols="50"
+                  value={formData.bid_payment_terms}
                   onChange={handleInputChange}
                 />
               </div>
