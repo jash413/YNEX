@@ -299,7 +299,7 @@ const ViewBids = () => {
                         ? column.isSortedDesc
                           ? " 🔽"
                           : " 🔼"
-                        : ""}
+                        : " ↔️"}
                     </span>
                   </th>
                 ))}
