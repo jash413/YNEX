@@ -39,13 +39,10 @@ const CompareBids = () => {
         <div className="box-body">
           <h1 className="box-title font-semibold !mb-1 !text-[1rem]">
             {" "}
-            Project/Job Name :
+            Project/Job Name : {compareBids.length > 0 && compareBids[0].project_name}
           </h1>
           <h1 className="box-title font-semibold !mb-1 !text-[1rem]">
-            Task/Trade Name :
-          </h1>
-          <h1 className="box-title font-semibold !mb-1 !text-[1rem]">
-            Due Date :
+            Task/Trade Name : {selectedTask}
           </h1>
         </div>
       </div>

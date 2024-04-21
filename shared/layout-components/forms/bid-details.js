@@ -9,17 +9,19 @@ const BidDetails = (props) => {
         <div>
           <h6 className="text-xl font-bold text-gray-800">BID ESTIMATE</h6>
         </div>
-        <div className="btn-list">
-          <button
-            aria-label="button"
-            type="button"
-            className="ti-btn bg-success !py-1 !px-2 !font-medium text-white !text-[0.75rem] me-0"
-          >
-            <Link href={`/components/bids/editBid/${bidsData.bid_id}`}>
-              <i className="ri-edit-line me-1 align-middle"></i>Edit Bid
-            </Link>
-          </button>
-        </div>
+        {props.showEditBtn && (
+          <div className="btn-list">
+            <button
+              aria-label="button"
+              type="button"
+              className="ti-btn bg-success !py-1 !px-2 !font-medium text-white !text-[0.75rem] me-0"
+            >
+              <Link href={`/components/bids/editBid/${bidsData.bid_id}`}>
+                <i className="ri-edit-line me-1 align-middle"></i>Edit Bid
+              </Link>
+            </button>
+          </div>
+        )}
       </div>
 
       <div className="grid grid-cols-2 gap-8 mb-8">

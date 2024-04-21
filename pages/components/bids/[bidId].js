@@ -4,7 +4,6 @@ import axios from "axios";
 import Pageheader from "@/shared/layout-components/page-header/pageheader";
 import Seo from "@/shared/layout-components/seo/seo";
 import network from "@/config";
-import Link from "next/link";
 import BidDetails from "@/shared/layout-components/forms/bid-details";
 
 const BidDetail = () => {
@@ -25,20 +24,6 @@ const BidDetail = () => {
       fetchBidDetails();
     }
   }, [bidId]);
-
-  const statusColor = (status) => {
-    if (status === "New") {
-      return "badge bg-secondary/10 text-secondary";
-    } else if (status === "Completed") {
-      return "badge bg-success/10 text-success";
-    } else if (status === "Inprogress") {
-      return "badge bg-warning/10 text-warning";
-    } else if (status === "Pending") {
-      return "badge bg-danger/10 text-danger";
-    } else {
-      return "badge bg-primary/10 text-primary";
-    }
-  };
 
   return (
     // <div>
@@ -212,7 +197,7 @@ const BidDetail = () => {
         activepage="Bids"
         mainpage="Bid Details"
       />
-      <BidDetails bidsData={bidDetails} />
+      <BidDetails bidsData={bidDetails} showEditBtn={true} />
     </>
   );
 };
