@@ -1,5 +1,5 @@
 const network = {
-    serverUrl : 'http://localhost:3000/',
+    serverUrl : 'https://ynex.webwisesolution.me/',
 };
 
 export default network;
