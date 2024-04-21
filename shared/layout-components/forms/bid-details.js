@@ -3,7 +3,7 @@ import Link from "next/link";
 
 const BidDetails = (props) => {
   const bidsData = props.bidsData;
-  return (
+  return ( 
     <div className="p-4 box">
       <div className="flex justify-between mb-8">
         <div>
