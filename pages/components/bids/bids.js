@@ -479,6 +479,14 @@ const ViewBids = () => {
                               <li>
                                 <Link
                                   className="ti-dropdown-item !py-2 !px-[0.9375rem] !text-[0.8125rem] !font-medium block"
+                                  href={`/components/bids/editBid/${bid.bid_id}`}
+                                >
+                                  Edit Bid
+                                </Link>
+                              </li>
+                              <li>
+                                <Link
+                                  className="ti-dropdown-item !py-2 !px-[0.9375rem] !text-[0.8125rem] !font-medium block"
                                   href={`/components/bids/${bid.bid_id}`}
                                 >
                                   Accept Bid

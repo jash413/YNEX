@@ -4,7 +4,7 @@ import favicon from '../../../public/assets/images/brand-logos/favicon.ico';
 
 const Seo = ({ title }) => {
 
-  let i = `Ynex - ${title}`
+  let i = `${title}`
 
   return (
     <Head>
