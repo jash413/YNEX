@@ -5,6 +5,7 @@ import Link from "next/link";
 import axios from "axios";
 import Select from "react-select";
 import network from "@/config";
+import { useTable, useSortBy, useGlobalFilter } from "react-table";
 
 const ViewBids = () => {
   const [bidsData, setBidsData] = useState([]);
@@ -74,6 +75,258 @@ const ViewBids = () => {
         console.log(error);
       });
   }, []);
+
+  function BidsPage({
+    bidsData,
+    handleAddToCompare,
+    addToCompareBid,
+    statusColor,
+  }) {
+    const data = React.useMemo(() => bidsData, [bidsData]);
+
+    const columns = React.useMemo(
+      () => [
+        {
+          Header: "",
+          accessor: "checkbox",
+          Cell: ({ row: { original } }) => (
+            <input
+              className="form-check-input"
+              type="checkbox"
+              value={original}
+              onClick={() => handleAddToCompare(original)}
+              checked={addToCompareBid.includes(original)}
+            />
+          ),
+        },
+        {
+          Header: "Subcontractor",
+          accessor: "subcontractor_id.Name",
+        },
+        {
+          Header: "Bid ID",
+          accessor: "bid_id",
+        },
+        {
+          Header: "Task Name",
+          accessor: "task_name",
+        },
+        {
+          Header: "Cost Code",
+          accessor: "cost_code_id",
+        },
+        {
+          Header: "Price Quoted",
+          accessor: "bid_amount_from_sub",
+          Cell: ({ value }) => (
+            <div style={{ textAlign: "right" }}>$ {value.toLocaleString()}</div>
+          ),
+        },
+        {
+          Header: "Received Date",
+          accessor: "bid_recieved_date",
+          Cell: ({ value }) =>
+            new Date(value).toLocaleDateString("en-GB", {
+              day: "2-digit",
+              month: "short",
+              year: "numeric",
+            }),
+        },
+        {
+          Header: "Expiration Date",
+          accessor: "bid_expiration_date",
+          Cell: ({ value }) =>
+            new Date(value).toLocaleDateString("en-GB", {
+              day: "2-digit",
+              month: "short",
+              year: "numeric",
+            }),
+        },
+        {
+          Header: "Status",
+          accessor: "bid_status",
+          Cell: ({ value }) => (
+            <span
+              className={statusColor(value)}
+              style={{ padding: "0.25rem 0.5rem" }}
+            >
+              {value}
+            </span>
+          ),
+        },
+        {
+          Header: "Action",
+          accessor: "action_bid_id",
+          Cell: ({ row: { original } }) => (
+            <div className="hs-dropdown ti-dropdown">
+              <a
+                href="#!"
+                className="ti-btn ti-btn-primary !bg-primary !text-white !py-1 !px-2 !text-[0.75rem] !m-0 !gap-0 !font-medium"
+                aria-expanded="false"
+              >
+                Actions
+                <i className="ri-arrow-down-s-line align-middle ms-1 inline-block"></i>
+              </a>
+              <ul
+                className="hs-dropdown-menu ti-dropdown-menu !-mt-2 hidden"
+                role="menu"
+              >
+                <li>
+                  <a
+                    className="ti-dropdown-item !py-2 !px-[0.9375rem] !text-[0.8125rem] !font-medium block"
+                    href={`/components/bids/${original.bid_id}`}
+                  >
+                    View Bid
+                  </a>
+                </li>
+                <li>
+                  <a
+                    className="ti-dropdown-item !py-2 !px-[0.9375rem] !text-[0.8125rem] !font-medium block"
+                    href={`/components/bids/editBid/${original.bid_id}`}
+                  >
+                    Edit Bid
+                  </a>
+                </li>
+                <li>
+                  <a
+                    className="ti-dropdown-item !py-2 !px-[0.9375rem] !text-[0.8125rem] !font-medium block"
+                    href={`/components/bids/${original.bid_id}`}
+                  >
+                    Accept Bid
+                  </a>
+                </li>
+                <li>
+                  <a
+                    className="ti-dropdown-item !py-2 !px-[0.9375rem] !text-[0.8125rem] !font-medium block"
+                    href={`/components/bids/${original.bid_id}`}
+                  >
+                    Decline bid
+                  </a>
+                </li>
+                <li>
+                  <a
+                    className="ti-dropdown-item !py-2 !px-[0.9375rem] !text-[0.8125rem] !font-medium block"
+                    href={`/components/bids/${original.bid_id}`}
+                  >
+                    Ask Question
+                  </a>
+                </li>
+                <li>
+                  <a
+                    className="ti-dropdown-item !py-2 !px-[0.9375rem] !text-[0.8125rem] !font-medium block"
+                    href={`/components/bids/${original.bid_id}`}
+                  >
+                    Send Reminder
+                  </a>
+                </li>
+              </ul>
+            </div>
+          ),
+        },
+      ],
+      [handleAddToCompare, addToCompareBid, statusColor]
+    );
+
+    function GlobalFilter({
+      preGlobalFilteredRows,
+      globalFilter,
+      setGlobalFilter,
+    }) {
+      const count = preGlobalFilteredRows.length;
+      const [value, setValue] = useState(globalFilter);
+
+      const handleKeyDown = (event) => {
+        if (event.key === "Enter") {
+          setGlobalFilter(value || undefined);
+        }
+      };
+
+      const handleChange = (e) => {
+        setValue(e.target.value);
+        if (e.target.value === "") {
+          setGlobalFilter(undefined);
+        }
+      };
+
+      return (
+        <span>
+          Search:{" "}
+          <input
+            value={value || ""}
+            onChange={handleChange}
+            onKeyDown={handleKeyDown}
+            placeholder={`${count} records...`}
+            className="shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          />
+        </span>
+      );
+    }
+
+    const {
+      getTableProps,
+      getTableBodyProps,
+      headerGroups,
+      rows,
+      prepareRow,
+      preGlobalFilteredRows,
+      setGlobalFilter,
+      state,
+    } = useTable({ columns, data }, useGlobalFilter, useSortBy);
+
+    return (
+      <>
+        <GlobalFilter
+          preGlobalFilteredRows={preGlobalFilteredRows}
+          globalFilter={state.globalFilter}
+          setGlobalFilter={setGlobalFilter}
+        />
+        <table
+          {...getTableProps()}
+          className="table whitespace-nowrap table-bordered min-w-full x-hidden"
+        >
+          <thead>
+            {headerGroups.map((headerGroup) => (
+              <tr {...headerGroup.getHeaderGroupProps()}>
+                {headerGroup.headers.map((column) => (
+                  <th
+                    {...column.getHeaderProps(column.getSortByToggleProps())}
+                    scope="col"
+                    className="text-start"
+                  >
+                    {column.render("Header")}
+                    <span>
+                      {column.isSorted
+                        ? column.isSortedDesc
+                          ? " 🔽"
+                          : " 🔼"
+                        : ""}
+                    </span>
+                  </th>
+                ))}
+              </tr>
+            ))}
+          </thead>
+          <tbody {...getTableBodyProps()}>
+            {rows.map((row) => {
+              prepareRow(row);
+              return (
+                <tr
+                  {...row.getRowProps()}
+                  className="border border-defaultborder Bid-list"
+                >
+                  {row.cells.map((cell) => (
+                    <td {...cell.getCellProps()} className={cell.column.id}>
+                      {cell.render("Cell")}
+                    </td>
+                  ))}
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </>
+    );
+  }
 
   return (
     <div>
@@ -308,8 +561,8 @@ const ViewBids = () => {
               data-hs-overlay="#create-Bid"
             >
               <Link href="/components/bids/create-bid">
-              <i className="ri-add-line font-semibold align-middle"></i> Create
-              Bid
+                <i className="ri-add-line font-semibold align-middle"></i>{" "}
+                Create Bid
               </Link>
             </button>
             <button
@@ -370,160 +623,12 @@ const ViewBids = () => {
         </div>
         <div className="box-body">
           <div className="table-responsive overflow-x-hidden">
-            <table className="table whitespace-nowrap table-bordered min-w-full x-hidden">
-              <thead>
-                <tr>
-                  <th scope="col"></th>
-                  <th scope="col" className="text-start">
-                    Subcontractor
-                  </th>
-                  <th scope="col" className="text-start">
-                    Bid ID
-                  </th>
-                  <th scope="col" className="text-start">
-                    Task Name
-                  </th>
-                  <th scope="col" className="text-start">
-                    Cost Code
-                  </th>
-                  <th scope="col" className="text-start">
-                    Price Quoted
-                  </th>
-                  <th scope="col" className="text-start">
-                    Received Date
-                  </th>
-                  <th scope="col" className="text-start">
-                    Expiration Date
-                  </th>
-                  <th scope="col" className="text-start">
-                    Status
-                  </th>
-                  <th scope="col" className="text-start">
-                    Action
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                {bidsData.length > 0 &&
-                  bidsData?.map((bid) => {
-                    return (
-                      <tr className="border border-defaultborder Bid-list">
-                        <td className="Bid-checkbox">
-                          <input
-                            className="form-check-input"
-                            type="checkbox"
-                            value={bid}
-                            onClick={() => handleAddToCompare(bid)}
-                            checked={addToCompareBid.includes(bid)}
-                          />
-                        </td>
-                        <td className="Subcontractor">
-                          {bid.subcontractor_id["Name"]}
-                        </td>
-                        <td className="Bidid">{bid.bid_id}</td>
-                        <td className="Costcode">{bid.task_name}</td>
-                        <td className="Costcode">{bid.cost_code_id}</td>
-                        <td className="Pricequoted">
-                          ${bid.bid_amount_from_sub.toLocaleString()}
-                        </td>
-                        <td>
-                          {new Date(bid.bid_recieved_date).toLocaleDateString(
-                            "en-GB",
-                            {
-                              day: "2-digit",
-                              month: "short",
-                              year: "numeric",
-                            }
-                          )}
-                        </td>
-                        <td>
-                          {new Date(bid.bid_expiration_date).toLocaleDateString(
-                            "en-GB",
-                            {
-                              day: "2-digit",
-                              month: "short",
-                              year: "numeric",
-                            }
-                          )}
-                        </td>
-                        <td>
-                          <span
-                            className={statusColor(bid.bid_status)}
-                            style={{ padding: "0.25rem 0.5rem" }}
-                          >
-                            {bid.bid_status}
-                          </span>
-                        </td>
-                        <td>
-                          <div className="hs-dropdown ti-dropdown">
-                            <Link
-                              href="#!"
-                              className="ti-btn ti-btn-primary !bg-primary !text-white !py-1 !px-2 !text-[0.75rem] !m-0 !gap-0 !font-medium"
-                              aria-expanded="false"
-                            >
-                              Actions
-                              <i className="ri-arrow-down-s-line align-middle ms-1 inline-block"></i>
-                            </Link>
-                            <ul
-                              className="hs-dropdown-menu ti-dropdown-menu !-mt-2 hidden"
-                              role="menu"
-                            >
-                              <li>
-                                <Link
-                                  className="ti-dropdown-item !py-2 !px-[0.9375rem] !text-[0.8125rem] !font-medium block"
-                                  href={`/components/bids/${bid.bid_id}`}
-                                >
-                                  View Bid
-                                </Link>
-                              </li>
-                              <li>
-                                <Link
-                                  className="ti-dropdown-item !py-2 !px-[0.9375rem] !text-[0.8125rem] !font-medium block"
-                                  href={`/components/bids/editBid/${bid.bid_id}`}
-                                >
-                                  Edit Bid
-                                </Link>
-                              </li>
-                              <li>
-                                <Link
-                                  className="ti-dropdown-item !py-2 !px-[0.9375rem] !text-[0.8125rem] !font-medium block"
-                                  href={`/components/bids/${bid.bid_id}`}
-                                >
-                                  Accept Bid
-                                </Link>
-                              </li>
-                              <li>
-                                <Link
-                                  className="ti-dropdown-item !py-2 !px-[0.9375rem] !text-[0.8125rem] !font-medium block"
-                                  href={`/components/bids/${bid.bid_id}`}
-                                >
-                                  Decline bid
-                                </Link>
-                              </li>
-                              <li>
-                                <Link
-                                  className="ti-dropdown-item !py-2 !px-[0.9375rem] !text-[0.8125rem] !font-medium block"
-                                  href={`/components/bids/${bid.bid_id}`}
-                                >
-                                  Ask Question
-                                </Link>
-                              </li>
-                              <li>
-                                <Link
-                                  className="ti-dropdown-item !py-2 !px-[0.9375rem] !text-[0.8125rem] !font-medium block"
-                                  href={`/components/bids/${bid.bid_id}`}
-                                >
-                                  Send Reminder
-                                </Link>
-                              </li>
-                            </ul>
-                          </div>
-                        </td>
-                      </tr>
-                    );
-                  })}
-              </tbody>
-            </table>
+            <BidsPage
+              bidsData={bidsData}
+              handleAddToCompare={handleAddToCompare}
+              addToCompareBid={addToCompareBid}
+              statusColor={statusColor}
+            />
           </div>
         </div>
         <div className="box-footer">
