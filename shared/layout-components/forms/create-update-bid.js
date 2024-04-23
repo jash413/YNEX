@@ -53,6 +53,10 @@ const CreateUpdateBid = (props) => {
   const [selectedTaskCostCodes, setSelectedTaskCostCodes] = useState([]);
 
   useEffect(() => {
+    getDataFromLocalStorage();
+  }, []);
+
+  useEffect(() => {
     if (bidId) {
       const fetchBidDetails = async () => {
         try {
