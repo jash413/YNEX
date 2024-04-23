@@ -156,7 +156,7 @@ const ViewBids = () => {
                     <img src={`../../../assets/images/faces/10.jpg`} alt="" />
                   </span>
                 </div>
-                <div className="text-sm">{value}</div>
+                <div className="text-sm"><Link href="!#">{value}</Link></div>
               </div>
             );
           },
