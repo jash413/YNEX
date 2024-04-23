@@ -22,8 +22,17 @@ const CompareBids = () => {
   }, []);
 
   const getDataFromLocalStorage = () => {
-    const selectedProject = JSON.parse(localStorage.getItem("selectedProject"));
-    setSelectedProject(selectedProject);
+    if (
+      localStorage.getItem("selectedProject") !== null &&
+      localStorage.getItem("selectedProject") !== "undefined"
+    ) {
+      const selectedProject = JSON.parse(
+        localStorage.getItem("selectedProject")
+      );
+      setSelectedProject(selectedProject);
+    } else {
+      setSelectedProject(null);
+    }
   };
 
   return (
@@ -39,7 +48,8 @@ const CompareBids = () => {
         <div className="box-body">
           <h1 className="box-title font-semibold !mb-1 !text-[1rem]">
             {" "}
-            Project/Job Name : {compareBids.length > 0 && compareBids[0].project_name}
+            Project/Job Name :{" "}
+            {compareBids.length > 0 && compareBids[0].project_name}
           </h1>
           <h1 className="box-title font-semibold !mb-1 !text-[1rem]">
             Task/Trade Name : {selectedTask}

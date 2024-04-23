@@ -38,11 +38,15 @@ const CreateUpdateBid = (props) => {
     description: "",
     bid_amount: "",
     bid_details: "",
-    bid_inscope: [{ bidDetail: "" }],
-    bid_outscope: [{ bidDetail: "" }],
+    bid_inscope: "",
+    bid_outscope: "",
     bid_payment_terms: "",
     bid_recieved_date: isoDate,
     bid_notes: "",
+  });
+  const [scopeData, setScopeData] = useState({
+    bid_inscope: [{ bidDetail: "" }],
+    bid_outscope: [{ bidDetail: "" }],
   });
   const [selectedProject, setSelectedProject] = useState(null);
   const [selectedTaskCostCodes, setSelectedTaskCostCodes] = useState([]);
@@ -50,6 +54,25 @@ const CreateUpdateBid = (props) => {
   useEffect(() => {
     getDataFromLocalStorage();
   }, []);
+
+  useEffect(() => {
+    if (
+      scopeData.bid_inscope.length !== 0 &&
+      scopeData.bid_outscope.length !== 0
+    ) {
+      const inScope = scopeData.bid_inscope
+        .map((bid) => bid.bidDetail)
+        .join(",");
+      const outScope = scopeData.bid_outscope
+        .map((bid) => bid.bidDetail)
+        .join(",");
+      setFormData((prevState) => ({
+        ...prevState,
+        bid_inscope: inScope,
+        bid_outscope: outScope,
+      }));
+    }
+  }, [scopeData]);
 
   useEffect(() => {
     if (bidId) {
@@ -63,13 +86,24 @@ const CreateUpdateBid = (props) => {
             description: response.data.description,
             bid_amount_from_sub: response.data.bid_amount_from_sub,
             bid_details_from_sub: response.data.bid_details_from_sub,
-            // bid_inscope: response.data.bid_inscope,
-            // bid_outscope: response.data.bid_outscope,
+            bid_inscope: response.data.bid_inscope,
+            bid_outscope: response.data.bid_outscope,
             bid_payment_terms: response.data.bid_payment_terms,
             bid_recieved_date: response.data.bid_recieved_date,
             bid_status: response.data.bid_status,
             subcontractor_id: response.data.subcontractor_id["id"],
             bid_notes: response.data.bid_notes,
+          });
+          // Convert the bid_inscope and bid_outscope to an array of objects
+          const inScope = response.data.bid_inscope.split(",").map((bid) => ({
+            bidDetail: bid,
+          }));
+          const outScope = response.data.bid_outscope.split(",").map((bid) => ({
+            bidDetail: bid,
+          }));
+          setScopeData({
+            bid_inscope: inScope,
+            bid_outscope: outScope,
           });
         } catch (error) {
           console.error(error);
@@ -84,18 +118,27 @@ const CreateUpdateBid = (props) => {
   };
 
   const getDataFromLocalStorage = () => {
-    const selectedProject = JSON.parse(localStorage.getItem("selectedProject"));
-    setSelectedProject(selectedProject);
+    if (
+      localStorage.getItem("selectedProject") !== null &&
+      localStorage.getItem("selectedProject") !== "undefined"
+    ) {
+      const selectedProject = JSON.parse(
+        localStorage.getItem("selectedProject")
+      );
+      setSelectedProject(selectedProject);
+    } else {
+      setSelectedProject(null);
+    }
   };
 
   const handleBidChange = (e, index, field) => {
     const newBids = [...formData[field]];
     newBids[index][e.target.name] = e.target.value;
-    setFormData({ ...formData, [field]: newBids });
+    setScopeData({ ...formData, [field]: newBids });
   };
 
   const handleAddBid = (field) => {
-    setFormData({
+    setScopeData({
       ...formData,
       [field]: [...formData[field], { bidDetail: "" }],
     });
@@ -103,8 +146,11 @@ const CreateUpdateBid = (props) => {
 
   const handleRemoveBid = (index, field) => {
     const newBids = [...formData[field]];
+    if (newBids.length === 1) {
+      return;
+    }
     newBids.splice(index, 1);
-    setFormData({ ...formData, [field]: newBids });
+    setScopeData({ ...formData, [field]: newBids });
   };
 
   const handleSubmit = (event) => {
@@ -120,8 +166,8 @@ const CreateUpdateBid = (props) => {
         description: "",
         bid_amount: "",
         bid_details: "",
-        // bid_inscope:  [],
-        // bid_outscope:  [],
+        bid_inscope: "",
+        bid_outscope: "",
         bid_payment_terms: "",
         bid_recieved_date: isoDate,
         bid_notes: "",
@@ -213,6 +259,20 @@ const CreateUpdateBid = (props) => {
           <form onSubmit={handleSubmit}>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="mb-4">
+                <label htmlFor="bid_amount" className="form-label">
+                  Bid Amount
+                </label>
+                <input
+                  type="number"
+                  className="form-control"
+                  id="bid_amount"
+                  value={formData.bid_amount}
+                  onChange={handleInputChange}
+                />
+              </div>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="mb-4">
                 <label htmlFor="bid_payment_terms" className="form-label">
                   Bid Payment Terms
                 </label>
@@ -225,7 +285,6 @@ const CreateUpdateBid = (props) => {
                   onChange={handleInputChange}
                 />
               </div>
-
               <div className="mb-4">
                 <label htmlFor="description" className="form-label">
                   Description
@@ -239,7 +298,6 @@ const CreateUpdateBid = (props) => {
                   onChange={handleInputChange}
                 />
               </div>
-
               <div className="mb-4">
                 <label htmlFor="bid_details" className="form-label">
                   Bid Details
@@ -253,7 +311,6 @@ const CreateUpdateBid = (props) => {
                   onChange={handleInputChange}
                 />
               </div>
-
               <div className="mb-4">
                 <label htmlFor="bid_notes" className="form-label">
                   Bid Notes
@@ -267,108 +324,81 @@ const CreateUpdateBid = (props) => {
                   onChange={handleInputChange}
                 />
               </div>
-
-              {formData.bid_inscope.map((bid, index) => (
-                <div key={index}>
-                  <div className="row g-3 align-items-center">
-                    <div className="col-md-5">
-                      <label className="form-label">
-                        Bid Inscope {index + 1}
-                      </label>
-                      <input
-                        type="text"
-                        id={`bid_inscope_${index}`}
-                        name="bidDetail"
-                        value={bid.bidDetail}
-                        onChange={(e) =>
-                          handleBidChange(e, index, "bid_inscope")
-                        }
-                        className="form-control"
-                      />
-                    </div>
-                    {index > 0 && (
-                      <div className="col-md-1">
-                        <button
-                          type="button"
-                          className="ti-btn ti-btn-danger-full"
-                          onClick={() => handleRemoveBid(index, "bid_inscope")}
-                        >
-                          -
-                        </button>
-                      </div>
-                    )}
-                  </div>
-                  {index === formData.bid_inscope.length - 1 && (
-                    <div className="d-flex justify-content-between mt-2">
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label htmlFor="bid_inscope" className="form-label">
+                  Bid Inscope
+                </label>
+                {scopeData.bid_inscope.map((bid, index) => (
+                  <div className="mb-4 flex items-center gap-2" key={index}>
+                    <input
+                      type="text"
+                      className="form-control"
+                      name="bidDetail"
+                      value={bid.bidDetail}
+                      onChange={(e) => handleBidChange(e, index, "bid_inscope")}
+                    />
+                    {index === scopeData.bid_inscope.length - 1 && (
                       <button
                         type="button"
-                        className="ti-btn ti-btn-success-full"
+                        className="ti-btn ti-btn-primary"
                         onClick={() => handleAddBid("bid_inscope")}
                       >
-                        +
+                        <i className="ti ti-plus"></i>
                       </button>
-                    </div>
-                  )}
-                </div>
-              ))}
-
-              {formData.bid_outscope.map((bid, index) => (
-                <div key={index}>
-                  <div className="row g-3 align-items-center">
-                    <div className="col-md-5">
-                      <label className="form-label">
-                        Bid Outscope {index + 1}
-                      </label>
-                      <input
-                        type="text"
-                        id={`bid_outscope_${index}`}
-                        name="bidDetail"
-                        value={bid.bidDetail}
-                        onChange={(e) =>
-                          handleBidChange(e, index, "bid_outscope")
-                        }
-                        className="form-control"
-                      />
-                    </div>
-                    {index > 0 && (
-                      <div className="col-md-1">
-                        <button
-                          type="button"
-                          className="ti-btn ti-btn-danger-full"
-                          onClick={() => handleRemoveBid(index, "bid_outscope")}
-                        >
-                          -
-                        </button>
-                      </div>
                     )}
-                  </div>
-                  {index === formData.bid_outscope.length - 1 && (
-                    <div className="d-flex justify-content-between mt-2">
+                    {scopeData.bid_inscope.length > 1 && (
                       <button
                         type="button"
-                        className="ti-btn ti-btn-success-full"
+                        className="ti-btn ti-btn-danger"
+                        onClick={() => handleRemoveBid(index, "bid_inscope")}
+                      >
+                        <i className="ti ti-minus"></i>
+                      </button>
+                    )}
+                  </div>
+                ))}
+              </div>
+
+              <div>
+                <label htmlFor="bid_outscope" className="form-label">
+                  Bid Outscope
+                </label>
+                {scopeData.bid_outscope.map((bid, index) => (
+                  <div className="mb-4 flex items-center gap-2" key={index}>
+                    <input
+                      type="text"
+                      className="form-control"
+                      name="bidDetail"
+                      value={bid.bidDetail}
+                      onChange={(e) =>
+                        handleBidChange(e, index, "bid_outscope")
+                      }
+                    />
+                    {index === scopeData.bid_outscope.length - 1 && (
+                      <button
+                        type="button"
+                        className="ti-btn ti-btn-primary"
                         onClick={() => handleAddBid("bid_outscope")}
                       >
-                        +
+                        <i className="ti ti-plus"></i>
                       </button>
-                    </div>
-                  )}
-                </div>
-              ))}
-
-              <div className="mb-4">
-                <label htmlFor="bid_amount" className="form-label">
-                  Bid Amount
-                </label>
-                <input
-                  type="number"
-                  className="form-control"
-                  id="bid_amount"
-                  value={formData.bid_amount}
-                  onChange={handleInputChange}
-                />
+                    )}
+                    {scopeData.bid_outscope.length > 1 && (
+                      <button
+                        type="button"
+                        className="ti-btn ti-btn-danger"
+                        onClick={() => handleRemoveBid(index, "bid_outscope")}
+                      >
+                        <i className="ti ti-minus"></i>
+                      </button>
+                    )}
+                  </div>
+                ))}
               </div>
             </div>
+            <br></br>
             <button className="ti-btn ti-btn-primary-full" type="submit">
               {formType === "update" ? "Update Bid" : "Create Bid"}
             </button>

@@ -5,7 +5,6 @@ import Link from "next/link";
 import axios from "axios";
 import network from "@/config";
 import { useTable, useSortBy, useGlobalFilter } from "react-table";
-import { tr } from "date-fns/locale";
 
 const ViewBids = () => {
   const [bidsData, setBidsData] = useState([]);
@@ -37,14 +36,23 @@ const ViewBids = () => {
   }, []);
 
   const getDataFromLocalStorage = () => {
-    const selectedProject = JSON.parse(localStorage.getItem("selectedProject"));
-    if (!selectedProject) {
+    if (
+      localStorage.getItem("selectedProject") !== null &&
+      localStorage.getItem("selectedProject") !== "undefined"
+    ) {
+      const selectedProject = JSON.parse(
+        localStorage.getItem("selectedProject")
+      );
+      if (!selectedProject) {
+        setFilteredBidsData(bidsData);
+      }
+      const bids = bidsData.filter(
+        (bid) => bid.project_id === selectedProject.project_id
+      );
+      setFilteredBidsData(bids);
+    } else {
       setFilteredBidsData(bidsData);
     }
-    const bids = bidsData.filter(
-      (bid) => bid.project_id === selectedProject.project_id
-    );
-    setFilteredBidsData(bids);
   };
 
   useEffect(() => {
@@ -69,14 +77,21 @@ const ViewBids = () => {
     axios
       .get(`${network.serverUrl}api/bidData/`)
       .then((response) => {
-        const selectedProject = JSON.parse(
-          localStorage.getItem("selectedProject")
-        );
-        if (selectedProject) {
-          const bids = response.data.filter(
-            (bid) => bid.project_id === selectedProject.project_id
+        if (
+          localStorage.getItem("selectedProject") !== null &&
+          localStorage.getItem("selectedProject") !== "undefined"
+        ) {
+          const selectedProject = JSON.parse(
+            localStorage.getItem("selectedProject")
           );
-          setFilteredBidsData(bids);
+          if (selectedProject) {
+            const bids = response.data.filter(
+              (bid) => bid.project_id === selectedProject.project_id
+            );
+            setFilteredBidsData(bids);
+          } else {
+            setFilteredBidsData(response.data);
+          }
         } else {
           setFilteredBidsData(response.data);
         }
@@ -293,23 +308,21 @@ const ViewBids = () => {
 
       return (
         <>
-        <span>
-          Search Bids:{" "}
-        </span>
-        <span style={{ marginRight: "auto" }}>
-          <input
-            value={value || ""}
-            onChange={handleChange}
-            onKeyDown={handleKeyDown}
-            placeholder={`${count} records...`}
-            className="form-control"
-            style={{
-              borderColor: "#d2d6dc",
-              padding: "0.375rem 0.75rem",
-              borderRadius: "0.375rem",
-            }}
-          />
-        </span>
+          <span>Search Bids: </span>
+          <span style={{ marginRight: "auto" }}>
+            <input
+              value={value || ""}
+              onChange={handleChange}
+              onKeyDown={handleKeyDown}
+              placeholder={`${count} records...`}
+              className="form-control"
+              style={{
+                borderColor: "#d2d6dc",
+                padding: "0.375rem 0.75rem",
+                borderRadius: "0.375rem",
+              }}
+            />
+          </span>
         </>
       );
     }
@@ -379,7 +392,7 @@ const ViewBids = () => {
                         {columnIndex !== 0 && (
                           // Add space between the icon and the text
                           <>
-                            <span>{" "}</span>
+                            <span> </span>
                             <span>
                               {column.isSorted ? (
                                 column.isSortedDesc ? (

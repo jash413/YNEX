@@ -9,11 +9,16 @@ const Pageheader = (props) => {
   const [selectedProject, setSelectedProject] = useState(null);
 
   useEffect(() => {
-    if (localStorage.getItem("selectedProject")) {
+    if (
+      localStorage.getItem("selectedProject") !== null &&
+      localStorage.getItem("selectedProject") !== "undefined"
+    ) {
       const selectedProject = JSON.parse(
         localStorage.getItem("selectedProject")
       );
       setSelectedProject(selectedProject);
+    } else {
+      setSelectedProject(null);
     }
     axios
       .get(`${network.serverUrl}api/projectdata/`)
@@ -57,10 +62,17 @@ const Pageheader = (props) => {
                   }
                 : null
             }
-            options={projectData.map((project) => ({
-              value: project.project_id,
-              label: project.project_name,
-            }))}
+            options={[
+              {
+                value: null,
+                label: "Select Project",
+              },
+            ].concat(
+              projectData.map((project) => ({
+                value: project.project_id,
+                label: project.project_name,
+              }))
+            )}
             styles={{
               control: (styles) => ({
                 ...styles,
@@ -112,6 +124,11 @@ const Pageheader = (props) => {
                 "&:hover": {
                   backgroundColor: "#f3f4f6",
                 },
+              }),
+              placeholder: (styles) => ({
+                ...styles,
+                color: "#fff",
+                fontWeight: "600",
               }),
             }}
             className="js-example-basic-single w-full min-w-[210px]"
