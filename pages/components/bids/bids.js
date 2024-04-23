@@ -76,7 +76,7 @@ const ViewBids = () => {
       });
   }, []);
 
-  function BidsPage({
+  function BidsTable({
     bidsData,
     handleAddToCompare,
     addToCompareBid,
@@ -102,6 +102,22 @@ const ViewBids = () => {
         {
           Header: "Subcontractor",
           accessor: "subcontractor_id.Name",
+          Cell: ({ value }) => {
+            // const randomImageNumber = Math.floor(Math.random() * 17) + 1;
+            return (
+              <div className="flex items-center">
+                <div className="me-2 lh-1">
+                  <span className="avatar avatar-sm">
+                    <img
+                      src={`../../../assets/images/faces/10.jpg`}
+                      alt=""
+                    />
+                  </span>
+                </div>
+                <div className="text-sm">{value}</div>
+              </div>
+            );
+          },
         },
         {
           Header: "Bid ID",
@@ -249,8 +265,8 @@ const ViewBids = () => {
       };
 
       return (
-        <span>
-          Search:{" "}
+        <span style={{marginRight:"auto"}}>
+          Search Subcontractor/Task:{" "}
           <input
             value={value || ""}
             onChange={handleChange}
@@ -275,55 +291,131 @@ const ViewBids = () => {
 
     return (
       <>
-        <GlobalFilter
-          preGlobalFilteredRows={preGlobalFilteredRows}
-          globalFilter={state.globalFilter}
-          setGlobalFilter={setGlobalFilter}
-        />
-        <table
-          {...getTableProps()}
-          className="table whitespace-nowrap table-bordered min-w-full x-hidden"
-        >
-          <thead>
-            {headerGroups.map((headerGroup) => (
-              <tr {...headerGroup.getHeaderGroupProps()}>
-                {headerGroup.headers.map((column) => (
-                  <th
-                    {...column.getHeaderProps(column.getSortByToggleProps())}
-                    scope="col"
-                    className="text-start"
+        <div className="box-header justify-between">
+          <div className="box-title">Total Bids: {bidsData.length} </div>
+          <GlobalFilter
+            preGlobalFilteredRows={preGlobalFilteredRows}
+            globalFilter={state.globalFilter}
+            setGlobalFilter={setGlobalFilter}
+          />
+          <div className="flex">
+            <button
+              type="button"
+              className="hs-dropdown-toggle ti-btn ti-btn-primary-full !py-1 !px-2 !text-[0.75rem]"
+              data-hs-overlay="#create-Bid"
+            >
+              <Link href="/components/bids/create-bid">
+                <i className="ri-add-line font-semibold align-middle"></i>{" "}
+                Create Bid
+              </Link>
+            </button>
+            <button
+              type="button"
+              className="hs-dropdown-toggle ti-btn ti-btn-primary-full !py-1 !px-2 !mx-1 !text-[0.75rem] "
+              data-hs-overlay="#compare-Bid"
+            >
+              <Link href="/components/bids/compare-bids">
+                <i className="ri-add-line font-semibold align-middle"></i> Add
+                to Compare
+              </Link>
+            </button>
+            <div className="hs-dropdown ti-dropdown ms-2">
+              <button
+                type="button"
+                aria-label="button"
+                className="ti-btn ti-btn-secondary ti-btn-sm"
+                aria-expanded="false"
+              >
+                <i className="ti ti-dots-vertical"></i>
+              </button>
+              <ul className="hs-dropdown-menu ti-dropdown-menu hidden">
+                <li>
+                  <Link
+                    className="ti-dropdown-item !py-2 !px-[0.9375rem] !text-[0.8125rem] !font-medium block"
+                    href="#!"
                   >
-                    {column.render("Header")}
-                    <span>
-                      {column.isSorted
-                        ? column.isSortedDesc
-                          ? " 🔽"
-                          : " 🔼"
-                        : ""}
-                    </span>
-                  </th>
+                    New Bids
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    className="ti-dropdown-item !py-2 !px-[0.9375rem] !text-[0.8125rem] !font-medium block"
+                    href="#!"
+                  >
+                    Pending Bids
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    className="ti-dropdown-item !py-2 !px-[0.9375rem] !text-[0.8125rem] !font-medium block"
+                    href="#!"
+                  >
+                    Completed Bids
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    className="ti-dropdown-item !py-2 !px-[0.9375rem] !text-[0.8125rem] !font-medium block"
+                    href="#!"
+                  >
+                    Inprogress Bids
+                  </Link>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div className="box-body">
+          <div className="table-responsive overflow-x-hidden">
+            <table
+              {...getTableProps()}
+              className="table whitespace-nowrap table-bordered min-w-full x-hidden"
+            >
+              <thead>
+                {headerGroups.map((headerGroup, groupIndex) => (
+                  <tr {...headerGroup.getHeaderGroupProps()}>
+                    {headerGroup.headers.map((column, columnIndex) => (
+                      <th
+                        {...column.getHeaderProps()}
+                        {...(columnIndex !== 0
+                          ? column.getSortByToggleProps()
+                          : {})}
+                        scope="col"
+                        className="text-start"
+                      >
+                        {column.render("Header")}
+                        <span>
+                          {column.isSorted
+                            ? column.isSortedDesc
+                              ? " 🔽"
+                              : " 🔼"
+                            : ""}
+                        </span>
+                      </th>
+                    ))}
+                  </tr>
                 ))}
-              </tr>
-            ))}
-          </thead>
-          <tbody {...getTableBodyProps()}>
-            {rows.map((row) => {
-              prepareRow(row);
-              return (
-                <tr
-                  {...row.getRowProps()}
-                  className="border border-defaultborder Bid-list"
-                >
-                  {row.cells.map((cell) => (
-                    <td {...cell.getCellProps()} className={cell.column.id}>
-                      {cell.render("Cell")}
-                    </td>
-                  ))}
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
+              </thead>
+              <tbody {...getTableBodyProps()}>
+                {rows.map((row) => {
+                  prepareRow(row);
+                  return (
+                    <tr
+                      {...row.getRowProps()}
+                      className="border border-defaultborder Bid-list"
+                    >
+                      {row.cells.map((cell) => (
+                        <td {...cell.getCellProps()} className={cell.column.id}>
+                          {cell.render("Cell")}
+                        </td>
+                      ))}
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
+        </div>
       </>
     );
   }
@@ -523,114 +615,14 @@ const ViewBids = () => {
           </div>
         </div>
       </div>
+
       <div className="box">
-        <div className="box-body">
-          <div className="grid grid-cols-2">
-            <div className="p-4">
-              <label className="form-label">Select Project</label>
-              <Select
-                name="state"
-                className="js-example-basic-single w-full"
-                isSearchable
-                menuPlacement="auto"
-                classNamePrefix="Select2"
-                placeholder="Select Project"
-              />
-            </div>
-            <div className="p-4">
-              <label className="form-label">Select Task</label>
-              <Select
-                name="state"
-                className="js-example-basic-single w-full"
-                isSearchable
-                menuPlacement="auto"
-                classNamePrefix="Select2"
-                placeholder="Select Task"
-              />
-            </div>
-          </div>
-        </div>
-      </div>
-      <div className="box">
-        <div className="box-header justify-between">
-          <div className="box-title">Total Bids: {bidsData.length} </div>
-          <div className="flex">
-            <button
-              type="button"
-              className="hs-dropdown-toggle ti-btn ti-btn-primary-full !py-1 !px-2 !text-[0.75rem]"
-              data-hs-overlay="#create-Bid"
-            >
-              <Link href="/components/bids/create-bid">
-                <i className="ri-add-line font-semibold align-middle"></i>{" "}
-                Create Bid
-              </Link>
-            </button>
-            <button
-              type="button"
-              className="hs-dropdown-toggle ti-btn ti-btn-primary-full !py-1 !px-2 !mx-1 !text-[0.75rem] "
-              data-hs-overlay="#compare-Bid"
-            >
-              <Link href="/components/bids/compare-bids">
-                <i className="ri-add-line font-semibold align-middle"></i> Add
-                to Compare
-              </Link>
-            </button>
-            <div className="hs-dropdown ti-dropdown ms-2">
-              <button
-                type="button"
-                aria-label="button"
-                className="ti-btn ti-btn-secondary ti-btn-sm"
-                aria-expanded="false"
-              >
-                <i className="ti ti-dots-vertical"></i>
-              </button>
-              <ul className="hs-dropdown-menu ti-dropdown-menu hidden">
-                <li>
-                  <Link
-                    className="ti-dropdown-item !py-2 !px-[0.9375rem] !text-[0.8125rem] !font-medium block"
-                    href="#!"
-                  >
-                    New Bids
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    className="ti-dropdown-item !py-2 !px-[0.9375rem] !text-[0.8125rem] !font-medium block"
-                    href="#!"
-                  >
-                    Pending Bids
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    className="ti-dropdown-item !py-2 !px-[0.9375rem] !text-[0.8125rem] !font-medium block"
-                    href="#!"
-                  >
-                    Completed Bids
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    className="ti-dropdown-item !py-2 !px-[0.9375rem] !text-[0.8125rem] !font-medium block"
-                    href="#!"
-                  >
-                    Inprogress Bids
-                  </Link>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div className="box-body">
-          <div className="table-responsive overflow-x-hidden">
-            <BidsPage
-              bidsData={bidsData}
-              handleAddToCompare={handleAddToCompare}
-              addToCompareBid={addToCompareBid}
-              statusColor={statusColor}
-            />
-          </div>
-        </div>
+        <BidsTable
+          bidsData={bidsData}
+          handleAddToCompare={handleAddToCompare}
+          addToCompareBid={addToCompareBid}
+          statusColor={statusColor}
+        />
         <div className="box-footer">
           <nav aria-label="Page navigation">
             <ul className="ti-pagination justify-end mb-0">
