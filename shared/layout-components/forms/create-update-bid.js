@@ -36,14 +36,12 @@ const CreateUpdateBid = (props) => {
     selectedTask: "",
     cost_code_id: "",
     description: "",
-    bid_amount_from_sub: "",
-    bid_details_from_sub: "",
+    bid_amount: "",
+    bid_details: "",
     bid_inscope: [{ bidDetail: "" }],
     bid_outscope: [{ bidDetail: "" }],
     bid_payment_terms: "",
     bid_recieved_date: isoDate,
-    bid_status: "",
-    subcontractor_id: "",
     bid_notes: "",
   });
   const [selectedProject, setSelectedProject] = useState(null);
@@ -120,14 +118,12 @@ const CreateUpdateBid = (props) => {
         selectedTask: "",
         cost_code_id: "",
         description: "",
-        bid_amount_from_sub: "",
-        bid_details_from_sub: "",
-        bid_inscope: "",
-        bid_outscope: "",
+        bid_amount: "",
+        bid_details: "",
+        // bid_inscope:  [],
+        // bid_outscope:  [],
         bid_payment_terms: "",
-        bid_recieved_date: "",
-        bid_status: "",
-        subcontractor_id: "",
+        bid_recieved_date: isoDate,
         bid_notes: "",
       });
     } catch (error) {
@@ -217,26 +213,15 @@ const CreateUpdateBid = (props) => {
           <form onSubmit={handleSubmit}>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="mb-4">
-                <label htmlFor="bid_amount_from_sub" className="form-label">
-                  Bid Amount From Sub
+                <label htmlFor="bid_payment_terms" className="form-label">
+                  Bid Payment Terms
                 </label>
-                <input
-                  type="number"
+                <textarea
                   className="form-control"
-                  id="bid_amount_from_sub"
-                  value={formData.bid_amount_from_sub}
-                  onChange={handleInputChange}
-                />
-              </div>
-              <div className="mb-4">
-                <label htmlFor="bid_status" className="form-label">
-                  Bid Status
-                </label>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="bid_status"
-                  value={formData.bid_status}
+                  id="bid_payment_terms"
+                  rows="3"
+                  cols="50"
+                  value={formData.bid_payment_terms}
                   onChange={handleInputChange}
                 />
               </div>
@@ -256,28 +241,15 @@ const CreateUpdateBid = (props) => {
               </div>
 
               <div className="mb-4">
-                <label htmlFor="bid_details_from_sub" className="form-label">
-                  Bid Details From Sub
+                <label htmlFor="bid_details" className="form-label">
+                  Bid Details
                 </label>
                 <textarea
                   className="form-control"
-                  id="bid_details_from_sub"
+                  id="bid_details"
                   rows="3"
                   cols="50"
-                  value={formData.bid_details_from_sub}
-                  onChange={handleInputChange}
-                />
-              </div>
-
-              <div className="mb-4">
-                <label htmlFor="subcontractor_id" className="form-label">
-                  Subcontractor ID
-                </label>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="subcontractor_id"
-                  value={formData.subcontractor_id}
+                  value={formData.bid_details}
                   onChange={handleInputChange}
                 />
               </div>
@@ -286,9 +258,10 @@ const CreateUpdateBid = (props) => {
                 <label htmlFor="bid_notes" className="form-label">
                   Bid Notes
                 </label>
-                <input
-                  type="text"
+                <textarea
                   className="form-control"
+                  rows="3"
+                  cols="50"
                   id="bid_notes"
                   value={formData.bid_notes}
                   onChange={handleInputChange}
@@ -296,94 +269,102 @@ const CreateUpdateBid = (props) => {
               </div>
 
               {formData.bid_inscope.map((bid, index) => (
-                <div className="row g-3 align-items-center" key={index}>
-                  <div className="col-md-5">
-                    <label
-                      htmlFor={`bid_inscope_${index}`}
-                      className="form-label"
-                    >
-                      Bid Inscope {index + 1}
-                    </label>
-                    <input
-                      type="text"
-                      id={`bid_inscope_${index}`}
-                      name="bidDetail"
-                      value={bid.bidDetail}
-                      onChange={(e) => handleBidChange(e, index, "bid_inscope")}
-                      className="form-control"
-                    />
+                <div key={index}>
+                  <div className="row g-3 align-items-center">
+                    <div className="col-md-5">
+                      <label className="form-label">
+                        Bid Inscope {index + 1}
+                      </label>
+                      <input
+                        type="text"
+                        id={`bid_inscope_${index}`}
+                        name="bidDetail"
+                        value={bid.bidDetail}
+                        onChange={(e) =>
+                          handleBidChange(e, index, "bid_inscope")
+                        }
+                        className="form-control"
+                      />
+                    </div>
+                    {index > 0 && (
+                      <div className="col-md-1">
+                        <button
+                          type="button"
+                          className="ti-btn ti-btn-danger-full"
+                          onClick={() => handleRemoveBid(index, "bid_inscope")}
+                        >
+                          -
+                        </button>
+                      </div>
+                    )}
                   </div>
-
-                  <div className="col-md-2">
-                    {index === formData.bid_inscope.length - 1 ? (
+                  {index === formData.bid_inscope.length - 1 && (
+                    <div className="d-flex justify-content-between mt-2">
                       <button
-                        className="ti-btn ti-btn-success-full mt-4"
+                        type="button"
+                        className="ti-btn ti-btn-success-full"
                         onClick={() => handleAddBid("bid_inscope")}
                       >
                         +
                       </button>
-                    ) : index === formData.bid_inscope.length - 2 ? (
-                      <button
-                        className="ti-btn ti-btn-danger-full mt-4"
-                        onClick={() => handleRemoveBid(index, "bid_inscope")}
-                      >
-                        Remove
-                      </button>
-                    ) : null}
-                  </div>
+                    </div>
+                  )}
                 </div>
               ))}
 
               {formData.bid_outscope.map((bid, index) => (
-                <div className="row g-3 align-items-center" key={index}>
-                  <div className="col-md-5">
-                    <label
-                      htmlFor={`bid_outscope_${index}`}
-                      className="form-label"
-                    >
-                      Bid Outscope {index + 1}
-                    </label>
-                    <input
-                      type="text"
-                      id={`bid_outscope_${index}`}
-                      name="bidDetail"
-                      value={bid.bidDetail}
-                      onChange={(e) =>
-                        handleBidChange(e, index, "bid_outscope")
-                      }
-                      className="form-control"
-                    />
+                <div key={index}>
+                  <div className="row g-3 align-items-center">
+                    <div className="col-md-5">
+                      <label className="form-label">
+                        Bid Outscope {index + 1}
+                      </label>
+                      <input
+                        type="text"
+                        id={`bid_outscope_${index}`}
+                        name="bidDetail"
+                        value={bid.bidDetail}
+                        onChange={(e) =>
+                          handleBidChange(e, index, "bid_outscope")
+                        }
+                        className="form-control"
+                      />
+                    </div>
+                    {index > 0 && (
+                      <div className="col-md-1">
+                        <button
+                          type="button"
+                          className="ti-btn ti-btn-danger-full"
+                          onClick={() => handleRemoveBid(index, "bid_outscope")}
+                        >
+                          -
+                        </button>
+                      </div>
+                    )}
                   </div>
-                  <div className="col-md-2">
-                    {index === formData.bid_outscope.length - 1 ? (
+                  {index === formData.bid_outscope.length - 1 && (
+                    <div className="d-flex justify-content-between mt-2">
                       <button
-                        className="ti-btn ti-btn-success-full mt-4"
+                        type="button"
+                        className="ti-btn ti-btn-success-full"
                         onClick={() => handleAddBid("bid_outscope")}
                       >
                         +
                       </button>
-                    ) : index > 0 ? (
-                      <button
-                        className="ti-btn ti-btn-danger-full mt-4"
-                        onClick={() => handleRemoveBid(index, "bid_outscope")}
-                      >
-                        Remove
-                      </button>
-                    ) : null}
-                  </div>
+                    </div>
+                  )}
                 </div>
               ))}
 
               <div className="mb-4">
-                <label htmlFor="bid_payment_terms" className="form-label">
-                  Bid Payment Terms
+                <label htmlFor="bid_amount" className="form-label">
+                  Bid Amount
                 </label>
-                <textarea
+                <input
+                  type="number"
                   className="form-control"
-                  id="bid_payment_terms"
-                  rows="3"
-                  cols="50"
-                  value={formData.bid_payment_terms}
+                  id="bid_amount"
+                  value={formData.bid_amount}
                   onChange={handleInputChange}
                 />
               </div>
