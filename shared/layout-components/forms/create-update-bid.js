@@ -132,25 +132,25 @@ const CreateUpdateBid = (props) => {
   };
 
   const handleBidChange = (e, index, field) => {
-    const newBids = [...formData[field]];
+    const newBids = [...scopeData[field]];
     newBids[index][e.target.name] = e.target.value;
-    setScopeData({ ...formData, [field]: newBids });
+    setScopeData({ ...scopeData, [field]: newBids });
   };
 
   const handleAddBid = (field) => {
     setScopeData({
-      ...formData,
-      [field]: [...formData[field], { bidDetail: "" }],
+      ...scopeData,
+      [field]: [...scopeData[field], { bidDetail: "" }],
     });
   };
 
   const handleRemoveBid = (index, field) => {
-    const newBids = [...formData[field]];
+    const newBids = [...scopeData[field]];
     if (newBids.length === 1) {
       return;
     }
     newBids.splice(index, 1);
-    setScopeData({ ...formData, [field]: newBids });
+    setScopeData({ ...scopeData, [field]: newBids });
   };
 
   const handleSubmit = (event) => {
