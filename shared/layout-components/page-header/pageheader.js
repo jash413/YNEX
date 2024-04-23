@@ -31,7 +31,6 @@ const Pageheader = (props) => {
         )
       : null;
     setSelectedProject(selectedProject);
-    // Save the selected project to localStorage
     localStorage.setItem("selectedProject", JSON.stringify(selectedProject));
     loadProjectData();
   };
@@ -45,6 +44,9 @@ const Pageheader = (props) => {
           </h3>
         </div>
         <ol className="flex items-center whitespace-nowrap min-w-0">
+          <span className="text-defaulttextcolor dark:text-white text-[0.875rem] font-normal mr-2">
+            Select Project:
+          </span>
           <Select
             name="project"
             value={
@@ -92,6 +94,7 @@ const Pageheader = (props) => {
               singleValue: (styles) => ({
                 ...styles,
                 color: "#fff",
+                fontWeight: "600",
               }),
               menu: (styles) => ({
                 ...styles,

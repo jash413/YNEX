@@ -3,19 +3,19 @@ import Seo from "@/shared/layout-components/seo/seo";
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import axios from "axios";
-import Select from "react-select";
 import network from "@/config";
 import { useTable, useSortBy, useGlobalFilter } from "react-table";
+import { tr } from "date-fns/locale";
 
 const ViewBids = () => {
   const [bidsData, setBidsData] = useState([]);
+  const [filteredBidsData, setFilteredBidsData] = useState([]);
   const [addToCompareBid, setAddToCompareBid] = useState([]);
   const [completedBids, setCompletedBids] = useState(0);
   const [inProgressBids, setInProgressBids] = useState(0);
   const [pendingBids, setPendingBids] = useState(0);
   const [newbids, setNewBids] = useState(0);
   const [displayToast, setDisplayToast] = useState(false);
-  const [selectedProject, setSelectedProject] = useState(null);
 
   const handleAddToCompare = (e) => {
     // Cannot select different tasks
@@ -32,9 +32,19 @@ const ViewBids = () => {
     }
   };
 
+  useEffect(() => {
+    getDataFromLocalStorage();
+  }, []);
+
   const getDataFromLocalStorage = () => {
     const selectedProject = JSON.parse(localStorage.getItem("selectedProject"));
-    setSelectedProject(selectedProject);
+    if (!selectedProject) {
+      setFilteredBidsData(bidsData);
+    }
+    const bids = bidsData.filter(
+      (bid) => bid.project_id === selectedProject.project_id
+    );
+    setFilteredBidsData(bids);
   };
 
   useEffect(() => {
@@ -59,6 +69,17 @@ const ViewBids = () => {
     axios
       .get(`${network.serverUrl}api/bidData/`)
       .then((response) => {
+        const selectedProject = JSON.parse(
+          localStorage.getItem("selectedProject")
+        );
+        if (selectedProject) {
+          const bids = response.data.filter(
+            (bid) => bid.project_id === selectedProject.project_id
+          );
+          setFilteredBidsData(bids);
+        } else {
+          setFilteredBidsData(response.data);
+        }
         setBidsData(response.data);
         setCompletedBids(
           response.data.filter((bid) => bid.status === "Completed").length
@@ -87,7 +108,16 @@ const ViewBids = () => {
     const columns = React.useMemo(
       () => [
         {
-          Header: "",
+          Header: () => {
+            return (
+              <input
+                className="form-check-input"
+                type="checkbox"
+                checked={true}
+                readOnly
+              />
+            );
+          },
           accessor: "checkbox",
           Cell: ({ row: { original } }) => (
             <input
@@ -108,10 +138,7 @@ const ViewBids = () => {
               <div className="flex items-center">
                 <div className="me-2 lh-1">
                   <span className="avatar avatar-sm">
-                    <img
-                      src={`../../../assets/images/faces/10.jpg`}
-                      alt=""
-                    />
+                    <img src={`../../../assets/images/faces/10.jpg`} alt="" />
                   </span>
                 </div>
                 <div className="text-sm">{value}</div>
@@ -265,16 +292,25 @@ const ViewBids = () => {
       };
 
       return (
-        <span style={{marginRight:"auto"}}>
-          Search Subcontractor/Task:{" "}
+        <>
+        <span>
+          Search Bids:{" "}
+        </span>
+        <span style={{ marginRight: "auto" }}>
           <input
             value={value || ""}
             onChange={handleChange}
             onKeyDown={handleKeyDown}
             placeholder={`${count} records...`}
-            className="shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="form-control"
+            style={{
+              borderColor: "#d2d6dc",
+              padding: "0.375rem 0.75rem",
+              borderRadius: "0.375rem",
+            }}
           />
         </span>
+        </>
       );
     }
 
@@ -319,50 +355,6 @@ const ViewBids = () => {
                 to Compare
               </Link>
             </button>
-            <div className="hs-dropdown ti-dropdown ms-2">
-              <button
-                type="button"
-                aria-label="button"
-                className="ti-btn ti-btn-secondary ti-btn-sm"
-                aria-expanded="false"
-              >
-                <i className="ti ti-dots-vertical"></i>
-              </button>
-              <ul className="hs-dropdown-menu ti-dropdown-menu hidden">
-                <li>
-                  <Link
-                    className="ti-dropdown-item !py-2 !px-[0.9375rem] !text-[0.8125rem] !font-medium block"
-                    href="#!"
-                  >
-                    New Bids
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    className="ti-dropdown-item !py-2 !px-[0.9375rem] !text-[0.8125rem] !font-medium block"
-                    href="#!"
-                  >
-                    Pending Bids
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    className="ti-dropdown-item !py-2 !px-[0.9375rem] !text-[0.8125rem] !font-medium block"
-                    href="#!"
-                  >
-                    Completed Bids
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    className="ti-dropdown-item !py-2 !px-[0.9375rem] !text-[0.8125rem] !font-medium block"
-                    href="#!"
-                  >
-                    Inprogress Bids
-                  </Link>
-                </li>
-              </ul>
-            </div>
           </div>
         </div>
         <div className="box-body">
@@ -372,7 +364,7 @@ const ViewBids = () => {
               className="table whitespace-nowrap table-bordered min-w-full x-hidden"
             >
               <thead>
-                {headerGroups.map((headerGroup, groupIndex) => (
+                {headerGroups.map((headerGroup) => (
                   <tr {...headerGroup.getHeaderGroupProps()}>
                     {headerGroup.headers.map((column, columnIndex) => (
                       <th
@@ -384,13 +376,23 @@ const ViewBids = () => {
                         className="text-start"
                       >
                         {column.render("Header")}
-                        <span>
-                          {column.isSorted
-                            ? column.isSortedDesc
-                              ? " 🔽"
-                              : " 🔼"
-                            : ""}
-                        </span>
+                        {columnIndex !== 0 && (
+                          // Add space between the icon and the text
+                          <>
+                            <span>{" "}</span>
+                            <span>
+                              {column.isSorted ? (
+                                column.isSortedDesc ? (
+                                  <i className="ti ti-arrow-down"></i>
+                                ) : (
+                                  <i className="ti ti-arrow-up"></i>
+                                )
+                              ) : (
+                                <i className="ti ti-arrows-down-up"></i>
+                              )}
+                            </span>
+                          </>
+                        )}
                       </th>
                     ))}
                   </tr>
@@ -618,7 +620,7 @@ const ViewBids = () => {
 
       <div className="box">
         <BidsTable
-          bidsData={bidsData}
+          bidsData={filteredBidsData}
           handleAddToCompare={handleAddToCompare}
           addToCompareBid={addToCompareBid}
           statusColor={statusColor}
