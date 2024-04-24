@@ -43,6 +43,7 @@ const CreateUpdateBid = (props) => {
     bid_payment_terms: "",
     bid_recieved_date: isoDate,
     bid_notes: "",
+    bid_warranty: "",
   });
   const [scopeData, setScopeData] = useState({
     bid_inscope: [{ bidDetail: "" }],
@@ -84,15 +85,15 @@ const CreateUpdateBid = (props) => {
             selectedTask: response.data.selectedTask,
             cost_code_id: response.data.cost_code_id,
             description: response.data.description,
-            bid_amount_from_sub: response.data.bid_amount_from_sub,
-            bid_details_from_sub: response.data.bid_details_from_sub,
+            bid_amount: response.data.bid_amount_from_sub,
+            bid_details: response.data.bid_details_from_sub,
             bid_inscope: response.data.bid_inscope,
             bid_outscope: response.data.bid_outscope,
             bid_payment_terms: response.data.bid_payment_terms,
             bid_recieved_date: response.data.bid_recieved_date,
-            bid_status: response.data.bid_status,
             subcontractor_id: response.data.subcontractor_id["id"],
             bid_notes: response.data.bid_notes,
+            bid_warranty: response.data.warranty,
           });
           // Convert the bid_inscope and bid_outscope to an array of objects
           const inScope = response.data.bid_inscope.split(",").map((bid) => ({
@@ -171,6 +172,7 @@ const CreateUpdateBid = (props) => {
         bid_payment_terms: "",
         bid_recieved_date: isoDate,
         bid_notes: "",
+        bid_warranty:""
       });
     } catch (error) {
       console.log(error);
@@ -267,6 +269,18 @@ const CreateUpdateBid = (props) => {
                   className="form-control"
                   id="bid_amount"
                   value={formData.bid_amount}
+                  onChange={handleInputChange}
+                />
+              </div>
+              <div className="mb-4">
+                <label htmlFor="bid_amount" className="form-label">
+                  Bid Warranty
+                </label>
+                <input
+                  type="number"
+                  className="form-control"
+                  id="bid_warranty"
+                  value={formData.bid_warranty}
                   onChange={handleInputChange}
                 />
               </div>
