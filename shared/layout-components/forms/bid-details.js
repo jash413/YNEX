@@ -3,7 +3,7 @@ import Link from "next/link";
 
 const BidDetails = (props) => {
   const bidsData = props.bidsData;
-  return ( 
+  return (
     <div className="p-4 box">
       <div className="flex justify-between mb-8">
         <div>
@@ -57,18 +57,30 @@ const BidDetails = (props) => {
         <table className="w-full border-collapse">
           <thead>
             <tr className="bg-gray-200">
-              <th className="px-4 py-2 font-bold text-gray-800">TASK NAME</th>
-              <th className="px-4 py-2 font-bold text-gray-800">COST CODE</th>
-              <th className="px-4 py-2 font-bold text-gray-800">DESCRIPTION</th>
+              <th className="px-4 py-2 font-bold text-gray-800 border-r border-gray-400">
+                TASK NAME
+              </th>
+              <th className="px-4 py-2 font-bold text-gray-800 border-r border-gray-400">
+                COST CODE
+              </th>
+              <th className="px-4 py-2 font-bold text-gray-800 border-r border-gray-400">
+                DESCRIPTION
+              </th>
               <th className="px-4 py-2 font-bold text-gray-800">BID AMOUNT</th>
             </tr>
           </thead>
           <tbody>
             <tr className="bg-white">
-              <td className="px-4 py-2 border">{bidsData.task_name}</td>
-              <td className="px-4 py-2 border">{bidsData.cost_code_id}</td>
-              <td className="px-4 py-2 border">{bidsData.description}</td>
-              <td className="px-4 py-2 border">
+              <td className="px-4 py-2 border border-gray-300">
+                {bidsData.task_name}
+              </td>
+              <td className="px-4 py-2 border border-gray-300">
+                {bidsData.cost_code_id}
+              </td>
+              <td className="px-4 py-2 border border-gray-300">
+                {bidsData.description}
+              </td>
+              <td className="px-4 py-2 border border-gray-300">
                 ${bidsData.bid_amount_from_sub}
               </td>
             </tr>
@@ -80,7 +92,7 @@ const BidDetails = (props) => {
         <table className="w-full border-collapse">
           <thead>
             <tr className="bg-gray-200">
-              <th className="px-4 py-2 font-bold text-gray-800">INSCOPE</th>
+              <th className="px-4 py-2 font-bold text-gray-800 border-r border-gray-400">INSCOPE</th>
               <th className="px-4 py-2 font-bold text-gray-800">OUTSCOPE</th>
             </tr>
           </thead>
@@ -113,7 +125,7 @@ const BidDetails = (props) => {
       <div className="mb-8 bg-white p-4 rounded-md shadow-md">
         <div className="mb-4">
           <p className="font-bold text-gray-700 mb-2">
-            TOTAL AMOUNT: {bidsData.bid_amount_from_sub}
+            TOTAL AMOUNT: ${bidsData?.bid_amount_from_sub?.toLocaleString()}
           </p>
         </div>
         <div className="flex items-center justify-between">

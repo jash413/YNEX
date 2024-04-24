@@ -6,7 +6,7 @@ import Select from "react-select";
 import { z } from "zod";
 const today = new Date();
 const isoDate = today.toISOString();
-import { FilePond, registerPlugin } from "react-filepond";
+import { FilePond } from "react-filepond";
 import network from "@/config";
 
 const formDataSchema = z.object({
@@ -96,7 +96,6 @@ const CreateUpdateBid = (props) => {
             builder_notes: response.data.builder_notes,
             bid_warranty: response.data.warranty,
           });
-          // Convert the bid_inscope and bid_outscope to an array of objects
           const inScope = response.data.bid_inscope.split(",").map((bid) => ({
             bidDetail: bid,
           }));
@@ -173,34 +172,33 @@ const CreateUpdateBid = (props) => {
         bid_payment_terms: "",
         bid_recieved_date: isoDate,
         builder_notes: "",
-        bid_warranty:""
+        bid_warranty: "",
       });
     } catch (error) {
       console.log(error);
     }
   };
 
-    const [displayedBidAmount, setDisplayedBidAmount] = useState("");
+  const [displayedBidAmount, setDisplayedBidAmount] = useState("");
 
-    const handleBidAmountChange = (event) => {
-      const { value } = event.target;
-      const numericValue = value.replace(/,/g, "");
-      if (!isNaN(numericValue)) {
-        setFormData({ ...formData, bid_amount: numericValue });
-        setDisplayedBidAmount(Intl.NumberFormat().format(numericValue));
-      }
-    };
+  const handleBidAmountChange = (event) => {
+    const { value } = event.target;
+    const numericValue = value.replace(/,/g, "");
+    if (!isNaN(numericValue)) {
+      setFormData({ ...formData, bid_amount: numericValue });
+      setDisplayedBidAmount(Intl.NumberFormat().format(numericValue));
+    }
+  };
 
-
-    const [files, setFiles] = useState([]);
+  const [files, setFiles] = useState([]);
 
   return (
     <div>
       <Seo title={`${formType === "update" ? "Update Bid" : "Create Bid"}`} />
       <Pageheader
-        currentpage={`${formType === "update" ? "Update Bid" : "Create Bid"}`}
-        activepage="Bids"
-        mainpage={`Bids ${formType === "update" ? "Update" : "Create"}`}
+        activepage={`${formType === "update" ? "Update" : "Create"} Bid`}
+        mainpage="Bids"
+        mainpageurl="/components/bids/bids"
         loadProjectData={getDataFromLocalStorage}
       />
       <div className="flex justify-between">
@@ -288,9 +286,6 @@ const CreateUpdateBid = (props) => {
                   onChange={handleBidAmountChange}
                 />
               </div>
-              {/* description and builder notes 
-              payment terms and warranty upload files inscope outscope*/}
-
               <div className="mb-4"></div>
               <div className="mb-4">
                 <label htmlFor="description" className="form-label">
@@ -318,8 +313,6 @@ const CreateUpdateBid = (props) => {
                   onChange={handleInputChange}
                 />
               </div>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="mb-4">
                 <label htmlFor="bid_payment_terms" className="form-label">
                   Bid Payment Terms
@@ -346,30 +339,29 @@ const CreateUpdateBid = (props) => {
                   onChange={handleInputChange}
                 />
               </div>
-
-              <div className="mb-4">
-                <label htmlFor="bid_amount" className="form-label">
-                  Multiple File Upload
-                </label>
-                <FilePond
-                  className="multiple-filepond"
-                  accepted-file-types={[
-                    "application/pdf",
-                    "image/png",
-                    "image/jpeg",
-                    "image/gif",
-                  ]}
-                  server="/api"
-                  allowReorder={true}
-                  files={files}
-                  onupdatefiles={setFiles}
-                  allowMultiple={true}
-                  allowImagePreview={true}
-                  maxFiles={10}
-                  name="filepond"
-                  labelIdle='Drag & Drop your files or <span className="filepond--label-action">Browse</span>'
-                />
-              </div>
+            </div>
+            <div className="mb-4">
+              <label htmlFor="bid_amount" className="form-label">
+                Upload Files
+              </label>
+              <FilePond
+                className="multiple-filepond"
+                accepted-file-types={[
+                  "application/pdf",
+                  "image/png",
+                  "image/jpeg",
+                  "image/gif",
+                ]}
+                server="/api"
+                allowReorder={true}
+                files={files}
+                onupdatefiles={setFiles}
+                allowMultiple={true}
+                allowImagePreview={true}
+                maxFiles={10}
+                name="filepond"
+                labelIdle='Drag & Drop your files or <span className="filepond--label-action">Browse</span>'
+              />
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>

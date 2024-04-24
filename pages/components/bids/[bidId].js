@@ -29,9 +29,10 @@ const BidDetail = () => {
     <>
       <Seo title={"Bid Details"} />
       <Pageheader
-        currentpage="Bid Details"
-        activepage="Bids"
-        mainpage="Bid Details"
+        activepage="Bid Details"
+        mainpage="Bids"
+        mainpageurl="/components/bids/bids"
+        isDisabled={true}
       />
       <BidDetails bidsData={bidDetails} showEditBtn={true} />
     </>

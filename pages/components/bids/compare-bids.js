@@ -39,10 +39,11 @@ const CompareBids = () => {
     <div>
       <Seo title={"Compare Bids"} />
       <Pageheader
-        currentpage="Compare Bids"
-        activepage="Bids"
-        mainpage="Compare Bids"
+        activepage="Compare Bids"
+        mainpage="Bids"
+        mainpageurl="/components/bids/bids"
         loadProjectData={getDataFromLocalStorage}
+        isDisabled={true}
       />
       <div className="box">
         <div className="box-body">

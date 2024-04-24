@@ -150,13 +150,30 @@ const ViewBids = () => {
           Cell: ({ value }) => {
             // const randomImageNumber = Math.floor(Math.random() * 17) + 1;
             return (
-              <div className="flex items-center">
-                <div className="me-2 lh-1">
-                  <span className="avatar avatar-sm">
-                    <img src={`../../../assets/images/faces/10.jpg`} alt="" />
-                  </span>
+              <div className={`hs-tooltip ti-main-tooltip`}>
+                <div className="flex items-center">
+                  <div className="me-2 lh-1">
+                    <span className="avatar avatar-sm">
+                      <img src={`../../../assets/images/faces/10.jpg`} alt="" />
+                    </span>
+                  </div>
+                  <div
+                    className="text-sm"
+                    style={{
+                      color: "#0d6efd",
+                    }}
+                  >
+                    <Link href="/components/business-hub/summary/">
+                      {value}
+                    </Link>
+                  </div>
                 </div>
-                <div className="text-sm"><Link href="!#">{value}</Link></div>
+                <span
+                  className="hs-tooltip-content  ti-main-tooltip-content !bg-black !text-xs !font-medium !text-white shadow-sm "
+                  role="tooltip"
+                >
+                  Subcontractor Details
+                </span>
               </div>
             );
           },
@@ -164,6 +181,26 @@ const ViewBids = () => {
         {
           Header: "Bid ID",
           accessor: "bid_id",
+          Cell: ({ value }) => (
+            <div className={`hs-tooltip ti-main-tooltip`}>
+              <div className="flex items-center">
+                <Link
+                  style={{
+                    color: "#0d6efd",
+                  }}
+                  href={`/components/bids/${value}`}
+                >
+                  {value}
+                </Link>
+              </div>
+              <span
+                className="hs-tooltip-content ti-main-tooltip-content !bg-black !text-xs !font-medium !text-white shadow-sm"
+                role="tooltip"
+              >
+                View Bid
+              </span>
+            </div>
+          ),
         },
         {
           Header: "Task Name",
@@ -470,9 +507,9 @@ const ViewBids = () => {
       </div>
       <Seo title={"Bids"} />
       <Pageheader
-        currentpage="List View"
-        activepage="Bids"
-        mainpage="List View"
+        activepage="View Bids"
+        mainpage="Bids"
+        mainpageurl="/components/bids/bids"
         loadProjectData={getDataFromLocalStorage}
       />
       <div className="box">

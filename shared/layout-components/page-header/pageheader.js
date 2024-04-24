@@ -2,9 +2,11 @@ import React, { Fragment, useState, useEffect } from "react";
 import Select from "react-select";
 import axios from "axios";
 import network from "@/config";
+import Link from "next/link";
 
 const Pageheader = (props) => {
   const loadProjectData = props?.loadProjectData;
+  const isDisabled = props?.isDisabled;
   const [projectData, setProjectData] = useState([]);
   const [selectedProject, setSelectedProject] = useState(null);
 
@@ -43,17 +45,30 @@ const Pageheader = (props) => {
   return (
     <Fragment>
       <div className="block justify-between page-header md:flex">
-        <div>
-          <h3 className="!text-defaulttextcolor dark:!text-defaulttextcolor/70 dark:text-white dark:hover:text-white text-[1.125rem] font-semibold">
-            {props.currentpage}
-          </h3>
-        </div>
+        <ol className="flex items-center whitespace-nowrap min-w-0">
+          <li className="text-[1.1rem] ps-[0.5rem]">
+            <Link
+              className="flex items-center text-primary hover:text-primary dark:text-primary truncate"
+              href={props.mainpageurl}
+            >
+              {props.mainpage}
+              <i className="ti ti-chevrons-right flex-shrink-0 text-[#8c9097] dark:text-white/50 px-[0.5rem] overflow-visible rtl:rotate-180"></i>
+            </Link>
+          </li>
+          <li
+            className="text-[1.1rem] text-defaulttextcolor font-semibold dark:text-[#8c9097] dark:text-white/50 "
+            aria-current="page"
+          >
+            {props.activepage}
+          </li>
+        </ol>
         <ol className="flex items-center whitespace-nowrap min-w-0">
           <span className="text-defaulttextcolor dark:text-white text-[0.875rem] font-normal mr-2">
             Select Project:
           </span>
           <Select
             name="project"
+            isDisabled={isDisabled}
             value={
               selectedProject
                 ? {
@@ -74,9 +89,9 @@ const Pageheader = (props) => {
               }))
             )}
             styles={{
-              control: (styles) => ({
+              control: (styles, { isDisabled }) => ({
                 ...styles,
-                backgroundColor: "rgb(132 90 223)",
+                backgroundColor: isDisabled ? "#e2e8f0" : "rgb(132 90 223)",
                 border: "1px solid #e5e7eb",
                 borderRadius: "0.375rem",
                 height: "2.5rem",
@@ -103,9 +118,9 @@ const Pageheader = (props) => {
                 ...styles,
                 color: "#fff",
               }),
-              singleValue: (styles) => ({
+              singleValue: (styles,{ isDisabled }) => ({
                 ...styles,
-                color: "#fff",
+                color: isDisabled ? "#e2e8f0" : "#fff",
                 fontWeight: "600",
               }),
               menu: (styles) => ({
@@ -125,9 +140,9 @@ const Pageheader = (props) => {
                   backgroundColor: "#f3f4f6",
                 },
               }),
-              placeholder: (styles) => ({
+              placeholder: (styles,{ isDisabled }) => ({
                 ...styles,
-                color: "#fff",
+                color: isDisabled ? "#e2e8f0" : "#fff",
                 fontWeight: "600",
               }),
             }}
