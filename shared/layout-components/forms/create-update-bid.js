@@ -180,10 +180,19 @@ const CreateUpdateBid = (props) => {
     }
   };
 
+    const [displayedBidAmount, setDisplayedBidAmount] = useState("");
 
-  //React filepond
+    const handleBidAmountChange = (event) => {
+      const { value } = event.target;
+      const numericValue = value.replace(/,/g, "");
+      if (!isNaN(numericValue)) {
+        setFormData({ ...formData, bid_amount: numericValue });
+        setDisplayedBidAmount(Intl.NumberFormat().format(numericValue));
+      }
+    };
 
-  const [files, setFiles] = useState([]);
+
+    const [files, setFiles] = useState([]);
 
   return (
     <div>
@@ -272,11 +281,11 @@ const CreateUpdateBid = (props) => {
                   Bid Amount
                 </label>
                 <input
-                  type="number"
+                  type="text"
                   className="form-control"
                   id="bid_amount"
-                  value={formData.bid_amount}
-                  onChange={handleInputChange}
+                  value={displayedBidAmount}
+                  onChange={handleBidAmountChange}
                 />
               </div>
               {/* description and builder notes 
