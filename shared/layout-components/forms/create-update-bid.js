@@ -6,6 +6,7 @@ import Select from "react-select";
 import { z } from "zod";
 const today = new Date();
 const isoDate = today.toISOString();
+import { FilePond, registerPlugin } from "react-filepond";
 import network from "@/config";
 
 const formDataSchema = z.object({
@@ -22,7 +23,7 @@ const formDataSchema = z.object({
   subcontractor_id: z
     .string()
     .nonempty({ message: "Subcontractor ID is required" }),
-  bid_notes: z.string().nonempty({ message: "Bid Notes is required" }),
+  builder_notes: z.string().nonempty({ message: "Builder Notes is required" }),
   bid_payment_terms: z
     .string()
     .nonempty({ message: "Bid Payment Terms is required" }),
@@ -42,7 +43,7 @@ const CreateUpdateBid = (props) => {
     bid_outscope: "",
     bid_payment_terms: "",
     bid_recieved_date: isoDate,
-    bid_notes: "",
+    builder_notes: "",
     bid_warranty: "",
   });
   const [scopeData, setScopeData] = useState({
@@ -92,7 +93,7 @@ const CreateUpdateBid = (props) => {
             bid_payment_terms: response.data.bid_payment_terms,
             bid_recieved_date: response.data.bid_recieved_date,
             subcontractor_id: response.data.subcontractor_id["id"],
-            bid_notes: response.data.bid_notes,
+            builder_notes: response.data.builder_notes,
             bid_warranty: response.data.warranty,
           });
           // Convert the bid_inscope and bid_outscope to an array of objects
@@ -171,13 +172,19 @@ const CreateUpdateBid = (props) => {
         bid_outscope: "",
         bid_payment_terms: "",
         bid_recieved_date: isoDate,
-        bid_notes: "",
+        builder_notes: "",
         bid_warranty:""
       });
     } catch (error) {
       console.log(error);
     }
   };
+
+
+  //React filepond
+
+  const [files, setFiles] = useState([]);
+
   return (
     <div>
       <Seo title={`${formType === "update" ? "Update Bid" : "Create Bid"}`} />
@@ -272,15 +279,33 @@ const CreateUpdateBid = (props) => {
                   onChange={handleInputChange}
                 />
               </div>
+              {/* description and builder notes 
+              payment terms and warranty upload files inscope outscope*/}
+
+              <div className="mb-4"></div>
               <div className="mb-4">
-                <label htmlFor="bid_amount" className="form-label">
-                  Bid Warranty
+                <label htmlFor="description" className="form-label">
+                  Description
                 </label>
-                <input
-                  type="number"
+                <textarea
                   className="form-control"
-                  id="bid_warranty"
-                  value={formData.bid_warranty}
+                  id="description"
+                  rows="3"
+                  cols="50"
+                  value={formData.description}
+                  onChange={handleInputChange}
+                />
+              </div>
+              <div className="mb-4">
+                <label htmlFor="builder_notes" className="form-label">
+                  Builder Notes
+                </label>
+                <textarea
+                  className="form-control"
+                  rows="3"
+                  cols="50"
+                  id="builder_notes"
+                  value={formData.builder_notes}
                   onChange={handleInputChange}
                 />
               </div>
@@ -300,42 +325,40 @@ const CreateUpdateBid = (props) => {
                 />
               </div>
               <div className="mb-4">
-                <label htmlFor="description" className="form-label">
-                  Description
+                <label htmlFor="bid_amount" className="form-label">
+                  Bid Warranty
                 </label>
                 <textarea
                   className="form-control"
-                  id="description"
                   rows="3"
                   cols="50"
-                  value={formData.description}
+                  id="bid_warranty"
+                  value={formData.bid_warranty}
                   onChange={handleInputChange}
                 />
               </div>
+
               <div className="mb-4">
-                <label htmlFor="bid_details" className="form-label">
-                  Bid Details
+                <label htmlFor="bid_amount" className="form-label">
+                  Multiple File Upload
                 </label>
-                <textarea
-                  className="form-control"
-                  id="bid_details"
-                  rows="3"
-                  cols="50"
-                  value={formData.bid_details}
-                  onChange={handleInputChange}
-                />
-              </div>
-              <div className="mb-4">
-                <label htmlFor="bid_notes" className="form-label">
-                  Bid Notes
-                </label>
-                <textarea
-                  className="form-control"
-                  rows="3"
-                  cols="50"
-                  id="bid_notes"
-                  value={formData.bid_notes}
-                  onChange={handleInputChange}
+                <FilePond
+                  className="multiple-filepond"
+                  accepted-file-types={[
+                    "application/pdf",
+                    "image/png",
+                    "image/jpeg",
+                    "image/gif",
+                  ]}
+                  server="/api"
+                  allowReorder={true}
+                  files={files}
+                  onupdatefiles={setFiles}
+                  allowMultiple={true}
+                  allowImagePreview={true}
+                  maxFiles={10}
+                  name="filepond"
+                  labelIdle='Drag & Drop your files or <span className="filepond--label-action">Browse</span>'
                 />
               </div>
             </div>
