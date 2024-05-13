@@ -44,7 +44,11 @@ const CreateUpdateProject = (props) => {
     client_name: "", // Client Name
     assigned_to: [], // Assigned To
     description: "",
-    project_address: "", // Job/Project address
+    project_address_line1: "",
+    project_address_line2: "",
+    zipcode : "", // zipcode
+    state : "", // State
+     // Job/Project address
     budget: "", // Price for customer/Budget
     start_date: "", // Start date
     customer_invite: "", // Invite customer (including setting permissions - using phone number or email or user id)
@@ -216,7 +220,7 @@ const CreateUpdateProject = (props) => {
       <Pageheader
         activepage={`${formType === "update" ? "Update" : "Create"} Project`}
         mainpage="Projects"
-        mainpageurl="/components/bids/bids"
+        mainpageurl="/components/project-management/project-summary/"
         loadProjectData={getDataFromLocalStorage}
       />
       <div className="flex justify-between">
@@ -284,21 +288,6 @@ const CreateUpdateProject = (props) => {
                         onChange={handleInputChange}
                       />
                     </div>
-                    {/* input field for Project address */}
-                    <div className="xl:col-span-4 col-span-12">
-                      <label htmlFor="project_address" className="form-label">
-                        Project Address :
-                      </label>
-                      <input
-                        type="text"
-                        className="form-control"
-                        id="project_address"
-                        placeholder="Enter Project Address"
-                        value={formData.project_address}
-                        onChange={handleInputChange}
-                      />
-                    </div>
-
                     {/* input field for Client Name */}
                     <div className="xl:col-span-4 col-span-12">
                       <label htmlFor="client_name" className="form-label">
@@ -324,6 +313,67 @@ const CreateUpdateProject = (props) => {
                         id="budget"
                         placeholder="Enter Budget"
                         value={formData.budget}
+                        onChange={handleInputChange}
+                      />
+                    
+
+
+                    
+                    </div>
+                    {/* input field for Project Address */}
+                    {/* input field for Project address line one*/}
+                    <div className="xl:col-span-3 col-span-12">
+                      <label htmlFor="project_address" className="form-label">
+                        Project Address Line 1:
+                      </label>
+                      <input
+                        type="text"
+                        className="form-control"
+                        id="project_address"
+                        placeholder="Enter Project Address"
+                        value={formData.project_address_line1}
+                        onChange={handleInputChange}
+                      />
+                    </div>
+                    {/* input field for Project address line two*/}
+                    <div className="xl:col-span-3 col-span-12">
+                      <label htmlFor="project_address" className="form-label">
+                        Project Address Line 2 :
+                      </label>
+                      <input
+                        type="text"
+                        className="form-control"
+                        id="project_address"
+                        placeholder="Enter Project Address"
+                        value={formData.project_address_line2}
+                        onChange={handleInputChange}
+                      />
+                    </div>
+                    {/* input field for zipcode */}
+                    <div className="xl:col-span-3 col-span-12">
+                      <label htmlFor="zipcode" className="form-label">
+                        zipcode :
+                      </label>
+                      <input
+                        type="text"
+                        className="form-control"
+                        id="zipcode"
+                        placeholder="Enter zipcode"
+                        value={formData.zipcode}
+                        onChange={handleInputChange}
+                      />
+                    </div>
+                    {/* input field for state */}
+                    <div className="xl:col-span-3 col-span-12">
+                      <label htmlFor="state" className="form-label">
+                        State :
+                      </label>
+                      <input
+                        type="text"
+                        className="form-control"
+                        id="state"
+                        placeholder="Enter State"
+                        value={formData.state}
                         onChange={handleInputChange}
                       />
                     </div>

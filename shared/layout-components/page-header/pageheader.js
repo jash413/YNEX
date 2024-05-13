@@ -23,7 +23,11 @@ const Pageheader = (props) => {
       setSelectedProject(null);
     }
     axios
-      .get(`${network.serverUrl}api/projectdata/`)
+    axios.get(`${network.onlineUrl}api/projectdata/`, {
+      headers: {
+        'Authorization': `Bearer ${network.token}`
+      }
+    })
       .then((response) => {
         const data = response.data;
         setProjectData(data);
