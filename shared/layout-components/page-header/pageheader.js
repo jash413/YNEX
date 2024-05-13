@@ -62,6 +62,15 @@ const Pageheader = (props) => {
             {props.activepage}
           </li>
         </ol>
+        { (props?.createProject) && (<ol className="flex items-center whitespace-nowrap min-w-0">
+          <button
+            type="button"
+            className="ti-btn ti-btn-primary ti-btn-wave"
+
+         ><Link href="/components/project-management/create-project/">Create Project</Link></button> 
+            </ol>)}
+            
+
         <ol className="flex items-center whitespace-nowrap min-w-0">
           <span className="text-defaulttextcolor dark:text-white text-[0.875rem] font-normal mr-2">
             Select Project:
