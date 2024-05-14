@@ -222,6 +222,7 @@ const CreateUpdateProject = (props) => {
         mainpage="Projects"
         mainpageurl="/components/project-management/project-summary/"
         loadProjectData={getDataFromLocalStorage}
+        createProject = {false}
       />
       <div className="flex justify-between">
         <div className="ml-auto"></div>

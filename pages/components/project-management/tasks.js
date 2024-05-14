@@ -52,12 +52,18 @@ const Tasks = () => {
     <div>
       <Seo title={"List View"} />
       <Pageheader
-        activepage={`${selectedProject?.project_name || `Project Summary`}`}
-        mainpage="Project Summary"
-        mainpageurl="/components/project-management/project-summary/"
+        activepage={`${selectedProject?.project_name || `Tasks`}`}
+        mainpage="Tasks"
+        mainpageurl="/components/project-management/tasks/"
         loadProjectData={getDataFromLocalStorage}
-        createProject={true}
+        createProject={false}
       />{" "}
+      <Link href="/components/project-management/task-kanban/">
+      <div className="ti-btn-list space-x-2 rtl:space-x-reverse">
+                            
+                                <button type="button" className={`ti-btn ti-btn-primary-full  ti-btn-wave`}>Kanban View</button>
+                        </div>
+        </Link>
       <div className="grid grid-cols-12 gap-6">
         <div className="xl:col-span-9 col-span-12">
           <div className="box">
