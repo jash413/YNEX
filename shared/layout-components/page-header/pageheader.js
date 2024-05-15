@@ -11,6 +11,24 @@ const Pageheader = (props) => {
   const [usersData, setUsersData] = useState([]);
   const [selectedProject, setSelectedProject] = useState(null);
   const [selectedUser, setSelectedUser] = useState(null);
+  const [selectedProjects, setSelectedProjects] = useState([]);
+  const handleUserSelect = (selectedOption) => {
+    localStorage.removeItem("selectedProject");
+    setSelectedProject(null);
+    const selectedUser = selectedOption
+      ? usersData.find((user) => user.id === selectedOption.value)
+      : null;
+    setSelectedUser(selectedUser);
+    localStorage.setItem("selectedUser", JSON.stringify(selectedUser));
+    console.log(selectedUser);
+    if (selectedUser && selectedUser.relationships && selectedUser.relationships.home_owner_projects) {
+      const selectedProjectIds = selectedUser.relationships.home_owner_projects.data.map(project => project.id);
+    const selectedProjects = projectData.filter(project => selectedProjectIds.includes(project.id));
+    setSelectedProjects(selectedProjects);
+   } else {
+      setSelectedProjects([]);
+    }
+  };
 
   useEffect(() => {
     if (
@@ -51,13 +69,7 @@ const Pageheader = (props) => {
     localStorage.setItem("selectedProject", JSON.stringify(selectedProject));
     loadProjectData();
   };
-  const handleUserSelect = (selectedOption) => {
-    const selectedUser = selectedOption
-      ? usersData.find((user) => user.id === selectedOption.value)
-      : null;
-    setSelectedUser(selectedUser);
-    localStorage.setItem("selectedUser", JSON.stringify(selectedUser));
-  };
+  
   return (
     <Fragment>
       <div className="block justify-between page-header md:flex">
@@ -194,7 +206,7 @@ const Pageheader = (props) => {
                 label: "Select Project",
               },
             ].concat(
-              projectData.map((project) => ({
+              selectedProjects.map((project) => ({
                 value: project.id,
                 label: project.attributes.name,
               }))

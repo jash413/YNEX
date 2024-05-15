@@ -136,11 +136,12 @@ const CreateUpdateTask = (props) => {
               }}
               onClick={getDataFromLocalStorage}
               options={
-                selectedProject &&
-                selectedProject.tasks.map((task) => ({
-                  value: task.task_id,
-                  label: task.task_name,
-                }))
+                selectedProject && selectedProject.tasks && selectedProject.tasks.length > 0
+                  ? selectedProject.tasks.map((task) => ({
+                      value: task.task_id,
+                      label: task.task_name,
+                    }))
+                  : []
               }
             />
           </div>

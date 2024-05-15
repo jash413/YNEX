@@ -15,6 +15,8 @@ const ViewTasks = () => {
   const [pendingTasks, setPendingTasks] = useState(0);
   const [newbids, setNewTasks] = useState(0);
   const [displayToast, setDisplayToast] = useState(false);
+  const [selectedUser, setSelectedUser] = useState(null);
+  const [selectedProjects, setSelectedProjects] = useState([]);
 
   const handleAddToCompare = (e) => {
     // Cannot select different tasks
@@ -33,7 +35,22 @@ const ViewTasks = () => {
 
   useEffect(() => {
     getDataFromLocalStorage();
+    getUserDataFromLocalStorage();
   }, []);
+  const getUserDataFromLocalStorage = () => {
+    if (
+      localStorage.getItem("selectedUser") !== null &&
+      localStorage.getItem("selectedUser") !== "undefined"
+    ) {
+      const selectedUser = JSON.parse(localStorage.getItem("selectedUser"));
+      setSelectedUser(selectedUser);
+      if (selectedUser && selectedUser.relationships) {
+        setSelectedProjects(selectedUser.relationships.home_owner_projects.data);
+      } else {
+        setSelectedProjects([]);
+      }
+    }
+  };
 
   const getDataFromLocalStorage = () => {
     if (

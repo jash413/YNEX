@@ -98,10 +98,9 @@ const ProjectSummary = () => {
     ) {
       const selectedUser = JSON.parse(localStorage.getItem("selectedUser"));
       setSelectedUser(selectedUser);
-    } else {
-      setSelectedUser(null);
-    }
-  };
+  }
+};
+
 
   return (
     <Fragment>
