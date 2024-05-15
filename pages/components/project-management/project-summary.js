@@ -7,6 +7,8 @@ import Pageheader from "@/shared/layout-components/page-header/pageheader";
 import Seo from "@/shared/layout-components/seo/seo";
 import Link from "next/link";
 import React, { Fragment, useEffect, useState } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Pagination } from "swiper/modules";
 import axios from "axios";
 import WorldMap from "react-svg-worldmap";
 import network from "@/config";
@@ -15,8 +17,8 @@ import { use } from "echarts";
 const ProjectSummary = () => {
   const [clientRender, setClientRender] = useState(false);
   const [selectedProject, setSelectedProject] = useState(null);
+  const [selectedUser, setSelectedUser] = useState(null);
   const [projectData, setProjectData] = useState([]);
-  const [usersData, setUsersData] = useState([]);
   const currentYear = new Date().getFullYear();
 
   const projectsThisYear = projectData.filter((project) => {
@@ -36,6 +38,8 @@ const ProjectSummary = () => {
 
   useEffect(() => {
     setClientRender(true);
+    getProjectDataFromLocalStorage();
+    getUserDataFromLocalStorage();
   }, []);
 
   useEffect(() => {
@@ -54,15 +58,6 @@ const ProjectSummary = () => {
       .catch((error) => console.error("Error fetching data:", error));
   }, []);
 
-  useEffect(() => {
-    axios
-      .get(`${network.serverUrl}api/users/`)
-      .then((response) => {
-        const data = response.data;
-        setUsersData(data.data);
-      })
-      .catch((error) => console.error("Error fetching data:", error));
-  }, []);
   const ITEMS_PER_PAGE = 5;
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -83,7 +78,7 @@ const ProjectSummary = () => {
     { country: "ru", value: 141944641 }, // russia
     { country: "mx", value: 127318112 }, // mexico
   ];
-  const getDataFromLocalStorage = () => {
+  const getProjectDataFromLocalStorage = () => {
     if (
       localStorage.getItem("selectedProject") !== null &&
       localStorage.getItem("selectedProject") !== "undefined"
@@ -96,6 +91,17 @@ const ProjectSummary = () => {
       setSelectedProject(null);
     }
   };
+  const getUserDataFromLocalStorage = () => {
+    if (
+      localStorage.getItem("selectedUser") !== null &&
+      localStorage.getItem("selectedUser") !== "undefined"
+    ) {
+      const selectedUser = JSON.parse(localStorage.getItem("selectedUser"));
+      setSelectedUser(selectedUser);
+    } else {
+      setSelectedUser(null);
+    }
+  };
 
   return (
     <Fragment>
@@ -104,7 +110,7 @@ const ProjectSummary = () => {
         activepage={`${selectedProject?.project_name || `Project Summary`}`}
         mainpage="Project Summary"
         mainpageurl="/components/project-management/project-summary/"
-        loadProjectData={getDataFromLocalStorage}
+        loadProjectData={getProjectDataFromLocalStorage}
         createProject={true}
       />{" "}
       <div className="grid grid-cols-12 gap-x-6">
@@ -208,7 +214,7 @@ const ProjectSummary = () => {
               <div className="grid grid-cols-12">
                 <div className="col-span-6 pe-0">
                   <p className="mb-2">
-                    <span className="text-[1rem]">Profit After Spent</span>
+                    <span className="text-[1rem]">Profit</span>
                   </p>
                   <p className="mb-2 text-[0.75rem]">
                     <span className="text-[1.5625rem] font-semibold leading-none vertical-bottom mb-0">
@@ -245,1556 +251,1558 @@ const ProjectSummary = () => {
           </div>
         </div>
       </div>
-      {selectedProject && <div className="grid grid-cols-12 gap-6">
-        <div className="xl:col-span-6 md:col-span-6  col-span-12">
-          <div className="box custom-box">
-            <div className="box-header justify-between">
-              <div className="box-title">Upcoming Events</div>
-              <div>
-                <button
-                  type="button"
-                  className="ti-btn !py-1 !px-2 !text-[0.75rem] ti-btn-primary"
+      {selectedProject && (
+        <div className="grid grid-cols-12 gap-6">
+          <div className="xl:col-span-6 md:col-span-6  col-span-12">
+            <div className="box custom-box">
+              <div className="box-header justify-between">
+                <div className="box-title">Upcoming Events</div>
+                <div>
+                  <button
+                    type="button"
+                    className="ti-btn !py-1 !px-2 !text-[0.75rem] ti-btn-primary"
+                  >
+                    View All
+                  </button>
+                </div>
+              </div>
+              <div className="box-body">
+                <nav
+                  className="flex flex-wrap xxxl:flex-nowrap justify-start sm:justify-between"
+                  aria-label="Tabs"
                 >
-                  View All
-                </button>
+                  <button
+                    type="button"
+                    className="xxxl:w-full hs-tab-active:bg-primary hs-tab-active:text-white py-3 px-2 block items-center gap-2 bg-transparent text-sm font-medium text-center text-defaulttextcolor rounded-sm hover:text-primary  dark:text-[#8c9097] dark:text-white/50 dark:hover:text-white active"
+                    id="mon"
+                    data-hs-tab="#mon-1"
+                    aria-controls="mon-1"
+                  >
+                    <span className="block mb-1">09</span>
+                    <span className="block mb-0 opacity-[0.7] text-[0.75rem]">
+                      Mon
+                    </span>
+                  </button>
+                  <button
+                    type="button"
+                    className="xxxl:w-full hs-tab-active:bg-primary hs-tab-active:text-white py-3 px-2 block items-center gap-2 bg-transparent text-sm font-medium text-center text-defaulttextcolor rounded-sm hover:text-primary  dark:text-[#8c9097] dark:text-white/50 dark:hover:text-white"
+                    id="tue"
+                    data-hs-tab="#tue-1"
+                    aria-controls="tue-1"
+                  >
+                    <span className="block mb-1">10</span>
+                    <span className="block mb-0 opacity-[0.7] text-[0.75rem]">
+                      Tue
+                    </span>
+                  </button>
+                  <button
+                    type="button"
+                    className="xxxl:w-full hs-tab-active:bg-primary hs-tab-active:text-white py-3 px-2 block items-center gap-2 bg-transparent text-sm font-medium text-center text-defaulttextcolor rounded-sm hover:text-primary  dark:text-[#8c9097] dark:text-white/50 dark:hover:text-white"
+                    id="wed"
+                    data-hs-tab="#wed-1"
+                    aria-controls="wed-1"
+                  >
+                    <span className="block mb-1">11</span>
+                    <span className="block mb-0 opacity-[0.7] text-[0.75rem]">
+                      Wed
+                    </span>
+                  </button>
+                  <button
+                    type="button"
+                    className="xxxl:w-full hs-tab-active:bg-primary hs-tab-active:text-white py-3 px-2 block items-center gap-2 bg-transparent text-sm font-medium text-center text-defaulttextcolor rounded-sm hover:text-primary  dark:text-[#8c9097] dark:text-white/50 dark:hover:text-white"
+                    id="thu"
+                    data-hs-tab="#thu-1"
+                    aria-controls="thu-1"
+                  >
+                    <span className="block mb-1">12</span>
+                    <span className="block mb-0 opacity-[0.7] text-[0.75rem]">
+                      Thu
+                    </span>
+                  </button>
+                  <button
+                    type="button"
+                    className="xxxl:w-full hs-tab-active:bg-primary hs-tab-active:text-white py-3 px-2 block items-center gap-2 bg-transparent text-sm font-medium text-center text-defaulttextcolor rounded-sm hover:text-primary  dark:text-[#8c9097] dark:text-white/50 dark:hover:text-white"
+                    id="fri"
+                    data-hs-tab="#fri-1"
+                    aria-controls="fri-1"
+                  >
+                    <span className="block mb-1">13</span>
+                    <span className="block mb-0 opacity-[0.7] text-[0.75rem]">
+                      Fri
+                    </span>
+                  </button>
+                  <button
+                    type="button"
+                    className="xxxl:w-full hs-tab-active:bg-primary hs-tab-active:text-white py-3 px-2 block items-center gap-2 bg-transparent text-sm font-medium text-center text-defaulttextcolor rounded-sm hover:text-primary  dark:text-[#8c9097] dark:text-white/50 dark:hover:text-white"
+                    id="sat"
+                    data-hs-tab="#sat-1"
+                    aria-controls="sat-1"
+                  >
+                    <span className="block mb-1">14</span>
+                    <span className="block mb-0 opacity-[0.7] text-[0.75rem]">
+                      Sat
+                    </span>
+                  </button>
+                  <button
+                    type="button"
+                    className="xxxl:w-full hs-tab-active:bg-primary hs-tab-active:text-white py-3 px-2 block items-center gap-2 bg-transparent text-sm font-medium text-center text-defaulttextcolor rounded-sm hover:text-primary  dark:text-[#8c9097] dark:text-white/50 dark:hover:text-white"
+                    id="sun"
+                    data-hs-tab="#sun-1"
+                    aria-controls="sun-1"
+                  >
+                    <span className="block mb-1">15</span>
+                    <span className="block mb-0 opacity-[0.7] text-[0.75rem]">
+                      Sun
+                    </span>
+                  </button>
+                </nav>
+                <div className="tab-content pt-4 my-4">
+                  <div id="mon-1" role="tabpanel" aria-labelledby="mon-1">
+                    <ul className="list-unstyled mb-0 upcoming-events-list">
+                      <li>
+                        <div className="flex items-start justify-conent-between">
+                          <div className="flex-grow">
+                            <p className="mb-0 text-[.875rem]">
+                              Meeting with client
+                            </p>
+                            <p className="mb-0 text-[#8c9097] dark:text-white/50">
+                              Video Conference
+                            </p>
+                          </div>
+                          <div>
+                            <span className="text-[#8c9097] dark:text-white/50">
+                              <i className="ri-time-line align-middle me-1 inline-block "></i>
+                              9:00am - 10:00am
+                            </span>
+                          </div>
+                        </div>
+                      </li>
+                      <li>
+                        <div className="flex items-start justify-conent-between">
+                          <div className="flex-grow">
+                            <p className="mb-0 text-[.875rem]">
+                              Lunch with team members
+                            </p>
+                            <p className="mb-0 text-[#8c9097] dark:text-white/50">
+                              Dolores Ait Labore Sit
+                            </p>
+                          </div>
+                          <div>
+                            <span className="text-[#8c9097] dark:text-white/50">
+                              <i className="ri-time-line align-middle me-1 inline-block"></i>
+                              12:00pm - 12:45am
+                            </span>
+                          </div>
+                        </div>
+                      </li>
+                      <li>
+                        <div className="flex items-start justify-conent-between">
+                          <div className="flex-grow">
+                            <p className="mb-0 text-[.875rem]">
+                              General board meeting
+                            </p>
+                            <p className="mb-0 text-[#8c9097] dark:text-white/50">
+                              Golden PArk
+                            </p>
+                          </div>
+                          <div>
+                            <span className="text-[#8c9097] dark:text-white/50">
+                              <i className="ri-time-line align-middle me-1 inline-block"></i>
+                              4:00pm - 5:30pm
+                            </span>
+                          </div>
+                        </div>
+                      </li>
+                      <li>
+                        <div className="flex items-start justify-conent-between">
+                          <div className="flex-grow">
+                            <p className="mb-0 text-[.875rem]">
+                              Create New Registration Page
+                            </p>
+                            <p className="mb-0 text-[#8c9097] dark:text-white/50">
+                              2UA Project
+                            </p>
+                          </div>
+                          <div>
+                            <span className="text-[#8c9097] dark:text-white/50">
+                              <i className="ri-time-line align-middle me-1 inline-block"></i>
+                              5:00pm - 5:45pm
+                            </span>
+                          </div>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                  <div
+                    id="tue-1"
+                    className="hidden"
+                    role="tabpanel"
+                    aria-labelledby="tue-1"
+                  >
+                    <ul className="list-unstyled mb-0 upcoming-events-list">
+                      <li>
+                        <div className="flex items-start justify-conent-between">
+                          <div className="flex-grow">
+                            <p className="mb-0 text-[.875rem]">
+                              Meeting with client
+                            </p>
+                            <p className="mb-0 text-[#8c9097] dark:text-white/50">
+                              Video Conference
+                            </p>
+                          </div>
+                          <div>
+                            <span className="text-[#8c9097] dark:text-white/50">
+                              <i className="ri-time-line align-middle me-1 inline-block"></i>
+                              9:00am - 10:00am
+                            </span>
+                          </div>
+                        </div>
+                      </li>
+                      <li>
+                        <div className="flex items-start justify-conent-between">
+                          <div className="flex-grow">
+                            <p className="mb-0 text-[.875rem]">
+                              Lunch with team members
+                            </p>
+                            <p className="mb-0 text-[#8c9097] dark:text-white/50">
+                              Dolores Ait Labore Sit
+                            </p>
+                          </div>
+                          <div>
+                            <span className="text-[#8c9097] dark:text-white/50">
+                              <i className="ri-time-line align-middle me-1 inline-block"></i>
+                              12:00pm - 12:45am
+                            </span>
+                          </div>
+                        </div>
+                      </li>
+                      <li>
+                        <div className="flex items-start justify-conent-between">
+                          <div className="flex-grow">
+                            <p className="mb-0 text-[.875rem]">
+                              General board meeting
+                            </p>
+                            <p className="mb-0 text-[#8c9097] dark:text-white/50">
+                              Golden PArk
+                            </p>
+                          </div>
+                          <div>
+                            <span className="text-[#8c9097] dark:text-white/50">
+                              <i className="ri-time-line align-middle me-1 inline-block"></i>
+                              4:00pm - 5:30pm
+                            </span>
+                          </div>
+                        </div>
+                      </li>
+                      <li>
+                        <div className="flex items-start justify-conent-between">
+                          <div className="flex-grow">
+                            <p className="mb-0 text-[.875rem]">
+                              Create New Registration Page
+                            </p>
+                            <p className="mb-0 text-[#8c9097] dark:text-white/50">
+                              2UA Project
+                            </p>
+                          </div>
+                          <div>
+                            <span className="text-[#8c9097] dark:text-white/50">
+                              <i className="ri-time-line align-middle me-1 inline-block"></i>
+                              5:00pm - 5:45pm
+                            </span>
+                          </div>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                  <div
+                    id="wed-1"
+                    className="hidden"
+                    role="tabpanel"
+                    aria-labelledby="wed-1"
+                  >
+                    <ul className="list-unstyled mb-0 upcoming-events-list">
+                      <li>
+                        <div className="flex items-start justify-conent-between">
+                          <div className="flex-grow">
+                            <p className="mb-0 text-[.875rem]">
+                              Meeting with client
+                            </p>
+                            <p className="mb-0 text-[#8c9097] dark:text-white/50">
+                              Video Conference
+                            </p>
+                          </div>
+                          <div>
+                            <span className="text-[#8c9097] dark:text-white/50">
+                              <i className="ri-time-line align-middle me-1 inline-block"></i>
+                              9:00am - 10:00am
+                            </span>
+                          </div>
+                        </div>
+                      </li>
+                      <li>
+                        <div className="flex items-start justify-conent-between">
+                          <div className="flex-grow">
+                            <p className="mb-0 text-[.875rem]">
+                              Lunch with team members
+                            </p>
+                            <p className="mb-0 text-[#8c9097] dark:text-white/50">
+                              Dolores Ait Labore Sit
+                            </p>
+                          </div>
+                          <div>
+                            <span className="text-[#8c9097] dark:text-white/50">
+                              <i className="ri-time-line align-middle me-1 inline-block"></i>
+                              12:00pm - 12:45am
+                            </span>
+                          </div>
+                        </div>
+                      </li>
+                      <li>
+                        <div className="flex items-start justify-conent-between">
+                          <div className="flex-grow">
+                            <p className="mb-0 text-[.875rem]">
+                              General board meeting
+                            </p>
+                            <p className="mb-0 text-[#8c9097] dark:text-white/50">
+                              Golden PArk
+                            </p>
+                          </div>
+                          <div>
+                            <span className="text-[#8c9097] dark:text-white/50">
+                              <i className="ri-time-line align-middle me-1 inline-block"></i>
+                              4:00pm - 5:30pm
+                            </span>
+                          </div>
+                        </div>
+                      </li>
+                      <li>
+                        <div className="flex items-start justify-conent-between">
+                          <div className="flex-grow">
+                            <p className="mb-0 text-[.875rem]">
+                              Create New Registration Page
+                            </p>
+                            <p className="mb-0 text-[#8c9097] dark:text-white/50">
+                              2UA Project
+                            </p>
+                          </div>
+                          <div>
+                            <span className="text-[#8c9097] dark:text-white/50">
+                              <i className="ri-time-line align-middle me-1 inline-block"></i>
+                              5:00pm - 5:45pm
+                            </span>
+                          </div>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                  <div
+                    id="thu-1"
+                    className="hidden"
+                    role="tabpanel"
+                    aria-labelledby="thu-1"
+                  >
+                    <ul className="list-unstyled mb-0 upcoming-events-list">
+                      <li>
+                        <div className="flex items-start justify-conent-between">
+                          <div className="flex-grow">
+                            <p className="mb-0 text-[.875rem]">
+                              Meeting with client
+                            </p>
+                            <p className="mb-0 text-[#8c9097] dark:text-white/50">
+                              Video Conference
+                            </p>
+                          </div>
+                          <div>
+                            <span className="text-[#8c9097] dark:text-white/50">
+                              <i className="ri-time-line align-middle me-1 inline-block"></i>
+                              9:00am - 10:00am
+                            </span>
+                          </div>
+                        </div>
+                      </li>
+                      <li>
+                        <div className="xl:col-span-4  md:col-span-6 col-span-12">
+                          <div className="box custom-box">
+                            <div className="box-header justify-between">
+                              <div className="box-title">Timeline</div>
+                              <div>
+                                <button
+                                  type="button"
+                                  className="ti-btn !py-1 !px-2 !text-[0.75rem] ti-btn-primary"
+                                >
+                                  View All
+                                </button>
+                              </div>
+                            </div>
+                            <div className="box-body">
+                              <ul className="list-unstyled timeline-widget mb-0 my-3">
+                                <li className="timeline-widget-list">
+                                  <div className="flex items-start">
+                                    <div className="me-[3rem] text-center">
+                                      <span className="block text-[1.25rem] font-semibold">
+                                        02
+                                      </span>
+                                      <span className="block text-[0.75rem] text-[#8c9097] dark:text-white/50">
+                                        Mon
+                                      </span>
+                                    </div>
+                                    <div className="flex flex-wrap flex-grow items-center justify-between">
+                                      <div>
+                                        <p className="mb-1  timeline-widget-content text-wrap">
+                                          You have an announcement - Ipsum Est
+                                          Diam Eirmod
+                                        </p>
+                                        <p className="mb-0 text-[0.75rem] leading-none text-[#8c9097] dark:text-white/50">
+                                          10:00AM
+                                          <span className="badge bg-primary/10 text-primary ms-2">
+                                            Announcement
+                                          </span>
+                                        </p>
+                                      </div>
+                                      <div className="hs-dropdown ti-dropdown">
+                                        <Link
+                                          aria-label="anchor"
+                                          href="#!"
+                                          className="p-2 text-[1rem] text-[#8c9097] dark:text-white/50"
+                                        >
+                                          <i className="fe fe-more-vertical"></i>
+                                        </Link>
+                                        <ul className="hs-dropdown-menu ti-dropdown-menu hidden">
+                                          <li>
+                                            <Link
+                                              className="ti-dropdown-item"
+                                              href="#!"
+                                            >
+                                              Action
+                                            </Link>
+                                          </li>
+                                          <li>
+                                            <Link
+                                              className="ti-dropdown-item"
+                                              href="#!"
+                                            >
+                                              Another action
+                                            </Link>
+                                          </li>
+                                          <li>
+                                            <Link
+                                              className="ti-dropdown-item"
+                                              href="#!"
+                                            >
+                                              Something else here
+                                            </Link>
+                                          </li>
+                                        </ul>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </li>
+                                <li className="timeline-widget-list">
+                                  <div className="flex items-start">
+                                    <div className="me-[3rem] text-center">
+                                      <span className="block text-[1.25rem] font-semibold">
+                                        15
+                                      </span>
+                                      <span className="block text-[0.75rem] text-[#8c9097] dark:text-white/50">
+                                        Sun
+                                      </span>
+                                    </div>
+                                    <div className="flex flex-wrap flex-grow items-center justify-between">
+                                      <div>
+                                        <p className="mb-1 sm:text-truncate timeline-widget-content text-wrap">
+                                          National holiday - Vero Jayanti
+                                        </p>
+                                        <p className="mb-0 text-[0.75rem] leading-none text-[#8c9097] dark:text-white/50">
+                                          <span className="badge bg-warning/10 text-warning">
+                                            Holiday
+                                          </span>
+                                        </p>
+                                      </div>
+                                      <div className="hs-dropdown ti-dropdown">
+                                        <Link
+                                          aria-label="anchor"
+                                          href="#!"
+                                          className="p-2 text-[1rem] text-[#8c9097] dark:text-white/50"
+                                        >
+                                          <i className="fe fe-more-vertical"></i>
+                                        </Link>
+                                        <ul className="hs-dropdown-menu ti-dropdown-menu hidden">
+                                          <li>
+                                            <Link
+                                              className="ti-dropdown-item"
+                                              href="#!"
+                                            >
+                                              Action
+                                            </Link>
+                                          </li>
+                                          <li>
+                                            <Link
+                                              className="ti-dropdown-item"
+                                              href="#!"
+                                            >
+                                              Another action
+                                            </Link>
+                                          </li>
+                                          <li>
+                                            <Link
+                                              className="ti-dropdown-item"
+                                              href="#!"
+                                            >
+                                              Something else here
+                                            </Link>
+                                          </li>
+                                        </ul>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </li>
+                                <li className="timeline-widget-list">
+                                  <div className="flex items-start">
+                                    <div className="me-[3rem] text-center">
+                                      <span className="block text-[1.25rem] font-semibold">
+                                        23
+                                      </span>
+                                      <span className="block text-[0.75rem] text-[#8c9097] dark:text-white/50">
+                                        Mon
+                                      </span>
+                                    </div>
+                                    <div className="flex flex-wrap flex-grow items-center justify-between">
+                                      <div>
+                                        <p className="mb-1 sm:text-truncate timeline-widget-content text-wrap">
+                                          John pup birthday - Team Member
+                                        </p>
+                                        <p className="mb-4 text-[0.75rem] leading-none text-[#8c9097] dark:text-white/50">
+                                          09:00AM
+                                          <span className="badge bg-success/10 text-success ms-2">
+                                            Birthday
+                                          </span>
+                                        </p>
+                                        <p className="mb-1 sm:text-truncate timeline-widget-content text-wrap">
+                                          Amet sed no dolor kasd - Et Dolores
+                                          Tempor Erat
+                                        </p>
+                                        <p className="mb-0 text-[0.75rem] leading-none text-[#8c9097] dark:text-white/50">
+                                          04:00PM
+                                          <span className="badge bg-primary/10 text-primary ms-2">
+                                            Announcement
+                                          </span>
+                                        </p>
+                                      </div>
+                                      <div className="hs-dropdown ti-dropdown">
+                                        <Link
+                                          aria-label="anchor"
+                                          href="#!"
+                                          className="p-2 text-[1rem] text-[#8c9097] dark:text-white/50"
+                                        >
+                                          <i className="fe fe-more-vertical"></i>
+                                        </Link>
+                                        <ul className="hs-dropdown-menu ti-dropdown-menu hidden">
+                                          <li>
+                                            <Link
+                                              className="ti-dropdown-item"
+                                              href="#!"
+                                            >
+                                              Action
+                                            </Link>
+                                          </li>
+                                          <li>
+                                            <Link
+                                              className="ti-dropdown-item"
+                                              href="#!"
+                                            >
+                                              Another action
+                                            </Link>
+                                          </li>
+                                          <li>
+                                            <Link
+                                              className="ti-dropdown-item"
+                                              href="#!"
+                                            >
+                                              Something else here
+                                            </Link>
+                                          </li>
+                                        </ul>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </li>
+                                <li className="timeline-widget-list">
+                                  <div className="flex items-start">
+                                    <div className="me-[3rem] text-center">
+                                      <span className="block text-[1.25rem] font-semibold">
+                                        31
+                                      </span>
+                                      <span className="block text-[0.75rem] text-[#8c9097] dark:text-white/50">
+                                        Tue
+                                      </span>
+                                    </div>
+                                    <div className="flex flex-wrap flex-grow items-center justify-between">
+                                      <div>
+                                        <p className="mb-1 sm:text-truncate timeline-widget-content text-wrap">
+                                          National Holiday - Dolore Ipsum
+                                        </p>
+                                        <p className="mb-0 text-[0.75rem] leading-none text-[#8c9097] dark:text-white/50">
+                                          <span className="badge bg-warning/10 text-warning">
+                                            Holiday
+                                          </span>
+                                        </p>
+                                      </div>
+                                      <div className="hs-dropdown ti-dropdown">
+                                        <Link
+                                          aria-label="anchor"
+                                          href="#!"
+                                          className="p-2 text-[1rem] text-[#8c9097] dark:text-white/50"
+                                        >
+                                          <i className="fe fe-more-vertical"></i>
+                                        </Link>
+                                        <ul className="hs-dropdown-menu ti-dropdown-menu hidden">
+                                          <li>
+                                            <Link
+                                              className="ti-dropdown-item"
+                                              href="#!"
+                                            >
+                                              Action
+                                            </Link>
+                                          </li>
+                                          <li>
+                                            <Link
+                                              className="ti-dropdown-item"
+                                              href="#!"
+                                            >
+                                              Another action
+                                            </Link>
+                                          </li>
+                                          <li>
+                                            <Link
+                                              className="ti-dropdown-item"
+                                              href="#!"
+                                            >
+                                              Something else here
+                                            </Link>
+                                          </li>
+                                        </ul>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                        <div className="flex items-start justify-conent-between">
+                          <div className="flex-grow">
+                            <p className="mb-0 text-[.875rem]">
+                              Lunch with team members
+                            </p>
+                            <p className="mb-0 text-[#8c9097] dark:text-white/50">
+                              Dolores Ait Labore Sit
+                            </p>
+                          </div>
+                          <div>
+                            <span className="text-[#8c9097] dark:text-white/50">
+                              <i className="ri-time-line align-middle me-1 inline-block"></i>
+                              12:00pm - 12:45am
+                            </span>
+                          </div>
+                        </div>
+                      </li>
+                      <li>
+                        <div className="flex items-start justify-conent-between">
+                          <div className="flex-grow">
+                            <p className="mb-0 text-[.875rem]">
+                              General board meeting
+                            </p>
+                            <p className="mb-0 text-[#8c9097] dark:text-white/50">
+                              Golden PArk
+                            </p>
+                          </div>
+                          <div>
+                            <span className="text-[#8c9097] dark:text-white/50">
+                              <i className="ri-time-line align-middle me-1 inline-block"></i>
+                              4:00pm - 5:30pm
+                            </span>
+                          </div>
+                        </div>
+                      </li>
+                      <li>
+                        <div className="flex items-start justify-conent-between">
+                          <div className="flex-grow">
+                            <p className="mb-0 text-[.875rem]">
+                              Create New Registration Page
+                            </p>
+                            <p className="mb-0 text-[#8c9097] dark:text-white/50">
+                              2UA Project
+                            </p>
+                            <div className="xl:col-span-4  md:col-span-6 col-span-12">
+                              <div className="box custom-box">
+                                <div className="box-header justify-between">
+                                  <div className="box-title">Timeline</div>
+                                  <div>
+                                    <button
+                                      type="button"
+                                      className="ti-btn !py-1 !px-2 !text-[0.75rem] ti-btn-primary"
+                                    >
+                                      View All
+                                    </button>
+                                  </div>
+                                </div>
+                                <div className="box-body">
+                                  <ul className="list-unstyled timeline-widget mb-0 my-3">
+                                    <li className="timeline-widget-list">
+                                      <div className="flex items-start">
+                                        <div className="me-[3rem] text-center">
+                                          <span className="block text-[1.25rem] font-semibold">
+                                            02
+                                          </span>
+                                          <span className="block text-[0.75rem] text-[#8c9097] dark:text-white/50">
+                                            Mon
+                                          </span>
+                                        </div>
+                                        <div className="flex flex-wrap flex-grow items-center justify-between">
+                                          <div>
+                                            <p className="mb-1  timeline-widget-content text-wrap">
+                                              You have an announcement - Ipsum
+                                              Est Diam Eirmod
+                                            </p>
+                                            <p className="mb-0 text-[0.75rem] leading-none text-[#8c9097] dark:text-white/50">
+                                              10:00AM
+                                              <span className="badge bg-primary/10 text-primary ms-2">
+                                                Announcement
+                                              </span>
+                                            </p>
+                                          </div>
+                                          <div className="hs-dropdown ti-dropdown">
+                                            <Link
+                                              aria-label="anchor"
+                                              href="#!"
+                                              className="p-2 text-[1rem] text-[#8c9097] dark:text-white/50"
+                                            >
+                                              <i className="fe fe-more-vertical"></i>
+                                            </Link>
+                                            <ul className="hs-dropdown-menu ti-dropdown-menu hidden">
+                                              <li>
+                                                <Link
+                                                  className="ti-dropdown-item"
+                                                  href="#!"
+                                                >
+                                                  Action
+                                                </Link>
+                                              </li>
+                                              <li>
+                                                <Link
+                                                  className="ti-dropdown-item"
+                                                  href="#!"
+                                                >
+                                                  Another action
+                                                </Link>
+                                              </li>
+                                              <li>
+                                                <Link
+                                                  className="ti-dropdown-item"
+                                                  href="#!"
+                                                >
+                                                  Something else here
+                                                </Link>
+                                              </li>
+                                            </ul>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </li>
+                                    <li className="timeline-widget-list">
+                                      <div className="flex items-start">
+                                        <div className="me-[3rem] text-center">
+                                          <span className="block text-[1.25rem] font-semibold">
+                                            15
+                                          </span>
+                                          <span className="block text-[0.75rem] text-[#8c9097] dark:text-white/50">
+                                            Sun
+                                          </span>
+                                        </div>
+                                        <div className="flex flex-wrap flex-grow items-center justify-between">
+                                          <div>
+                                            <p className="mb-1 sm:text-truncate timeline-widget-content text-wrap">
+                                              National holiday - Vero Jayanti
+                                            </p>
+                                            <p className="mb-0 text-[0.75rem] leading-none text-[#8c9097] dark:text-white/50">
+                                              <span className="badge bg-warning/10 text-warning">
+                                                Holiday
+                                              </span>
+                                            </p>
+                                          </div>
+                                          <div className="hs-dropdown ti-dropdown">
+                                            <Link
+                                              aria-label="anchor"
+                                              href="#!"
+                                              className="p-2 text-[1rem] text-[#8c9097] dark:text-white/50"
+                                            >
+                                              <i className="fe fe-more-vertical"></i>
+                                            </Link>
+                                            <ul className="hs-dropdown-menu ti-dropdown-menu hidden">
+                                              <li>
+                                                <Link
+                                                  className="ti-dropdown-item"
+                                                  href="#!"
+                                                >
+                                                  Action
+                                                </Link>
+                                              </li>
+                                              <li>
+                                                <Link
+                                                  className="ti-dropdown-item"
+                                                  href="#!"
+                                                >
+                                                  Another action
+                                                </Link>
+                                              </li>
+                                              <li>
+                                                <Link
+                                                  className="ti-dropdown-item"
+                                                  href="#!"
+                                                >
+                                                  Something else here
+                                                </Link>
+                                              </li>
+                                            </ul>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </li>
+                                    <li className="timeline-widget-list">
+                                      <div className="flex items-start">
+                                        <div className="me-[3rem] text-center">
+                                          <span className="block text-[1.25rem] font-semibold">
+                                            23
+                                          </span>
+                                          <span className="block text-[0.75rem] text-[#8c9097] dark:text-white/50">
+                                            Mon
+                                          </span>
+                                        </div>
+                                        <div className="flex flex-wrap flex-grow items-center justify-between">
+                                          <div>
+                                            <p className="mb-1 sm:text-truncate timeline-widget-content text-wrap">
+                                              John pup birthday - Team Member
+                                            </p>
+                                            <p className="mb-4 text-[0.75rem] leading-none text-[#8c9097] dark:text-white/50">
+                                              09:00AM
+                                              <span className="badge bg-success/10 text-success ms-2">
+                                                Birthday
+                                              </span>
+                                            </p>
+                                            <p className="mb-1 sm:text-truncate timeline-widget-content text-wrap">
+                                              Amet sed no dolor kasd - Et
+                                              Dolores Tempor Erat
+                                            </p>
+                                            <p className="mb-0 text-[0.75rem] leading-none text-[#8c9097] dark:text-white/50">
+                                              04:00PM
+                                              <span className="badge bg-primary/10 text-primary ms-2">
+                                                Announcement
+                                              </span>
+                                            </p>
+                                          </div>
+                                          <div className="hs-dropdown ti-dropdown">
+                                            <Link
+                                              aria-label="anchor"
+                                              href="#!"
+                                              className="p-2 text-[1rem] text-[#8c9097] dark:text-white/50"
+                                            >
+                                              <i className="fe fe-more-vertical"></i>
+                                            </Link>
+                                            <ul className="hs-dropdown-menu ti-dropdown-menu hidden">
+                                              <li>
+                                                <Link
+                                                  className="ti-dropdown-item"
+                                                  href="#!"
+                                                >
+                                                  Action
+                                                </Link>
+                                              </li>
+                                              <li>
+                                                <Link
+                                                  className="ti-dropdown-item"
+                                                  href="#!"
+                                                >
+                                                  Another action
+                                                </Link>
+                                              </li>
+                                              <li>
+                                                <Link
+                                                  className="ti-dropdown-item"
+                                                  href="#!"
+                                                >
+                                                  Something else here
+                                                </Link>
+                                              </li>
+                                            </ul>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </li>
+                                    <li className="timeline-widget-list">
+                                      <div className="flex items-start">
+                                        <div className="me-[3rem] text-center">
+                                          <span className="block text-[1.25rem] font-semibold">
+                                            31
+                                          </span>
+                                          <span className="block text-[0.75rem] text-[#8c9097] dark:text-white/50">
+                                            Tue
+                                          </span>
+                                        </div>
+                                        <div className="flex flex-wrap flex-grow items-center justify-between">
+                                          <div>
+                                            <p className="mb-1 sm:text-truncate timeline-widget-content text-wrap">
+                                              National Holiday - Dolore Ipsum
+                                            </p>
+                                            <p className="mb-0 text-[0.75rem] leading-none text-[#8c9097] dark:text-white/50">
+                                              <span className="badge bg-warning/10 text-warning">
+                                                Holiday
+                                              </span>
+                                            </p>
+                                          </div>
+                                          <div className="hs-dropdown ti-dropdown">
+                                            <Link
+                                              aria-label="anchor"
+                                              href="#!"
+                                              className="p-2 text-[1rem] text-[#8c9097] dark:text-white/50"
+                                            >
+                                              <i className="fe fe-more-vertical"></i>
+                                            </Link>
+                                            <ul className="hs-dropdown-menu ti-dropdown-menu hidden">
+                                              <li>
+                                                <Link
+                                                  className="ti-dropdown-item"
+                                                  href="#!"
+                                                >
+                                                  Action
+                                                </Link>
+                                              </li>
+                                              <li>
+                                                <Link
+                                                  className="ti-dropdown-item"
+                                                  href="#!"
+                                                >
+                                                  Another action
+                                                </Link>
+                                              </li>
+                                              <li>
+                                                <Link
+                                                  className="ti-dropdown-item"
+                                                  href="#!"
+                                                >
+                                                  Something else here
+                                                </Link>
+                                              </li>
+                                            </ul>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </li>
+                                  </ul>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div>
+                            <span className="text-[#8c9097] dark:text-white/50">
+                              <i className="ri-time-line align-middle me-1 inline-block"></i>
+                              5:00pm - 5:45pm
+                            </span>
+                          </div>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                  <div
+                    id="fri-1"
+                    className="hidden"
+                    role="tabpanel"
+                    aria-labelledby="fri-1"
+                  >
+                    <ul className="list-unstyled mb-0 upcoming-events-list">
+                      <li>
+                        <div className="flex items-start justify-conent-between">
+                          <div className="flex-grow">
+                            <p className="mb-0 text-[.875rem]">
+                              Meeting with client
+                            </p>
+                            <p className="mb-0 text-[#8c9097] dark:text-white/50">
+                              Video Conference
+                            </p>
+                          </div>
+                          <div>
+                            <span className="text-[#8c9097] dark:text-white/50">
+                              <i className="ri-time-line align-middle me-1 inline-block"></i>
+                              9:00am - 10:00am
+                            </span>
+                          </div>
+                        </div>
+                      </li>
+                      <li>
+                        <div className="flex items-start justify-conent-between">
+                          <div className="flex-grow">
+                            <p className="mb-0 text-[.875rem]">
+                              Lunch with team members
+                            </p>
+                            <p className="mb-0 text-[#8c9097] dark:text-white/50">
+                              Dolores Ait Labore Sit
+                            </p>
+                          </div>
+                          <div>
+                            <span className="text-[#8c9097] dark:text-white/50">
+                              <i className="ri-time-line align-middle me-1 inline-block"></i>
+                              12:00pm - 12:45am
+                            </span>
+                          </div>
+                        </div>
+                      </li>
+                      <li>
+                        <div className="flex items-start justify-conent-between">
+                          <div className="flex-grow">
+                            <p className="mb-0 text-[.875rem]">
+                              General board meeting
+                            </p>
+                            <p className="mb-0 text-[#8c9097] dark:text-white/50">
+                              Golden PArk
+                            </p>
+                          </div>
+                          <div>
+                            <span className="text-[#8c9097] dark:text-white/50">
+                              <i className="ri-time-line align-middle me-1 inline-block"></i>
+                              4:00pm - 5:30pm
+                            </span>
+                          </div>
+                        </div>
+                      </li>
+                      <li>
+                        <div className="flex items-start justify-conent-between">
+                          <div className="flex-grow">
+                            <p className="mb-0 text-[.875rem]">
+                              Create New Registration Page
+                            </p>
+                            <p className="mb-0 text-[#8c9097] dark:text-white/50">
+                              2UA Project
+                            </p>
+                          </div>
+                          <div>
+                            <span className="text-[#8c9097] dark:text-white/50">
+                              <i className="ri-time-line align-middle me-1 inline-block"></i>
+                              5:00pm - 5:45pm
+                            </span>
+                          </div>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                  <div
+                    id="sat-1"
+                    className="hidden"
+                    role="tabpanel"
+                    aria-labelledby="sat-1"
+                  >
+                    <ul className="list-unstyled mb-0 upcoming-events-list">
+                      <li>
+                        <div className="flex items-start justify-conent-between">
+                          <div className="flex-grow">
+                            <p className="mb-0 text-[.875rem]">
+                              Meeting with client
+                            </p>
+                            <p className="mb-0 text-[#8c9097] dark:text-white/50">
+                              Video Conference
+                            </p>
+                          </div>
+                          <div>
+                            <span className="text-[#8c9097] dark:text-white/50">
+                              <i className="ri-time-line align-middle me-1 inline-block"></i>
+                              9:00am - 10:00am
+                            </span>
+                          </div>
+                        </div>
+                      </li>
+                      <li>
+                        <div className="flex items-start justify-conent-between">
+                          <div className="flex-grow">
+                            <p className="mb-0 text-[.875rem]">
+                              Lunch with team members
+                            </p>
+                            <p className="mb-0 text-[#8c9097] dark:text-white/50">
+                              Dolores Ait Labore Sit
+                            </p>
+                          </div>
+                          <div>
+                            <span className="text-[#8c9097] dark:text-white/50">
+                              <i className="ri-time-line align-middle me-1 inline-block"></i>
+                              12:00pm - 12:45am
+                            </span>
+                          </div>
+                        </div>
+                      </li>
+                      <li>
+                        <div className="flex items-start justify-conent-between">
+                          <div className="flex-grow">
+                            <p className="mb-0 text-[.875rem]">
+                              General board meeting
+                            </p>
+                            <p className="mb-0 text-[#8c9097] dark:text-white/50">
+                              Golden PArk
+                            </p>
+                          </div>
+                          <div>
+                            <span className="text-[#8c9097] dark:text-white/50">
+                              <i className="ri-time-line align-middle me-1 inline-block"></i>
+                              4:00pm - 5:30pm
+                            </span>
+                          </div>
+                        </div>
+                      </li>
+                      <li>
+                        <div className="flex items-start justify-conent-between">
+                          <div className="flex-grow">
+                            <p className="mb-0 text-[.875rem]">
+                              Create New Registration Page
+                            </p>
+                            <p className="mb-0 text-[#8c9097] dark:text-white/50">
+                              2UA Project
+                            </p>
+                          </div>
+                          <div>
+                            <span className="text-[#8c9097] dark:text-white/50">
+                              <i className="ri-time-line align-middle me-1 inline-block"></i>
+                              5:00pm - 5:45pm
+                            </span>
+                          </div>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                  <div
+                    id="sun-1"
+                    className="hidden"
+                    role="tabpanel"
+                    aria-labelledby="sun-1"
+                  >
+                    <ul className="list-unstyled mb-0 upcoming-events-list">
+                      <li>
+                        <div className="flex items-start justify-conent-between">
+                          <div className="flex-grow">
+                            <p className="mb-0 text-[.875rem]">
+                              Meeting with client
+                            </p>
+                            <p className="mb-0 text-[#8c9097] dark:text-white/50">
+                              Video Conference
+                            </p>
+                          </div>
+                          <div>
+                            <span className="text-[#8c9097] dark:text-white/50">
+                              <i className="ri-time-line align-middle me-1 inline-block"></i>
+                              9:00am - 10:00am
+                            </span>
+                          </div>
+                        </div>
+                      </li>
+                      <li>
+                        <div className="flex items-start justify-conent-between">
+                          <div className="flex-grow">
+                            <p className="mb-0 text-[.875rem]">
+                              Lunch with team members
+                            </p>
+                            <p className="mb-0 text-[#8c9097] dark:text-white/50">
+                              Dolores Ait Labore Sit
+                            </p>
+                          </div>
+                          <div>
+                            <span className="text-[#8c9097] dark:text-white/50">
+                              <i className="ri-time-line align-middle me-1 inline-block"></i>
+                              12:00pm - 12:45am
+                            </span>
+                          </div>
+                        </div>
+                      </li>
+                      <li>
+                        <div className="flex items-start justify-conent-between">
+                          <div className="flex-grow">
+                            <p className="mb-0 text-[.875rem]">
+                              General board meeting
+                            </p>
+                            <p className="mb-0 text-[#8c9097] dark:text-white/50">
+                              Golden PArk
+                            </p>
+                          </div>
+                          <div>
+                            <span className="text-[#8c9097] dark:text-white/50">
+                              <i className="ri-time-line align-middle me-1 inline-block"></i>
+                              4:00pm - 5:30pm
+                            </span>
+                          </div>
+                        </div>
+                      </li>
+                      <li>
+                        <div className="flex items-start justify-conent-between">
+                          <div className="flex-grow">
+                            <p className="mb-0 text-[.875rem]">
+                              Create New Registration Page
+                            </p>
+                            <p className="mb-0 text-[#8c9097] dark:text-white/50">
+                              2UA Project
+                            </p>
+                          </div>
+                          <div>
+                            <span className="text-[#8c9097] dark:text-white/50">
+                              <i className="ri-time-line align-middle me-1 inline-block"></i>
+                              5:00pm - 5:45pm
+                            </span>
+                          </div>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
               </div>
             </div>
-            <div className="box-body">
-              <nav
-                className="flex flex-wrap xxxl:flex-nowrap justify-start sm:justify-between"
-                aria-label="Tabs"
-              >
-                <button
-                  type="button"
-                  className="xxxl:w-full hs-tab-active:bg-primary hs-tab-active:text-white py-3 px-2 block items-center gap-2 bg-transparent text-sm font-medium text-center text-defaulttextcolor rounded-sm hover:text-primary  dark:text-[#8c9097] dark:text-white/50 dark:hover:text-white active"
-                  id="mon"
-                  data-hs-tab="#mon-1"
-                  aria-controls="mon-1"
-                >
-                  <span className="block mb-1">09</span>
-                  <span className="block mb-0 opacity-[0.7] text-[0.75rem]">
-                    Mon
-                  </span>
-                </button>
-                <button
-                  type="button"
-                  className="xxxl:w-full hs-tab-active:bg-primary hs-tab-active:text-white py-3 px-2 block items-center gap-2 bg-transparent text-sm font-medium text-center text-defaulttextcolor rounded-sm hover:text-primary  dark:text-[#8c9097] dark:text-white/50 dark:hover:text-white"
-                  id="tue"
-                  data-hs-tab="#tue-1"
-                  aria-controls="tue-1"
-                >
-                  <span className="block mb-1">10</span>
-                  <span className="block mb-0 opacity-[0.7] text-[0.75rem]">
-                    Tue
-                  </span>
-                </button>
-                <button
-                  type="button"
-                  className="xxxl:w-full hs-tab-active:bg-primary hs-tab-active:text-white py-3 px-2 block items-center gap-2 bg-transparent text-sm font-medium text-center text-defaulttextcolor rounded-sm hover:text-primary  dark:text-[#8c9097] dark:text-white/50 dark:hover:text-white"
-                  id="wed"
-                  data-hs-tab="#wed-1"
-                  aria-controls="wed-1"
-                >
-                  <span className="block mb-1">11</span>
-                  <span className="block mb-0 opacity-[0.7] text-[0.75rem]">
-                    Wed
-                  </span>
-                </button>
-                <button
-                  type="button"
-                  className="xxxl:w-full hs-tab-active:bg-primary hs-tab-active:text-white py-3 px-2 block items-center gap-2 bg-transparent text-sm font-medium text-center text-defaulttextcolor rounded-sm hover:text-primary  dark:text-[#8c9097] dark:text-white/50 dark:hover:text-white"
-                  id="thu"
-                  data-hs-tab="#thu-1"
-                  aria-controls="thu-1"
-                >
-                  <span className="block mb-1">12</span>
-                  <span className="block mb-0 opacity-[0.7] text-[0.75rem]">
-                    Thu
-                  </span>
-                </button>
-                <button
-                  type="button"
-                  className="xxxl:w-full hs-tab-active:bg-primary hs-tab-active:text-white py-3 px-2 block items-center gap-2 bg-transparent text-sm font-medium text-center text-defaulttextcolor rounded-sm hover:text-primary  dark:text-[#8c9097] dark:text-white/50 dark:hover:text-white"
-                  id="fri"
-                  data-hs-tab="#fri-1"
-                  aria-controls="fri-1"
-                >
-                  <span className="block mb-1">13</span>
-                  <span className="block mb-0 opacity-[0.7] text-[0.75rem]">
-                    Fri
-                  </span>
-                </button>
-                <button
-                  type="button"
-                  className="xxxl:w-full hs-tab-active:bg-primary hs-tab-active:text-white py-3 px-2 block items-center gap-2 bg-transparent text-sm font-medium text-center text-defaulttextcolor rounded-sm hover:text-primary  dark:text-[#8c9097] dark:text-white/50 dark:hover:text-white"
-                  id="sat"
-                  data-hs-tab="#sat-1"
-                  aria-controls="sat-1"
-                >
-                  <span className="block mb-1">14</span>
-                  <span className="block mb-0 opacity-[0.7] text-[0.75rem]">
-                    Sat
-                  </span>
-                </button>
-                <button
-                  type="button"
-                  className="xxxl:w-full hs-tab-active:bg-primary hs-tab-active:text-white py-3 px-2 block items-center gap-2 bg-transparent text-sm font-medium text-center text-defaulttextcolor rounded-sm hover:text-primary  dark:text-[#8c9097] dark:text-white/50 dark:hover:text-white"
-                  id="sun"
-                  data-hs-tab="#sun-1"
-                  aria-controls="sun-1"
-                >
-                  <span className="block mb-1">15</span>
-                  <span className="block mb-0 opacity-[0.7] text-[0.75rem]">
-                    Sun
-                  </span>
-                </button>
-              </nav>
-              <div className="tab-content pt-4 my-4">
-                <div id="mon-1" role="tabpanel" aria-labelledby="mon-1">
-                  <ul className="list-unstyled mb-0 upcoming-events-list">
+          </div>
+          <div className="xl:col-span-6 col-span-12">
+            <div className="box custom-box">
+              <div className="box-header justify-between">
+                <div className="box-title">Recent Tasks</div>
+                <div className="hs-dropdown ti-dropdown">
+                  <Link
+                    href="#!"
+                    className="p-2 text-[0.75rem] text-[#8c9097] dark:text-white/50"
+                  >
+                    View All
+                    <i className="ri-arrow-down-s-line align-middle ms-1"></i>
+                  </Link>
+                  <ul
+                    className="hs-dropdown-menu ti-dropdown-menu hidden"
+                    role="menu"
+                  >
                     <li>
-                      <div className="flex items-start justify-conent-between">
-                        <div className="flex-grow">
-                          <p className="mb-0 text-[.875rem]">
-                            Meeting with client
-                          </p>
-                          <p className="mb-0 text-[#8c9097] dark:text-white/50">
-                            Video Conference
-                          </p>
-                        </div>
-                        <div>
-                          <span className="text-[#8c9097] dark:text-white/50">
-                            <i className="ri-time-line align-middle me-1 inline-block "></i>
-                            9:00am - 10:00am
-                          </span>
-                        </div>
-                      </div>
+                      <Link className="ti-dropdown-item" href="#!">
+                        Download
+                      </Link>
                     </li>
                     <li>
-                      <div className="flex items-start justify-conent-between">
-                        <div className="flex-grow">
-                          <p className="mb-0 text-[.875rem]">
-                            Lunch with team members
-                          </p>
-                          <p className="mb-0 text-[#8c9097] dark:text-white/50">
-                            Dolores Ait Labore Sit
-                          </p>
-                        </div>
-                        <div>
-                          <span className="text-[#8c9097] dark:text-white/50">
-                            <i className="ri-time-line align-middle me-1 inline-block"></i>
-                            12:00pm - 12:45am
-                          </span>
-                        </div>
-                      </div>
+                      <Link className="ti-dropdown-item" href="#!">
+                        Import
+                      </Link>
                     </li>
                     <li>
-                      <div className="flex items-start justify-conent-between">
-                        <div className="flex-grow">
-                          <p className="mb-0 text-[.875rem]">
-                            General board meeting
-                          </p>
-                          <p className="mb-0 text-[#8c9097] dark:text-white/50">
-                            Golden PArk
-                          </p>
-                        </div>
-                        <div>
-                          <span className="text-[#8c9097] dark:text-white/50">
-                            <i className="ri-time-line align-middle me-1 inline-block"></i>
-                            4:00pm - 5:30pm
-                          </span>
-                        </div>
-                      </div>
-                    </li>
-                    <li>
-                      <div className="flex items-start justify-conent-between">
-                        <div className="flex-grow">
-                          <p className="mb-0 text-[.875rem]">
-                            Create New Registration Page
-                          </p>
-                          <p className="mb-0 text-[#8c9097] dark:text-white/50">
-                            2UA Project
-                          </p>
-                        </div>
-                        <div>
-                          <span className="text-[#8c9097] dark:text-white/50">
-                            <i className="ri-time-line align-middle me-1 inline-block"></i>
-                            5:00pm - 5:45pm
-                          </span>
-                        </div>
-                      </div>
+                      <Link className="ti-dropdown-item" href="#!">
+                        Export
+                      </Link>
                     </li>
                   </ul>
                 </div>
-                <div
-                  id="tue-1"
-                  className="hidden"
-                  role="tabpanel"
-                  aria-labelledby="tue-1"
-                >
-                  <ul className="list-unstyled mb-0 upcoming-events-list">
-                    <li>
-                      <div className="flex items-start justify-conent-between">
-                        <div className="flex-grow">
-                          <p className="mb-0 text-[.875rem]">
-                            Meeting with client
-                          </p>
-                          <p className="mb-0 text-[#8c9097] dark:text-white/50">
-                            Video Conference
-                          </p>
-                        </div>
-                        <div>
-                          <span className="text-[#8c9097] dark:text-white/50">
-                            <i className="ri-time-line align-middle me-1 inline-block"></i>
-                            9:00am - 10:00am
-                          </span>
-                        </div>
-                      </div>
-                    </li>
-                    <li>
-                      <div className="flex items-start justify-conent-between">
-                        <div className="flex-grow">
-                          <p className="mb-0 text-[.875rem]">
-                            Lunch with team members
-                          </p>
-                          <p className="mb-0 text-[#8c9097] dark:text-white/50">
-                            Dolores Ait Labore Sit
-                          </p>
-                        </div>
-                        <div>
-                          <span className="text-[#8c9097] dark:text-white/50">
-                            <i className="ri-time-line align-middle me-1 inline-block"></i>
-                            12:00pm - 12:45am
-                          </span>
-                        </div>
-                      </div>
-                    </li>
-                    <li>
-                      <div className="flex items-start justify-conent-between">
-                        <div className="flex-grow">
-                          <p className="mb-0 text-[.875rem]">
-                            General board meeting
-                          </p>
-                          <p className="mb-0 text-[#8c9097] dark:text-white/50">
-                            Golden PArk
-                          </p>
-                        </div>
-                        <div>
-                          <span className="text-[#8c9097] dark:text-white/50">
-                            <i className="ri-time-line align-middle me-1 inline-block"></i>
-                            4:00pm - 5:30pm
-                          </span>
-                        </div>
-                      </div>
-                    </li>
-                    <li>
-                      <div className="flex items-start justify-conent-between">
-                        <div className="flex-grow">
-                          <p className="mb-0 text-[.875rem]">
-                            Create New Registration Page
-                          </p>
-                          <p className="mb-0 text-[#8c9097] dark:text-white/50">
-                            2UA Project
-                          </p>
-                        </div>
-                        <div>
-                          <span className="text-[#8c9097] dark:text-white/50">
-                            <i className="ri-time-line align-middle me-1 inline-block"></i>
-                            5:00pm - 5:45pm
-                          </span>
-                        </div>
-                      </div>
-                    </li>
-                  </ul>
-                </div>
-                <div
-                  id="wed-1"
-                  className="hidden"
-                  role="tabpanel"
-                  aria-labelledby="wed-1"
-                >
-                  <ul className="list-unstyled mb-0 upcoming-events-list">
-                    <li>
-                      <div className="flex items-start justify-conent-between">
-                        <div className="flex-grow">
-                          <p className="mb-0 text-[.875rem]">
-                            Meeting with client
-                          </p>
-                          <p className="mb-0 text-[#8c9097] dark:text-white/50">
-                            Video Conference
-                          </p>
-                        </div>
-                        <div>
-                          <span className="text-[#8c9097] dark:text-white/50">
-                            <i className="ri-time-line align-middle me-1 inline-block"></i>
-                            9:00am - 10:00am
-                          </span>
-                        </div>
-                      </div>
-                    </li>
-                    <li>
-                      <div className="flex items-start justify-conent-between">
-                        <div className="flex-grow">
-                          <p className="mb-0 text-[.875rem]">
-                            Lunch with team members
-                          </p>
-                          <p className="mb-0 text-[#8c9097] dark:text-white/50">
-                            Dolores Ait Labore Sit
-                          </p>
-                        </div>
-                        <div>
-                          <span className="text-[#8c9097] dark:text-white/50">
-                            <i className="ri-time-line align-middle me-1 inline-block"></i>
-                            12:00pm - 12:45am
-                          </span>
-                        </div>
-                      </div>
-                    </li>
-                    <li>
-                      <div className="flex items-start justify-conent-between">
-                        <div className="flex-grow">
-                          <p className="mb-0 text-[.875rem]">
-                            General board meeting
-                          </p>
-                          <p className="mb-0 text-[#8c9097] dark:text-white/50">
-                            Golden PArk
-                          </p>
-                        </div>
-                        <div>
-                          <span className="text-[#8c9097] dark:text-white/50">
-                            <i className="ri-time-line align-middle me-1 inline-block"></i>
-                            4:00pm - 5:30pm
-                          </span>
-                        </div>
-                      </div>
-                    </li>
-                    <li>
-                      <div className="flex items-start justify-conent-between">
-                        <div className="flex-grow">
-                          <p className="mb-0 text-[.875rem]">
-                            Create New Registration Page
-                          </p>
-                          <p className="mb-0 text-[#8c9097] dark:text-white/50">
-                            2UA Project
-                          </p>
-                        </div>
-                        <div>
-                          <span className="text-[#8c9097] dark:text-white/50">
-                            <i className="ri-time-line align-middle me-1 inline-block"></i>
-                            5:00pm - 5:45pm
-                          </span>
-                        </div>
-                      </div>
-                    </li>
-                  </ul>
-                </div>
-                <div
-                  id="thu-1"
-                  className="hidden"
-                  role="tabpanel"
-                  aria-labelledby="thu-1"
-                >
-                  <ul className="list-unstyled mb-0 upcoming-events-list">
-                    <li>
-                      <div className="flex items-start justify-conent-between">
-                        <div className="flex-grow">
-                          <p className="mb-0 text-[.875rem]">
-                            Meeting with client
-                          </p>
-                          <p className="mb-0 text-[#8c9097] dark:text-white/50">
-                            Video Conference
-                          </p>
-                        </div>
-                        <div>
-                          <span className="text-[#8c9097] dark:text-white/50">
-                            <i className="ri-time-line align-middle me-1 inline-block"></i>
-                            9:00am - 10:00am
-                          </span>
-                        </div>
-                      </div>
-                    </li>
-                    <li>
-                      <div className="xl:col-span-4  md:col-span-6 col-span-12">
-                        <div className="box custom-box">
-                          <div className="box-header justify-between">
-                            <div className="box-title">Timeline</div>
-                            <div>
-                              <button
-                                type="button"
-                                className="ti-btn !py-1 !px-2 !text-[0.75rem] ti-btn-primary"
-                              >
-                                View All
-                              </button>
-                            </div>
+              </div>
+              <div className="box-body">
+                <div className="table-responsive">
+                  <table className="table whitespace-nowrap table-bordered min-w-full">
+                    <thead>
+                      <tr>
+                        <th scope="col" className="text-start">
+                          S.No
+                        </th>
+                        <th scope="col" className="text-start">
+                          Title
+                        </th>
+                        <th scope="col" className="text-start">
+                          Assigned To
+                        </th>
+                        <th scope="col" className="text-start">
+                          Progress
+                        </th>
+                        <th scope="col" className="text-start">
+                          Status
+                        </th>
+                        <th scope="col" className="text-start">
+                          Due Date
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr className="border border-defaultborder">
+                        <td>01</td>
+                        <td>Server Side Validation</td>
+                        <td>
+                          <div className="avatar-list-stacked">
+                            <span className="avatar avatar-xs !rounded-full">
+                              <img
+                                src="../../../assets/images/faces/2.jpg"
+                                alt="img"
+                              />
+                            </span>
+                            <span className="avatar avatar-xs !rounded-full">
+                              <img
+                                src="../../../assets/images/faces/8.jpg"
+                                alt="img"
+                              />
+                            </span>
+                            <span className="avatar avatar-xs !rounded-full">
+                              <img
+                                src="../../../assets/images/faces/2.jpg"
+                                alt="img"
+                              />
+                            </span>
+                            <span className="avatar avatar-xs !rounded-full">
+                              <img
+                                src="../../../assets/images/faces/10.jpg"
+                                alt="img"
+                              />
+                            </span>
+                            <Link
+                              className="avatar avatar-xs bg-primary !rounded-full text-white"
+                              href="#!"
+                            >
+                              +2
+                            </Link>
                           </div>
-                          <div className="box-body">
-                            <ul className="list-unstyled timeline-widget mb-0 my-3">
-                              <li className="timeline-widget-list">
-                                <div className="flex items-start">
-                                  <div className="me-[3rem] text-center">
-                                    <span className="block text-[1.25rem] font-semibold">
-                                      02
-                                    </span>
-                                    <span className="block text-[0.75rem] text-[#8c9097] dark:text-white/50">
-                                      Mon
-                                    </span>
-                                  </div>
-                                  <div className="flex flex-wrap flex-grow items-center justify-between">
-                                    <div>
-                                      <p className="mb-1  timeline-widget-content text-wrap">
-                                        You have an announcement - Ipsum Est
-                                        Diam Eirmod
-                                      </p>
-                                      <p className="mb-0 text-[0.75rem] leading-none text-[#8c9097] dark:text-white/50">
-                                        10:00AM
-                                        <span className="badge bg-primary/10 text-primary ms-2">
-                                          Announcement
-                                        </span>
-                                      </p>
-                                    </div>
-                                    <div className="hs-dropdown ti-dropdown">
-                                      <Link
-                                        aria-label="anchor"
-                                        href="#!"
-                                        className="p-2 text-[1rem] text-[#8c9097] dark:text-white/50"
-                                      >
-                                        <i className="fe fe-more-vertical"></i>
-                                      </Link>
-                                      <ul className="hs-dropdown-menu ti-dropdown-menu hidden">
-                                        <li>
-                                          <Link
-                                            className="ti-dropdown-item"
-                                            href="#!"
-                                          >
-                                            Action
-                                          </Link>
-                                        </li>
-                                        <li>
-                                          <Link
-                                            className="ti-dropdown-item"
-                                            href="#!"
-                                          >
-                                            Another action
-                                          </Link>
-                                        </li>
-                                        <li>
-                                          <Link
-                                            className="ti-dropdown-item"
-                                            href="#!"
-                                          >
-                                            Something else here
-                                          </Link>
-                                        </li>
-                                      </ul>
-                                    </div>
-                                  </div>
-                                </div>
-                              </li>
-                              <li className="timeline-widget-list">
-                                <div className="flex items-start">
-                                  <div className="me-[3rem] text-center">
-                                    <span className="block text-[1.25rem] font-semibold">
-                                      15
-                                    </span>
-                                    <span className="block text-[0.75rem] text-[#8c9097] dark:text-white/50">
-                                      Sun
-                                    </span>
-                                  </div>
-                                  <div className="flex flex-wrap flex-grow items-center justify-between">
-                                    <div>
-                                      <p className="mb-1 sm:text-truncate timeline-widget-content text-wrap">
-                                        National holiday - Vero Jayanti
-                                      </p>
-                                      <p className="mb-0 text-[0.75rem] leading-none text-[#8c9097] dark:text-white/50">
-                                        <span className="badge bg-warning/10 text-warning">
-                                          Holiday
-                                        </span>
-                                      </p>
-                                    </div>
-                                    <div className="hs-dropdown ti-dropdown">
-                                      <Link
-                                        aria-label="anchor"
-                                        href="#!"
-                                        className="p-2 text-[1rem] text-[#8c9097] dark:text-white/50"
-                                      >
-                                        <i className="fe fe-more-vertical"></i>
-                                      </Link>
-                                      <ul className="hs-dropdown-menu ti-dropdown-menu hidden">
-                                        <li>
-                                          <Link
-                                            className="ti-dropdown-item"
-                                            href="#!"
-                                          >
-                                            Action
-                                          </Link>
-                                        </li>
-                                        <li>
-                                          <Link
-                                            className="ti-dropdown-item"
-                                            href="#!"
-                                          >
-                                            Another action
-                                          </Link>
-                                        </li>
-                                        <li>
-                                          <Link
-                                            className="ti-dropdown-item"
-                                            href="#!"
-                                          >
-                                            Something else here
-                                          </Link>
-                                        </li>
-                                      </ul>
-                                    </div>
-                                  </div>
-                                </div>
-                              </li>
-                              <li className="timeline-widget-list">
-                                <div className="flex items-start">
-                                  <div className="me-[3rem] text-center">
-                                    <span className="block text-[1.25rem] font-semibold">
-                                      23
-                                    </span>
-                                    <span className="block text-[0.75rem] text-[#8c9097] dark:text-white/50">
-                                      Mon
-                                    </span>
-                                  </div>
-                                  <div className="flex flex-wrap flex-grow items-center justify-between">
-                                    <div>
-                                      <p className="mb-1 sm:text-truncate timeline-widget-content text-wrap">
-                                        John pup birthday - Team Member
-                                      </p>
-                                      <p className="mb-4 text-[0.75rem] leading-none text-[#8c9097] dark:text-white/50">
-                                        09:00AM
-                                        <span className="badge bg-success/10 text-success ms-2">
-                                          Birthday
-                                        </span>
-                                      </p>
-                                      <p className="mb-1 sm:text-truncate timeline-widget-content text-wrap">
-                                        Amet sed no dolor kasd - Et Dolores
-                                        Tempor Erat
-                                      </p>
-                                      <p className="mb-0 text-[0.75rem] leading-none text-[#8c9097] dark:text-white/50">
-                                        04:00PM
-                                        <span className="badge bg-primary/10 text-primary ms-2">
-                                          Announcement
-                                        </span>
-                                      </p>
-                                    </div>
-                                    <div className="hs-dropdown ti-dropdown">
-                                      <Link
-                                        aria-label="anchor"
-                                        href="#!"
-                                        className="p-2 text-[1rem] text-[#8c9097] dark:text-white/50"
-                                      >
-                                        <i className="fe fe-more-vertical"></i>
-                                      </Link>
-                                      <ul className="hs-dropdown-menu ti-dropdown-menu hidden">
-                                        <li>
-                                          <Link
-                                            className="ti-dropdown-item"
-                                            href="#!"
-                                          >
-                                            Action
-                                          </Link>
-                                        </li>
-                                        <li>
-                                          <Link
-                                            className="ti-dropdown-item"
-                                            href="#!"
-                                          >
-                                            Another action
-                                          </Link>
-                                        </li>
-                                        <li>
-                                          <Link
-                                            className="ti-dropdown-item"
-                                            href="#!"
-                                          >
-                                            Something else here
-                                          </Link>
-                                        </li>
-                                      </ul>
-                                    </div>
-                                  </div>
-                                </div>
-                              </li>
-                              <li className="timeline-widget-list">
-                                <div className="flex items-start">
-                                  <div className="me-[3rem] text-center">
-                                    <span className="block text-[1.25rem] font-semibold">
-                                      31
-                                    </span>
-                                    <span className="block text-[0.75rem] text-[#8c9097] dark:text-white/50">
-                                      Tue
-                                    </span>
-                                  </div>
-                                  <div className="flex flex-wrap flex-grow items-center justify-between">
-                                    <div>
-                                      <p className="mb-1 sm:text-truncate timeline-widget-content text-wrap">
-                                        National Holiday - Dolore Ipsum
-                                      </p>
-                                      <p className="mb-0 text-[0.75rem] leading-none text-[#8c9097] dark:text-white/50">
-                                        <span className="badge bg-warning/10 text-warning">
-                                          Holiday
-                                        </span>
-                                      </p>
-                                    </div>
-                                    <div className="hs-dropdown ti-dropdown">
-                                      <Link
-                                        aria-label="anchor"
-                                        href="#!"
-                                        className="p-2 text-[1rem] text-[#8c9097] dark:text-white/50"
-                                      >
-                                        <i className="fe fe-more-vertical"></i>
-                                      </Link>
-                                      <ul className="hs-dropdown-menu ti-dropdown-menu hidden">
-                                        <li>
-                                          <Link
-                                            className="ti-dropdown-item"
-                                            href="#!"
-                                          >
-                                            Action
-                                          </Link>
-                                        </li>
-                                        <li>
-                                          <Link
-                                            className="ti-dropdown-item"
-                                            href="#!"
-                                          >
-                                            Another action
-                                          </Link>
-                                        </li>
-                                        <li>
-                                          <Link
-                                            className="ti-dropdown-item"
-                                            href="#!"
-                                          >
-                                            Something else here
-                                          </Link>
-                                        </li>
-                                      </ul>
-                                    </div>
-                                  </div>
-                                </div>
-                              </li>
-                            </ul>
+                        </td>
+                        <td>
+                          <div className="progress progress-xs">
+                            <div
+                              className="progress-bar progress-bar-striped progress-bar-animated w-3/5"
+                              aria-valuenow="60"
+                              aria-valuemin="0"
+                              aria-valuemax="100"
+                            ></div>
                           </div>
-                        </div>
-                      </div>
-                      <div className="flex items-start justify-conent-between">
-                        <div className="flex-grow">
-                          <p className="mb-0 text-[.875rem]">
-                            Lunch with team members
-                          </p>
-                          <p className="mb-0 text-[#8c9097] dark:text-white/50">
-                            Dolores Ait Labore Sit
-                          </p>
-                        </div>
-                        <div>
-                          <span className="text-[#8c9097] dark:text-white/50">
-                            <i className="ri-time-line align-middle me-1 inline-block"></i>
-                            12:00pm - 12:45am
+                        </td>
+                        <td>
+                          <span className="badge bg-primary/10 text-primary">
+                            In Progress
                           </span>
-                        </div>
-                      </div>
-                    </li>
-                    <li>
-                      <div className="flex items-start justify-conent-between">
-                        <div className="flex-grow">
-                          <p className="mb-0 text-[.875rem]">
-                            General board meeting
-                          </p>
-                          <p className="mb-0 text-[#8c9097] dark:text-white/50">
-                            Golden PArk
-                          </p>
-                        </div>
-                        <div>
-                          <span className="text-[#8c9097] dark:text-white/50">
-                            <i className="ri-time-line align-middle me-1 inline-block"></i>
-                            4:00pm - 5:30pm
-                          </span>
-                        </div>
-                      </div>
-                    </li>
-                    <li>
-                      <div className="flex items-start justify-conent-between">
-                        <div className="flex-grow">
-                          <p className="mb-0 text-[.875rem]">
-                            Create New Registration Page
-                          </p>
-                          <p className="mb-0 text-[#8c9097] dark:text-white/50">
-                            2UA Project
-                          </p>
-                          <div className="xl:col-span-4  md:col-span-6 col-span-12">
-                            <div className="box custom-box">
-                              <div className="box-header justify-between">
-                                <div className="box-title">Timeline</div>
-                                <div>
-                                  <button
-                                    type="button"
-                                    className="ti-btn !py-1 !px-2 !text-[0.75rem] ti-btn-primary"
-                                  >
-                                    View All
-                                  </button>
-                                </div>
-                              </div>
-                              <div className="box-body">
-                                <ul className="list-unstyled timeline-widget mb-0 my-3">
-                                  <li className="timeline-widget-list">
-                                    <div className="flex items-start">
-                                      <div className="me-[3rem] text-center">
-                                        <span className="block text-[1.25rem] font-semibold">
-                                          02
-                                        </span>
-                                        <span className="block text-[0.75rem] text-[#8c9097] dark:text-white/50">
-                                          Mon
-                                        </span>
-                                      </div>
-                                      <div className="flex flex-wrap flex-grow items-center justify-between">
-                                        <div>
-                                          <p className="mb-1  timeline-widget-content text-wrap">
-                                            You have an announcement - Ipsum Est
-                                            Diam Eirmod
-                                          </p>
-                                          <p className="mb-0 text-[0.75rem] leading-none text-[#8c9097] dark:text-white/50">
-                                            10:00AM
-                                            <span className="badge bg-primary/10 text-primary ms-2">
-                                              Announcement
-                                            </span>
-                                          </p>
-                                        </div>
-                                        <div className="hs-dropdown ti-dropdown">
-                                          <Link
-                                            aria-label="anchor"
-                                            href="#!"
-                                            className="p-2 text-[1rem] text-[#8c9097] dark:text-white/50"
-                                          >
-                                            <i className="fe fe-more-vertical"></i>
-                                          </Link>
-                                          <ul className="hs-dropdown-menu ti-dropdown-menu hidden">
-                                            <li>
-                                              <Link
-                                                className="ti-dropdown-item"
-                                                href="#!"
-                                              >
-                                                Action
-                                              </Link>
-                                            </li>
-                                            <li>
-                                              <Link
-                                                className="ti-dropdown-item"
-                                                href="#!"
-                                              >
-                                                Another action
-                                              </Link>
-                                            </li>
-                                            <li>
-                                              <Link
-                                                className="ti-dropdown-item"
-                                                href="#!"
-                                              >
-                                                Something else here
-                                              </Link>
-                                            </li>
-                                          </ul>
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </li>
-                                  <li className="timeline-widget-list">
-                                    <div className="flex items-start">
-                                      <div className="me-[3rem] text-center">
-                                        <span className="block text-[1.25rem] font-semibold">
-                                          15
-                                        </span>
-                                        <span className="block text-[0.75rem] text-[#8c9097] dark:text-white/50">
-                                          Sun
-                                        </span>
-                                      </div>
-                                      <div className="flex flex-wrap flex-grow items-center justify-between">
-                                        <div>
-                                          <p className="mb-1 sm:text-truncate timeline-widget-content text-wrap">
-                                            National holiday - Vero Jayanti
-                                          </p>
-                                          <p className="mb-0 text-[0.75rem] leading-none text-[#8c9097] dark:text-white/50">
-                                            <span className="badge bg-warning/10 text-warning">
-                                              Holiday
-                                            </span>
-                                          </p>
-                                        </div>
-                                        <div className="hs-dropdown ti-dropdown">
-                                          <Link
-                                            aria-label="anchor"
-                                            href="#!"
-                                            className="p-2 text-[1rem] text-[#8c9097] dark:text-white/50"
-                                          >
-                                            <i className="fe fe-more-vertical"></i>
-                                          </Link>
-                                          <ul className="hs-dropdown-menu ti-dropdown-menu hidden">
-                                            <li>
-                                              <Link
-                                                className="ti-dropdown-item"
-                                                href="#!"
-                                              >
-                                                Action
-                                              </Link>
-                                            </li>
-                                            <li>
-                                              <Link
-                                                className="ti-dropdown-item"
-                                                href="#!"
-                                              >
-                                                Another action
-                                              </Link>
-                                            </li>
-                                            <li>
-                                              <Link
-                                                className="ti-dropdown-item"
-                                                href="#!"
-                                              >
-                                                Something else here
-                                              </Link>
-                                            </li>
-                                          </ul>
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </li>
-                                  <li className="timeline-widget-list">
-                                    <div className="flex items-start">
-                                      <div className="me-[3rem] text-center">
-                                        <span className="block text-[1.25rem] font-semibold">
-                                          23
-                                        </span>
-                                        <span className="block text-[0.75rem] text-[#8c9097] dark:text-white/50">
-                                          Mon
-                                        </span>
-                                      </div>
-                                      <div className="flex flex-wrap flex-grow items-center justify-between">
-                                        <div>
-                                          <p className="mb-1 sm:text-truncate timeline-widget-content text-wrap">
-                                            John pup birthday - Team Member
-                                          </p>
-                                          <p className="mb-4 text-[0.75rem] leading-none text-[#8c9097] dark:text-white/50">
-                                            09:00AM
-                                            <span className="badge bg-success/10 text-success ms-2">
-                                              Birthday
-                                            </span>
-                                          </p>
-                                          <p className="mb-1 sm:text-truncate timeline-widget-content text-wrap">
-                                            Amet sed no dolor kasd - Et Dolores
-                                            Tempor Erat
-                                          </p>
-                                          <p className="mb-0 text-[0.75rem] leading-none text-[#8c9097] dark:text-white/50">
-                                            04:00PM
-                                            <span className="badge bg-primary/10 text-primary ms-2">
-                                              Announcement
-                                            </span>
-                                          </p>
-                                        </div>
-                                        <div className="hs-dropdown ti-dropdown">
-                                          <Link
-                                            aria-label="anchor"
-                                            href="#!"
-                                            className="p-2 text-[1rem] text-[#8c9097] dark:text-white/50"
-                                          >
-                                            <i className="fe fe-more-vertical"></i>
-                                          </Link>
-                                          <ul className="hs-dropdown-menu ti-dropdown-menu hidden">
-                                            <li>
-                                              <Link
-                                                className="ti-dropdown-item"
-                                                href="#!"
-                                              >
-                                                Action
-                                              </Link>
-                                            </li>
-                                            <li>
-                                              <Link
-                                                className="ti-dropdown-item"
-                                                href="#!"
-                                              >
-                                                Another action
-                                              </Link>
-                                            </li>
-                                            <li>
-                                              <Link
-                                                className="ti-dropdown-item"
-                                                href="#!"
-                                              >
-                                                Something else here
-                                              </Link>
-                                            </li>
-                                          </ul>
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </li>
-                                  <li className="timeline-widget-list">
-                                    <div className="flex items-start">
-                                      <div className="me-[3rem] text-center">
-                                        <span className="block text-[1.25rem] font-semibold">
-                                          31
-                                        </span>
-                                        <span className="block text-[0.75rem] text-[#8c9097] dark:text-white/50">
-                                          Tue
-                                        </span>
-                                      </div>
-                                      <div className="flex flex-wrap flex-grow items-center justify-between">
-                                        <div>
-                                          <p className="mb-1 sm:text-truncate timeline-widget-content text-wrap">
-                                            National Holiday - Dolore Ipsum
-                                          </p>
-                                          <p className="mb-0 text-[0.75rem] leading-none text-[#8c9097] dark:text-white/50">
-                                            <span className="badge bg-warning/10 text-warning">
-                                              Holiday
-                                            </span>
-                                          </p>
-                                        </div>
-                                        <div className="hs-dropdown ti-dropdown">
-                                          <Link
-                                            aria-label="anchor"
-                                            href="#!"
-                                            className="p-2 text-[1rem] text-[#8c9097] dark:text-white/50"
-                                          >
-                                            <i className="fe fe-more-vertical"></i>
-                                          </Link>
-                                          <ul className="hs-dropdown-menu ti-dropdown-menu hidden">
-                                            <li>
-                                              <Link
-                                                className="ti-dropdown-item"
-                                                href="#!"
-                                              >
-                                                Action
-                                              </Link>
-                                            </li>
-                                            <li>
-                                              <Link
-                                                className="ti-dropdown-item"
-                                                href="#!"
-                                              >
-                                                Another action
-                                              </Link>
-                                            </li>
-                                            <li>
-                                              <Link
-                                                className="ti-dropdown-item"
-                                                href="#!"
-                                              >
-                                                Something else here
-                                              </Link>
-                                            </li>
-                                          </ul>
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </li>
-                                </ul>
-                              </div>
-                            </div>
+                        </td>
+                        <td>17-04-2023</td>
+                      </tr>
+                      <tr className="border border-defaultborder">
+                        <td>02</td>
+                        <td>Multipurpose Dashboard Template</td>
+                        <td>
+                          <div className="avatar-list-stacked">
+                            <span className="avatar avatar-xs !rounded-full">
+                              <img
+                                src="../../../assets/images/faces/6.jpg"
+                                alt="img"
+                              />
+                            </span>
+                            <span className="avatar avatar-xs !rounded-full">
+                              <img
+                                src="../../../assets/images/faces/8.jpg"
+                                alt="img"
+                              />
+                            </span>
                           </div>
-                        </div>
-                        <div>
-                          <span className="text-[#8c9097] dark:text-white/50">
-                            <i className="ri-time-line align-middle me-1 inline-block"></i>
-                            5:00pm - 5:45pm
+                        </td>
+                        <td>
+                          <div className="progress progress-xs">
+                            <div
+                              className="progress-bar progress-bar-striped progress-bar-animated w-0"
+                              aria-valuenow="0"
+                              aria-valuemin="0"
+                              aria-valuemax="100"
+                            ></div>
+                          </div>
+                        </td>
+                        <td>
+                          <span className="badge bg-warning/10 text-warning">
+                            Pending
                           </span>
-                        </div>
-                      </div>
-                    </li>
-                  </ul>
-                </div>
-                <div
-                  id="fri-1"
-                  className="hidden"
-                  role="tabpanel"
-                  aria-labelledby="fri-1"
-                >
-                  <ul className="list-unstyled mb-0 upcoming-events-list">
-                    <li>
-                      <div className="flex items-start justify-conent-between">
-                        <div className="flex-grow">
-                          <p className="mb-0 text-[.875rem]">
-                            Meeting with client
-                          </p>
-                          <p className="mb-0 text-[#8c9097] dark:text-white/50">
-                            Video Conference
-                          </p>
-                        </div>
-                        <div>
-                          <span className="text-[#8c9097] dark:text-white/50">
-                            <i className="ri-time-line align-middle me-1 inline-block"></i>
-                            9:00am - 10:00am
+                        </td>
+                        <td>14-05-2023</td>
+                      </tr>
+                      <tr className="border border-defaultborder">
+                        <td>03</td>
+                        <td>Documentation Project</td>
+                        <td>
+                          <div className="avatar-list-stacked">
+                            <span className="avatar avatar-xs !rounded-full">
+                              <img
+                                src="../../../assets/images/faces/4.jpg"
+                                alt="img"
+                              />
+                            </span>
+                            <span className="avatar avatar-xs !rounded-full">
+                              <img
+                                src="../../../assets/images/faces/15.jpg"
+                                alt="img"
+                              />
+                            </span>
+                            <span className="avatar avatar-xs !rounded-full">
+                              <img
+                                src="../../../assets/images/faces/11.jpg"
+                                alt="img"
+                              />
+                            </span>
+                            <Link
+                              className="avatar avatar-xs bg-primary !rounded-full text-white"
+                              href="#!"
+                            >
+                              +1
+                            </Link>
+                          </div>
+                        </td>
+                        <td>
+                          <div className="progress progress-xs">
+                            <div
+                              className="progress-bar progress-bar-striped progress-bar-animated w-full"
+                              aria-valuenow="100"
+                              aria-valuemin="0"
+                              aria-valuemax="100"
+                            ></div>
+                          </div>
+                        </td>
+                        <td>
+                          <span className="badge bg-success/10 text-success">
+                            Completed
                           </span>
-                        </div>
-                      </div>
-                    </li>
-                    <li>
-                      <div className="flex items-start justify-conent-between">
-                        <div className="flex-grow">
-                          <p className="mb-0 text-[.875rem]">
-                            Lunch with team members
-                          </p>
-                          <p className="mb-0 text-[#8c9097] dark:text-white/50">
-                            Dolores Ait Labore Sit
-                          </p>
-                        </div>
-                        <div>
-                          <span className="text-[#8c9097] dark:text-white/50">
-                            <i className="ri-time-line align-middle me-1 inline-block"></i>
-                            12:00pm - 12:45am
+                        </td>
+                        <td>20-04-2023</td>
+                      </tr>
+                      <tr className="border border-defaultborder">
+                        <td>04</td>
+                        <td>HR Management Template Design</td>
+                        <td>
+                          <div className="avatar-list-stacked">
+                            <span className="avatar avatar-xs !rounded-full">
+                              <img
+                                src="../../../assets/images/faces/5.jpg"
+                                alt="img"
+                              />
+                            </span>
+                            <span className="avatar avatar-xs !rounded-full">
+                              <img
+                                src="../../../assets/images/faces/12.jpg"
+                                alt="img"
+                              />
+                            </span>
+                            <span className="avatar avatar-xs !rounded-full">
+                              <img
+                                src="../../../assets/images/faces/13.jpg"
+                                alt="img"
+                              />
+                            </span>
+                          </div>
+                        </td>
+                        <td>
+                          <div className="progress progress-xs">
+                            <div
+                              className="progress-bar progress-bar-striped progress-bar-animated w-1/2"
+                              aria-valuenow="50"
+                              aria-valuemin="0"
+                              aria-valuemax="100"
+                            ></div>
+                          </div>
+                        </td>
+                        <td>
+                          <span className="badge bg-primary/10 text-primary">
+                            In Progress
                           </span>
-                        </div>
-                      </div>
-                    </li>
-                    <li>
-                      <div className="flex items-start justify-conent-between">
-                        <div className="flex-grow">
-                          <p className="mb-0 text-[.875rem]">
-                            General board meeting
-                          </p>
-                          <p className="mb-0 text-[#8c9097] dark:text-white/50">
-                            Golden PArk
-                          </p>
-                        </div>
-                        <div>
-                          <span className="text-[#8c9097] dark:text-white/50">
-                            <i className="ri-time-line align-middle me-1 inline-block"></i>
-                            4:00pm - 5:30pm
+                        </td>
+                        <td>29-05-2023</td>
+                      </tr>
+                      <tr className="border border-defaultborder">
+                        <td>05</td>
+                        <td>Developing Backend</td>
+                        <td>
+                          <div className="avatar-list-stacked">
+                            <span className="avatar avatar-xs !rounded-full">
+                              <img
+                                src="../../../assets/images/faces/1.jpg"
+                                alt="img"
+                              />
+                            </span>
+                            <span className="avatar avatar-xs !rounded-full">
+                              <img
+                                src="../../../assets/images/faces/8.jpg"
+                                alt="img"
+                              />
+                            </span>
+                            <span className="avatar avatar-xs !rounded-full">
+                              <img
+                                src="../../../assets/images/faces/9.jpg"
+                                alt="img"
+                              />
+                            </span>
+                            <Link
+                              className="avatar avatar-xs bg-primary !rounded-full text-white"
+                              href="#!"
+                            >
+                              +3
+                            </Link>
+                          </div>
+                        </td>
+                        <td>
+                          <div className="progress progress-xs">
+                            <div
+                              className="progress-bar progress-bar-striped progress-bar-animated w-1/2"
+                              aria-valuenow="50"
+                              aria-valuemin="0"
+                              aria-valuemax="100"
+                            ></div>
+                          </div>
+                        </td>
+                        <td>
+                          <span className="badge bg-primary/10 text-primary">
+                            In Progress
                           </span>
-                        </div>
-                      </div>
-                    </li>
-                    <li>
-                      <div className="flex items-start justify-conent-between">
-                        <div className="flex-grow">
-                          <p className="mb-0 text-[.875rem]">
-                            Create New Registration Page
-                          </p>
-                          <p className="mb-0 text-[#8c9097] dark:text-white/50">
-                            2UA Project
-                          </p>
-                        </div>
-                        <div>
-                          <span className="text-[#8c9097] dark:text-white/50">
-                            <i className="ri-time-line align-middle me-1 inline-block"></i>
-                            5:00pm - 5:45pm
+                        </td>
+                        <td>25-05-2023</td>
+                      </tr>
+                      <tr className="border border-defaultborder">
+                        <td>06</td>
+                        <td> Design New Dashboard Template</td>
+                        <td>
+                          <div className="avatar-list-stacked">
+                            <span className="avatar avatar-xs !rounded-full">
+                              <img
+                                src="../../../assets/images/faces/4.jpg"
+                                alt="img"
+                              />
+                            </span>
+                            <span className="avatar avatar-xs !rounded-full">
+                              <img
+                                src="../../../assets/images/faces/12.jpg"
+                                alt="img"
+                              />
+                            </span>
+                            <span className="avatar avatar-xs !rounded-full">
+                              <img
+                                src="../../../assets/images/faces/16.jpg"
+                                alt="img"
+                              />
+                            </span>
+                            <Link
+                              className="avatar avatar-xs bg-primary !rounded-full text-white"
+                              href="#!"
+                            >
+                              +3
+                            </Link>
+                          </div>
+                        </td>
+                        <td>
+                          <div className="progress progress-xs">
+                            <div
+                              className="progress-bar progress-bar-striped progress-bar-animated w-full"
+                              aria-valuenow="100"
+                              aria-valuemin="0"
+                              aria-valuemax="100"
+                            ></div>
+                          </div>
+                        </td>
+                        <td>
+                          <span className="badge bg-success/10 text-success">
+                            Completed
                           </span>
-                        </div>
-                      </div>
-                    </li>
-                  </ul>
-                </div>
-                <div
-                  id="sat-1"
-                  className="hidden"
-                  role="tabpanel"
-                  aria-labelledby="sat-1"
-                >
-                  <ul className="list-unstyled mb-0 upcoming-events-list">
-                    <li>
-                      <div className="flex items-start justify-conent-between">
-                        <div className="flex-grow">
-                          <p className="mb-0 text-[.875rem]">
-                            Meeting with client
-                          </p>
-                          <p className="mb-0 text-[#8c9097] dark:text-white/50">
-                            Video Conference
-                          </p>
-                        </div>
-                        <div>
-                          <span className="text-[#8c9097] dark:text-white/50">
-                            <i className="ri-time-line align-middle me-1 inline-block"></i>
-                            9:00am - 10:00am
-                          </span>
-                        </div>
-                      </div>
-                    </li>
-                    <li>
-                      <div className="flex items-start justify-conent-between">
-                        <div className="flex-grow">
-                          <p className="mb-0 text-[.875rem]">
-                            Lunch with team members
-                          </p>
-                          <p className="mb-0 text-[#8c9097] dark:text-white/50">
-                            Dolores Ait Labore Sit
-                          </p>
-                        </div>
-                        <div>
-                          <span className="text-[#8c9097] dark:text-white/50">
-                            <i className="ri-time-line align-middle me-1 inline-block"></i>
-                            12:00pm - 12:45am
-                          </span>
-                        </div>
-                      </div>
-                    </li>
-                    <li>
-                      <div className="flex items-start justify-conent-between">
-                        <div className="flex-grow">
-                          <p className="mb-0 text-[.875rem]">
-                            General board meeting
-                          </p>
-                          <p className="mb-0 text-[#8c9097] dark:text-white/50">
-                            Golden PArk
-                          </p>
-                        </div>
-                        <div>
-                          <span className="text-[#8c9097] dark:text-white/50">
-                            <i className="ri-time-line align-middle me-1 inline-block"></i>
-                            4:00pm - 5:30pm
-                          </span>
-                        </div>
-                      </div>
-                    </li>
-                    <li>
-                      <div className="flex items-start justify-conent-between">
-                        <div className="flex-grow">
-                          <p className="mb-0 text-[.875rem]">
-                            Create New Registration Page
-                          </p>
-                          <p className="mb-0 text-[#8c9097] dark:text-white/50">
-                            2UA Project
-                          </p>
-                        </div>
-                        <div>
-                          <span className="text-[#8c9097] dark:text-white/50">
-                            <i className="ri-time-line align-middle me-1 inline-block"></i>
-                            5:00pm - 5:45pm
-                          </span>
-                        </div>
-                      </div>
-                    </li>
-                  </ul>
-                </div>
-                <div
-                  id="sun-1"
-                  className="hidden"
-                  role="tabpanel"
-                  aria-labelledby="sun-1"
-                >
-                  <ul className="list-unstyled mb-0 upcoming-events-list">
-                    <li>
-                      <div className="flex items-start justify-conent-between">
-                        <div className="flex-grow">
-                          <p className="mb-0 text-[.875rem]">
-                            Meeting with client
-                          </p>
-                          <p className="mb-0 text-[#8c9097] dark:text-white/50">
-                            Video Conference
-                          </p>
-                        </div>
-                        <div>
-                          <span className="text-[#8c9097] dark:text-white/50">
-                            <i className="ri-time-line align-middle me-1 inline-block"></i>
-                            9:00am - 10:00am
-                          </span>
-                        </div>
-                      </div>
-                    </li>
-                    <li>
-                      <div className="flex items-start justify-conent-between">
-                        <div className="flex-grow">
-                          <p className="mb-0 text-[.875rem]">
-                            Lunch with team members
-                          </p>
-                          <p className="mb-0 text-[#8c9097] dark:text-white/50">
-                            Dolores Ait Labore Sit
-                          </p>
-                        </div>
-                        <div>
-                          <span className="text-[#8c9097] dark:text-white/50">
-                            <i className="ri-time-line align-middle me-1 inline-block"></i>
-                            12:00pm - 12:45am
-                          </span>
-                        </div>
-                      </div>
-                    </li>
-                    <li>
-                      <div className="flex items-start justify-conent-between">
-                        <div className="flex-grow">
-                          <p className="mb-0 text-[.875rem]">
-                            General board meeting
-                          </p>
-                          <p className="mb-0 text-[#8c9097] dark:text-white/50">
-                            Golden PArk
-                          </p>
-                        </div>
-                        <div>
-                          <span className="text-[#8c9097] dark:text-white/50">
-                            <i className="ri-time-line align-middle me-1 inline-block"></i>
-                            4:00pm - 5:30pm
-                          </span>
-                        </div>
-                      </div>
-                    </li>
-                    <li>
-                      <div className="flex items-start justify-conent-between">
-                        <div className="flex-grow">
-                          <p className="mb-0 text-[.875rem]">
-                            Create New Registration Page
-                          </p>
-                          <p className="mb-0 text-[#8c9097] dark:text-white/50">
-                            2UA Project
-                          </p>
-                        </div>
-                        <div>
-                          <span className="text-[#8c9097] dark:text-white/50">
-                            <i className="ri-time-line align-middle me-1 inline-block"></i>
-                            5:00pm - 5:45pm
-                          </span>
-                        </div>
-                      </div>
-                    </li>
-                  </ul>
+                        </td>
+                        <td>04-05-2023</td>
+                      </tr>
+                    </tbody>
+                  </table>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div className="xl:col-span-6 col-span-12">
-          <div className="box custom-box">
-            <div className="box-header justify-between">
-              <div className="box-title">Recent Tasks</div>
-              <div className="hs-dropdown ti-dropdown">
-                <Link
-                  href="#!"
-                  className="p-2 text-[0.75rem] text-[#8c9097] dark:text-white/50"
-                >
-                  View All
-                  <i className="ri-arrow-down-s-line align-middle ms-1"></i>
-                </Link>
-                <ul
-                  className="hs-dropdown-menu ti-dropdown-menu hidden"
-                  role="menu"
-                >
-                  <li>
-                    <Link className="ti-dropdown-item" href="#!">
-                      Download
-                    </Link>
-                  </li>
-                  <li>
-                    <Link className="ti-dropdown-item" href="#!">
-                      Import
-                    </Link>
-                  </li>
-                  <li>
-                    <Link className="ti-dropdown-item" href="#!">
-                      Export
-                    </Link>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <div className="box-body">
-              <div className="table-responsive">
-                <table className="table whitespace-nowrap table-bordered min-w-full">
-                  <thead>
-                    <tr>
-                      <th scope="col" className="text-start">
-                        S.No
-                      </th>
-                      <th scope="col" className="text-start">
-                        Title
-                      </th>
-                      <th scope="col" className="text-start">
-                        Assigned To
-                      </th>
-                      <th scope="col" className="text-start">
-                        Progress
-                      </th>
-                      <th scope="col" className="text-start">
-                        Status
-                      </th>
-                      <th scope="col" className="text-start">
-                        Due Date
-                      </th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr className="border border-defaultborder">
-                      <td>01</td>
-                      <td>Server Side Validation</td>
-                      <td>
-                        <div className="avatar-list-stacked">
-                          <span className="avatar avatar-xs !rounded-full">
-                            <img
-                              src="../../../assets/images/faces/2.jpg"
-                              alt="img"
-                            />
-                          </span>
-                          <span className="avatar avatar-xs !rounded-full">
-                            <img
-                              src="../../../assets/images/faces/8.jpg"
-                              alt="img"
-                            />
-                          </span>
-                          <span className="avatar avatar-xs !rounded-full">
-                            <img
-                              src="../../../assets/images/faces/2.jpg"
-                              alt="img"
-                            />
-                          </span>
-                          <span className="avatar avatar-xs !rounded-full">
-                            <img
-                              src="../../../assets/images/faces/10.jpg"
-                              alt="img"
-                            />
-                          </span>
-                          <Link
-                            className="avatar avatar-xs bg-primary !rounded-full text-white"
-                            href="#!"
-                          >
-                            +2
-                          </Link>
-                        </div>
-                      </td>
-                      <td>
-                        <div className="progress progress-xs">
-                          <div
-                            className="progress-bar progress-bar-striped progress-bar-animated w-3/5"
-                            aria-valuenow="60"
-                            aria-valuemin="0"
-                            aria-valuemax="100"
-                          ></div>
-                        </div>
-                      </td>
-                      <td>
-                        <span className="badge bg-primary/10 text-primary">
-                          In Progress
-                        </span>
-                      </td>
-                      <td>17-04-2023</td>
-                    </tr>
-                    <tr className="border border-defaultborder">
-                      <td>02</td>
-                      <td>Multipurpose Dashboard Template</td>
-                      <td>
-                        <div className="avatar-list-stacked">
-                          <span className="avatar avatar-xs !rounded-full">
-                            <img
-                              src="../../../assets/images/faces/6.jpg"
-                              alt="img"
-                            />
-                          </span>
-                          <span className="avatar avatar-xs !rounded-full">
-                            <img
-                              src="../../../assets/images/faces/8.jpg"
-                              alt="img"
-                            />
-                          </span>
-                        </div>
-                      </td>
-                      <td>
-                        <div className="progress progress-xs">
-                          <div
-                            className="progress-bar progress-bar-striped progress-bar-animated w-0"
-                            aria-valuenow="0"
-                            aria-valuemin="0"
-                            aria-valuemax="100"
-                          ></div>
-                        </div>
-                      </td>
-                      <td>
-                        <span className="badge bg-warning/10 text-warning">
-                          Pending
-                        </span>
-                      </td>
-                      <td>14-05-2023</td>
-                    </tr>
-                    <tr className="border border-defaultborder">
-                      <td>03</td>
-                      <td>Documentation Project</td>
-                      <td>
-                        <div className="avatar-list-stacked">
-                          <span className="avatar avatar-xs !rounded-full">
-                            <img
-                              src="../../../assets/images/faces/4.jpg"
-                              alt="img"
-                            />
-                          </span>
-                          <span className="avatar avatar-xs !rounded-full">
-                            <img
-                              src="../../../assets/images/faces/15.jpg"
-                              alt="img"
-                            />
-                          </span>
-                          <span className="avatar avatar-xs !rounded-full">
-                            <img
-                              src="../../../assets/images/faces/11.jpg"
-                              alt="img"
-                            />
-                          </span>
-                          <Link
-                            className="avatar avatar-xs bg-primary !rounded-full text-white"
-                            href="#!"
-                          >
-                            +1
-                          </Link>
-                        </div>
-                      </td>
-                      <td>
-                        <div className="progress progress-xs">
-                          <div
-                            className="progress-bar progress-bar-striped progress-bar-animated w-full"
-                            aria-valuenow="100"
-                            aria-valuemin="0"
-                            aria-valuemax="100"
-                          ></div>
-                        </div>
-                      </td>
-                      <td>
-                        <span className="badge bg-success/10 text-success">
-                          Completed
-                        </span>
-                      </td>
-                      <td>20-04-2023</td>
-                    </tr>
-                    <tr className="border border-defaultborder">
-                      <td>04</td>
-                      <td>HR Management Template Design</td>
-                      <td>
-                        <div className="avatar-list-stacked">
-                          <span className="avatar avatar-xs !rounded-full">
-                            <img
-                              src="../../../assets/images/faces/5.jpg"
-                              alt="img"
-                            />
-                          </span>
-                          <span className="avatar avatar-xs !rounded-full">
-                            <img
-                              src="../../../assets/images/faces/12.jpg"
-                              alt="img"
-                            />
-                          </span>
-                          <span className="avatar avatar-xs !rounded-full">
-                            <img
-                              src="../../../assets/images/faces/13.jpg"
-                              alt="img"
-                            />
-                          </span>
-                        </div>
-                      </td>
-                      <td>
-                        <div className="progress progress-xs">
-                          <div
-                            className="progress-bar progress-bar-striped progress-bar-animated w-1/2"
-                            aria-valuenow="50"
-                            aria-valuemin="0"
-                            aria-valuemax="100"
-                          ></div>
-                        </div>
-                      </td>
-                      <td>
-                        <span className="badge bg-primary/10 text-primary">
-                          In Progress
-                        </span>
-                      </td>
-                      <td>29-05-2023</td>
-                    </tr>
-                    <tr className="border border-defaultborder">
-                      <td>05</td>
-                      <td>Developing Backend</td>
-                      <td>
-                        <div className="avatar-list-stacked">
-                          <span className="avatar avatar-xs !rounded-full">
-                            <img
-                              src="../../../assets/images/faces/1.jpg"
-                              alt="img"
-                            />
-                          </span>
-                          <span className="avatar avatar-xs !rounded-full">
-                            <img
-                              src="../../../assets/images/faces/8.jpg"
-                              alt="img"
-                            />
-                          </span>
-                          <span className="avatar avatar-xs !rounded-full">
-                            <img
-                              src="../../../assets/images/faces/9.jpg"
-                              alt="img"
-                            />
-                          </span>
-                          <Link
-                            className="avatar avatar-xs bg-primary !rounded-full text-white"
-                            href="#!"
-                          >
-                            +3
-                          </Link>
-                        </div>
-                      </td>
-                      <td>
-                        <div className="progress progress-xs">
-                          <div
-                            className="progress-bar progress-bar-striped progress-bar-animated w-1/2"
-                            aria-valuenow="50"
-                            aria-valuemin="0"
-                            aria-valuemax="100"
-                          ></div>
-                        </div>
-                      </td>
-                      <td>
-                        <span className="badge bg-primary/10 text-primary">
-                          In Progress
-                        </span>
-                      </td>
-                      <td>25-05-2023</td>
-                    </tr>
-                    <tr className="border border-defaultborder">
-                      <td>06</td>
-                      <td> Design New Dashboard Template</td>
-                      <td>
-                        <div className="avatar-list-stacked">
-                          <span className="avatar avatar-xs !rounded-full">
-                            <img
-                              src="../../../assets/images/faces/4.jpg"
-                              alt="img"
-                            />
-                          </span>
-                          <span className="avatar avatar-xs !rounded-full">
-                            <img
-                              src="../../../assets/images/faces/12.jpg"
-                              alt="img"
-                            />
-                          </span>
-                          <span className="avatar avatar-xs !rounded-full">
-                            <img
-                              src="../../../assets/images/faces/16.jpg"
-                              alt="img"
-                            />
-                          </span>
-                          <Link
-                            className="avatar avatar-xs bg-primary !rounded-full text-white"
-                            href="#!"
-                          >
-                            +3
-                          </Link>
-                        </div>
-                      </td>
-                      <td>
-                        <div className="progress progress-xs">
-                          <div
-                            className="progress-bar progress-bar-striped progress-bar-animated w-full"
-                            aria-valuenow="100"
-                            aria-valuemin="0"
-                            aria-valuemax="100"
-                          ></div>
-                        </div>
-                      </td>
-                      <td>
-                        <span className="badge bg-success/10 text-success">
-                          Completed
-                        </span>
-                      </td>
-                      <td>04-05-2023</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>}
+      )}
       <div className="grid grid-cols-12 gap-x-6">
         <div className="xl:col-span-12 col-span-12">
           <div className="box">
@@ -1897,16 +1905,24 @@ const ProjectSummary = () => {
                           </span>
                         </td>
                         <td>
-  <div className="progress progress-lg mb-[3rem] custom-progress-3 progress-animate" 
-       aria-valuenow={idx.attributes.percentage_complete} 
-       aria-valuemin="0" 
-       aria-valuemax="100">
-    <div className="progress-bar" 
-         style={{width: `${idx.attributes.percentage_complete}%`}}>
-      <div className="progress-bar-value">{idx.attributes.percentage_complete}%</div>
-    </div>
-  </div>
-</td>
+                          <div
+                            className="progress progress-lg mb-[3rem] custom-progress-3 progress-animate"
+                            aria-valuenow={idx.attributes.percentage_complete}
+                            aria-valuemin="0"
+                            aria-valuemax="100"
+                          >
+                            <div
+                              className="progress-bar"
+                              style={{
+                                width: `${idx.attributes.percentage_complete}%`,
+                              }}
+                            >
+                              <div className="progress-bar-value">
+                                {idx.attributes.percentage_complete}%
+                              </div>
+                            </div>
+                          </div>
+                        </td>
                         <td>
                           <span className="text-muted">
                             {idx.attributes.created_at.split("T")[0]}
@@ -1967,243 +1983,288 @@ const ProjectSummary = () => {
             </div>
           </div>
         </div>
-        { selectedProject && <div className="xxl:col-span-4 xl:col-span-4 col-span-12">
-          <div className="box">
-            <div className="box-header justify-between">
-              <div className="box-title">Recent Activity</div>
-              <div className="hs-dropdown ti-dropdown">
-                <Link
-                  href="#!"
-                  className="text-[0.75rem] px-2 font-normal text-[#8c9097] dark:text-white/50"
-                  aria-expanded="false"
-                >
-                  View All
-                  <i className="ri-arrow-down-s-line align-middle ms-1 inline-block"></i>
-                </Link>
-                <ul
-                  className="hs-dropdown-menu ti-dropdown-menu hidden"
-                  role="menu"
-                >
-                  <li>
-                    <Link
-                      className="ti-dropdown-item !py-2 !px-[0.9375rem] !text-[0.8125rem] !font-medium block"
-                      href="#!"
-                    >
-                      Today
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      className="ti-dropdown-item !py-2 !px-[0.9375rem] !text-[0.8125rem] !font-medium block"
-                      href="#!"
-                    >
-                      This Week
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      className="ti-dropdown-item !py-2 !px-[0.9375rem] !text-[0.8125rem] !font-medium block"
-                      href="#!"
-                    >
-                      Last Week
-                    </Link>
-                  </li>
-                </ul>
+        {selectedProject && (
+          <div className="xxl:col-span-6 xl:col-span-6 col-span-12">
+            <div className="box">
+              <div className="box-header justify-between">
+                <div className="box-title">Recent Activity</div>
+                <div className="hs-dropdown ti-dropdown">
+                  <Link
+                    href="#!"
+                    className="text-[0.75rem] px-2 font-normal text-[#8c9097] dark:text-white/50"
+                    aria-expanded="false"
+                  >
+                    View All
+                    <i className="ri-arrow-down-s-line align-middle ms-1 inline-block"></i>
+                  </Link>
+                  <ul
+                    className="hs-dropdown-menu ti-dropdown-menu hidden"
+                    role="menu"
+                  >
+                    <li>
+                      <Link
+                        className="ti-dropdown-item !py-2 !px-[0.9375rem] !text-[0.8125rem] !font-medium block"
+                        href="#!"
+                      >
+                        Today
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        className="ti-dropdown-item !py-2 !px-[0.9375rem] !text-[0.8125rem] !font-medium block"
+                        href="#!"
+                      >
+                        This Week
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        className="ti-dropdown-item !py-2 !px-[0.9375rem] !text-[0.8125rem] !font-medium block"
+                        href="#!"
+                      >
+                        Last Week
+                      </Link>
+                    </li>
+                  </ul>
+                </div>
               </div>
-            </div>
-            <div className="box-body">
-              <div>
-                <ul className="list-none mb-0 crm-recent-activity">
-                  <li className="crm-recent-activity-content">
-                    <div className="flex items-start">
-                      <div className="me-4">
-                        <span className="w-[1.25rem] h-[1.25rem] inline-flex items-center justify-center font-medium leading-[1.25rem] text-[0.65rem] text-primary bg-primary/10 rounded-full">
-                          <i className="bi bi-circle-fill text-[0.5rem]"></i>
-                        </span>
-                      </div>
-                      <div className="crm-timeline-content text-defaultsize">
-                        <span className="font-semibold rtl:ms-1">
-                          Update of calendar events &amp;
-                        </span>
-                        <span>
-                          <Link
-                            href="#!"
-                            className="text-primary font-semibold ms-1"
-                          >
-                            Added new events in next week.
-                          </Link>
-                        </span>
-                      </div>
-                      <div className="flex-grow text-end">
-                        <span className="block text-[#8c9097] dark:text-white/50 text-[0.6875rem] opacity-[0.7]">
-                          4:45PM
-                        </span>
-                      </div>
-                    </div>
-                  </li>
-                  <li className="crm-recent-activity-content">
-                    <div className="flex items-start  text-defaultsize">
-                      <div className="me-4">
-                        <span className="w-[1.25rem] h-[1.25rem] leading-[1.25rem] inline-flex items-center justify-center font-medium text-[0.65rem] text-secondary bg-secondary/10 rounded-full">
-                          <i className="bi bi-circle-fill text-[0.5rem]"></i>
-                        </span>
-                      </div>
-                      <div className="crm-timeline-content">
-                        <span>
-                          New theme for{" "}
-                          <span className="font-semibold">Spruko Website</span>{" "}
-                          completed
-                        </span>
-                        <span className="block text-[0.75rem] text-[#8c9097] dark:text-white/50">
-                          Lorem ipsum, dolor sit amet.
-                        </span>
-                      </div>
-                      <div className="flex-grow text-end">
-                        <span className="block text-[#8c9097] dark:text-white/50 text-[0.6875rem] opacity-[0.7]">
-                          3 hrs
-                        </span>
-                      </div>
-                    </div>
-                  </li>
-                  <li className="crm-recent-activity-content  text-defaultsize">
-                    <div className="flex items-start">
-                      <div className="me-4">
-                        <span className="w-[1.25rem] h-[1.25rem] leading-[1.25rem] inline-flex items-center justify-center font-medium text-[0.65rem] text-success bg-success/10 rounded-full">
-                          <i className="bi bi-circle-fill  text-[0.5rem]"></i>
-                        </span>
-                      </div>
-                      <div className="crm-timeline-content">
-                        <span>
-                          Created a{" "}
-                          <span className="text-success font-semibold">
-                            New Task
-                          </span>{" "}
-                          today{" "}
-                          <span className="w-[1.25rem] h-[1.25rem] leading-[1.25rem] text-[0.65rem] inline-flex items-center justify-center font-medium bg-purple/10 rounded-full ms-1">
-                            <i className="ri-add-fill text-purple text-[0.75rem]"></i>
+              <div className="box-body">
+                <div>
+                  <ul className="list-none mb-0 crm-recent-activity">
+                    <li className="crm-recent-activity-content">
+                      <div className="flex items-start">
+                        <div className="me-4">
+                          <span className="w-[1.25rem] h-[1.25rem] inline-flex items-center justify-center font-medium leading-[1.25rem] text-[0.65rem] text-primary bg-primary/10 rounded-full">
+                            <i className="bi bi-circle-fill text-[0.5rem]"></i>
                           </span>
-                        </span>
+                        </div>
+                        <div className="crm-timeline-content text-defaultsize">
+                          <span className="font-semibold rtl:ms-1">
+                            Update of calendar events &amp;
+                          </span>
+                          <span>
+                            <Link
+                              href="#!"
+                              className="text-primary font-semibold ms-1"
+                            >
+                              Added new events in next week.
+                            </Link>
+                          </span>
+                        </div>
+                        <div className="flex-grow text-end">
+                          <span className="block text-[#8c9097] dark:text-white/50 text-[0.6875rem] opacity-[0.7]">
+                            4:45PM
+                          </span>
+                        </div>
                       </div>
-                      <div className="flex-grow text-end">
-                        <span className="block text-[#8c9097] dark:text-white/50 text-[0.6875rem] opacity-[0.7]">
-                          22 hrs
-                        </span>
+                    </li>
+                    <li className="crm-recent-activity-content">
+                      <div className="flex items-start  text-defaultsize">
+                        <div className="me-4">
+                          <span className="w-[1.25rem] h-[1.25rem] leading-[1.25rem] inline-flex items-center justify-center font-medium text-[0.65rem] text-secondary bg-secondary/10 rounded-full">
+                            <i className="bi bi-circle-fill text-[0.5rem]"></i>
+                          </span>
+                        </div>
+                        <div className="crm-timeline-content">
+                          <span>
+                            New theme for{" "}
+                            <span className="font-semibold">
+                              Spruko Website
+                            </span>{" "}
+                            completed
+                          </span>
+                          <span className="block text-[0.75rem] text-[#8c9097] dark:text-white/50">
+                            Lorem ipsum, dolor sit amet.
+                          </span>
+                        </div>
+                        <div className="flex-grow text-end">
+                          <span className="block text-[#8c9097] dark:text-white/50 text-[0.6875rem] opacity-[0.7]">
+                            3 hrs
+                          </span>
+                        </div>
                       </div>
-                    </div>
-                  </li>
-                  <li className="crm-recent-activity-content  text-defaultsize">
-                    <div className="flex items-start">
-                      <div className="me-4">
-                        <span className="w-[1.25rem] h-[1.25rem] leading-[1.25rem] inline-flex items-center justify-center font-medium text-[0.65rem] text-pink bg-pink/10 rounded-full">
-                          <i className="bi bi-circle-fill text-[0.5rem]"></i>
-                        </span>
+                    </li>
+                    <li className="crm-recent-activity-content  text-defaultsize">
+                      <div className="flex items-start">
+                        <div className="me-4">
+                          <span className="w-[1.25rem] h-[1.25rem] leading-[1.25rem] inline-flex items-center justify-center font-medium text-[0.65rem] text-success bg-success/10 rounded-full">
+                            <i className="bi bi-circle-fill  text-[0.5rem]"></i>
+                          </span>
+                        </div>
+                        <div className="crm-timeline-content">
+                          <span>
+                            Created a{" "}
+                            <span className="text-success font-semibold">
+                              New Task
+                            </span>{" "}
+                            today{" "}
+                            <span className="w-[1.25rem] h-[1.25rem] leading-[1.25rem] text-[0.65rem] inline-flex items-center justify-center font-medium bg-purple/10 rounded-full ms-1">
+                              <i className="ri-add-fill text-purple text-[0.75rem]"></i>
+                            </span>
+                          </span>
+                        </div>
+                        <div className="flex-grow text-end">
+                          <span className="block text-[#8c9097] dark:text-white/50 text-[0.6875rem] opacity-[0.7]">
+                            22 hrs
+                          </span>
+                        </div>
                       </div>
-                      <div className="crm-timeline-content">
-                        <span>
-                          New member{" "}
-                          <span className="py-[0.2rem] px-[0.45rem] font-semibold rounded-sm text-pink text-[0.75em] bg-pink/10">
-                            @andreas gurrero
-                          </span>{" "}
-                          added today to AI Summit.
-                        </span>
+                    </li>
+                    <li className="crm-recent-activity-content  text-defaultsize">
+                      <div className="flex items-start">
+                        <div className="me-4">
+                          <span className="w-[1.25rem] h-[1.25rem] leading-[1.25rem] inline-flex items-center justify-center font-medium text-[0.65rem] text-pink bg-pink/10 rounded-full">
+                            <i className="bi bi-circle-fill text-[0.5rem]"></i>
+                          </span>
+                        </div>
+                        <div className="crm-timeline-content">
+                          <span>
+                            New member{" "}
+                            <span className="py-[0.2rem] px-[0.45rem] font-semibold rounded-sm text-pink text-[0.75em] bg-pink/10">
+                              @andreas gurrero
+                            </span>{" "}
+                            added today to AI Summit.
+                          </span>
+                        </div>
+                        <div className="flex-grow text-end">
+                          <span className="block text-[#8c9097] dark:text-white/50 text-[0.6875rem] opacity-[0.7]">
+                            Today
+                          </span>
+                        </div>
                       </div>
-                      <div className="flex-grow text-end">
-                        <span className="block text-[#8c9097] dark:text-white/50 text-[0.6875rem] opacity-[0.7]">
-                          Today
-                        </span>
+                    </li>
+                    <li className="crm-recent-activity-content  text-defaultsize">
+                      <div className="flex items-start">
+                        <div className="me-4">
+                          <span className="w-[1.25rem] h-[1.25rem] leading-[1.25rem] inline-flex items-center justify-center font-medium text-[0.65rem] text-warning bg-warning/10 rounded-full">
+                            <i className="bi bi-circle-fill text-[0.5rem]"></i>
+                          </span>
+                        </div>
+                        <div className="crm-timeline-content">
+                          <span>32 New people joined summit.</span>
+                        </div>
+                        <div className="flex-grow text-end">
+                          <span className="block text-[#8c9097] dark:text-white/50 text-[0.6875rem] opacity-[0.7]">
+                            22 hrs
+                          </span>
+                        </div>
                       </div>
-                    </div>
-                  </li>
-                  <li className="crm-recent-activity-content  text-defaultsize">
-                    <div className="flex items-start">
-                      <div className="me-4">
-                        <span className="w-[1.25rem] h-[1.25rem] leading-[1.25rem] inline-flex items-center justify-center font-medium text-[0.65rem] text-warning bg-warning/10 rounded-full">
-                          <i className="bi bi-circle-fill text-[0.5rem]"></i>
-                        </span>
+                    </li>
+                    <li className="crm-recent-activity-content  text-defaultsize">
+                      <div className="flex items-start">
+                        <div className="me-4">
+                          <span className="w-[1.25rem] h-[1.25rem] leading-[1.25rem] inline-flex items-center justify-center font-medium text-[0.65rem] text-info bg-info/10 rounded-full">
+                            <i className="bi bi-circle-fill text-[0.5rem]"></i>
+                          </span>
+                        </div>
+                        <div className="crm-timeline-content">
+                          <span>
+                            Neon Tarly added{" "}
+                            <span className="text-info font-semibold">
+                              Robert Bright
+                            </span>{" "}
+                            to AI summit project.
+                          </span>
+                        </div>
+                        <div className="flex-grow text-end">
+                          <span className="block text-[#8c9097] dark:text-white/50 text-[0.6875rem] opacity-[0.7]">
+                            12 hrs
+                          </span>
+                        </div>
                       </div>
-                      <div className="crm-timeline-content">
-                        <span>32 New people joined summit.</span>
+                    </li>
+                    <li className="crm-recent-activity-content  text-defaultsize">
+                      <div className="flex items-start">
+                        <div className="me-4">
+                          <span className="w-[1.25rem] h-[1.25rem] leading-[1.25rem] inline-flex items-center justify-center font-medium text-[0.65rem] text-[#232323] dark:text-white bg-[#232323]/10 dark:bg-white/20 rounded-full">
+                            <i className="bi bi-circle-fill text-[0.5rem]"></i>
+                          </span>
+                        </div>
+                        <div className="crm-timeline-content">
+                          <span>
+                            Replied to new support request{" "}
+                            <i className="ri-checkbox-circle-line text-success text-[1rem] align-middle"></i>
+                          </span>
+                        </div>
+                        <div className="flex-grow text-end">
+                          <span className="block text-[#8c9097] dark:text-white/50 text-[0.6875rem] opacity-[0.7]">
+                            4 hrs
+                          </span>
+                        </div>
                       </div>
-                      <div className="flex-grow text-end">
-                        <span className="block text-[#8c9097] dark:text-white/50 text-[0.6875rem] opacity-[0.7]">
-                          22 hrs
-                        </span>
+                    </li>
+                    <li className="crm-recent-activity-content  text-defaultsize">
+                      <div className="flex items-start">
+                        <div className="me-4">
+                          <span className="w-[1.25rem] h-[1.25rem] leading-[1.25rem] inline-flex items-center justify-center font-medium text-[0.65rem] text-purple bg-purple/10 rounded-full">
+                            <i className="bi bi-circle-fill text-[0.5rem]"></i>
+                          </span>
+                        </div>
+                        <div className="crm-timeline-content">
+                          <span>
+                            Completed documentation of{" "}
+                            <Link
+                              href="#!"
+                              className="text-purple underline font-semibold"
+                            >
+                              AI Summit.
+                            </Link>
+                          </span>
+                        </div>
+                        <div className="flex-grow text-end">
+                          <span className="block text-[#8c9097] dark:text-white/50 text-[0.6875rem] opacity-[0.7]">
+                            4 hrs
+                          </span>
+                        </div>
                       </div>
-                    </div>
-                  </li>
-                  <li className="crm-recent-activity-content  text-defaultsize">
-                    <div className="flex items-start">
-                      <div className="me-4">
-                        <span className="w-[1.25rem] h-[1.25rem] leading-[1.25rem] inline-flex items-center justify-center font-medium text-[0.65rem] text-info bg-info/10 rounded-full">
-                          <i className="bi bi-circle-fill text-[0.5rem]"></i>
-                        </span>
-                      </div>
-                      <div className="crm-timeline-content">
-                        <span>
-                          Neon Tarly added{" "}
-                          <span className="text-info font-semibold">
-                            Robert Bright
-                          </span>{" "}
-                          to AI summit project.
-                        </span>
-                      </div>
-                      <div className="flex-grow text-end">
-                        <span className="block text-[#8c9097] dark:text-white/50 text-[0.6875rem] opacity-[0.7]">
-                          12 hrs
-                        </span>
-                      </div>
-                    </div>
-                  </li>
-                  <li className="crm-recent-activity-content  text-defaultsize">
-                    <div className="flex items-start">
-                      <div className="me-4">
-                        <span className="w-[1.25rem] h-[1.25rem] leading-[1.25rem] inline-flex items-center justify-center font-medium text-[0.65rem] text-[#232323] dark:text-white bg-[#232323]/10 dark:bg-white/20 rounded-full">
-                          <i className="bi bi-circle-fill text-[0.5rem]"></i>
-                        </span>
-                      </div>
-                      <div className="crm-timeline-content">
-                        <span>
-                          Replied to new support request{" "}
-                          <i className="ri-checkbox-circle-line text-success text-[1rem] align-middle"></i>
-                        </span>
-                      </div>
-                      <div className="flex-grow text-end">
-                        <span className="block text-[#8c9097] dark:text-white/50 text-[0.6875rem] opacity-[0.7]">
-                          4 hrs
-                        </span>
-                      </div>
-                    </div>
-                  </li>
-                  <li className="crm-recent-activity-content  text-defaultsize">
-                    <div className="flex items-start">
-                      <div className="me-4">
-                        <span className="w-[1.25rem] h-[1.25rem] leading-[1.25rem] inline-flex items-center justify-center font-medium text-[0.65rem] text-purple bg-purple/10 rounded-full">
-                          <i className="bi bi-circle-fill text-[0.5rem]"></i>
-                        </span>
-                      </div>
-                      <div className="crm-timeline-content">
-                        <span>
-                          Completed documentation of{" "}
-                          <Link
-                            href="#!"
-                            className="text-purple underline font-semibold"
-                          >
-                            AI Summit.
-                          </Link>
-                        </span>
-                      </div>
-                      <div className="flex-grow text-end">
-                        <span className="block text-[#8c9097] dark:text-white/50 text-[0.6875rem] opacity-[0.7]">
-                          4 hrs
-                        </span>
-                      </div>
-                    </div>
-                  </li>
-                </ul>
+                    </li>
+                  </ul>
+                </div>
               </div>
             </div>
           </div>
-        </div>}
+        )}
+        {selectedProject && (
+          <div className="xl:col-span-6 lg:col-span-6 md:col-span-6 sm:col-span-12 col-span-12">
+            <div className="box custom-box">
+              <div className="box-header">
+                <div className="box-title">Swiper with Pagination</div>
+              </div>
+              <div className="box-body">
+                <Swiper
+                  spaceBetween={30}
+                  centeredSlides={true}
+                  autoplay={{ delay: 2500, disableOnInteraction: false }}
+                  pagination={{ clickable: true }}
+                  modules={[Pagination, Autoplay]}
+                  className="mySwiper"
+                >
+                  <SwiperSlide>
+                    <img
+                      src="../../../assets/images/media/media-32.jpg"
+                      className="!rounded-md"
+                      alt=""
+                    />
+                  </SwiperSlide>
+                  <SwiperSlide>
+                    <img
+                      src="../../../assets/images/media/media-31.jpg"
+                      className="!rounded-md"
+                      alt=""
+                    />
+                  </SwiperSlide>
+                  <SwiperSlide>
+                    <img
+                      src="../../../assets/images/media/media-33.jpg"
+                      className="!rounded-md"
+                      alt=""
+                    />
+                  </SwiperSlide>
+                </Swiper>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </Fragment>
   );
