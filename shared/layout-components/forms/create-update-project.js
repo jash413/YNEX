@@ -223,11 +223,10 @@ const CreateUpdateProject = (props) => {
         mainpageurl="/components/project-management/project-summary/"
         loadProjectData={getDataFromLocalStorage}
         createProject = {false}
+        isDisabled={true}
       />
-      <div className="flex justify-between">
-        <div className="ml-auto"></div>
-      </div>
-      <div className="hs-dropdown ti-dropdown me-2 ml-auto">
+      
+      <div className="hs-dropdown ti-dropdown me-2 ml-6">
         <button
           className="ti-btn ti-btn-primary-full ti-dropdown-toggle !py-2"
           type="button"
@@ -276,7 +275,7 @@ const CreateUpdateProject = (props) => {
                 </div>
                 <div className="box-body">
                   <div className="grid grid-cols-12 gap-4">
-                    <div className="xl:col-span-4 col-span-12">
+                    <div className="xl:col-span-6 col-span-12">
                       <label htmlFor="selectedProject" className="form-label">
                         Project Name :
                       </label>
@@ -290,7 +289,7 @@ const CreateUpdateProject = (props) => {
                       />
                     </div>
                     {/* input field for Client Name */}
-                    <div className="xl:col-span-4 col-span-12">
+                    <div className="xl:col-span-6 col-span-12">
                       <label htmlFor="client_name" className="form-label">
                         Client Name :
                       </label>
@@ -304,7 +303,7 @@ const CreateUpdateProject = (props) => {
                       />
                     </div>
                     {/* input field for Budget */}
-                    <div className="xl:col-span-4 col-span-12">
+                    <div className="xl:col-span-6 col-span-12">
                       <label htmlFor="budget" className="form-label">
                         Budget :
                       </label>
@@ -323,7 +322,7 @@ const CreateUpdateProject = (props) => {
                     </div>
                     {/* input field for Project Address */}
                     {/* input field for Project address line one*/}
-                    <div className="xl:col-span-3 col-span-12">
+                    <div className="xl:col-span-6 col-span-12">
                       <label htmlFor="project_address" className="form-label">
                         Project Address Line 1:
                       </label>
@@ -337,7 +336,7 @@ const CreateUpdateProject = (props) => {
                       />
                     </div>
                     {/* input field for Project address line two*/}
-                    <div className="xl:col-span-3 col-span-12">
+                    <div className="xl:col-span-6 col-span-12">
                       <label htmlFor="project_address" className="form-label">
                         Project Address Line 2 :
                       </label>
@@ -351,7 +350,7 @@ const CreateUpdateProject = (props) => {
                       />
                     </div>
                     {/* input field for zipcode */}
-                    <div className="xl:col-span-3 col-span-12">
+                    <div className="xl:col-span-6 col-span-12">
                       <label htmlFor="zipcode" className="form-label">
                         zipcode :
                       </label>
@@ -365,7 +364,7 @@ const CreateUpdateProject = (props) => {
                       />
                     </div>
                     {/* input field for state */}
-                    <div className="xl:col-span-3 col-span-12">
+                    <div className="xl:col-span-6 col-span-12">
                       <label htmlFor="state" className="form-label">
                         State :
                       </label>

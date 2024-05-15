@@ -245,7 +245,7 @@ const ProjectSummary = () => {
           </div>
         </div>
       </div>
-      <div className="grid grid-cols-12 gap-6">
+      {selectedProject && <div className="grid grid-cols-12 gap-6">
         <div className="xl:col-span-6 md:col-span-6  col-span-12">
           <div className="box custom-box">
             <div className="box-header justify-between">
@@ -1794,12 +1794,12 @@ const ProjectSummary = () => {
             </div>
           </div>
         </div>
-      </div>
+      </div>}
       <div className="grid grid-cols-12 gap-x-6">
-        <div className="xl:col-span-8 col-span-12">
+        <div className="xl:col-span-12 col-span-12">
           <div className="box">
             <div className="box-header justify-between">
-              <div className="box-title">Orders</div>
+              <div className="box-title">Billing Summary</div>
               <div className="flex flex-wrap">
                 <div className="me-3 my-1">
                   <input
@@ -1967,7 +1967,7 @@ const ProjectSummary = () => {
             </div>
           </div>
         </div>
-        <div className="xxl:col-span-4 xl:col-span-4 col-span-12">
+        { selectedProject && <div className="xxl:col-span-4 xl:col-span-4 col-span-12">
           <div className="box">
             <div className="box-header justify-between">
               <div className="box-title">Recent Activity</div>
@@ -2203,7 +2203,7 @@ const ProjectSummary = () => {
               </div>
             </div>
           </div>
-        </div>
+        </div>}
       </div>
     </Fragment>
   );
