@@ -17,118 +17,52 @@ import { FilePond } from "react-filepond";
 import network from "@/config";
 
 const formDataSchema = z.object({
-  bid_amount_from_sub: z
-    .string()
-    .nonempty({ message: "Bid Amount From Sub is required" }),
-  bid_status: z.string().nonempty({ message: "Bid Status is required" }),
-  description: z.string().nonempty({ message: "Description is required" }),
-  bid_details_from_sub: z
-    .string()
-    .nonempty({ message: "Bid Details From Sub is required" }),
-  bid_outscope: z.string().nonempty({ message: "Bid Outscope is required" }),
-  bid_inscope: z.string().nonempty({ message: "Bid Inscope is required" }),
-  subcontractor_id: z
-    .string()
-    .nonempty({ message: "Subcontractor ID is required" }),
-  builder_notes: z.string().nonempty({ message: "Builder Notes is required" }),
-  bid_payment_terms: z
-    .string()
-    .nonempty({ message: "Bid Payment Terms is required" }),
+  selectedProject: z.string(),
+  client_name: z.string(),
+  assigned_to: z.array(z.string()),
+  description: z.string(),
+  address1: z.string(),
+  address2: z.string(),
+  zipcode: z.number(),
+  state: z.string(),
+  budget: z.number(),
+  start_date: z.date(),
+  end_date: z.date(),
+  customer_invite: z.string(),
+  files: z.array(z.any()),
 });
 
 const CreateUpdateProject = (props) => {
   const formType = props.formType;
-  const bidId = props.bidId;
   const [formData, setFormData] = useState({
     selectedProject: "",
     client_name: "", // Client Name
     assigned_to: [], // Assigned To
     description: "",
-    project_address_line1: "",
-    project_address_line2: "",
+    address1: "",
+    address2: "",
     zipcode : "", // zipcode
     state : "", // State
-     // Job/Project address
     budget: "", // Price for customer/Budget
     start_date: "", // Start date
+    end_date: "", // End date
     customer_invite: "", // Invite customer (including setting permissions - using phone number or email or user id)
     files: [], // Files drop area → Add the ability to upload multiple files like gmail allows user to upload multiple files with drop and drag functionality
-  });
-  const [scopeData, setScopeData] = useState({
-    bid_inscope: [{ bidDetail: "" }],
-    bid_outscope: [{ bidDetail: "" }],
   });
   const [selectedProject, setSelectedProject] = useState(null);
   const [selectTemplate, setSelectTemplate] = useState("");
   const [multiselectdata, setMultiselectdata] = useState([]);
 
   useEffect(() => {
-    fetch("/api/assignee")
+    fetch("/api/users/")
       .then((response) => response.json())
-      .then((data) => setMultiselectdata(data))
+      .then((data) => setMultiselectdata(data.data))
       .catch((error) => console.error("Error:", error));
   }, []);
 
   useEffect(() => {
     getDataFromLocalStorage();
   }, []);
-
-  useEffect(() => {
-    if (
-      scopeData.bid_inscope.length !== 0 &&
-      scopeData.bid_outscope.length !== 0
-    ) {
-      const inScope = scopeData.bid_inscope
-        .map((bid) => bid.bidDetail)
-        .join(",");
-      const outScope = scopeData.bid_outscope
-        .map((bid) => bid.bidDetail)
-        .join(",");
-      setFormData((prevState) => ({
-        ...prevState,
-        bid_inscope: inScope,
-        bid_outscope: outScope,
-      }));
-    }
-  }, [scopeData]);
-
-  useEffect(() => {
-    if (bidId) {
-      const fetchBidDetails = async () => {
-        try {
-          const response = await axios.get(`${network.serverUrl}api/${bidId}`);
-          setFormData({
-            selectedProject: response.data.selectedProject,
-            selectedTask: response.data.selectedTask,
-            cost_code_id: response.data.cost_code_id,
-            description: response.data.description,
-            bid_amount: response.data.bid_amount_from_sub,
-            bid_details: response.data.bid_details_from_sub,
-            bid_inscope: response.data.bid_inscope,
-            bid_outscope: response.data.bid_outscope,
-            bid_payment_terms: response.data.bid_payment_terms,
-            bid_recieved_date: response.data.bid_recieved_date,
-            subcontractor_id: response.data.subcontractor_id["id"],
-            builder_notes: response.data.builder_notes,
-            bid_warranty: response.data.warranty,
-          });
-          const inScope = response.data.bid_inscope.split(",").map((bid) => ({
-            bidDetail: bid,
-          }));
-          const outScope = response.data.bid_outscope.split(",").map((bid) => ({
-            bidDetail: bid,
-          }));
-          setScopeData({
-            bid_inscope: inScope,
-            bid_outscope: outScope,
-          });
-        } catch (error) {
-          console.error(error);
-        }
-      };
-      fetchBidDetails();
-    }
-  }, [bidId]);
 
   const handleInputChange = (event) => {
     setFormData({ ...formData, [event.target.id]: event.target.value });
@@ -152,65 +86,50 @@ const CreateUpdateProject = (props) => {
     }
   };
 
-  const handleBidChange = (e, index, field) => {
-    const newBids = [...scopeData[field]];
-    newBids[index][e.target.name] = e.target.value;
-    setScopeData({ ...scopeData, [field]: newBids });
-  };
 
-  const handleAddBid = (field) => {
-    setScopeData({
-      ...scopeData,
-      [field]: [...scopeData[field], { bidDetail: "" }],
-    });
-  };
-
-  const handleRemoveBid = (index, field) => {
-    const newBids = [...scopeData[field]];
-    if (newBids.length === 1) {
-      return;
-    }
-    newBids.splice(index, 1);
-    setScopeData({ ...scopeData, [field]: newBids });
-  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
 
     try {
       formDataSchema.parse(formData);
+      setFormData({...formData, projectTemplate: selectTemplate});
+
+      axios.post(`${network.onlineUrl}api/project/`, 
+      formData,
+      {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${network.token}`,
+
+
+        },
+      }
+
+      ).then((response) => {
+        console.log(response);
+      }
+      );
 
       setFormData({
         selectedProject: "",
-        selectedTask: "",
-        cost_code_id: "",
+        client_name: "",
+        assigned_to: [],
         description: "",
-        bid_amount: "",
-        bid_details: "",
-        bid_inscope: "",
-        bid_outscope: "",
-        bid_payment_terms: "",
-        bid_recieved_date: isoDate,
-        builder_notes: "",
-        bid_warranty: "",
+        address1: "",
+        address2: "",
+        zipcode : "",
+        state : "",
+        budget: "",
+        start_date: "",
+        end_date: "",
+        customer_invite: "",
+        files: [],
       });
     } catch (error) {
       console.log(error);
     }
   };
-
-  const [displayedBidAmount, setDisplayedBidAmount] = useState("");
-
-  const handleBidAmountChange = (event) => {
-    const { value } = event.target;
-    const numericValue = value.replace(/,/g, "");
-    if (!isNaN(numericValue)) {
-      setFormData({ ...formData, bid_amount: numericValue });
-      setDisplayedBidAmount(Intl.NumberFormat().format(numericValue));
-    }
-  };
-
-  const [files, setFiles] = useState([]);
 
   return (
     <div>
@@ -329,9 +248,9 @@ const CreateUpdateProject = (props) => {
                       <input
                         type="text"
                         className="form-control"
-                        id="project_address"
+                        id="address1"
                         placeholder="Enter Project Address"
-                        value={formData.project_address_line1}
+                        value={formData.address1}
                         onChange={handleInputChange}
                       />
                     </div>
@@ -343,9 +262,9 @@ const CreateUpdateProject = (props) => {
                       <input
                         type="text"
                         className="form-control"
-                        id="project_address"
+                        id="address2"
                         placeholder="Enter Project Address"
-                        value={formData.project_address_line2}
+                        value={formData.address2}
                         onChange={handleInputChange}
                       />
                     </div>
@@ -382,19 +301,17 @@ const CreateUpdateProject = (props) => {
                       <Select
                         isMulti
                         name="state"
-                        options={multiselectdata}
+                        options={multiselectdata.map((user) => ({
+                          value: user.id,
+                          label: user.attributes.username,
+                        }))}
                         className="js-example-placeholder-multiple w-full js-states"
                         menuPlacement="auto"
                         classNamePrefix="Select2"
-                        defaultValue={[
-                          multiselectdata[0],
-                          multiselectdata[9],
-                          multiselectdata[4],
-                        ]}
                         onChange={(selectedOptions) => {
                           setFormData({
                             ...formData,
-                            assignedTo: selectedOptions.map(
+                            assigned_to: selectedOptions.map(
                               (option) => option.value
                             ),
                           });
@@ -433,6 +350,25 @@ const CreateUpdateProject = (props) => {
                         </div>
                       </div>
                     </div>
+                    {/* input field for End date */}
+                    <div className="xl:col-span-6 col-span-12">
+                      <label className="form-label">End Date :</label>
+                      <div className="form-group">
+                        <div className="input-group">
+                          <div className="input-group-text text-muted">
+                            <i className="ri-calendar-line"></i>
+                          </div>
+                          <DatePicker
+                            placeholder="Choose the date"
+                            className="ti-form-input ltr:rounded-l-none rtl:rounded-r-none focus:z-10"
+                            selected={formData.end_date}
+                            onChange={(date) =>
+                              setFormData({ ...formData, end_date: date })
+                            }
+                          />
+                        </div>
+                      </div>
+                    </div>
                     <div className="xl:col-span-12 col-span-12">
                       <label htmlFor="inviteCustomer" className="form-label">
                         Invite Customer :
@@ -440,7 +376,7 @@ const CreateUpdateProject = (props) => {
                       <input
                         type="text"
                         className="form-control"
-                        id="inviteCustomer"
+                        id="customer_invite"
                         placeholder="Enter Phone Number, Email, or User ID"
                         value={formData.customer_invite}
                         onChange={handleInputChange}
@@ -462,7 +398,14 @@ const CreateUpdateProject = (props) => {
                         }}
                         allowMultiple={true}
                         maxFiles={3}
-                        server="/api"
+                        server={{
+                          url: "https://backend-api-topaz.vercel.app/api/upload",
+                          process: {
+                            headers: {
+                              Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQsImlhdCI6MTcxNTg0OTc4M30.DpXYgKJBljMAuVq1GyKYgkE2prmwt2SEvneeWJdoZWw`,
+                            },
+                          },
+                        }}
                         name="files"
                         labelIdle="Drag & Drop your file here or click "
                       />

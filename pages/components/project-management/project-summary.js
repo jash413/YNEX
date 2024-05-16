@@ -1,8 +1,3 @@
-import {
-  Salesoverview,
-  Salevalue,
-  Trendingorders,
-} from "@/shared/data/dashboards/salesdata";
 import Pageheader from "@/shared/layout-components/page-header/pageheader";
 import Seo from "@/shared/layout-components/seo/seo";
 import Link from "next/link";
@@ -111,7 +106,7 @@ const ProjectSummary = () => {
         mainpageurl="/components/project-management/project-summary/"
         loadProjectData={getProjectDataFromLocalStorage}
         createProject={true}
-      />{" "}
+      />
       <div className="grid grid-cols-12 gap-x-6">
         <div className="xl:col-span-3 lg:col-span-6 md:col-span-6 sm:col-span-6 col-span-12">
           <div className="box">

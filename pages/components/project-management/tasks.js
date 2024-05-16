@@ -491,7 +491,7 @@ const ViewTasks = () => {
       <Pageheader
         activepage="View Tasks"
         mainpage="Tasks"
-        mainpageurl="/components/bids/bids"
+        mainpageurl="/components/project-management/tasks"
         loadProjectData={getDataFromLocalStorage}
       />
       <div className="box">
