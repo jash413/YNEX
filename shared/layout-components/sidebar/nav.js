@@ -49,7 +49,6 @@ export const MenuItems = [
 
             { icon: TaskIcon,  title: "Project Management", type: "sub", active: false, children: [
                     {path: "/components/project-management/project-summary", type: "link", active: false, selected: false, title: "Summary" },
-                    {path: "/components/project-management/gantt-chart", type: "link", active: false, selected: false, title: "Gantt Chart" },
                     {path: "/components/project-management/tasks", type: "link", active: false, selected: false, title: "Tasks" },
                     {path: "/components/project-management/schedule", type: "link", active: false, selected: false, title: "Schedule" },
                     {path: "/components/project-management/progression-notes", type: "link", active: false, selected: false, title: "Progression Notes" },

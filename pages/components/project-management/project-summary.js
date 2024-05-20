@@ -105,6 +105,7 @@ const ProjectSummary = () => {
         mainpage="Project Summary"
         mainpageurl="/components/project-management/project-summary/"
         loadProjectData={getProjectDataFromLocalStorage}
+        loadUserData={getUserDataFromLocalStorage}
         createProject={true}
       />
       <div className="grid grid-cols-12 gap-x-6">

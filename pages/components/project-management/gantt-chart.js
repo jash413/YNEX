@@ -81,7 +81,8 @@ const GanttChart = () => {
       />
       <div className="block">
         <div className="gantt-container">
-          <Gantt tasks={tasks} />
+          <Gantt tasks={tasks}
+           />
         </div>
       </div>
     </Fragment>

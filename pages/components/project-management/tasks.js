@@ -34,8 +34,8 @@ const ViewTasks = () => {
   };
 
   useEffect(() => {
-    getDataFromLocalStorage();
     getUserDataFromLocalStorage();
+    getDataFromLocalStorage();
   }, []);
   const getUserDataFromLocalStorage = () => {
     if (
@@ -387,6 +387,15 @@ const ViewTasks = () => {
                 Kanban View
               </Link>
             </button>
+            <button
+              type="button"
+              className="hs-dropdown-toggle ti-btn ti-btn-primary-full !py-1 !px-2 !mx-1 !text-[0.75rem] "
+              data-hs-overlay="#compare-Task"
+            >
+              <Link href="/components/project-management/gantt-chart">
+                Gantt Chart
+              </Link>
+            </button>
           </div>
         </div>
         <div className="box-body">
@@ -493,6 +502,7 @@ const ViewTasks = () => {
         mainpage="Tasks"
         mainpageurl="/components/project-management/tasks"
         loadProjectData={getDataFromLocalStorage}
+        loadUserData={getUserDataFromLocalStorage}
       />
       <div className="box">
         <div className="box-body">

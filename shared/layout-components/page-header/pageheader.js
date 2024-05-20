@@ -6,6 +6,7 @@ import Link from "next/link";
 
 const Pageheader = (props) => {
   const loadProjectData = props?.loadProjectData;
+  const loadUserData = props?.loadUserData;
   const isDisabled = props?.isDisabled;
   const [projectData, setProjectData] = useState([]);
   const [usersData, setUsersData] = useState([]);
@@ -28,6 +29,7 @@ const Pageheader = (props) => {
    } else {
       setSelectedProjects([]);
     }
+    loadUserData();
   };
 
   useEffect(() => {
@@ -41,6 +43,13 @@ const Pageheader = (props) => {
       setSelectedProject(selectedProject);
     } else {
       setSelectedProject(null);
+    }
+    if (
+      localStorage.getItem("selectedUser") !== null &&
+      localStorage.getItem("selectedUser") !== "undefined"
+    ) {
+      const selectedUser = JSON.parse(localStorage.getItem("selectedUser"));
+      setSelectedUser(selectedUser);
     }
     axios;
     axios
