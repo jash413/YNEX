@@ -14,22 +14,6 @@ const ProjectSummary = () => {
   const [selectedProject, setSelectedProject] = useState(null);
   const [selectedUser, setSelectedUser] = useState(null);
   const [projectData, setProjectData] = useState([]);
-  const currentYear = new Date().getFullYear();
-
-  const projectsThisYear = projectData.filter((project) => {
-    const createdAt = new Date(project.attributes.created_at);
-    return createdAt.getFullYear() === currentYear;
-  });
-
-  const totalRevenueThisYear = projectsThisYear.reduce((acc, project) => {
-    return acc + parseFloat(project.attributes.budget_estimated);
-  }, 0);
-
-  const totalSpentThisYear = projectsThisYear.reduce((acc, project) => {
-    return acc + parseFloat(project.attributes.actual_spent);
-  }, 0);
-
-  const totalProjectsThisYear = projectsThisYear.length;
 
   useEffect(() => {
     setClientRender(true);
@@ -61,18 +45,6 @@ const ProjectSummary = () => {
   const end = start + ITEMS_PER_PAGE;
   const currentItems = projectData.slice(start, end);
 
-  const data = [
-    { country: "cn", value: 1389618778 }, // china
-    { country: "in", value: 1311559204 }, // india
-    { country: "us", value: 331883986 }, // united states
-    { country: "id", value: 264935824 }, // indonesia
-    { country: "pk", value: 210797836 }, // pakistan
-    { country: "br", value: 210301591 }, // brazil
-    { country: "ng", value: 208679114 }, // nigeria
-    { country: "bd", value: 161062905 }, // bangladesh
-    { country: "ru", value: 141944641 }, // russia
-    { country: "mx", value: 127318112 }, // mexico
-  ];
   const getProjectDataFromLocalStorage = () => {
     if (
       localStorage.getItem("selectedProject") !== null &&
@@ -108,20 +80,17 @@ const ProjectSummary = () => {
         loadUserData={getUserDataFromLocalStorage}
         createProject={true}
       />
-      <div className="grid grid-cols-12 gap-x-6">
-        <div className="xl:col-span-3 lg:col-span-6 md:col-span-6 sm:col-span-6 col-span-12">
+      {selectedProject && <div className="grid grid-cols-12 gap-x-6">
+         <div className="xl:col-span-3 lg:col-span-6 md:col-span-6 sm:col-span-6 col-span-12">
           <div className="box">
             <div className="box-body">
               <div className="grid grid-cols-12">
                 <div className="col-span-6 pe-0">
                   <p className="mb-2">
-                    <span className="text-[1rem]">Statistics</span>
+                    <span className="text-[1rem]">Total Tasks</span>
                   </p>
                   <p className="mb-2 text-[0.75rem]">
-                    <span className="text-[1.5625rem] font-semibold leading-none vertical-bottom mb-0">{`${totalProjectsThisYear}`}</span>
-                    <span className="block text-[0.625rem] font-semibold text-[#8c9097] dark:text-white/50">
-                      THIS YEAR
-                    </span>
+                    <span className="text-[1.5625rem] font-semibold leading-none vertical-bottom mb-0">{`${selectedProject?.relationships.tasks.data.length}`}</span>
                   </p>
                 </div>
                 <div className="col-span-6">
@@ -153,22 +122,18 @@ const ProjectSummary = () => {
               </div>
             </div>
           </div>
-        </div>
+        </div> 
         <div className="xl:col-span-3 lg:col-span-6 md:col-span-6 sm:col-span-6 col-span-12">
           <div className="box">
             <div className="box-body">
               <div className="grid grid-cols-12">
                 <div className="col-span-6 pe-0">
                   <p className="mb-2">
-                    <span className="text-[1rem]">Total Revenue</span>
+                    <span className="text-[1rem]">Budget</span>
                   </p>
                   <p className="mb-2 text-[0.75rem]">
                     <span className="text-[1.5625rem] font-semibold leading-none vertical-bottom mb-0">
-                      {`$${totalRevenueThisYear.toLocaleString()}`}
-                    </span>
-                    <span className="block text-[0.625rem] font-semibold text-[#8c9097] dark:text-white/50">
-                      THIS YEAR
-                    </span>
+                    {`$${parseInt(selectedProject?.attributes.budget_estimated).toLocaleString()}`}                    </span>
                   </p>
                 </div>
                 <div className="col-span-6">
@@ -209,16 +174,11 @@ const ProjectSummary = () => {
               <div className="grid grid-cols-12">
                 <div className="col-span-6 pe-0">
                   <p className="mb-2">
-                    <span className="text-[1rem]">Profit</span>
+                    <span className="text-[1rem]">Actual Spent</span>
                   </p>
                   <p className="mb-2 text-[0.75rem]">
                     <span className="text-[1.5625rem] font-semibold leading-none vertical-bottom mb-0">
-                      {`$${(
-                        totalRevenueThisYear - totalSpentThisYear
-                      ).toLocaleString()}`}
-                    </span>
-                    <span className="block text-[0.625rem] font-semibold text-[#8c9097] dark:text-white/50">
-                      THIS YEAR
+                      {`$${parseInt(selectedProject?.attributes.actual_spent).toLocaleString()}`}
                     </span>
                   </p>
                 </div>
@@ -245,21 +205,14 @@ const ProjectSummary = () => {
             </div>
           </div>
         </div>
-      </div>
+      </div> }
       {selectedProject && (
         <div className="grid grid-cols-12 gap-6">
           <div className="xl:col-span-6 md:col-span-6  col-span-12">
             <div className="box custom-box">
               <div className="box-header justify-between">
                 <div className="box-title">Upcoming Events</div>
-                <div>
-                  <button
-                    type="button"
-                    className="ti-btn !py-1 !px-2 !text-[0.75rem] ti-btn-primary"
-                  >
-                    View All
-                  </button>
-                </div>
+                
               </div>
               <div className="box-body">
                 <nav
@@ -620,14 +573,7 @@ const ProjectSummary = () => {
                           <div className="box custom-box">
                             <div className="box-header justify-between">
                               <div className="box-title">Timeline</div>
-                              <div>
-                                <button
-                                  type="button"
-                                  className="ti-btn !py-1 !px-2 !text-[0.75rem] ti-btn-primary"
-                                >
-                                  View All
-                                </button>
-                              </div>
+                              
                             </div>
                             <div className="box-body">
                               <ul className="list-unstyled timeline-widget mb-0 my-3">
@@ -932,14 +878,7 @@ const ProjectSummary = () => {
                               <div className="box custom-box">
                                 <div className="box-header justify-between">
                                   <div className="box-title">Timeline</div>
-                                  <div>
-                                    <button
-                                      type="button"
-                                      className="ti-btn !py-1 !px-2 !text-[0.75rem] ti-btn-primary"
-                                    >
-                                      View All
-                                    </button>
-                                  </div>
+                                  
                                 </div>
                                 <div className="box-body">
                                   <ul className="list-unstyled timeline-widget mb-0 my-3">
@@ -1458,35 +1397,7 @@ const ProjectSummary = () => {
             <div className="box custom-box">
               <div className="box-header justify-between">
                 <div className="box-title">Recent Tasks</div>
-                <div className="hs-dropdown ti-dropdown">
-                  <Link
-                    href="#!"
-                    className="p-2 text-[0.75rem] text-[#8c9097] dark:text-white/50"
-                  >
-                    View All
-                    <i className="ri-arrow-down-s-line align-middle ms-1"></i>
-                  </Link>
-                  <ul
-                    className="hs-dropdown-menu ti-dropdown-menu hidden"
-                    role="menu"
-                  >
-                    <li>
-                      <Link className="ti-dropdown-item" href="#!">
-                        Download
-                      </Link>
-                    </li>
-                    <li>
-                      <Link className="ti-dropdown-item" href="#!">
-                        Import
-                      </Link>
-                    </li>
-                    <li>
-                      <Link className="ti-dropdown-item" href="#!">
-                        Export
-                      </Link>
-                    </li>
-                  </ul>
-                </div>
+               
               </div>
               <div className="box-body">
                 <div className="table-responsive">
@@ -1799,7 +1710,7 @@ const ProjectSummary = () => {
         </div>
       )}
       <div className="grid grid-cols-12 gap-x-6">
-        <div className="xl:col-span-12 col-span-12">
+        {!selectedProject && <div className="xl:col-span-12 col-span-12">
           <div className="box">
             <div className="box-header justify-between">
               <div className="box-title">Billing Summary</div>
@@ -1977,51 +1888,13 @@ const ProjectSummary = () => {
               </div>
             </div>
           </div>
-        </div>
+        </div>}
         {selectedProject && (
           <div className="xxl:col-span-6 xl:col-span-6 col-span-12">
             <div className="box">
               <div className="box-header justify-between">
                 <div className="box-title">Recent Activity</div>
-                <div className="hs-dropdown ti-dropdown">
-                  <Link
-                    href="#!"
-                    className="text-[0.75rem] px-2 font-normal text-[#8c9097] dark:text-white/50"
-                    aria-expanded="false"
-                  >
-                    View All
-                    <i className="ri-arrow-down-s-line align-middle ms-1 inline-block"></i>
-                  </Link>
-                  <ul
-                    className="hs-dropdown-menu ti-dropdown-menu hidden"
-                    role="menu"
-                  >
-                    <li>
-                      <Link
-                        className="ti-dropdown-item !py-2 !px-[0.9375rem] !text-[0.8125rem] !font-medium block"
-                        href="#!"
-                      >
-                        Today
-                      </Link>
-                    </li>
-                    <li>
-                      <Link
-                        className="ti-dropdown-item !py-2 !px-[0.9375rem] !text-[0.8125rem] !font-medium block"
-                        href="#!"
-                      >
-                        This Week
-                      </Link>
-                    </li>
-                    <li>
-                      <Link
-                        className="ti-dropdown-item !py-2 !px-[0.9375rem] !text-[0.8125rem] !font-medium block"
-                        href="#!"
-                      >
-                        Last Week
-                      </Link>
-                    </li>
-                  </ul>
-                </div>
+                
               </div>
               <div className="box-body">
                 <div>

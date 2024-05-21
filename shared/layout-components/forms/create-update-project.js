@@ -92,15 +92,16 @@ const CreateUpdateProject = (props) => {
     event.preventDefault();
 
     try {
-      formDataSchema.parse(formData);
+      // formDataSchema.parse(formData);
       setFormData({...formData, projectTemplate: selectTemplate});
+      axios,
 
       axios.post(`${network.onlineUrl}api/project/`, 
       formData,
       {
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${network.token}`,
+          Authorization: `${network.token}`,
 
 
         },
@@ -108,23 +109,26 @@ const CreateUpdateProject = (props) => {
 
       ).then((response) => {
         console.log(response);
-      }
-      );
+      })
+      .catch((error) => {
+        console.log(error);
+      } )
+      ;
 
       setFormData({
         selectedProject: "",
-        client_name: "",
-        assigned_to: [],
+        client_name: "", // Client Name
+        assigned_to: [], // Assigned To
         description: "",
         address1: "",
         address2: "",
-        zipcode : "",
-        state : "",
-        budget: "",
-        start_date: "",
-        end_date: "",
-        customer_invite: "",
-        files: [],
+        zipcode : "", // zipcode
+        state : "", // State
+        budget: "", // Price for customer/Budget
+        start_date: "", // Start date
+        end_date: "", // End date
+        customer_invite: "", // Invite customer (including setting permissions - using phone number or email or user id)
+        files: [] // Files drop area → Add the ability to upload multiple files like gmail allows user to upload multiple files with drop and drag functionality
       });
     } catch (error) {
       console.log(error);

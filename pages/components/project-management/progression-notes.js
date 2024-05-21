@@ -27,6 +27,6 @@ const ProgressionNotes = () => {
         </div>
     )
 }
-ProgressionNotes.layout = "ProgressionNotes"
+ProgressionNotes.layout = "Contentlayout"
 
 export default ProgressionNotes

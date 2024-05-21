@@ -11,6 +11,7 @@
     "sass": "sass ./public/assets/scss/:./public/assets/css/",
     "sass-min": "sass ./public/assets/scss/:./public/assets/css/ --style compressed"
   },
+  "proxy": "https://backend-api-topaz.vercel.app",
   "dependencies": {
     "@emotion/styled": "^11.11.0",
     "@fullcalendar/daygrid": "^6.1.9",

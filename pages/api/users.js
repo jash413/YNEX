@@ -6,267 +6,46 @@ export default function handler(req, res) {
     "links": {
         "self": "http://localhostx:3000/api/user",
         "first": "http://localhostx:3000/api/user?page%5Blimit%5D=100",
-        "last": "http://localhostx:3000/api/user?page%5Boffset%5D=0",
+        "last": "http://localhostx:3000/api/user?page%5Boffset%5D=100",
         "prev": null,
-        "next": null
+        "next": "http://localhostx:3000/api/user?page%5Boffset%5D=100&page%5Blimit%5D=100"
     },
     "data": [
         {
             "type": "user",
-            "id": 4,
+            "id": 100001,
             "attributes": {
-                "created_at": "2024-05-03T23:34:52.967Z",
-                "updated_at": "2024-05-03T23:34:52.967Z",
+                "created_at": "2024-05-21T17:15:00.945Z",
+                "updated_at": "2024-05-21T17:15:00.945Z",
                 "active": true,
-                "username": "test@test.com",
-                "email": "test@test.com",
-                "first_name": null,
-                "middle_name": null,
-                "last_name": null,
-                "phone_number_mobile": null,
-                "text_enabled": false,
+                "username": "Jordan.Spieth",
+                "email": "Jordan.Spieth@mail.com",
+                "first_name": "Jordan",
+                "middle_name": "HO",
+                "last_name": "Spieth",
+                "phone_number_mobile": "1234567890",
+                "text_enabled": true,
                 "phone_verified": false,
-                "phone_number_home": null,
-                "email_verified": false,
+                "phone_number_home": "9999999999",
+                "email_verified": true,
                 "last_login": null,
                 "last_failed_login": null,
                 "admin": false,
-                "status": "active",
-                "language": [],
-                "forced_login": false,
-                "failed_login_count": 0,
-                "address1": "123 Main st ",
-                "address2": null,
-                "state": null,
-                "zipcode": null,
-                "profile_picture_url": null,
-                "referral_code": null,
-                "referred_by": null,
-                "date_of_birth": null,
-                "user_fully_onboarded": false,
-                "user_type": null
-            },
-            "links": {
-                "self": "http://localhostx:3000/api/user/4"
-            },
-            "relationships": {
-                "business_creator": {
-                    "links": {
-                        "self": "http://localhostx:3000/api/user/4/relationships/business_creator",
-                        "related": "http://localhostx:3000/api/user/4/business_creator"
-                    },
-                    "data": {
-                        "type": "business",
-                        "id": 200025
-                    }
-                },
-                "business_user_roles": {
-                    "links": {
-                        "self": "http://localhostx:3000/api/user/4/relationships/business_user_roles",
-                        "related": "http://localhostx:3000/api/user/4/business_user_roles"
-                    },
-                    "data": []
-                },
-                "business_documents": {
-                    "links": {
-                        "self": "http://localhostx:3000/api/user/4/relationships/business_documents",
-                        "related": "http://localhostx:3000/api/user/4/business_documents"
-                    },
-                    "data": []
-                },
-                "home_owner_projects": {
-                    "links": {
-                        "self": "http://localhostx:3000/api/user/4/relationships/home_owner_projects",
-                        "related": "http://localhostx:3000/api/user/4/home_owner_projects"
-                    },
-                    "data": []
-                },
-                "project_assignments": {
-                    "links": {
-                        "self": "http://localhostx:3000/api/user/4/relationships/project_assignments",
-                        "related": "http://localhostx:3000/api/user/4/project_assignments"
-                    },
-                    "data": []
-                },
-                "tasks": {
-                    "links": {
-                        "self": "http://localhostx:3000/api/user/4/relationships/tasks",
-                        "related": "http://localhostx:3000/api/user/4/tasks"
-                    },
-                    "data": []
-                },
-                "punch_list": {
-                    "links": {
-                        "self": "http://localhostx:3000/api/user/4/relationships/punch_list",
-                        "related": "http://localhostx:3000/api/user/4/punch_list"
-                    },
-                    "data": []
-                },
-                "daily_logs": {
-                    "links": {
-                        "self": "http://localhostx:3000/api/user/4/relationships/daily_logs",
-                        "related": "http://localhostx:3000/api/user/4/daily_logs"
-                    },
-                    "data": []
-                },
-                "progression_notes": {
-                    "links": {
-                        "self": "http://localhostx:3000/api/user/4/relationships/progression_notes",
-                        "related": "http://localhostx:3000/api/user/4/progression_notes"
-                    },
-                    "data": []
-                },
-                "change_orders_creator": {
-                    "links": {
-                        "self": "http://localhostx:3000/api/user/4/relationships/change_orders_creator",
-                        "related": "http://localhostx:3000/api/user/4/change_orders_creator"
-                    },
-                    "data": []
-                },
-                "change_orders_reviewer": {
-                    "links": {
-                        "self": "http://localhostx:3000/api/user/4/relationships/change_orders_reviewer",
-                        "related": "http://localhostx:3000/api/user/4/change_orders_reviewer"
-                    },
-                    "data": []
-                },
-                "change_orders_approver": {
-                    "links": {
-                        "self": "http://localhostx:3000/api/user/4/relationships/change_orders_approver",
-                        "related": "http://localhostx:3000/api/user/4/change_orders_approver"
-                    },
-                    "data": []
-                },
-                "bids_requested": {
-                    "links": {
-                        "self": "http://localhostx:3000/api/user/4/relationships/bids_requested",
-                        "related": "http://localhostx:3000/api/user/4/bids_requested"
-                    },
-                    "data": []
-                },
-                "bids_created": {
-                    "links": {
-                        "self": "http://localhostx:3000/api/user/4/relationships/bids_created",
-                        "related": "http://localhostx:3000/api/user/4/bids_created"
-                    },
-                    "data": []
-                },
-                "bids_reviewed": {
-                    "links": {
-                        "self": "http://localhostx:3000/api/user/4/relationships/bids_reviewed",
-                        "related": "http://localhostx:3000/api/user/4/bids_reviewed"
-                    },
-                    "data": []
-                },
-                "bids_approved": {
-                    "links": {
-                        "self": "http://localhostx:3000/api/user/4/relationships/bids_approved",
-                        "related": "http://localhostx:3000/api/user/4/bids_approved"
-                    },
-                    "data": []
-                },
-                "files_owned": {
-                    "links": {
-                        "self": "http://localhostx:3000/api/user/4/relationships/files_owned",
-                        "related": "http://localhostx:3000/api/user/4/files_owned"
-                    },
-                    "data": [
-                        {
-                            "type": "file",
-                            "id": 3
-                        },
-                        {
-                            "type": "file",
-                            "id": 4
-                        },
-                        {
-                            "type": "file",
-                            "id": 5
-                        },
-                        {
-                            "type": "file",
-                            "id": 6
-                        },
-                        {
-                            "type": "file",
-                            "id": 7
-                        },
-                        {
-                            "type": "file",
-                            "id": 8
-                        },
-                        {
-                            "type": "file",
-                            "id": 9
-                        },
-                        {
-                            "type": "file",
-                            "id": 10
-                        },
-                        {
-                            "type": "file",
-                            "id": 11
-                        }
-                    ]
-                },
-                "file_permissions": {
-                    "links": {
-                        "self": "http://localhostx:3000/api/user/4/relationships/file_permissions",
-                        "related": "http://localhostx:3000/api/user/4/file_permissions"
-                    },
-                    "data": []
-                },
-                "api_log": {
-                    "links": {
-                        "self": "http://localhostx:3000/api/user/4/relationships/api_log",
-                        "related": "http://localhostx:3000/api/user/4/api_log"
-                    },
-                    "data": []
-                },
-                "clicks_activity": {
-                    "links": {
-                        "self": "http://localhostx:3000/api/user/4/relationships/clicks_activity",
-                        "related": "http://localhostx:3000/api/user/4/clicks_activity"
-                    },
-                    "data": []
-                }
-            }
-        },
-        {
-            "type": "user",
-            "id": 100001,
-            "attributes": {
-                "created_at": "2024-05-03T23:30:36.669Z",
-                "updated_at": "2024-05-03T23:30:36.669Z",
-                "active": true,
-                "username": "john.doe",
-                "email": "jonh.doe@yahoo.com",
-                "first_name": "John",
-                "middle_name": "a",
-                "last_name": "Doe",
-                "phone_number_mobile": "2345678901",
-                "text_enabled": true,
-                "phone_verified": false,
-                "phone_number_home": "2345678902",
-                "email_verified": true,
-                "last_login": "2024-04-23T00:00:00.000Z",
-                "last_failed_login": "2024-04-22T00:00:00.000Z",
-                "admin": false,
-                "status": "active",
+                "status": "",
                 "language": [
-                    "English"
+                    ""
                 ],
                 "forced_login": false,
-                "failed_login_count": 4,
-                "address1": "1096",
-                "address2": "JamesSt",
-                "state": "NC",
-                "zipcode": "28211",
-                "profile_picture_url": "http://www.cnn.com",
-                "referral_code": "ABCD",
-                "referred_by": "WEB",
-                "date_of_birth": "2000-03-02T00:00:00.000Z",
-                "user_fully_onboarded": true,
+                "failed_login_count": 0,
+                "address1": "",
+                "address2": "",
+                "state": "",
+                "zipcode": "",
+                "profile_picture_url": "",
+                "referral_code": "",
+                "referred_by": "",
+                "date_of_birth": null,
+                "user_fully_onboarded": false,
                 "user_type": "homeowner"
             },
             "links": {
@@ -280,29 +59,12 @@ export default function handler(req, res) {
                     },
                     "data": null
                 },
-                "business_user_roles": {
-                    "links": {
-                        "self": "http://localhostx:3000/api/user/100001/relationships/business_user_roles",
-                        "related": "http://localhostx:3000/api/user/100001/business_user_roles"
-                    },
-                    "data": [
-                        {
-                            "type": "business_User_Roles",
-                            "id": 400001
-                        }
-                    ]
-                },
                 "business_documents": {
                     "links": {
                         "self": "http://localhostx:3000/api/user/100001/relationships/business_documents",
                         "related": "http://localhostx:3000/api/user/100001/business_documents"
                     },
-                    "data": [
-                        {
-                            "type": "business_Document",
-                            "id": 700001
-                        }
-                    ]
+                    "data": []
                 },
                 "home_owner_projects": {
                     "links": {
@@ -312,11 +74,19 @@ export default function handler(req, res) {
                     "data": [
                         {
                             "type": "project",
-                            "id": 800001
-                        },
+                            "id": 200001
+                        }
+                    ]
+                },
+                "business_user_roles": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100001/relationships/business_user_roles",
+                        "related": "http://localhostx:3000/api/user/100001/business_user_roles"
+                    },
+                    "data": [
                         {
-                            "type": "project",
-                            "id": 800009
+                            "type": "business_User_Roles",
+                            "id": 103000
                         }
                     ]
                 },
@@ -438,37 +208,37 @@ export default function handler(req, res) {
             "type": "user",
             "id": 100002,
             "attributes": {
-                "created_at": "2024-05-03T23:30:36.669Z",
-                "updated_at": "2024-05-03T23:30:36.669Z",
+                "created_at": "2024-05-21T17:15:01.175Z",
+                "updated_at": "2024-05-21T17:15:01.175Z",
                 "active": true,
-                "username": "jim.watson",
-                "email": "jim.watson@gmail.com",
-                "first_name": "Jim",
-                "middle_name": "b",
-                "last_name": "Watson",
-                "phone_number_mobile": "3456789012",
+                "username": "Rickie.Fowler",
+                "email": "Rickie.Fowler@mail.com",
+                "first_name": "Rickie",
+                "middle_name": "HO",
+                "last_name": "Fowler",
+                "phone_number_mobile": "1234567890",
                 "text_enabled": true,
                 "phone_verified": false,
-                "phone_number_home": "3456789013",
+                "phone_number_home": "9999999999",
                 "email_verified": true,
-                "last_login": "2024-04-23T00:00:00.000Z",
-                "last_failed_login": "2024-04-22T00:00:00.000Z",
-                "admin": true,
-                "status": "active",
+                "last_login": null,
+                "last_failed_login": null,
+                "admin": false,
+                "status": "",
                 "language": [
-                    "English"
+                    ""
                 ],
                 "forced_login": false,
-                "failed_login_count": 3,
-                "address1": "2789",
-                "address2": "JohnsCircle",
-                "state": "SC",
-                "zipcode": "28212",
-                "profile_picture_url": "http://www.cnbc.com",
-                "referral_code": "BCDE",
-                "referred_by": "WEB",
-                "date_of_birth": "2000-03-01T00:00:00.000Z",
-                "user_fully_onboarded": true,
+                "failed_login_count": 0,
+                "address1": "",
+                "address2": "",
+                "state": "",
+                "zipcode": "",
+                "profile_picture_url": "",
+                "referral_code": "",
+                "referred_by": "",
+                "date_of_birth": null,
+                "user_fully_onboarded": false,
                 "user_type": "homeowner"
             },
             "links": {
@@ -482,29 +252,12 @@ export default function handler(req, res) {
                     },
                     "data": null
                 },
-                "business_user_roles": {
-                    "links": {
-                        "self": "http://localhostx:3000/api/user/100002/relationships/business_user_roles",
-                        "related": "http://localhostx:3000/api/user/100002/business_user_roles"
-                    },
-                    "data": [
-                        {
-                            "type": "business_User_Roles",
-                            "id": 400002
-                        }
-                    ]
-                },
                 "business_documents": {
                     "links": {
                         "self": "http://localhostx:3000/api/user/100002/relationships/business_documents",
                         "related": "http://localhostx:3000/api/user/100002/business_documents"
                     },
-                    "data": [
-                        {
-                            "type": "business_Document",
-                            "id": 700002
-                        }
-                    ]
+                    "data": []
                 },
                 "home_owner_projects": {
                     "links": {
@@ -514,11 +267,19 @@ export default function handler(req, res) {
                     "data": [
                         {
                             "type": "project",
-                            "id": 800002
-                        },
+                            "id": 200002
+                        }
+                    ]
+                },
+                "business_user_roles": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100002/relationships/business_user_roles",
+                        "related": "http://localhostx:3000/api/user/100002/business_user_roles"
+                    },
+                    "data": [
                         {
-                            "type": "project",
-                            "id": 800010
+                            "type": "business_User_Roles",
+                            "id": 103001
                         }
                     ]
                 },
@@ -640,37 +401,37 @@ export default function handler(req, res) {
             "type": "user",
             "id": 100003,
             "attributes": {
-                "created_at": "2024-05-03T23:30:36.669Z",
-                "updated_at": "2024-05-03T23:30:36.669Z",
+                "created_at": "2024-05-21T17:15:01.396Z",
+                "updated_at": "2024-05-21T17:15:01.396Z",
                 "active": true,
-                "username": "sherry.english",
-                "email": "sherry.english@outlook.com",
-                "first_name": "Sherry",
-                "middle_name": "c",
-                "last_name": "English",
-                "phone_number_mobile": "4567890123",
+                "username": "Bryson.Dechambeu",
+                "email": "Bryson.Dechambeu@mail.com",
+                "first_name": "Bryson",
+                "middle_name": "HO",
+                "last_name": "Dechambeu",
+                "phone_number_mobile": "1234567890",
                 "text_enabled": true,
                 "phone_verified": false,
-                "phone_number_home": "4567890124",
+                "phone_number_home": "9999999999",
                 "email_verified": true,
-                "last_login": "2024-04-23T00:00:00.000Z",
-                "last_failed_login": "2024-04-22T00:00:00.000Z",
+                "last_login": null,
+                "last_failed_login": null,
                 "admin": false,
-                "status": "active",
+                "status": "",
                 "language": [
-                    "English"
+                    ""
                 ],
                 "forced_login": false,
-                "failed_login_count": 5,
-                "address1": "2345",
-                "address2": "wendwoodst",
-                "state": "NC",
-                "zipcode": "28213",
-                "profile_picture_url": "http://www.msn.com",
-                "referral_code": "ABCD",
-                "referred_by": "WEB",
-                "date_of_birth": "2000-03-03T00:00:00.000Z",
-                "user_fully_onboarded": true,
+                "failed_login_count": 0,
+                "address1": "",
+                "address2": "",
+                "state": "",
+                "zipcode": "",
+                "profile_picture_url": "",
+                "referral_code": "",
+                "referred_by": "",
+                "date_of_birth": null,
+                "user_fully_onboarded": false,
                 "user_type": "homeowner"
             },
             "links": {
@@ -684,29 +445,12 @@ export default function handler(req, res) {
                     },
                     "data": null
                 },
-                "business_user_roles": {
-                    "links": {
-                        "self": "http://localhostx:3000/api/user/100003/relationships/business_user_roles",
-                        "related": "http://localhostx:3000/api/user/100003/business_user_roles"
-                    },
-                    "data": [
-                        {
-                            "type": "business_User_Roles",
-                            "id": 400003
-                        }
-                    ]
-                },
                 "business_documents": {
                     "links": {
                         "self": "http://localhostx:3000/api/user/100003/relationships/business_documents",
                         "related": "http://localhostx:3000/api/user/100003/business_documents"
                     },
-                    "data": [
-                        {
-                            "type": "business_Document",
-                            "id": 700003
-                        }
-                    ]
+                    "data": []
                 },
                 "home_owner_projects": {
                     "links": {
@@ -716,11 +460,19 @@ export default function handler(req, res) {
                     "data": [
                         {
                             "type": "project",
-                            "id": 800003
-                        },
+                            "id": 200003
+                        }
+                    ]
+                },
+                "business_user_roles": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100003/relationships/business_user_roles",
+                        "related": "http://localhostx:3000/api/user/100003/business_user_roles"
+                    },
+                    "data": [
                         {
-                            "type": "project",
-                            "id": 800011
+                            "type": "business_User_Roles",
+                            "id": 103002
                         }
                     ]
                 },
@@ -842,37 +594,37 @@ export default function handler(req, res) {
             "type": "user",
             "id": 100004,
             "attributes": {
-                "created_at": "2024-05-03T23:30:36.669Z",
-                "updated_at": "2024-05-03T23:30:36.669Z",
+                "created_at": "2024-05-21T17:15:01.611Z",
+                "updated_at": "2024-05-21T17:15:01.611Z",
                 "active": true,
-                "username": "tony.guterz",
-                "email": "tony.guterz@hotmail.com",
-                "first_name": "Tony",
-                "middle_name": "d",
-                "last_name": "Guterz",
-                "phone_number_mobile": "5678901234",
+                "username": "Jon.Rham",
+                "email": "Jon.Rham@mail.com",
+                "first_name": "Jon",
+                "middle_name": "HO",
+                "last_name": "Rham",
+                "phone_number_mobile": "1234567890",
                 "text_enabled": true,
                 "phone_verified": false,
-                "phone_number_home": "5678901235",
-                "email_verified": false,
-                "last_login": "2024-04-23T00:00:00.000Z",
-                "last_failed_login": "2024-04-22T00:00:00.000Z",
+                "phone_number_home": "9999999999",
+                "email_verified": true,
+                "last_login": null,
+                "last_failed_login": null,
                 "admin": false,
-                "status": "active",
+                "status": "",
                 "language": [
-                    "Spanish"
+                    ""
                 ],
                 "forced_login": false,
-                "failed_login_count": 6,
-                "address1": "5345",
-                "address2": "peachblvd",
-                "state": "GA",
-                "zipcode": "28214",
-                "profile_picture_url": "http://www.foxnews.com",
-                "referral_code": "CDAB",
-                "referred_by": "WEB",
-                "date_of_birth": "2000-03-04T00:00:00.000Z",
-                "user_fully_onboarded": true,
+                "failed_login_count": 0,
+                "address1": "",
+                "address2": "",
+                "state": "",
+                "zipcode": "",
+                "profile_picture_url": "",
+                "referral_code": "",
+                "referred_by": "",
+                "date_of_birth": null,
+                "user_fully_onboarded": false,
                 "user_type": "homeowner"
             },
             "links": {
@@ -886,29 +638,12 @@ export default function handler(req, res) {
                     },
                     "data": null
                 },
-                "business_user_roles": {
-                    "links": {
-                        "self": "http://localhostx:3000/api/user/100004/relationships/business_user_roles",
-                        "related": "http://localhostx:3000/api/user/100004/business_user_roles"
-                    },
-                    "data": [
-                        {
-                            "type": "business_User_Roles",
-                            "id": 400004
-                        }
-                    ]
-                },
                 "business_documents": {
                     "links": {
                         "self": "http://localhostx:3000/api/user/100004/relationships/business_documents",
                         "related": "http://localhostx:3000/api/user/100004/business_documents"
                     },
-                    "data": [
-                        {
-                            "type": "business_Document",
-                            "id": 700004
-                        }
-                    ]
+                    "data": []
                 },
                 "home_owner_projects": {
                     "links": {
@@ -918,11 +653,19 @@ export default function handler(req, res) {
                     "data": [
                         {
                             "type": "project",
-                            "id": 800004
-                        },
+                            "id": 200004
+                        }
+                    ]
+                },
+                "business_user_roles": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100004/relationships/business_user_roles",
+                        "related": "http://localhostx:3000/api/user/100004/business_user_roles"
+                    },
+                    "data": [
                         {
-                            "type": "project",
-                            "id": 800012
+                            "type": "business_User_Roles",
+                            "id": 103003
                         }
                     ]
                 },
@@ -1044,37 +787,37 @@ export default function handler(req, res) {
             "type": "user",
             "id": 100005,
             "attributes": {
-                "created_at": "2024-05-03T23:30:36.669Z",
-                "updated_at": "2024-05-03T23:30:36.669Z",
+                "created_at": "2024-05-21T17:15:01.808Z",
+                "updated_at": "2024-05-21T17:15:01.808Z",
                 "active": true,
-                "username": "vickey.swanson",
-                "email": "vickey.swanson@mail.com",
-                "first_name": "Vicky",
-                "middle_name": "e",
-                "last_name": "Swanson",
-                "phone_number_mobile": "6789012345",
-                "text_enabled": false,
+                "username": "Sahith.Theegala",
+                "email": "Sahith.Theegala@mail.com",
+                "first_name": "Sahith",
+                "middle_name": "HO",
+                "last_name": "Theegala",
+                "phone_number_mobile": "1234567890",
+                "text_enabled": true,
                 "phone_verified": false,
-                "phone_number_home": "6789012346",
+                "phone_number_home": "9999999999",
                 "email_verified": true,
-                "last_login": "2024-04-23T00:00:00.000Z",
-                "last_failed_login": "2024-04-22T00:00:00.000Z",
+                "last_login": null,
+                "last_failed_login": null,
                 "admin": false,
-                "status": "active",
+                "status": "",
                 "language": [
-                    "English"
+                    ""
                 ],
                 "forced_login": false,
-                "failed_login_count": 7,
-                "address1": "6345",
-                "address2": "charleecir",
-                "state": "AL",
-                "zipcode": "38211",
-                "profile_picture_url": "http://www.google.com",
-                "referral_code": "DABC",
-                "referred_by": "WEB",
-                "date_of_birth": "2000-03-05T00:00:00.000Z",
-                "user_fully_onboarded": true,
+                "failed_login_count": 0,
+                "address1": "",
+                "address2": "",
+                "state": "",
+                "zipcode": "",
+                "profile_picture_url": "",
+                "referral_code": "",
+                "referred_by": "",
+                "date_of_birth": null,
+                "user_fully_onboarded": false,
                 "user_type": "homeowner"
             },
             "links": {
@@ -1088,29 +831,12 @@ export default function handler(req, res) {
                     },
                     "data": null
                 },
-                "business_user_roles": {
-                    "links": {
-                        "self": "http://localhostx:3000/api/user/100005/relationships/business_user_roles",
-                        "related": "http://localhostx:3000/api/user/100005/business_user_roles"
-                    },
-                    "data": [
-                        {
-                            "type": "business_User_Roles",
-                            "id": 400005
-                        }
-                    ]
-                },
                 "business_documents": {
                     "links": {
                         "self": "http://localhostx:3000/api/user/100005/relationships/business_documents",
                         "related": "http://localhostx:3000/api/user/100005/business_documents"
                     },
-                    "data": [
-                        {
-                            "type": "business_Document",
-                            "id": 700005
-                        }
-                    ]
+                    "data": []
                 },
                 "home_owner_projects": {
                     "links": {
@@ -1120,11 +846,19 @@ export default function handler(req, res) {
                     "data": [
                         {
                             "type": "project",
-                            "id": 800005
-                        },
+                            "id": 200005
+                        }
+                    ]
+                },
+                "business_user_roles": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100005/relationships/business_user_roles",
+                        "related": "http://localhostx:3000/api/user/100005/business_user_roles"
+                    },
+                    "data": [
                         {
-                            "type": "project",
-                            "id": 800030
+                            "type": "business_User_Roles",
+                            "id": 103004
                         }
                     ]
                 },
@@ -1246,37 +980,37 @@ export default function handler(req, res) {
             "type": "user",
             "id": 100006,
             "attributes": {
-                "created_at": "2024-05-03T23:30:36.669Z",
-                "updated_at": "2024-05-03T23:30:36.669Z",
+                "created_at": "2024-05-21T17:15:02.029Z",
+                "updated_at": "2024-05-21T17:15:02.029Z",
                 "active": true,
-                "username": "stephanie.johnson",
-                "email": "stephanie.johnson@gmail.com",
-                "first_name": "Stephanie",
-                "middle_name": "f",
-                "last_name": "Johnson",
-                "phone_number_mobile": "7890123456",
+                "username": "Xander.Schauffele",
+                "email": "Xander.Schauffele@mail.com",
+                "first_name": "Xander",
+                "middle_name": "HO",
+                "last_name": "Schauffele",
+                "phone_number_mobile": "1234567890",
                 "text_enabled": true,
                 "phone_verified": false,
-                "phone_number_home": "7890123457",
-                "email_verified": false,
-                "last_login": "2024-04-23T00:00:00.000Z",
-                "last_failed_login": "2024-04-22T00:00:00.000Z",
+                "phone_number_home": "9999999999",
+                "email_verified": true,
+                "last_login": null,
+                "last_failed_login": null,
                 "admin": false,
-                "status": "active",
+                "status": "",
                 "language": [
-                    "English"
+                    ""
                 ],
                 "forced_login": false,
-                "failed_login_count": 1,
-                "address1": "9345",
-                "address2": "mainstreet",
-                "state": "NC",
-                "zipcode": "48211",
-                "profile_picture_url": "http://www.yahoo.com",
-                "referral_code": "CDAB",
-                "referred_by": "WEB",
-                "date_of_birth": "2000-04-02T00:00:00.000Z",
-                "user_fully_onboarded": true,
+                "failed_login_count": 0,
+                "address1": "",
+                "address2": "",
+                "state": "",
+                "zipcode": "",
+                "profile_picture_url": "",
+                "referral_code": "",
+                "referred_by": "",
+                "date_of_birth": null,
+                "user_fully_onboarded": false,
                 "user_type": "homeowner"
             },
             "links": {
@@ -1290,29 +1024,12 @@ export default function handler(req, res) {
                     },
                     "data": null
                 },
-                "business_user_roles": {
-                    "links": {
-                        "self": "http://localhostx:3000/api/user/100006/relationships/business_user_roles",
-                        "related": "http://localhostx:3000/api/user/100006/business_user_roles"
-                    },
-                    "data": [
-                        {
-                            "type": "business_User_Roles",
-                            "id": 400006
-                        }
-                    ]
-                },
                 "business_documents": {
                     "links": {
                         "self": "http://localhostx:3000/api/user/100006/relationships/business_documents",
                         "related": "http://localhostx:3000/api/user/100006/business_documents"
                     },
-                    "data": [
-                        {
-                            "type": "business_Document",
-                            "id": 700006
-                        }
-                    ]
+                    "data": []
                 },
                 "home_owner_projects": {
                     "links": {
@@ -1322,7 +1039,19 @@ export default function handler(req, res) {
                     "data": [
                         {
                             "type": "project",
-                            "id": 800006
+                            "id": 200006
+                        }
+                    ]
+                },
+                "business_user_roles": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100006/relationships/business_user_roles",
+                        "related": "http://localhostx:3000/api/user/100006/business_user_roles"
+                    },
+                    "data": [
+                        {
+                            "type": "business_User_Roles",
+                            "id": 103005
                         }
                     ]
                 },
@@ -1444,36 +1173,36 @@ export default function handler(req, res) {
             "type": "user",
             "id": 100007,
             "attributes": {
-                "created_at": "2024-05-03T23:30:36.669Z",
-                "updated_at": "2024-05-03T23:30:36.669Z",
+                "created_at": "2024-05-21T17:15:02.236Z",
+                "updated_at": "2024-05-21T17:15:02.236Z",
                 "active": true,
-                "username": "megan.smith",
-                "email": "megan.smith@yahoo.com",
-                "first_name": "Megan",
-                "middle_name": "g",
-                "last_name": "Smith",
-                "phone_number_mobile": "8901234567",
-                "text_enabled": false,
+                "username": "Scottie.Scheffler",
+                "email": "Scottie.Scheffler@mail.com",
+                "first_name": "Scottie",
+                "middle_name": "HO",
+                "last_name": "Scheffler",
+                "phone_number_mobile": "1234567890",
+                "text_enabled": true,
                 "phone_verified": false,
-                "phone_number_home": "8901234568",
+                "phone_number_home": "9999999999",
                 "email_verified": true,
-                "last_login": "2024-04-23T00:00:00.000Z",
-                "last_failed_login": "2024-04-22T00:00:00.000Z",
-                "admin": true,
-                "status": "active",
+                "last_login": null,
+                "last_failed_login": null,
+                "admin": false,
+                "status": "",
                 "language": [
-                    "English"
+                    ""
                 ],
                 "forced_login": false,
-                "failed_login_count": 2,
-                "address1": "1349",
-                "address2": "subcircle",
-                "state": "SC",
-                "zipcode": "58211",
-                "profile_picture_url": "http://www.mail.com",
-                "referral_code": "CDAB",
-                "referred_by": "WEB",
-                "date_of_birth": "2000-04-02T00:00:00.000Z",
+                "failed_login_count": 0,
+                "address1": "",
+                "address2": "",
+                "state": "",
+                "zipcode": "",
+                "profile_picture_url": "",
+                "referral_code": "",
+                "referred_by": "",
+                "date_of_birth": null,
                 "user_fully_onboarded": false,
                 "user_type": "homeowner"
             },
@@ -1488,29 +1217,12 @@ export default function handler(req, res) {
                     },
                     "data": null
                 },
-                "business_user_roles": {
-                    "links": {
-                        "self": "http://localhostx:3000/api/user/100007/relationships/business_user_roles",
-                        "related": "http://localhostx:3000/api/user/100007/business_user_roles"
-                    },
-                    "data": [
-                        {
-                            "type": "business_User_Roles",
-                            "id": 400007
-                        }
-                    ]
-                },
                 "business_documents": {
                     "links": {
                         "self": "http://localhostx:3000/api/user/100007/relationships/business_documents",
                         "related": "http://localhostx:3000/api/user/100007/business_documents"
                     },
-                    "data": [
-                        {
-                            "type": "business_Document",
-                            "id": 700007
-                        }
-                    ]
+                    "data": []
                 },
                 "home_owner_projects": {
                     "links": {
@@ -1520,7 +1232,23 @@ export default function handler(req, res) {
                     "data": [
                         {
                             "type": "project",
-                            "id": 800007
+                            "id": 200007
+                        },
+                        {
+                            "type": "project",
+                            "id": 200011
+                        }
+                    ]
+                },
+                "business_user_roles": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100007/relationships/business_user_roles",
+                        "related": "http://localhostx:3000/api/user/100007/business_user_roles"
+                    },
+                    "data": [
+                        {
+                            "type": "business_User_Roles",
+                            "id": 103006
                         }
                     ]
                 },
@@ -1642,37 +1370,37 @@ export default function handler(req, res) {
             "type": "user",
             "id": 100008,
             "attributes": {
-                "created_at": "2024-05-03T23:30:36.669Z",
-                "updated_at": "2024-05-03T23:30:36.669Z",
+                "created_at": "2024-05-21T17:15:02.438Z",
+                "updated_at": "2024-05-21T17:15:02.438Z",
                 "active": true,
-                "username": "jack.maxwell",
-                "email": "jack.maxwell@mail.com",
-                "first_name": "Jack",
-                "middle_name": "h",
-                "last_name": "Maxwell",
-                "phone_number_mobile": "9012345678",
+                "username": "Justin.Rose",
+                "email": "Justin.Rose@mail.com",
+                "first_name": "Justin",
+                "middle_name": "HO",
+                "last_name": "Rose",
+                "phone_number_mobile": "1234567890",
                 "text_enabled": true,
                 "phone_verified": false,
-                "phone_number_home": "9012345679",
+                "phone_number_home": "9999999999",
                 "email_verified": true,
-                "last_login": "2024-04-23T00:00:00.000Z",
-                "last_failed_login": "2024-04-22T00:00:00.000Z",
+                "last_login": null,
+                "last_failed_login": null,
                 "admin": false,
-                "status": "inactive",
+                "status": "",
                 "language": [
-                    "English"
+                    ""
                 ],
                 "forced_login": false,
-                "failed_login_count": 3,
-                "address1": "6340",
-                "address2": "wendwood",
-                "state": "NC",
-                "zipcode": "68211",
-                "profile_picture_url": "http://www.bloomberg.com",
-                "referral_code": "DABC",
-                "referred_by": "WEB",
-                "date_of_birth": "2000-05-03T00:00:00.000Z",
-                "user_fully_onboarded": true,
+                "failed_login_count": 0,
+                "address1": "",
+                "address2": "",
+                "state": "",
+                "zipcode": "",
+                "profile_picture_url": "",
+                "referral_code": "",
+                "referred_by": "",
+                "date_of_birth": null,
+                "user_fully_onboarded": false,
                 "user_type": "homeowner"
             },
             "links": {
@@ -1686,29 +1414,12 @@ export default function handler(req, res) {
                     },
                     "data": null
                 },
-                "business_user_roles": {
-                    "links": {
-                        "self": "http://localhostx:3000/api/user/100008/relationships/business_user_roles",
-                        "related": "http://localhostx:3000/api/user/100008/business_user_roles"
-                    },
-                    "data": [
-                        {
-                            "type": "business_User_Roles",
-                            "id": 400008
-                        }
-                    ]
-                },
                 "business_documents": {
                     "links": {
                         "self": "http://localhostx:3000/api/user/100008/relationships/business_documents",
                         "related": "http://localhostx:3000/api/user/100008/business_documents"
                     },
-                    "data": [
-                        {
-                            "type": "business_Document",
-                            "id": 700008
-                        }
-                    ]
+                    "data": []
                 },
                 "home_owner_projects": {
                     "links": {
@@ -1718,7 +1429,19 @@ export default function handler(req, res) {
                     "data": [
                         {
                             "type": "project",
-                            "id": 800008
+                            "id": 200008
+                        }
+                    ]
+                },
+                "business_user_roles": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100008/relationships/business_user_roles",
+                        "related": "http://localhostx:3000/api/user/100008/business_user_roles"
+                    },
+                    "data": [
+                        {
+                            "type": "business_User_Roles",
+                            "id": 103007
                         }
                     ]
                 },
@@ -1840,37 +1563,37 @@ export default function handler(req, res) {
             "type": "user",
             "id": 100009,
             "attributes": {
-                "created_at": "2024-05-03T23:30:36.669Z",
-                "updated_at": "2024-05-03T23:30:36.669Z",
+                "created_at": "2024-05-21T17:15:02.663Z",
+                "updated_at": "2024-05-21T17:15:02.663Z",
                 "active": true,
-                "username": "marc.mcdonald",
-                "email": "marc.mcdonald@outlook.com",
-                "first_name": "Marc",
-                "middle_name": "i",
-                "last_name": "McDonald",
-                "phone_number_mobile": "7012345679",
+                "username": "Brooks.Koepka",
+                "email": "Brooks.Koepka@mail.com",
+                "first_name": "Brooks",
+                "middle_name": "HO",
+                "last_name": "Koepka",
+                "phone_number_mobile": "1234567890",
                 "text_enabled": true,
                 "phone_verified": false,
-                "phone_number_home": "8012345679",
+                "phone_number_home": "9999999999",
                 "email_verified": true,
-                "last_login": "2024-04-23T00:00:00.000Z",
-                "last_failed_login": "2024-04-22T00:00:00.000Z",
+                "last_login": null,
+                "last_failed_login": null,
                 "admin": false,
-                "status": "active",
+                "status": "",
                 "language": [
-                    "French"
+                    ""
                 ],
                 "forced_login": false,
                 "failed_login_count": 0,
-                "address1": "8345",
-                "address2": "peachtreeblvs",
-                "state": "NC",
-                "zipcode": "28217",
-                "profile_picture_url": "http://www.usnews.com",
-                "referral_code": "ABCD",
-                "referred_by": "WEB",
-                "date_of_birth": "2000-05-04T00:00:00.000Z",
-                "user_fully_onboarded": true,
+                "address1": "",
+                "address2": "",
+                "state": "",
+                "zipcode": "",
+                "profile_picture_url": "",
+                "referral_code": "",
+                "referred_by": "",
+                "date_of_birth": null,
+                "user_fully_onboarded": false,
                 "user_type": "homeowner"
             },
             "links": {
@@ -1884,6 +1607,29 @@ export default function handler(req, res) {
                     },
                     "data": null
                 },
+                "business_documents": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100009/relationships/business_documents",
+                        "related": "http://localhostx:3000/api/user/100009/business_documents"
+                    },
+                    "data": []
+                },
+                "home_owner_projects": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100009/relationships/home_owner_projects",
+                        "related": "http://localhostx:3000/api/user/100009/home_owner_projects"
+                    },
+                    "data": [
+                        {
+                            "type": "project",
+                            "id": 200009
+                        },
+                        {
+                            "type": "project",
+                            "id": 200012
+                        }
+                    ]
+                },
                 "business_user_roles": {
                     "links": {
                         "self": "http://localhostx:3000/api/user/100009/relationships/business_user_roles",
@@ -1892,28 +1638,9 @@ export default function handler(req, res) {
                     "data": [
                         {
                             "type": "business_User_Roles",
-                            "id": 400009
+                            "id": 103008
                         }
                     ]
-                },
-                "business_documents": {
-                    "links": {
-                        "self": "http://localhostx:3000/api/user/100009/relationships/business_documents",
-                        "related": "http://localhostx:3000/api/user/100009/business_documents"
-                    },
-                    "data": [
-                        {
-                            "type": "business_Document",
-                            "id": 700009
-                        }
-                    ]
-                },
-                "home_owner_projects": {
-                    "links": {
-                        "self": "http://localhostx:3000/api/user/100009/relationships/home_owner_projects",
-                        "related": "http://localhostx:3000/api/user/100009/home_owner_projects"
-                    },
-                    "data": []
                 },
                 "project_assignments": {
                     "links": {
@@ -2033,38 +1760,38 @@ export default function handler(req, res) {
             "type": "user",
             "id": 100010,
             "attributes": {
-                "created_at": "2024-05-03T23:30:36.669Z",
-                "updated_at": "2024-05-03T23:30:36.669Z",
+                "created_at": "2024-05-21T17:15:02.899Z",
+                "updated_at": "2024-05-21T17:15:02.899Z",
                 "active": true,
-                "username": "gc1.generalcontractor",
-                "email": "gc1.generalcontractor@outlook.com",
-                "first_name": "gc1",
-                "middle_name": "",
-                "last_name": "generalcontractor",
-                "phone_number_mobile": "7012345680",
+                "username": "Justin.Thomas",
+                "email": "Justin.Thomas@mail.com",
+                "first_name": "Justin",
+                "middle_name": "HO",
+                "last_name": "Thomas",
+                "phone_number_mobile": "1234567890",
                 "text_enabled": true,
                 "phone_verified": false,
-                "phone_number_home": "8012345680",
+                "phone_number_home": "9999999999",
                 "email_verified": true,
-                "last_login": "2024-04-24T00:00:00.000Z",
-                "last_failed_login": "2024-04-23T00:00:00.000Z",
+                "last_login": null,
+                "last_failed_login": null,
                 "admin": false,
-                "status": "active",
+                "status": "",
                 "language": [
-                    "English"
+                    ""
                 ],
                 "forced_login": false,
                 "failed_login_count": 0,
-                "address1": "8345",
-                "address2": "peachtreeblvs",
-                "state": "NC",
-                "zipcode": "28217",
-                "profile_picture_url": "/profilepic/gc1/.jpg",
-                "referral_code": "ABCD",
-                "referred_by": "WEB",
-                "date_of_birth": "2000-05-05T00:00:00.000Z",
-                "user_fully_onboarded": true,
-                "user_type": "generalcontractor"
+                "address1": "",
+                "address2": "",
+                "state": "",
+                "zipcode": "",
+                "profile_picture_url": "",
+                "referral_code": "",
+                "referred_by": "",
+                "date_of_birth": null,
+                "user_fully_onboarded": false,
+                "user_type": "homeowner"
             },
             "links": {
                 "self": "http://localhostx:3000/api/user/100010"
@@ -2077,46 +1804,46 @@ export default function handler(req, res) {
                     },
                     "data": {
                         "type": "business",
-                        "id": 200001
+                        "id": 101000
                     }
-                },
-                "business_user_roles": {
-                    "links": {
-                        "self": "http://localhostx:3000/api/user/100010/relationships/business_user_roles",
-                        "related": "http://localhostx:3000/api/user/100010/business_user_roles"
-                    },
-                    "data": []
                 },
                 "business_documents": {
                     "links": {
                         "self": "http://localhostx:3000/api/user/100010/relationships/business_documents",
                         "related": "http://localhostx:3000/api/user/100010/business_documents"
                     },
-                    "data": [
-                        {
-                            "type": "business_Document",
-                            "id": 700010
-                        }
-                    ]
+                    "data": []
                 },
                 "home_owner_projects": {
                     "links": {
                         "self": "http://localhostx:3000/api/user/100010/relationships/home_owner_projects",
                         "related": "http://localhostx:3000/api/user/100010/home_owner_projects"
                     },
-                    "data": []
+                    "data": [
+                        {
+                            "type": "project",
+                            "id": 200010
+                        }
+                    ]
+                },
+                "business_user_roles": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100010/relationships/business_user_roles",
+                        "related": "http://localhostx:3000/api/user/100010/business_user_roles"
+                    },
+                    "data": [
+                        {
+                            "type": "business_User_Roles",
+                            "id": 103009
+                        }
+                    ]
                 },
                 "project_assignments": {
                     "links": {
                         "self": "http://localhostx:3000/api/user/100010/relationships/project_assignments",
                         "related": "http://localhostx:3000/api/user/100010/project_assignments"
                     },
-                    "data": [
-                        {
-                            "type": "project_Assignments",
-                            "id": 130012
-                        }
-                    ]
+                    "data": []
                 },
                 "tasks": {
                     "links": {
@@ -2229,38 +1956,38 @@ export default function handler(req, res) {
             "type": "user",
             "id": 100011,
             "attributes": {
-                "created_at": "2024-05-03T23:30:36.669Z",
-                "updated_at": "2024-05-03T23:30:36.669Z",
+                "created_at": "2024-05-21T17:15:03.128Z",
+                "updated_at": "2024-05-21T17:15:03.128Z",
                 "active": true,
-                "username": "gc2.generalcontractor",
-                "email": "gc2.generalcontractor@outlook.com",
-                "first_name": "gc2",
-                "middle_name": "",
-                "last_name": "generalcontractor",
-                "phone_number_mobile": "7012345681",
+                "username": "John.Arcadia",
+                "email": "John.Arcadia@mail.com",
+                "first_name": "John",
+                "middle_name": "FA",
+                "last_name": "Arcadia",
+                "phone_number_mobile": "1234567890",
                 "text_enabled": true,
                 "phone_verified": false,
-                "phone_number_home": "8012345681",
+                "phone_number_home": "9999999999",
                 "email_verified": true,
-                "last_login": "2024-04-25T00:00:00.000Z",
-                "last_failed_login": "2024-04-24T00:00:00.000Z",
+                "last_login": null,
+                "last_failed_login": null,
                 "admin": false,
-                "status": "active",
+                "status": "",
                 "language": [
-                    "English"
+                    ""
                 ],
                 "forced_login": false,
                 "failed_login_count": 0,
-                "address1": "8345",
-                "address2": "peachtreeblvs",
-                "state": "NC",
-                "zipcode": "28217",
-                "profile_picture_url": "/profilepic/gc2/.jpg",
-                "referral_code": "BCDE",
-                "referred_by": "WEB",
-                "date_of_birth": "2000-05-06T00:00:00.000Z",
-                "user_fully_onboarded": true,
-                "user_type": "generalcontractor"
+                "address1": "",
+                "address2": "",
+                "state": "",
+                "zipcode": "",
+                "profile_picture_url": "",
+                "referral_code": "",
+                "referred_by": "",
+                "date_of_birth": null,
+                "user_fully_onboarded": false,
+                "user_type": "business"
             },
             "links": {
                 "self": "http://localhostx:3000/api/user/100011"
@@ -2271,29 +1998,14 @@ export default function handler(req, res) {
                         "self": "http://localhostx:3000/api/user/100011/relationships/business_creator",
                         "related": "http://localhostx:3000/api/user/100011/business_creator"
                     },
-                    "data": {
-                        "type": "business",
-                        "id": 200002
-                    }
-                },
-                "business_user_roles": {
-                    "links": {
-                        "self": "http://localhostx:3000/api/user/100011/relationships/business_user_roles",
-                        "related": "http://localhostx:3000/api/user/100011/business_user_roles"
-                    },
-                    "data": []
+                    "data": null
                 },
                 "business_documents": {
                     "links": {
                         "self": "http://localhostx:3000/api/user/100011/relationships/business_documents",
                         "related": "http://localhostx:3000/api/user/100011/business_documents"
                     },
-                    "data": [
-                        {
-                            "type": "business_Document",
-                            "id": 700011
-                        }
-                    ]
+                    "data": []
                 },
                 "home_owner_projects": {
                     "links": {
@@ -2302,17 +2014,24 @@ export default function handler(req, res) {
                     },
                     "data": []
                 },
+                "business_user_roles": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100011/relationships/business_user_roles",
+                        "related": "http://localhostx:3000/api/user/100011/business_user_roles"
+                    },
+                    "data": [
+                        {
+                            "type": "business_User_Roles",
+                            "id": 103010
+                        }
+                    ]
+                },
                 "project_assignments": {
                     "links": {
                         "self": "http://localhostx:3000/api/user/100011/relationships/project_assignments",
                         "related": "http://localhostx:3000/api/user/100011/project_assignments"
                     },
-                    "data": [
-                        {
-                            "type": "project_Assignments",
-                            "id": 130013
-                        }
-                    ]
+                    "data": []
                 },
                 "tasks": {
                     "links": {
@@ -2425,38 +2144,38 @@ export default function handler(req, res) {
             "type": "user",
             "id": 100012,
             "attributes": {
-                "created_at": "2024-05-03T23:30:36.669Z",
-                "updated_at": "2024-05-03T23:30:36.669Z",
+                "created_at": "2024-05-21T17:15:03.360Z",
+                "updated_at": "2024-05-21T17:15:03.360Z",
                 "active": true,
-                "username": "gc3.generalcontractor",
-                "email": "gc3.generalcontractor@outlook.com",
-                "first_name": "gc3",
-                "middle_name": "",
-                "last_name": "generalcontractor",
-                "phone_number_mobile": "7012345682",
+                "username": "David.Arcadia",
+                "email": "David.Arcadia@mail.com",
+                "first_name": "David",
+                "middle_name": "PM_FC",
+                "last_name": "Arcadia",
+                "phone_number_mobile": "1234567890",
                 "text_enabled": true,
                 "phone_verified": false,
-                "phone_number_home": "8012345682",
+                "phone_number_home": "9999999999",
                 "email_verified": true,
-                "last_login": "2024-04-26T00:00:00.000Z",
-                "last_failed_login": "2024-04-25T00:00:00.000Z",
+                "last_login": null,
+                "last_failed_login": null,
                 "admin": false,
-                "status": "active",
+                "status": "",
                 "language": [
-                    "English"
+                    ""
                 ],
                 "forced_login": false,
                 "failed_login_count": 0,
-                "address1": "8345",
-                "address2": "peachtreeblvs",
-                "state": "NC",
-                "zipcode": "28217",
-                "profile_picture_url": "/profilepic/gc3/.jpg",
-                "referral_code": "ABCD",
-                "referred_by": "WEB",
-                "date_of_birth": "2000-05-07T00:00:00.000Z",
-                "user_fully_onboarded": true,
-                "user_type": "generalcontractor"
+                "address1": "",
+                "address2": "",
+                "state": "",
+                "zipcode": "",
+                "profile_picture_url": "",
+                "referral_code": "",
+                "referred_by": "",
+                "date_of_birth": null,
+                "user_fully_onboarded": false,
+                "user_type": "business"
             },
             "links": {
                 "self": "http://localhostx:3000/api/user/100012"
@@ -2467,29 +2186,14 @@ export default function handler(req, res) {
                         "self": "http://localhostx:3000/api/user/100012/relationships/business_creator",
                         "related": "http://localhostx:3000/api/user/100012/business_creator"
                     },
-                    "data": {
-                        "type": "business",
-                        "id": 200003
-                    }
-                },
-                "business_user_roles": {
-                    "links": {
-                        "self": "http://localhostx:3000/api/user/100012/relationships/business_user_roles",
-                        "related": "http://localhostx:3000/api/user/100012/business_user_roles"
-                    },
-                    "data": []
+                    "data": null
                 },
                 "business_documents": {
                     "links": {
                         "self": "http://localhostx:3000/api/user/100012/relationships/business_documents",
                         "related": "http://localhostx:3000/api/user/100012/business_documents"
                     },
-                    "data": [
-                        {
-                            "type": "business_Document",
-                            "id": 700012
-                        }
-                    ]
+                    "data": []
                 },
                 "home_owner_projects": {
                     "links": {
@@ -2498,17 +2202,24 @@ export default function handler(req, res) {
                     },
                     "data": []
                 },
+                "business_user_roles": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100012/relationships/business_user_roles",
+                        "related": "http://localhostx:3000/api/user/100012/business_user_roles"
+                    },
+                    "data": [
+                        {
+                            "type": "business_User_Roles",
+                            "id": 103011
+                        }
+                    ]
+                },
                 "project_assignments": {
                     "links": {
                         "self": "http://localhostx:3000/api/user/100012/relationships/project_assignments",
                         "related": "http://localhostx:3000/api/user/100012/project_assignments"
                     },
-                    "data": [
-                        {
-                            "type": "project_Assignments",
-                            "id": 130014
-                        }
-                    ]
+                    "data": []
                 },
                 "tasks": {
                     "links": {
@@ -2621,38 +2332,38 @@ export default function handler(req, res) {
             "type": "user",
             "id": 100013,
             "attributes": {
-                "created_at": "2024-05-03T23:30:36.669Z",
-                "updated_at": "2024-05-03T23:30:36.669Z",
+                "created_at": "2024-05-21T17:15:03.576Z",
+                "updated_at": "2024-05-21T17:15:03.576Z",
                 "active": true,
-                "username": "gc4.generalcontractor",
-                "email": "gc4.generalcontractor@outlook.com",
-                "first_name": "gc4",
-                "middle_name": "",
-                "last_name": "generalcontractor",
-                "phone_number_mobile": "7012345683",
+                "username": "Tom.Arcadia",
+                "email": "Tom.Arcadia@mail.com",
+                "first_name": "Tom",
+                "middle_name": "ES_SM",
+                "last_name": "Arcadia",
+                "phone_number_mobile": "1234567890",
                 "text_enabled": true,
                 "phone_verified": false,
-                "phone_number_home": "8012345683",
+                "phone_number_home": "9999999999",
                 "email_verified": true,
-                "last_login": "2024-04-27T00:00:00.000Z",
-                "last_failed_login": "2024-04-26T00:00:00.000Z",
+                "last_login": null,
+                "last_failed_login": null,
                 "admin": false,
-                "status": "active",
+                "status": "",
                 "language": [
-                    "English"
+                    ""
                 ],
                 "forced_login": false,
                 "failed_login_count": 0,
-                "address1": "8345",
-                "address2": "peachtreeblvs",
-                "state": "NC",
-                "zipcode": "28217",
-                "profile_picture_url": "/profilepic/gc4/.jpg",
-                "referral_code": "CDAB",
-                "referred_by": "WEB",
-                "date_of_birth": "2000-05-08T00:00:00.000Z",
-                "user_fully_onboarded": true,
-                "user_type": "generalcontractor"
+                "address1": "",
+                "address2": "",
+                "state": "",
+                "zipcode": "",
+                "profile_picture_url": "",
+                "referral_code": "",
+                "referred_by": "",
+                "date_of_birth": null,
+                "user_fully_onboarded": false,
+                "user_type": "business"
             },
             "links": {
                 "self": "http://localhostx:3000/api/user/100013"
@@ -2663,29 +2374,14 @@ export default function handler(req, res) {
                         "self": "http://localhostx:3000/api/user/100013/relationships/business_creator",
                         "related": "http://localhostx:3000/api/user/100013/business_creator"
                     },
-                    "data": {
-                        "type": "business",
-                        "id": 200004
-                    }
-                },
-                "business_user_roles": {
-                    "links": {
-                        "self": "http://localhostx:3000/api/user/100013/relationships/business_user_roles",
-                        "related": "http://localhostx:3000/api/user/100013/business_user_roles"
-                    },
-                    "data": []
+                    "data": null
                 },
                 "business_documents": {
                     "links": {
                         "self": "http://localhostx:3000/api/user/100013/relationships/business_documents",
                         "related": "http://localhostx:3000/api/user/100013/business_documents"
                     },
-                    "data": [
-                        {
-                            "type": "business_Document",
-                            "id": 700013
-                        }
-                    ]
+                    "data": []
                 },
                 "home_owner_projects": {
                     "links": {
@@ -2694,17 +2390,24 @@ export default function handler(req, res) {
                     },
                     "data": []
                 },
+                "business_user_roles": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100013/relationships/business_user_roles",
+                        "related": "http://localhostx:3000/api/user/100013/business_user_roles"
+                    },
+                    "data": [
+                        {
+                            "type": "business_User_Roles",
+                            "id": 103012
+                        }
+                    ]
+                },
                 "project_assignments": {
                     "links": {
                         "self": "http://localhostx:3000/api/user/100013/relationships/project_assignments",
                         "related": "http://localhostx:3000/api/user/100013/project_assignments"
                     },
-                    "data": [
-                        {
-                            "type": "project_Assignments",
-                            "id": 130015
-                        }
-                    ]
+                    "data": []
                 },
                 "tasks": {
                     "links": {
@@ -2817,38 +2520,38 @@ export default function handler(req, res) {
             "type": "user",
             "id": 100014,
             "attributes": {
-                "created_at": "2024-05-03T23:30:36.669Z",
-                "updated_at": "2024-05-03T23:30:36.669Z",
+                "created_at": "2024-05-21T17:15:03.783Z",
+                "updated_at": "2024-05-21T17:15:03.783Z",
                 "active": true,
-                "username": "gc1emp1.gc_employee",
-                "email": "gc1emp1.gc_employee@outlook.com",
-                "first_name": "gc1emp1",
-                "middle_name": "",
-                "last_name": "gc_employee",
-                "phone_number_mobile": "7012345684",
+                "username": "Peter.Arcadia",
+                "email": "Peter.Arcadia@mail.com",
+                "first_name": "Peter",
+                "middle_name": "FA",
+                "last_name": "Arcadia",
+                "phone_number_mobile": "1234567890",
                 "text_enabled": true,
                 "phone_verified": false,
-                "phone_number_home": "8012345684",
+                "phone_number_home": "9999999999",
                 "email_verified": true,
-                "last_login": "2024-04-28T00:00:00.000Z",
-                "last_failed_login": "2024-04-27T00:00:00.000Z",
+                "last_login": null,
+                "last_failed_login": null,
                 "admin": false,
-                "status": "active",
+                "status": "",
                 "language": [
-                    "English"
+                    ""
                 ],
                 "forced_login": false,
                 "failed_login_count": 0,
-                "address1": "8345",
-                "address2": "peachtreeblvs",
-                "state": "NC",
-                "zipcode": "28217",
-                "profile_picture_url": "/profilepic/gc1emp1/.jpg",
-                "referral_code": "DABC",
-                "referred_by": "WEB",
-                "date_of_birth": "2000-05-09T00:00:00.000Z",
-                "user_fully_onboarded": true,
-                "user_type": "gc_employee"
+                "address1": "",
+                "address2": "",
+                "state": "",
+                "zipcode": "",
+                "profile_picture_url": "",
+                "referral_code": "",
+                "referred_by": "",
+                "date_of_birth": null,
+                "user_fully_onboarded": false,
+                "user_type": "business"
             },
             "links": {
                 "self": "http://localhostx:3000/api/user/100014"
@@ -2860,13 +2563,6 @@ export default function handler(req, res) {
                         "related": "http://localhostx:3000/api/user/100014/business_creator"
                     },
                     "data": null
-                },
-                "business_user_roles": {
-                    "links": {
-                        "self": "http://localhostx:3000/api/user/100014/relationships/business_user_roles",
-                        "related": "http://localhostx:3000/api/user/100014/business_user_roles"
-                    },
-                    "data": []
                 },
                 "business_documents": {
                     "links": {
@@ -2882,21 +2578,24 @@ export default function handler(req, res) {
                     },
                     "data": []
                 },
+                "business_user_roles": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100014/relationships/business_user_roles",
+                        "related": "http://localhostx:3000/api/user/100014/business_user_roles"
+                    },
+                    "data": [
+                        {
+                            "type": "business_User_Roles",
+                            "id": 103013
+                        }
+                    ]
+                },
                 "project_assignments": {
                     "links": {
                         "self": "http://localhostx:3000/api/user/100014/relationships/project_assignments",
                         "related": "http://localhostx:3000/api/user/100014/project_assignments"
                     },
-                    "data": [
-                        {
-                            "type": "project_Assignments",
-                            "id": 130001
-                        },
-                        {
-                            "type": "project_Assignments",
-                            "id": 130010
-                        }
-                    ]
+                    "data": []
                 },
                 "tasks": {
                     "links": {
@@ -3009,38 +2708,38 @@ export default function handler(req, res) {
             "type": "user",
             "id": 100015,
             "attributes": {
-                "created_at": "2024-05-03T23:30:36.669Z",
-                "updated_at": "2024-05-03T23:30:36.669Z",
+                "created_at": "2024-05-21T17:15:04.419Z",
+                "updated_at": "2024-05-21T17:15:04.419Z",
                 "active": true,
-                "username": "gc1emp2.gc_employee",
-                "email": "gc1emp2.gc_employee@outlook.com",
-                "first_name": "gc1emp2",
-                "middle_name": "",
-                "last_name": "gc_employee",
-                "phone_number_mobile": "7012345685",
+                "username": "Chris.Arcadia",
+                "email": "Chris.Arcadia@mail.com",
+                "first_name": "Chris",
+                "middle_name": "OM_BK",
+                "last_name": "Arcadia",
+                "phone_number_mobile": "1234567890",
                 "text_enabled": true,
                 "phone_verified": false,
-                "phone_number_home": "8012345685",
+                "phone_number_home": "9999999999",
                 "email_verified": true,
-                "last_login": "2024-04-29T00:00:00.000Z",
-                "last_failed_login": "2024-04-28T00:00:00.000Z",
+                "last_login": null,
+                "last_failed_login": null,
                 "admin": false,
-                "status": "active",
+                "status": "",
                 "language": [
-                    "English"
+                    ""
                 ],
                 "forced_login": false,
                 "failed_login_count": 0,
-                "address1": "8345",
-                "address2": "peachtreeblvs",
-                "state": "NC",
-                "zipcode": "28217",
-                "profile_picture_url": "/profilepic/gc1emp2/.jpg",
-                "referral_code": "CDAB",
-                "referred_by": "WEB",
-                "date_of_birth": "2000-05-10T00:00:00.000Z",
-                "user_fully_onboarded": true,
-                "user_type": "gc_employee"
+                "address1": "",
+                "address2": "",
+                "state": "",
+                "zipcode": "",
+                "profile_picture_url": "",
+                "referral_code": "",
+                "referred_by": "",
+                "date_of_birth": null,
+                "user_fully_onboarded": false,
+                "user_type": "business"
             },
             "links": {
                 "self": "http://localhostx:3000/api/user/100015"
@@ -3051,14 +2750,10 @@ export default function handler(req, res) {
                         "self": "http://localhostx:3000/api/user/100015/relationships/business_creator",
                         "related": "http://localhostx:3000/api/user/100015/business_creator"
                     },
-                    "data": null
-                },
-                "business_user_roles": {
-                    "links": {
-                        "self": "http://localhostx:3000/api/user/100015/relationships/business_user_roles",
-                        "related": "http://localhostx:3000/api/user/100015/business_user_roles"
-                    },
-                    "data": []
+                    "data": {
+                        "type": "business",
+                        "id": 101001
+                    }
                 },
                 "business_documents": {
                     "links": {
@@ -3074,17 +2769,24 @@ export default function handler(req, res) {
                     },
                     "data": []
                 },
+                "business_user_roles": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100015/relationships/business_user_roles",
+                        "related": "http://localhostx:3000/api/user/100015/business_user_roles"
+                    },
+                    "data": [
+                        {
+                            "type": "business_User_Roles",
+                            "id": 103014
+                        }
+                    ]
+                },
                 "project_assignments": {
                     "links": {
                         "self": "http://localhostx:3000/api/user/100015/relationships/project_assignments",
                         "related": "http://localhostx:3000/api/user/100015/project_assignments"
                     },
-                    "data": [
-                        {
-                            "type": "project_Assignments",
-                            "id": 130011
-                        }
-                    ]
+                    "data": []
                 },
                 "tasks": {
                     "links": {
@@ -3197,38 +2899,38 @@ export default function handler(req, res) {
             "type": "user",
             "id": 100016,
             "attributes": {
-                "created_at": "2024-05-03T23:30:36.669Z",
-                "updated_at": "2024-05-03T23:30:36.669Z",
+                "created_at": "2024-05-21T17:15:04.786Z",
+                "updated_at": "2024-05-21T17:15:04.786Z",
                 "active": true,
-                "username": "gc1emp3.gc_employee",
-                "email": "gc1emp3.gc_employee@outlook.com",
-                "first_name": "gc1emp3",
-                "middle_name": "",
-                "last_name": "gc_employee",
-                "phone_number_mobile": "7012345686",
+                "username": "Patrick.ARCustom",
+                "email": "Patrick.ARCustom@mail.com",
+                "first_name": "Patrick",
+                "middle_name": "FA",
+                "last_name": "ARCustom",
+                "phone_number_mobile": "1234567890",
                 "text_enabled": true,
                 "phone_verified": false,
-                "phone_number_home": "8012345686",
+                "phone_number_home": "9999999999",
                 "email_verified": true,
-                "last_login": "2024-04-30T00:00:00.000Z",
-                "last_failed_login": "2024-04-29T00:00:00.000Z",
+                "last_login": null,
+                "last_failed_login": null,
                 "admin": false,
-                "status": "active",
+                "status": "",
                 "language": [
-                    "English"
+                    ""
                 ],
                 "forced_login": false,
                 "failed_login_count": 0,
-                "address1": "8345",
-                "address2": "peachtreeblvs",
-                "state": "NC",
-                "zipcode": "28217",
-                "profile_picture_url": "/profilepic/gc1emp3/.jpg",
-                "referral_code": "CDAB",
-                "referred_by": "WEB",
-                "date_of_birth": "2000-05-11T00:00:00.000Z",
-                "user_fully_onboarded": true,
-                "user_type": "gc_employee"
+                "address1": "",
+                "address2": "",
+                "state": "",
+                "zipcode": "",
+                "profile_picture_url": "",
+                "referral_code": "",
+                "referred_by": "",
+                "date_of_birth": null,
+                "user_fully_onboarded": false,
+                "user_type": "business"
             },
             "links": {
                 "self": "http://localhostx:3000/api/user/100016"
@@ -3240,13 +2942,6 @@ export default function handler(req, res) {
                         "related": "http://localhostx:3000/api/user/100016/business_creator"
                     },
                     "data": null
-                },
-                "business_user_roles": {
-                    "links": {
-                        "self": "http://localhostx:3000/api/user/100016/relationships/business_user_roles",
-                        "related": "http://localhostx:3000/api/user/100016/business_user_roles"
-                    },
-                    "data": []
                 },
                 "business_documents": {
                     "links": {
@@ -3262,17 +2957,24 @@ export default function handler(req, res) {
                     },
                     "data": []
                 },
+                "business_user_roles": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100016/relationships/business_user_roles",
+                        "related": "http://localhostx:3000/api/user/100016/business_user_roles"
+                    },
+                    "data": [
+                        {
+                            "type": "business_User_Roles",
+                            "id": 103015
+                        }
+                    ]
+                },
                 "project_assignments": {
                     "links": {
                         "self": "http://localhostx:3000/api/user/100016/relationships/project_assignments",
                         "related": "http://localhostx:3000/api/user/100016/project_assignments"
                     },
-                    "data": [
-                        {
-                            "type": "project_Assignments",
-                            "id": 130006
-                        }
-                    ]
+                    "data": []
                 },
                 "tasks": {
                     "links": {
@@ -3385,38 +3087,38 @@ export default function handler(req, res) {
             "type": "user",
             "id": 100017,
             "attributes": {
-                "created_at": "2024-05-03T23:30:36.669Z",
-                "updated_at": "2024-05-03T23:30:36.669Z",
+                "created_at": "2024-05-21T17:15:04.992Z",
+                "updated_at": "2024-05-21T17:15:04.992Z",
                 "active": true,
-                "username": "gc1emp4.gc_employee",
-                "email": "gc1emp4.gc_employee@outlook.com",
-                "first_name": "gc1emp4",
-                "middle_name": "",
-                "last_name": "gc_employee",
-                "phone_number_mobile": "7012345687",
+                "username": "Alex.ARCustom",
+                "email": "Alex.ARCustom@mail.com",
+                "first_name": "Alex",
+                "middle_name": "ES_SM",
+                "last_name": "ARCustom",
+                "phone_number_mobile": "1234567890",
                 "text_enabled": true,
                 "phone_verified": false,
-                "phone_number_home": "8012345687",
+                "phone_number_home": "9999999999",
                 "email_verified": true,
-                "last_login": "2024-05-01T00:00:00.000Z",
-                "last_failed_login": "2024-04-30T00:00:00.000Z",
+                "last_login": null,
+                "last_failed_login": null,
                 "admin": false,
-                "status": "active",
+                "status": "",
                 "language": [
-                    "English"
+                    ""
                 ],
                 "forced_login": false,
                 "failed_login_count": 0,
-                "address1": "8345",
-                "address2": "peachtreeblvs",
-                "state": "NC",
-                "zipcode": "28217",
-                "profile_picture_url": "/profilepic/gc1emp3/.jpg",
-                "referral_code": "DABC",
-                "referred_by": "WEB",
-                "date_of_birth": "2000-05-12T00:00:00.000Z",
-                "user_fully_onboarded": true,
-                "user_type": "gc_employee"
+                "address1": "",
+                "address2": "",
+                "state": "",
+                "zipcode": "",
+                "profile_picture_url": "",
+                "referral_code": "",
+                "referred_by": "",
+                "date_of_birth": null,
+                "user_fully_onboarded": false,
+                "user_type": "business"
             },
             "links": {
                 "self": "http://localhostx:3000/api/user/100017"
@@ -3428,13 +3130,6 @@ export default function handler(req, res) {
                         "related": "http://localhostx:3000/api/user/100017/business_creator"
                     },
                     "data": null
-                },
-                "business_user_roles": {
-                    "links": {
-                        "self": "http://localhostx:3000/api/user/100017/relationships/business_user_roles",
-                        "related": "http://localhostx:3000/api/user/100017/business_user_roles"
-                    },
-                    "data": []
                 },
                 "business_documents": {
                     "links": {
@@ -3450,17 +3145,24 @@ export default function handler(req, res) {
                     },
                     "data": []
                 },
+                "business_user_roles": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100017/relationships/business_user_roles",
+                        "related": "http://localhostx:3000/api/user/100017/business_user_roles"
+                    },
+                    "data": [
+                        {
+                            "type": "business_User_Roles",
+                            "id": 103016
+                        }
+                    ]
+                },
                 "project_assignments": {
                     "links": {
                         "self": "http://localhostx:3000/api/user/100017/relationships/project_assignments",
                         "related": "http://localhostx:3000/api/user/100017/project_assignments"
                     },
-                    "data": [
-                        {
-                            "type": "project_Assignments",
-                            "id": 130007
-                        }
-                    ]
+                    "data": []
                 },
                 "tasks": {
                     "links": {
@@ -3573,38 +3275,38 @@ export default function handler(req, res) {
             "type": "user",
             "id": 100018,
             "attributes": {
-                "created_at": "2024-05-03T23:30:36.669Z",
-                "updated_at": "2024-05-03T23:30:36.669Z",
+                "created_at": "2024-05-21T17:15:05.211Z",
+                "updated_at": "2024-05-21T17:15:05.211Z",
                 "active": true,
-                "username": "gc2emp1.gc_employee",
-                "email": "gc2emp1.gc_employee@outlook.com",
-                "first_name": "gc2emp1",
-                "middle_name": "",
-                "last_name": "gc_employee",
-                "phone_number_mobile": "7012345688",
+                "username": "Les.ARCustom",
+                "email": "Les.ARCustom@mail.com",
+                "first_name": "Les",
+                "middle_name": "OM_BK",
+                "last_name": "ARCustom",
+                "phone_number_mobile": "1234567890",
                 "text_enabled": true,
                 "phone_verified": false,
-                "phone_number_home": "8012345688",
+                "phone_number_home": "9999999999",
                 "email_verified": true,
-                "last_login": "2024-05-02T00:00:00.000Z",
-                "last_failed_login": "2024-05-01T00:00:00.000Z",
+                "last_login": null,
+                "last_failed_login": null,
                 "admin": false,
-                "status": "active",
+                "status": "",
                 "language": [
-                    "English"
+                    ""
                 ],
                 "forced_login": false,
                 "failed_login_count": 0,
-                "address1": "8345",
-                "address2": "peachtreeblvs",
-                "state": "NC",
-                "zipcode": "28217",
-                "profile_picture_url": "/profilepic/gc2emp1/.jpg",
-                "referral_code": "ABCD",
-                "referred_by": "WEB",
-                "date_of_birth": "2000-05-13T00:00:00.000Z",
-                "user_fully_onboarded": true,
-                "user_type": "gc_employee"
+                "address1": "",
+                "address2": "",
+                "state": "",
+                "zipcode": "",
+                "profile_picture_url": "",
+                "referral_code": "",
+                "referred_by": "",
+                "date_of_birth": null,
+                "user_fully_onboarded": false,
+                "user_type": "business"
             },
             "links": {
                 "self": "http://localhostx:3000/api/user/100018"
@@ -3615,14 +3317,10 @@ export default function handler(req, res) {
                         "self": "http://localhostx:3000/api/user/100018/relationships/business_creator",
                         "related": "http://localhostx:3000/api/user/100018/business_creator"
                     },
-                    "data": null
-                },
-                "business_user_roles": {
-                    "links": {
-                        "self": "http://localhostx:3000/api/user/100018/relationships/business_user_roles",
-                        "related": "http://localhostx:3000/api/user/100018/business_user_roles"
-                    },
-                    "data": []
+                    "data": {
+                        "type": "business",
+                        "id": 101002
+                    }
                 },
                 "business_documents": {
                     "links": {
@@ -3638,17 +3336,24 @@ export default function handler(req, res) {
                     },
                     "data": []
                 },
+                "business_user_roles": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100018/relationships/business_user_roles",
+                        "related": "http://localhostx:3000/api/user/100018/business_user_roles"
+                    },
+                    "data": [
+                        {
+                            "type": "business_User_Roles",
+                            "id": 103017
+                        }
+                    ]
+                },
                 "project_assignments": {
                     "links": {
                         "self": "http://localhostx:3000/api/user/100018/relationships/project_assignments",
                         "related": "http://localhostx:3000/api/user/100018/project_assignments"
                     },
-                    "data": [
-                        {
-                            "type": "project_Assignments",
-                            "id": 130008
-                        }
-                    ]
+                    "data": []
                 },
                 "tasks": {
                     "links": {
@@ -3761,38 +3466,38 @@ export default function handler(req, res) {
             "type": "user",
             "id": 100019,
             "attributes": {
-                "created_at": "2024-05-03T23:30:36.669Z",
-                "updated_at": "2024-05-03T23:30:36.669Z",
+                "created_at": "2024-05-21T17:15:05.426Z",
+                "updated_at": "2024-05-21T17:15:05.426Z",
                 "active": true,
-                "username": "gc2emp2.gc_employee",
-                "email": "gc2emp2.gc_employee@outlook.com",
-                "first_name": "gc2emp2",
-                "middle_name": "",
-                "last_name": "gc_employee",
-                "phone_number_mobile": "7012345689",
+                "username": "John.Grandfather",
+                "email": "John.Grandfather@mail.com",
+                "first_name": "John",
+                "middle_name": "FA",
+                "last_name": "Grandfather",
+                "phone_number_mobile": "1234567890",
                 "text_enabled": true,
                 "phone_verified": false,
-                "phone_number_home": "8012345689",
+                "phone_number_home": "9999999999",
                 "email_verified": true,
-                "last_login": "2024-05-03T00:00:00.000Z",
-                "last_failed_login": "2024-05-02T00:00:00.000Z",
+                "last_login": null,
+                "last_failed_login": null,
                 "admin": false,
-                "status": "active",
+                "status": "",
                 "language": [
-                    "English"
+                    ""
                 ],
                 "forced_login": false,
                 "failed_login_count": 0,
-                "address1": "8345",
-                "address2": "peachtreeblvs",
-                "state": "NC",
-                "zipcode": "28217",
-                "profile_picture_url": "/profilepic/gc2emp2/.jpg",
-                "referral_code": "ABCD",
-                "referred_by": "WEB",
-                "date_of_birth": "2000-05-14T00:00:00.000Z",
-                "user_fully_onboarded": true,
-                "user_type": "gc_employee"
+                "address1": "",
+                "address2": "",
+                "state": "",
+                "zipcode": "",
+                "profile_picture_url": "",
+                "referral_code": "",
+                "referred_by": "",
+                "date_of_birth": null,
+                "user_fully_onboarded": false,
+                "user_type": "business"
             },
             "links": {
                 "self": "http://localhostx:3000/api/user/100019"
@@ -3804,13 +3509,6 @@ export default function handler(req, res) {
                         "related": "http://localhostx:3000/api/user/100019/business_creator"
                     },
                     "data": null
-                },
-                "business_user_roles": {
-                    "links": {
-                        "self": "http://localhostx:3000/api/user/100019/relationships/business_user_roles",
-                        "related": "http://localhostx:3000/api/user/100019/business_user_roles"
-                    },
-                    "data": []
                 },
                 "business_documents": {
                     "links": {
@@ -3826,17 +3524,24 @@ export default function handler(req, res) {
                     },
                     "data": []
                 },
+                "business_user_roles": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100019/relationships/business_user_roles",
+                        "related": "http://localhostx:3000/api/user/100019/business_user_roles"
+                    },
+                    "data": [
+                        {
+                            "type": "business_User_Roles",
+                            "id": 103018
+                        }
+                    ]
+                },
                 "project_assignments": {
                     "links": {
                         "self": "http://localhostx:3000/api/user/100019/relationships/project_assignments",
                         "related": "http://localhostx:3000/api/user/100019/project_assignments"
                     },
-                    "data": [
-                        {
-                            "type": "project_Assignments",
-                            "id": 130009
-                        }
-                    ]
+                    "data": []
                 },
                 "tasks": {
                     "links": {
@@ -3949,38 +3654,38 @@ export default function handler(req, res) {
             "type": "user",
             "id": 100020,
             "attributes": {
-                "created_at": "2024-05-03T23:30:36.669Z",
-                "updated_at": "2024-05-03T23:30:36.669Z",
+                "created_at": "2024-05-21T17:15:05.672Z",
+                "updated_at": "2024-05-21T17:15:05.672Z",
                 "active": true,
-                "username": "gc2emp3.gc_employee",
-                "email": "gc2emp3.gc_employee@outlook.com",
-                "first_name": "gc2emp3",
-                "middle_name": "",
-                "last_name": "gc_employee",
-                "phone_number_mobile": "7012345690",
+                "username": "David.Grandfather",
+                "email": "David.Grandfather@mail.com",
+                "first_name": "David",
+                "middle_name": "PM",
+                "last_name": "Grandfather",
+                "phone_number_mobile": "1234567890",
                 "text_enabled": true,
                 "phone_verified": false,
-                "phone_number_home": "8012345690",
+                "phone_number_home": "9999999999",
                 "email_verified": true,
-                "last_login": "2024-05-04T00:00:00.000Z",
-                "last_failed_login": "2024-05-03T00:00:00.000Z",
+                "last_login": null,
+                "last_failed_login": null,
                 "admin": false,
-                "status": "active",
+                "status": "",
                 "language": [
-                    "English"
+                    ""
                 ],
                 "forced_login": false,
                 "failed_login_count": 0,
-                "address1": "8345",
-                "address2": "peachtreeblvs",
-                "state": "NC",
-                "zipcode": "28217",
-                "profile_picture_url": "/profilepic/gc2emp3/.jpg",
-                "referral_code": "BCDE",
-                "referred_by": "WEB",
-                "date_of_birth": "2000-05-15T00:00:00.000Z",
-                "user_fully_onboarded": true,
-                "user_type": "gc_employee"
+                "address1": "",
+                "address2": "",
+                "state": "",
+                "zipcode": "",
+                "profile_picture_url": "",
+                "referral_code": "",
+                "referred_by": "",
+                "date_of_birth": null,
+                "user_fully_onboarded": false,
+                "user_type": "business"
             },
             "links": {
                 "self": "http://localhostx:3000/api/user/100020"
@@ -3992,13 +3697,6 @@ export default function handler(req, res) {
                         "related": "http://localhostx:3000/api/user/100020/business_creator"
                     },
                     "data": null
-                },
-                "business_user_roles": {
-                    "links": {
-                        "self": "http://localhostx:3000/api/user/100020/relationships/business_user_roles",
-                        "related": "http://localhostx:3000/api/user/100020/business_user_roles"
-                    },
-                    "data": []
                 },
                 "business_documents": {
                     "links": {
@@ -4014,17 +3712,24 @@ export default function handler(req, res) {
                     },
                     "data": []
                 },
+                "business_user_roles": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100020/relationships/business_user_roles",
+                        "related": "http://localhostx:3000/api/user/100020/business_user_roles"
+                    },
+                    "data": [
+                        {
+                            "type": "business_User_Roles",
+                            "id": 103019
+                        }
+                    ]
+                },
                 "project_assignments": {
                     "links": {
                         "self": "http://localhostx:3000/api/user/100020/relationships/project_assignments",
                         "related": "http://localhostx:3000/api/user/100020/project_assignments"
                     },
-                    "data": [
-                        {
-                            "type": "project_Assignments",
-                            "id": 130002
-                        }
-                    ]
+                    "data": []
                 },
                 "tasks": {
                     "links": {
@@ -4137,38 +3842,38 @@ export default function handler(req, res) {
             "type": "user",
             "id": 100021,
             "attributes": {
-                "created_at": "2024-05-03T23:30:36.669Z",
-                "updated_at": "2024-05-03T23:30:36.669Z",
+                "created_at": "2024-05-21T17:15:05.896Z",
+                "updated_at": "2024-05-21T17:15:05.896Z",
                 "active": true,
-                "username": "gc2emp4.gc_employee",
-                "email": "gc2emp4.gc_employee@outlook.com",
-                "first_name": "gc2emp4",
-                "middle_name": "",
-                "last_name": "gc_employee",
-                "phone_number_mobile": "7012345691",
+                "username": "Tom.Grandfather",
+                "email": "Tom.Grandfather@mail.com",
+                "first_name": "Tom",
+                "middle_name": "OM",
+                "last_name": "Grandfather",
+                "phone_number_mobile": "1234567890",
                 "text_enabled": true,
                 "phone_verified": false,
-                "phone_number_home": "8012345691",
+                "phone_number_home": "9999999999",
                 "email_verified": true,
-                "last_login": "2024-05-05T00:00:00.000Z",
-                "last_failed_login": "2024-05-04T00:00:00.000Z",
+                "last_login": null,
+                "last_failed_login": null,
                 "admin": false,
-                "status": "active",
+                "status": "",
                 "language": [
-                    "English"
+                    ""
                 ],
                 "forced_login": false,
                 "failed_login_count": 0,
-                "address1": "8345",
-                "address2": "peachtreeblvs",
-                "state": "NC",
-                "zipcode": "28217",
-                "profile_picture_url": "/profilepic/gc2emp3/.jpg",
-                "referral_code": "ABCD",
-                "referred_by": "WEB",
-                "date_of_birth": "2000-05-16T00:00:00.000Z",
-                "user_fully_onboarded": true,
-                "user_type": "gc_employee"
+                "address1": "",
+                "address2": "",
+                "state": "",
+                "zipcode": "",
+                "profile_picture_url": "",
+                "referral_code": "",
+                "referred_by": "",
+                "date_of_birth": null,
+                "user_fully_onboarded": false,
+                "user_type": "business"
             },
             "links": {
                 "self": "http://localhostx:3000/api/user/100021"
@@ -4180,13 +3885,6 @@ export default function handler(req, res) {
                         "related": "http://localhostx:3000/api/user/100021/business_creator"
                     },
                     "data": null
-                },
-                "business_user_roles": {
-                    "links": {
-                        "self": "http://localhostx:3000/api/user/100021/relationships/business_user_roles",
-                        "related": "http://localhostx:3000/api/user/100021/business_user_roles"
-                    },
-                    "data": []
                 },
                 "business_documents": {
                     "links": {
@@ -4202,17 +3900,24 @@ export default function handler(req, res) {
                     },
                     "data": []
                 },
+                "business_user_roles": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100021/relationships/business_user_roles",
+                        "related": "http://localhostx:3000/api/user/100021/business_user_roles"
+                    },
+                    "data": [
+                        {
+                            "type": "business_User_Roles",
+                            "id": 103020
+                        }
+                    ]
+                },
                 "project_assignments": {
                     "links": {
                         "self": "http://localhostx:3000/api/user/100021/relationships/project_assignments",
                         "related": "http://localhostx:3000/api/user/100021/project_assignments"
                     },
-                    "data": [
-                        {
-                            "type": "project_Assignments",
-                            "id": 130016
-                        }
-                    ]
+                    "data": []
                 },
                 "tasks": {
                     "links": {
@@ -4325,38 +4030,38 @@ export default function handler(req, res) {
             "type": "user",
             "id": 100022,
             "attributes": {
-                "created_at": "2024-05-03T23:30:36.669Z",
-                "updated_at": "2024-05-03T23:30:36.669Z",
+                "created_at": "2024-05-21T17:15:06.116Z",
+                "updated_at": "2024-05-21T17:15:06.116Z",
                 "active": true,
-                "username": "gc3emp1.gc_employee",
-                "email": "gc3emp1.gc_employee@outlook.com",
-                "first_name": "gc3emp1",
-                "middle_name": "",
-                "last_name": "gc_employee",
-                "phone_number_mobile": "7012345692",
+                "username": "Peter.Grandfather",
+                "email": "Peter.Grandfather@mail.com",
+                "first_name": "Peter",
+                "middle_name": "BK",
+                "last_name": "Grandfather",
+                "phone_number_mobile": "1234567890",
                 "text_enabled": true,
                 "phone_verified": false,
-                "phone_number_home": "8012345692",
+                "phone_number_home": "9999999999",
                 "email_verified": true,
-                "last_login": "2024-05-06T00:00:00.000Z",
-                "last_failed_login": "2024-05-05T00:00:00.000Z",
+                "last_login": null,
+                "last_failed_login": null,
                 "admin": false,
-                "status": "active",
+                "status": "",
                 "language": [
-                    "English"
+                    ""
                 ],
                 "forced_login": false,
                 "failed_login_count": 0,
-                "address1": "8345",
-                "address2": "peachtreeblvs",
-                "state": "NC",
-                "zipcode": "28217",
-                "profile_picture_url": "/profilepic/gc3emp1/.jpg",
-                "referral_code": "CDAB",
-                "referred_by": "WEB",
-                "date_of_birth": "2000-05-17T00:00:00.000Z",
-                "user_fully_onboarded": true,
-                "user_type": "gc_employee"
+                "address1": "",
+                "address2": "",
+                "state": "",
+                "zipcode": "",
+                "profile_picture_url": "",
+                "referral_code": "",
+                "referred_by": "",
+                "date_of_birth": null,
+                "user_fully_onboarded": false,
+                "user_type": "business"
             },
             "links": {
                 "self": "http://localhostx:3000/api/user/100022"
@@ -4368,13 +4073,6 @@ export default function handler(req, res) {
                         "related": "http://localhostx:3000/api/user/100022/business_creator"
                     },
                     "data": null
-                },
-                "business_user_roles": {
-                    "links": {
-                        "self": "http://localhostx:3000/api/user/100022/relationships/business_user_roles",
-                        "related": "http://localhostx:3000/api/user/100022/business_user_roles"
-                    },
-                    "data": []
                 },
                 "business_documents": {
                     "links": {
@@ -4390,17 +4088,24 @@ export default function handler(req, res) {
                     },
                     "data": []
                 },
+                "business_user_roles": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100022/relationships/business_user_roles",
+                        "related": "http://localhostx:3000/api/user/100022/business_user_roles"
+                    },
+                    "data": [
+                        {
+                            "type": "business_User_Roles",
+                            "id": 103021
+                        }
+                    ]
+                },
                 "project_assignments": {
                     "links": {
                         "self": "http://localhostx:3000/api/user/100022/relationships/project_assignments",
                         "related": "http://localhostx:3000/api/user/100022/project_assignments"
                     },
-                    "data": [
-                        {
-                            "type": "project_Assignments",
-                            "id": 130017
-                        }
-                    ]
+                    "data": []
                 },
                 "tasks": {
                     "links": {
@@ -4513,38 +4218,38 @@ export default function handler(req, res) {
             "type": "user",
             "id": 100023,
             "attributes": {
-                "created_at": "2024-05-03T23:30:36.669Z",
-                "updated_at": "2024-05-03T23:30:36.669Z",
+                "created_at": "2024-05-21T17:15:06.329Z",
+                "updated_at": "2024-05-21T17:15:06.329Z",
                 "active": true,
-                "username": "gc3emp2.gc_employee",
-                "email": "gc3emp2.gc_employee@outlook.com",
-                "first_name": "gc3emp2",
-                "middle_name": "",
-                "last_name": "gc_employee",
-                "phone_number_mobile": "7012345693",
+                "username": "Chris.Grandfather",
+                "email": "Chris.Grandfather@mail.com",
+                "first_name": "Chris",
+                "middle_name": "ES",
+                "last_name": "Grandfather",
+                "phone_number_mobile": "1234567890",
                 "text_enabled": true,
                 "phone_verified": false,
-                "phone_number_home": "8012345693",
+                "phone_number_home": "9999999999",
                 "email_verified": true,
-                "last_login": "2024-05-07T00:00:00.000Z",
-                "last_failed_login": "2024-05-06T00:00:00.000Z",
+                "last_login": null,
+                "last_failed_login": null,
                 "admin": false,
-                "status": "active",
+                "status": "",
                 "language": [
-                    "English"
+                    ""
                 ],
                 "forced_login": false,
                 "failed_login_count": 0,
-                "address1": "8345",
-                "address2": "peachtreeblvs",
-                "state": "NC",
-                "zipcode": "28217",
-                "profile_picture_url": "/profilepic/gc3emp2/.jpg",
-                "referral_code": "DABC",
-                "referred_by": "WEB",
-                "date_of_birth": "2000-05-18T00:00:00.000Z",
-                "user_fully_onboarded": true,
-                "user_type": "gc_employee"
+                "address1": "",
+                "address2": "",
+                "state": "",
+                "zipcode": "",
+                "profile_picture_url": "",
+                "referral_code": "",
+                "referred_by": "",
+                "date_of_birth": null,
+                "user_fully_onboarded": false,
+                "user_type": "business"
             },
             "links": {
                 "self": "http://localhostx:3000/api/user/100023"
@@ -4556,13 +4261,6 @@ export default function handler(req, res) {
                         "related": "http://localhostx:3000/api/user/100023/business_creator"
                     },
                     "data": null
-                },
-                "business_user_roles": {
-                    "links": {
-                        "self": "http://localhostx:3000/api/user/100023/relationships/business_user_roles",
-                        "related": "http://localhostx:3000/api/user/100023/business_user_roles"
-                    },
-                    "data": []
                 },
                 "business_documents": {
                     "links": {
@@ -4578,17 +4276,24 @@ export default function handler(req, res) {
                     },
                     "data": []
                 },
+                "business_user_roles": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100023/relationships/business_user_roles",
+                        "related": "http://localhostx:3000/api/user/100023/business_user_roles"
+                    },
+                    "data": [
+                        {
+                            "type": "business_User_Roles",
+                            "id": 103022
+                        }
+                    ]
+                },
                 "project_assignments": {
                     "links": {
                         "self": "http://localhostx:3000/api/user/100023/relationships/project_assignments",
                         "related": "http://localhostx:3000/api/user/100023/project_assignments"
                     },
-                    "data": [
-                        {
-                            "type": "project_Assignments",
-                            "id": 130003
-                        }
-                    ]
+                    "data": []
                 },
                 "tasks": {
                     "links": {
@@ -4701,38 +4406,38 @@ export default function handler(req, res) {
             "type": "user",
             "id": 100024,
             "attributes": {
-                "created_at": "2024-05-03T23:30:36.669Z",
-                "updated_at": "2024-05-03T23:30:36.669Z",
+                "created_at": "2024-05-21T17:15:06.611Z",
+                "updated_at": "2024-05-21T17:15:06.611Z",
                 "active": true,
-                "username": "gc3emp3.gc_employee",
-                "email": "gc3emp3.gc_employee@outlook.com",
-                "first_name": "gc3emp3",
-                "middle_name": "",
-                "last_name": "gc_employee",
-                "phone_number_mobile": "7012345694",
+                "username": "Patrick.Grandfather",
+                "email": "Patrick.Grandfather@mail.com",
+                "first_name": "Patrick",
+                "middle_name": "FC_PM",
+                "last_name": "Grandfather",
+                "phone_number_mobile": "1234567890",
                 "text_enabled": true,
                 "phone_verified": false,
-                "phone_number_home": "8012345694",
+                "phone_number_home": "9999999999",
                 "email_verified": true,
-                "last_login": "2024-05-08T00:00:00.000Z",
-                "last_failed_login": "2024-05-07T00:00:00.000Z",
+                "last_login": null,
+                "last_failed_login": null,
                 "admin": false,
-                "status": "active",
+                "status": "",
                 "language": [
-                    "English"
+                    ""
                 ],
                 "forced_login": false,
                 "failed_login_count": 0,
-                "address1": "8345",
-                "address2": "peachtreeblvs",
-                "state": "NC",
-                "zipcode": "28217",
-                "profile_picture_url": "/profilepic/gc3emp3/.jpg",
-                "referral_code": "CDAB",
-                "referred_by": "WEB",
-                "date_of_birth": "2000-05-19T00:00:00.000Z",
-                "user_fully_onboarded": true,
-                "user_type": "gc_employee"
+                "address1": "",
+                "address2": "",
+                "state": "",
+                "zipcode": "",
+                "profile_picture_url": "",
+                "referral_code": "",
+                "referred_by": "",
+                "date_of_birth": null,
+                "user_fully_onboarded": false,
+                "user_type": "business"
             },
             "links": {
                 "self": "http://localhostx:3000/api/user/100024"
@@ -4743,14 +4448,10 @@ export default function handler(req, res) {
                         "self": "http://localhostx:3000/api/user/100024/relationships/business_creator",
                         "related": "http://localhostx:3000/api/user/100024/business_creator"
                     },
-                    "data": null
-                },
-                "business_user_roles": {
-                    "links": {
-                        "self": "http://localhostx:3000/api/user/100024/relationships/business_user_roles",
-                        "related": "http://localhostx:3000/api/user/100024/business_user_roles"
-                    },
-                    "data": []
+                    "data": {
+                        "type": "business",
+                        "id": 101003
+                    }
                 },
                 "business_documents": {
                     "links": {
@@ -4766,17 +4467,24 @@ export default function handler(req, res) {
                     },
                     "data": []
                 },
+                "business_user_roles": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100024/relationships/business_user_roles",
+                        "related": "http://localhostx:3000/api/user/100024/business_user_roles"
+                    },
+                    "data": [
+                        {
+                            "type": "business_User_Roles",
+                            "id": 103023
+                        }
+                    ]
+                },
                 "project_assignments": {
                     "links": {
                         "self": "http://localhostx:3000/api/user/100024/relationships/project_assignments",
                         "related": "http://localhostx:3000/api/user/100024/project_assignments"
                     },
-                    "data": [
-                        {
-                            "type": "project_Assignments",
-                            "id": 130004
-                        }
-                    ]
+                    "data": []
                 },
                 "tasks": {
                     "links": {
@@ -4889,38 +4597,38 @@ export default function handler(req, res) {
             "type": "user",
             "id": 100025,
             "attributes": {
-                "created_at": "2024-05-03T23:30:36.669Z",
-                "updated_at": "2024-05-03T23:30:36.669Z",
+                "created_at": "2024-05-21T17:15:06.817Z",
+                "updated_at": "2024-05-21T17:15:06.817Z",
                 "active": true,
-                "username": "gc3emp4.gc_employee",
-                "email": "gc3emp4.gc_employee@outlook.com",
-                "first_name": "gc3emp4",
-                "middle_name": "",
-                "last_name": "gc_employee",
-                "phone_number_mobile": "7012345695",
+                "username": "Alex.Knight",
+                "email": "Alex.Knight@mail.com",
+                "first_name": "Alex",
+                "middle_name": "FA",
+                "last_name": "Knight",
+                "phone_number_mobile": "1234567890",
                 "text_enabled": true,
                 "phone_verified": false,
-                "phone_number_home": "8012345695",
+                "phone_number_home": "9999999999",
                 "email_verified": true,
-                "last_login": "2024-05-09T00:00:00.000Z",
-                "last_failed_login": "2024-05-08T00:00:00.000Z",
+                "last_login": null,
+                "last_failed_login": null,
                 "admin": false,
-                "status": "active",
+                "status": "",
                 "language": [
-                    "English"
+                    ""
                 ],
                 "forced_login": false,
                 "failed_login_count": 0,
-                "address1": "8345",
-                "address2": "peachtreeblvs",
-                "state": "NC",
-                "zipcode": "28217",
-                "profile_picture_url": "/profilepic/gc3emp3/.jpg",
-                "referral_code": "CDAB",
-                "referred_by": "WEB",
-                "date_of_birth": "2000-05-20T00:00:00.000Z",
-                "user_fully_onboarded": true,
-                "user_type": "gc_employee"
+                "address1": "",
+                "address2": "",
+                "state": "",
+                "zipcode": "",
+                "profile_picture_url": "",
+                "referral_code": "",
+                "referred_by": "",
+                "date_of_birth": null,
+                "user_fully_onboarded": false,
+                "user_type": "business"
             },
             "links": {
                 "self": "http://localhostx:3000/api/user/100025"
@@ -4932,13 +4640,6 @@ export default function handler(req, res) {
                         "related": "http://localhostx:3000/api/user/100025/business_creator"
                     },
                     "data": null
-                },
-                "business_user_roles": {
-                    "links": {
-                        "self": "http://localhostx:3000/api/user/100025/relationships/business_user_roles",
-                        "related": "http://localhostx:3000/api/user/100025/business_user_roles"
-                    },
-                    "data": []
                 },
                 "business_documents": {
                     "links": {
@@ -4954,17 +4655,24 @@ export default function handler(req, res) {
                     },
                     "data": []
                 },
+                "business_user_roles": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100025/relationships/business_user_roles",
+                        "related": "http://localhostx:3000/api/user/100025/business_user_roles"
+                    },
+                    "data": [
+                        {
+                            "type": "business_User_Roles",
+                            "id": 103024
+                        }
+                    ]
+                },
                 "project_assignments": {
                     "links": {
                         "self": "http://localhostx:3000/api/user/100025/relationships/project_assignments",
                         "related": "http://localhostx:3000/api/user/100025/project_assignments"
                     },
-                    "data": [
-                        {
-                            "type": "project_Assignments",
-                            "id": 130005
-                        }
-                    ]
+                    "data": []
                 },
                 "tasks": {
                     "links": {
@@ -5077,38 +4785,38 @@ export default function handler(req, res) {
             "type": "user",
             "id": 100026,
             "attributes": {
-                "created_at": "2024-05-03T23:30:36.669Z",
-                "updated_at": "2024-05-03T23:30:36.669Z",
+                "created_at": "2024-05-21T17:15:07.023Z",
+                "updated_at": "2024-05-21T17:15:07.023Z",
                 "active": true,
-                "username": "gc4emp1.gc_employee",
-                "email": "gc4emp1.gc_employee@outlook.com",
-                "first_name": "gc4emp1",
-                "middle_name": "",
-                "last_name": "gc_employee",
-                "phone_number_mobile": "7012345696",
+                "username": "Les.Knight",
+                "email": "Les.Knight@mail.com",
+                "first_name": "Les",
+                "middle_name": "PM",
+                "last_name": "Knight",
+                "phone_number_mobile": "1234567890",
                 "text_enabled": true,
                 "phone_verified": false,
-                "phone_number_home": "8012345696",
+                "phone_number_home": "9999999999",
                 "email_verified": true,
-                "last_login": "2024-05-10T00:00:00.000Z",
-                "last_failed_login": "2024-05-09T00:00:00.000Z",
+                "last_login": null,
+                "last_failed_login": null,
                 "admin": false,
-                "status": "active",
+                "status": "",
                 "language": [
-                    "English"
+                    ""
                 ],
                 "forced_login": false,
                 "failed_login_count": 0,
-                "address1": "8345",
-                "address2": "peachtreeblvs",
-                "state": "NC",
-                "zipcode": "28217",
-                "profile_picture_url": "/profilepic/gc4emp1/.jpg",
-                "referral_code": "DABC",
-                "referred_by": "WEB",
-                "date_of_birth": "2000-05-21T00:00:00.000Z",
-                "user_fully_onboarded": true,
-                "user_type": "gc_employee"
+                "address1": "",
+                "address2": "",
+                "state": "",
+                "zipcode": "",
+                "profile_picture_url": "",
+                "referral_code": "",
+                "referred_by": "",
+                "date_of_birth": null,
+                "user_fully_onboarded": false,
+                "user_type": "business"
             },
             "links": {
                 "self": "http://localhostx:3000/api/user/100026"
@@ -5120,13 +4828,6 @@ export default function handler(req, res) {
                         "related": "http://localhostx:3000/api/user/100026/business_creator"
                     },
                     "data": null
-                },
-                "business_user_roles": {
-                    "links": {
-                        "self": "http://localhostx:3000/api/user/100026/relationships/business_user_roles",
-                        "related": "http://localhostx:3000/api/user/100026/business_user_roles"
-                    },
-                    "data": []
                 },
                 "business_documents": {
                     "links": {
@@ -5141,6 +4842,18 @@ export default function handler(req, res) {
                         "related": "http://localhostx:3000/api/user/100026/home_owner_projects"
                     },
                     "data": []
+                },
+                "business_user_roles": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100026/relationships/business_user_roles",
+                        "related": "http://localhostx:3000/api/user/100026/business_user_roles"
+                    },
+                    "data": [
+                        {
+                            "type": "business_User_Roles",
+                            "id": 103025
+                        }
+                    ]
                 },
                 "project_assignments": {
                     "links": {
@@ -5260,38 +4973,38 @@ export default function handler(req, res) {
             "type": "user",
             "id": 100027,
             "attributes": {
-                "created_at": "2024-05-03T23:30:36.669Z",
-                "updated_at": "2024-05-03T23:30:36.669Z",
+                "created_at": "2024-05-21T17:15:07.257Z",
+                "updated_at": "2024-05-21T17:15:07.257Z",
                 "active": true,
-                "username": "gc4emp2.gc_employee",
-                "email": "gc4emp2.gc_employee@outlook.com",
-                "first_name": "gc4emp2",
-                "middle_name": "",
-                "last_name": "gc_employee",
-                "phone_number_mobile": "7012345697",
+                "username": "John.Knight",
+                "email": "John.Knight@mail.com",
+                "first_name": "John",
+                "middle_name": "OM",
+                "last_name": "Knight",
+                "phone_number_mobile": "1234567890",
                 "text_enabled": true,
                 "phone_verified": false,
-                "phone_number_home": "8012345697",
+                "phone_number_home": "9999999999",
                 "email_verified": true,
-                "last_login": "2024-05-11T00:00:00.000Z",
-                "last_failed_login": "2024-05-10T00:00:00.000Z",
+                "last_login": null,
+                "last_failed_login": null,
                 "admin": false,
-                "status": "active",
+                "status": "",
                 "language": [
-                    "English"
+                    ""
                 ],
                 "forced_login": false,
                 "failed_login_count": 0,
-                "address1": "8345",
-                "address2": "peachtreeblvs",
-                "state": "NC",
-                "zipcode": "28217",
-                "profile_picture_url": "/profilepic/gc4emp2/.jpg",
-                "referral_code": "ABCD",
-                "referred_by": "WEB",
-                "date_of_birth": "2000-05-22T00:00:00.000Z",
-                "user_fully_onboarded": true,
-                "user_type": "gc_employee"
+                "address1": "",
+                "address2": "",
+                "state": "",
+                "zipcode": "",
+                "profile_picture_url": "",
+                "referral_code": "",
+                "referred_by": "",
+                "date_of_birth": null,
+                "user_fully_onboarded": false,
+                "user_type": "business"
             },
             "links": {
                 "self": "http://localhostx:3000/api/user/100027"
@@ -5303,13 +5016,6 @@ export default function handler(req, res) {
                         "related": "http://localhostx:3000/api/user/100027/business_creator"
                     },
                     "data": null
-                },
-                "business_user_roles": {
-                    "links": {
-                        "self": "http://localhostx:3000/api/user/100027/relationships/business_user_roles",
-                        "related": "http://localhostx:3000/api/user/100027/business_user_roles"
-                    },
-                    "data": []
                 },
                 "business_documents": {
                     "links": {
@@ -5324,6 +5030,18 @@ export default function handler(req, res) {
                         "related": "http://localhostx:3000/api/user/100027/home_owner_projects"
                     },
                     "data": []
+                },
+                "business_user_roles": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100027/relationships/business_user_roles",
+                        "related": "http://localhostx:3000/api/user/100027/business_user_roles"
+                    },
+                    "data": [
+                        {
+                            "type": "business_User_Roles",
+                            "id": 103026
+                        }
+                    ]
                 },
                 "project_assignments": {
                     "links": {
@@ -5443,38 +5161,38 @@ export default function handler(req, res) {
             "type": "user",
             "id": 100028,
             "attributes": {
-                "created_at": "2024-05-03T23:30:36.669Z",
-                "updated_at": "2024-05-03T23:30:36.669Z",
+                "created_at": "2024-05-21T17:15:07.495Z",
+                "updated_at": "2024-05-21T17:15:07.495Z",
                 "active": true,
-                "username": "gc4emp3.gc_employee",
-                "email": "gc4emp3.gc_employee@outlook.com",
-                "first_name": "gc4emp3",
-                "middle_name": "",
-                "last_name": "gc_employee",
-                "phone_number_mobile": "7012345698",
+                "username": "David.Knight",
+                "email": "David.Knight@mail.com",
+                "first_name": "David",
+                "middle_name": "BK",
+                "last_name": "Knight",
+                "phone_number_mobile": "1234567890",
                 "text_enabled": true,
                 "phone_verified": false,
-                "phone_number_home": "8012345698",
+                "phone_number_home": "9999999999",
                 "email_verified": true,
-                "last_login": "2024-05-12T00:00:00.000Z",
-                "last_failed_login": "2024-05-11T00:00:00.000Z",
+                "last_login": null,
+                "last_failed_login": null,
                 "admin": false,
-                "status": "active",
+                "status": "",
                 "language": [
-                    "English"
+                    ""
                 ],
                 "forced_login": false,
                 "failed_login_count": 0,
-                "address1": "8345",
-                "address2": "peachtreeblvs",
-                "state": "NC",
-                "zipcode": "28217",
-                "profile_picture_url": "/profilepic/gc4emp3/.jpg",
-                "referral_code": "ABCD",
-                "referred_by": "WEB",
-                "date_of_birth": "2000-05-23T00:00:00.000Z",
-                "user_fully_onboarded": true,
-                "user_type": "gc_employee"
+                "address1": "",
+                "address2": "",
+                "state": "",
+                "zipcode": "",
+                "profile_picture_url": "",
+                "referral_code": "",
+                "referred_by": "",
+                "date_of_birth": null,
+                "user_fully_onboarded": false,
+                "user_type": "business"
             },
             "links": {
                 "self": "http://localhostx:3000/api/user/100028"
@@ -5486,13 +5204,6 @@ export default function handler(req, res) {
                         "related": "http://localhostx:3000/api/user/100028/business_creator"
                     },
                     "data": null
-                },
-                "business_user_roles": {
-                    "links": {
-                        "self": "http://localhostx:3000/api/user/100028/relationships/business_user_roles",
-                        "related": "http://localhostx:3000/api/user/100028/business_user_roles"
-                    },
-                    "data": []
                 },
                 "business_documents": {
                     "links": {
@@ -5507,6 +5218,18 @@ export default function handler(req, res) {
                         "related": "http://localhostx:3000/api/user/100028/home_owner_projects"
                     },
                     "data": []
+                },
+                "business_user_roles": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100028/relationships/business_user_roles",
+                        "related": "http://localhostx:3000/api/user/100028/business_user_roles"
+                    },
+                    "data": [
+                        {
+                            "type": "business_User_Roles",
+                            "id": 103027
+                        }
+                    ]
                 },
                 "project_assignments": {
                     "links": {
@@ -5626,38 +5349,38 @@ export default function handler(req, res) {
             "type": "user",
             "id": 100029,
             "attributes": {
-                "created_at": "2024-05-03T23:30:36.669Z",
-                "updated_at": "2024-05-03T23:30:36.669Z",
+                "created_at": "2024-05-21T17:15:07.720Z",
+                "updated_at": "2024-05-21T17:15:07.720Z",
                 "active": true,
-                "username": "gc4emp4.gc_employee",
-                "email": "gc4emp4.gc_employee@outlook.com",
-                "first_name": "gc4emp4",
-                "middle_name": "",
-                "last_name": "gc_employee",
-                "phone_number_mobile": "7012345699",
+                "username": "Tom.Knight",
+                "email": "Tom.Knight@mail.com",
+                "first_name": "Tom",
+                "middle_name": "ES",
+                "last_name": "Knight",
+                "phone_number_mobile": "1234567890",
                 "text_enabled": true,
                 "phone_verified": false,
-                "phone_number_home": "8012345699",
+                "phone_number_home": "9999999999",
                 "email_verified": true,
-                "last_login": "2024-05-13T00:00:00.000Z",
-                "last_failed_login": "2024-05-12T00:00:00.000Z",
+                "last_login": null,
+                "last_failed_login": null,
                 "admin": false,
-                "status": "active",
+                "status": "",
                 "language": [
-                    "English"
+                    ""
                 ],
                 "forced_login": false,
                 "failed_login_count": 0,
-                "address1": "8345",
-                "address2": "peachtreeblvs",
-                "state": "NC",
-                "zipcode": "28217",
-                "profile_picture_url": "/profilepic/gc4emp3/.jpg",
-                "referral_code": "BCDE",
-                "referred_by": "WEB",
-                "date_of_birth": "2000-05-24T00:00:00.000Z",
-                "user_fully_onboarded": true,
-                "user_type": "gc_employee"
+                "address1": "",
+                "address2": "",
+                "state": "",
+                "zipcode": "",
+                "profile_picture_url": "",
+                "referral_code": "",
+                "referred_by": "",
+                "date_of_birth": null,
+                "user_fully_onboarded": false,
+                "user_type": "business"
             },
             "links": {
                 "self": "http://localhostx:3000/api/user/100029"
@@ -5669,13 +5392,6 @@ export default function handler(req, res) {
                         "related": "http://localhostx:3000/api/user/100029/business_creator"
                     },
                     "data": null
-                },
-                "business_user_roles": {
-                    "links": {
-                        "self": "http://localhostx:3000/api/user/100029/relationships/business_user_roles",
-                        "related": "http://localhostx:3000/api/user/100029/business_user_roles"
-                    },
-                    "data": []
                 },
                 "business_documents": {
                     "links": {
@@ -5690,6 +5406,18 @@ export default function handler(req, res) {
                         "related": "http://localhostx:3000/api/user/100029/home_owner_projects"
                     },
                     "data": []
+                },
+                "business_user_roles": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100029/relationships/business_user_roles",
+                        "related": "http://localhostx:3000/api/user/100029/business_user_roles"
+                    },
+                    "data": [
+                        {
+                            "type": "business_User_Roles",
+                            "id": 103028
+                        }
+                    ]
                 },
                 "project_assignments": {
                     "links": {
@@ -5809,38 +5537,38 @@ export default function handler(req, res) {
             "type": "user",
             "id": 100030,
             "attributes": {
-                "created_at": "2024-05-03T23:30:36.669Z",
-                "updated_at": "2024-05-03T23:30:36.669Z",
+                "created_at": "2024-05-21T17:15:07.936Z",
+                "updated_at": "2024-05-21T17:15:07.936Z",
                 "active": true,
-                "username": "sub1_arch1.sub_arch",
-                "email": "sub1_arch1.sub_arch@outlook.com",
-                "first_name": "sub1_arch1",
-                "middle_name": "",
-                "last_name": "sub_arch",
-                "phone_number_mobile": "7012345700",
+                "username": "Peter.Knight",
+                "email": "Peter.Knight@mail.com",
+                "first_name": "Peter",
+                "middle_name": "FC",
+                "last_name": "Knight",
+                "phone_number_mobile": "1234567890",
                 "text_enabled": true,
                 "phone_verified": false,
-                "phone_number_home": "8012345700",
+                "phone_number_home": "9999999999",
                 "email_verified": true,
-                "last_login": "2024-05-14T00:00:00.000Z",
-                "last_failed_login": "2024-05-13T00:00:00.000Z",
+                "last_login": null,
+                "last_failed_login": null,
                 "admin": false,
-                "status": "active",
+                "status": "",
                 "language": [
-                    "English"
+                    ""
                 ],
                 "forced_login": false,
                 "failed_login_count": 0,
-                "address1": "8345",
-                "address2": "peachtreeblvs",
-                "state": "NC",
-                "zipcode": "28217",
-                "profile_picture_url": "/profilepic/sub1_arch1/.jpg",
-                "referral_code": "ABCD",
-                "referred_by": "WEB",
-                "date_of_birth": "2000-05-25T00:00:00.000Z",
-                "user_fully_onboarded": true,
-                "user_type": "sub_arch"
+                "address1": "",
+                "address2": "",
+                "state": "",
+                "zipcode": "",
+                "profile_picture_url": "",
+                "referral_code": "",
+                "referred_by": "",
+                "date_of_birth": null,
+                "user_fully_onboarded": false,
+                "user_type": "business"
             },
             "links": {
                 "self": "http://localhostx:3000/api/user/100030"
@@ -5851,17 +5579,7 @@ export default function handler(req, res) {
                         "self": "http://localhostx:3000/api/user/100030/relationships/business_creator",
                         "related": "http://localhostx:3000/api/user/100030/business_creator"
                     },
-                    "data": {
-                        "type": "business",
-                        "id": 200005
-                    }
-                },
-                "business_user_roles": {
-                    "links": {
-                        "self": "http://localhostx:3000/api/user/100030/relationships/business_user_roles",
-                        "related": "http://localhostx:3000/api/user/100030/business_user_roles"
-                    },
-                    "data": []
+                    "data": null
                 },
                 "business_documents": {
                     "links": {
@@ -5876,6 +5594,18 @@ export default function handler(req, res) {
                         "related": "http://localhostx:3000/api/user/100030/home_owner_projects"
                     },
                     "data": []
+                },
+                "business_user_roles": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100030/relationships/business_user_roles",
+                        "related": "http://localhostx:3000/api/user/100030/business_user_roles"
+                    },
+                    "data": [
+                        {
+                            "type": "business_User_Roles",
+                            "id": 103029
+                        }
+                    ]
                 },
                 "project_assignments": {
                     "links": {
@@ -5995,38 +5725,38 @@ export default function handler(req, res) {
             "type": "user",
             "id": 100031,
             "attributes": {
-                "created_at": "2024-05-03T23:30:36.669Z",
-                "updated_at": "2024-05-03T23:30:36.669Z",
+                "created_at": "2024-05-21T17:15:08.317Z",
+                "updated_at": "2024-05-21T17:15:08.317Z",
                 "active": true,
-                "username": "sub2_arch1.sub_arch",
-                "email": "sub2_arch1.sub_arch@outlook.com",
-                "first_name": "sub2_arch1",
-                "middle_name": "",
-                "last_name": "sub_arch",
-                "phone_number_mobile": "7012345701",
+                "username": "Chris.Knight",
+                "email": "Chris.Knight@mail.com",
+                "first_name": "Chris",
+                "middle_name": "SM",
+                "last_name": "Knight",
+                "phone_number_mobile": "1234567890",
                 "text_enabled": true,
                 "phone_verified": false,
-                "phone_number_home": "8012345701",
+                "phone_number_home": "9999999999",
                 "email_verified": true,
-                "last_login": "2024-05-15T00:00:00.000Z",
-                "last_failed_login": "2024-05-14T00:00:00.000Z",
+                "last_login": null,
+                "last_failed_login": null,
                 "admin": false,
-                "status": "active",
+                "status": "",
                 "language": [
-                    "English"
+                    ""
                 ],
                 "forced_login": false,
                 "failed_login_count": 0,
-                "address1": "8345",
-                "address2": "peachtreeblvs",
-                "state": "NC",
-                "zipcode": "28217",
-                "profile_picture_url": "/profilepic/sub2_arch1/.jpg",
-                "referral_code": "CDAB",
-                "referred_by": "WEB",
-                "date_of_birth": "2000-05-26T00:00:00.000Z",
-                "user_fully_onboarded": true,
-                "user_type": "sub_arch"
+                "address1": "",
+                "address2": "",
+                "state": "",
+                "zipcode": "",
+                "profile_picture_url": "",
+                "referral_code": "",
+                "referred_by": "",
+                "date_of_birth": null,
+                "user_fully_onboarded": false,
+                "user_type": "business"
             },
             "links": {
                 "self": "http://localhostx:3000/api/user/100031"
@@ -6039,15 +5769,8 @@ export default function handler(req, res) {
                     },
                     "data": {
                         "type": "business",
-                        "id": 200006
+                        "id": 101004
                     }
-                },
-                "business_user_roles": {
-                    "links": {
-                        "self": "http://localhostx:3000/api/user/100031/relationships/business_user_roles",
-                        "related": "http://localhostx:3000/api/user/100031/business_user_roles"
-                    },
-                    "data": []
                 },
                 "business_documents": {
                     "links": {
@@ -6062,6 +5785,18 @@ export default function handler(req, res) {
                         "related": "http://localhostx:3000/api/user/100031/home_owner_projects"
                     },
                     "data": []
+                },
+                "business_user_roles": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100031/relationships/business_user_roles",
+                        "related": "http://localhostx:3000/api/user/100031/business_user_roles"
+                    },
+                    "data": [
+                        {
+                            "type": "business_User_Roles",
+                            "id": 103030
+                        }
+                    ]
                 },
                 "project_assignments": {
                     "links": {
@@ -6181,38 +5916,38 @@ export default function handler(req, res) {
             "type": "user",
             "id": 100032,
             "attributes": {
-                "created_at": "2024-05-03T23:30:36.669Z",
-                "updated_at": "2024-05-03T23:30:36.669Z",
+                "created_at": "2024-05-21T17:15:08.732Z",
+                "updated_at": "2024-05-21T17:15:08.732Z",
                 "active": true,
-                "username": "sub1_cef1.sub_cef",
-                "email": "sub1_cef1.sub_cef@outlook.com",
-                "first_name": "sub1_cef1",
-                "middle_name": "",
-                "last_name": "sub_cef",
-                "phone_number_mobile": "7012345702",
+                "username": "Patrick.BuildingGraphics",
+                "email": "Patrick.BuildingGraphics@mail.com",
+                "first_name": "Patrick",
+                "middle_name": "FA",
+                "last_name": "BuildingGraphics",
+                "phone_number_mobile": "1234567890",
                 "text_enabled": true,
                 "phone_verified": false,
-                "phone_number_home": "8012345702",
+                "phone_number_home": "9999999999",
                 "email_verified": true,
-                "last_login": "2024-05-16T00:00:00.000Z",
-                "last_failed_login": "2024-05-15T00:00:00.000Z",
+                "last_login": null,
+                "last_failed_login": null,
                 "admin": false,
-                "status": "active",
+                "status": "",
                 "language": [
-                    "English"
+                    ""
                 ],
                 "forced_login": false,
                 "failed_login_count": 0,
-                "address1": "8345",
-                "address2": "peachtreeblvs",
-                "state": "NC",
-                "zipcode": "28217",
-                "profile_picture_url": "/profilepic/sub1_cef1/.jpg",
-                "referral_code": "DABC",
-                "referred_by": "WEB",
-                "date_of_birth": "2000-05-27T00:00:00.000Z",
-                "user_fully_onboarded": true,
-                "user_type": "sub_cef"
+                "address1": "",
+                "address2": "",
+                "state": "",
+                "zipcode": "",
+                "profile_picture_url": "",
+                "referral_code": "",
+                "referred_by": "",
+                "date_of_birth": null,
+                "user_fully_onboarded": false,
+                "user_type": "business"
             },
             "links": {
                 "self": "http://localhostx:3000/api/user/100032"
@@ -6223,17 +5958,7 @@ export default function handler(req, res) {
                         "self": "http://localhostx:3000/api/user/100032/relationships/business_creator",
                         "related": "http://localhostx:3000/api/user/100032/business_creator"
                     },
-                    "data": {
-                        "type": "business",
-                        "id": 200007
-                    }
-                },
-                "business_user_roles": {
-                    "links": {
-                        "self": "http://localhostx:3000/api/user/100032/relationships/business_user_roles",
-                        "related": "http://localhostx:3000/api/user/100032/business_user_roles"
-                    },
-                    "data": []
+                    "data": null
                 },
                 "business_documents": {
                     "links": {
@@ -6249,12 +5974,33 @@ export default function handler(req, res) {
                     },
                     "data": []
                 },
+                "business_user_roles": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100032/relationships/business_user_roles",
+                        "related": "http://localhostx:3000/api/user/100032/business_user_roles"
+                    },
+                    "data": [
+                        {
+                            "type": "business_User_Roles",
+                            "id": 103031
+                        }
+                    ]
+                },
                 "project_assignments": {
                     "links": {
                         "self": "http://localhostx:3000/api/user/100032/relationships/project_assignments",
                         "related": "http://localhostx:3000/api/user/100032/project_assignments"
                     },
-                    "data": []
+                    "data": [
+                        {
+                            "type": "project_Assignments",
+                            "id": 300001
+                        },
+                        {
+                            "type": "project_Assignments",
+                            "id": 300003
+                        }
+                    ]
                 },
                 "tasks": {
                     "links": {
@@ -6367,38 +6113,38 @@ export default function handler(req, res) {
             "type": "user",
             "id": 100033,
             "attributes": {
-                "created_at": "2024-05-03T23:30:36.669Z",
-                "updated_at": "2024-05-03T23:30:36.669Z",
+                "created_at": "2024-05-21T17:15:08.935Z",
+                "updated_at": "2024-05-21T17:15:08.935Z",
                 "active": true,
-                "username": "sub2_cef1.sub_cef",
-                "email": "sub2_cef1.sub_cef@outlook.com",
-                "first_name": "sub2_cef1",
-                "middle_name": "",
-                "last_name": "sub_cef",
-                "phone_number_mobile": "7012345703",
+                "username": "Alex.BuildingGraphics",
+                "email": "Alex.BuildingGraphics@mail.com",
+                "first_name": "Alex",
+                "middle_name": "FA",
+                "last_name": "BuildingGraphics",
+                "phone_number_mobile": "1234567890",
                 "text_enabled": true,
                 "phone_verified": false,
-                "phone_number_home": "8012345703",
+                "phone_number_home": "9999999999",
                 "email_verified": true,
-                "last_login": "2024-05-17T00:00:00.000Z",
-                "last_failed_login": "2024-05-16T00:00:00.000Z",
+                "last_login": null,
+                "last_failed_login": null,
                 "admin": false,
-                "status": "active",
+                "status": "",
                 "language": [
-                    "English"
+                    ""
                 ],
                 "forced_login": false,
                 "failed_login_count": 0,
-                "address1": "8345",
-                "address2": "peachtreeblvs",
-                "state": "NC",
-                "zipcode": "28217",
-                "profile_picture_url": "/profilepic/sub2_cef1/.jpg",
-                "referral_code": "CDAB",
-                "referred_by": "WEB",
-                "date_of_birth": "2000-05-28T00:00:00.000Z",
-                "user_fully_onboarded": true,
-                "user_type": "sub_cef"
+                "address1": "",
+                "address2": "",
+                "state": "",
+                "zipcode": "",
+                "profile_picture_url": "",
+                "referral_code": "",
+                "referred_by": "",
+                "date_of_birth": null,
+                "user_fully_onboarded": false,
+                "user_type": "business"
             },
             "links": {
                 "self": "http://localhostx:3000/api/user/100033"
@@ -6411,15 +6157,8 @@ export default function handler(req, res) {
                     },
                     "data": {
                         "type": "business",
-                        "id": 200008
+                        "id": 101005
                     }
-                },
-                "business_user_roles": {
-                    "links": {
-                        "self": "http://localhostx:3000/api/user/100033/relationships/business_user_roles",
-                        "related": "http://localhostx:3000/api/user/100033/business_user_roles"
-                    },
-                    "data": []
                 },
                 "business_documents": {
                     "links": {
@@ -6435,12 +6174,29 @@ export default function handler(req, res) {
                     },
                     "data": []
                 },
+                "business_user_roles": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100033/relationships/business_user_roles",
+                        "related": "http://localhostx:3000/api/user/100033/business_user_roles"
+                    },
+                    "data": [
+                        {
+                            "type": "business_User_Roles",
+                            "id": 103032
+                        }
+                    ]
+                },
                 "project_assignments": {
                     "links": {
                         "self": "http://localhostx:3000/api/user/100033/relationships/project_assignments",
                         "related": "http://localhostx:3000/api/user/100033/project_assignments"
                     },
-                    "data": []
+                    "data": [
+                        {
+                            "type": "project_Assignments",
+                            "id": 300002
+                        }
+                    ]
                 },
                 "tasks": {
                     "links": {
@@ -6553,38 +6309,38 @@ export default function handler(req, res) {
             "type": "user",
             "id": 100034,
             "attributes": {
-                "created_at": "2024-05-03T23:30:36.669Z",
-                "updated_at": "2024-05-03T23:30:36.669Z",
+                "created_at": "2024-05-21T17:15:09.136Z",
+                "updated_at": "2024-05-21T17:15:09.136Z",
                 "active": true,
-                "username": "sub1_plumb1.sub_plumb",
-                "email": "sub1_plumb1.sub_plumb@outlook.com",
-                "first_name": "sub1_plumb1",
-                "middle_name": "",
-                "last_name": "sub_plumb",
-                "phone_number_mobile": "7012345704",
+                "username": "Les.KDDesigns",
+                "email": "Les.KDDesigns@mail.com",
+                "first_name": "Les",
+                "middle_name": "FA",
+                "last_name": "KDDesigns",
+                "phone_number_mobile": "1234567890",
                 "text_enabled": true,
                 "phone_verified": false,
-                "phone_number_home": "8012345704",
+                "phone_number_home": "9999999999",
                 "email_verified": true,
-                "last_login": "2024-05-18T00:00:00.000Z",
-                "last_failed_login": "2024-05-17T00:00:00.000Z",
+                "last_login": null,
+                "last_failed_login": null,
                 "admin": false,
-                "status": "active",
+                "status": "",
                 "language": [
-                    "English"
+                    ""
                 ],
                 "forced_login": false,
                 "failed_login_count": 0,
-                "address1": "8345",
-                "address2": "peachtreeblvs",
-                "state": "NC",
-                "zipcode": "28217",
-                "profile_picture_url": "/profilepic/sub1_plumb1/.jpg",
-                "referral_code": "CDAB",
-                "referred_by": "WEB",
-                "date_of_birth": "2000-05-29T00:00:00.000Z",
-                "user_fully_onboarded": true,
-                "user_type": "sub_plumb"
+                "address1": "",
+                "address2": "",
+                "state": "",
+                "zipcode": "",
+                "profile_picture_url": "",
+                "referral_code": "",
+                "referred_by": "",
+                "date_of_birth": null,
+                "user_fully_onboarded": false,
+                "user_type": "business"
             },
             "links": {
                 "self": "http://localhostx:3000/api/user/100034"
@@ -6597,15 +6353,8 @@ export default function handler(req, res) {
                     },
                     "data": {
                         "type": "business",
-                        "id": 200009
+                        "id": 101006
                     }
-                },
-                "business_user_roles": {
-                    "links": {
-                        "self": "http://localhostx:3000/api/user/100034/relationships/business_user_roles",
-                        "related": "http://localhostx:3000/api/user/100034/business_user_roles"
-                    },
-                    "data": []
                 },
                 "business_documents": {
                     "links": {
@@ -6620,6 +6369,18 @@ export default function handler(req, res) {
                         "related": "http://localhostx:3000/api/user/100034/home_owner_projects"
                     },
                     "data": []
+                },
+                "business_user_roles": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100034/relationships/business_user_roles",
+                        "related": "http://localhostx:3000/api/user/100034/business_user_roles"
+                    },
+                    "data": [
+                        {
+                            "type": "business_User_Roles",
+                            "id": 103033
+                        }
+                    ]
                 },
                 "project_assignments": {
                     "links": {
@@ -6739,38 +6500,38 @@ export default function handler(req, res) {
             "type": "user",
             "id": 100035,
             "attributes": {
-                "created_at": "2024-05-03T23:30:36.669Z",
-                "updated_at": "2024-05-03T23:30:36.669Z",
+                "created_at": "2024-05-21T17:15:09.352Z",
+                "updated_at": "2024-05-21T17:15:09.352Z",
                 "active": true,
-                "username": "sub2_plumb1.sub_plumb",
-                "email": "sub2_plumb1.sub_plumb@outlook.com",
-                "first_name": "sub2_plumb1",
-                "middle_name": "",
-                "last_name": "sub_plumb",
-                "phone_number_mobile": "7012345705",
+                "username": "John.Gregs",
+                "email": "John.Gregs@mail.com",
+                "first_name": "John",
+                "middle_name": "FA",
+                "last_name": "Gregs",
+                "phone_number_mobile": "1234567890",
                 "text_enabled": true,
                 "phone_verified": false,
-                "phone_number_home": "8012345705",
+                "phone_number_home": "9999999999",
                 "email_verified": true,
-                "last_login": "2024-05-19T00:00:00.000Z",
-                "last_failed_login": "2024-05-18T00:00:00.000Z",
+                "last_login": null,
+                "last_failed_login": null,
                 "admin": false,
-                "status": "active",
+                "status": "",
                 "language": [
-                    "English"
+                    ""
                 ],
                 "forced_login": false,
                 "failed_login_count": 0,
-                "address1": "8345",
-                "address2": "peachtreeblvs",
-                "state": "NC",
-                "zipcode": "28217",
-                "profile_picture_url": "/profilepic/sub2_plumb1/.jpg",
-                "referral_code": "DABC",
-                "referred_by": "WEB",
-                "date_of_birth": "2000-05-30T00:00:00.000Z",
-                "user_fully_onboarded": true,
-                "user_type": "sub_plumb"
+                "address1": "",
+                "address2": "",
+                "state": "",
+                "zipcode": "",
+                "profile_picture_url": "",
+                "referral_code": "",
+                "referred_by": "",
+                "date_of_birth": null,
+                "user_fully_onboarded": false,
+                "user_type": "business"
             },
             "links": {
                 "self": "http://localhostx:3000/api/user/100035"
@@ -6783,15 +6544,8 @@ export default function handler(req, res) {
                     },
                     "data": {
                         "type": "business",
-                        "id": 200010
+                        "id": 101007
                     }
-                },
-                "business_user_roles": {
-                    "links": {
-                        "self": "http://localhostx:3000/api/user/100035/relationships/business_user_roles",
-                        "related": "http://localhostx:3000/api/user/100035/business_user_roles"
-                    },
-                    "data": []
                 },
                 "business_documents": {
                     "links": {
@@ -6806,6 +6560,18 @@ export default function handler(req, res) {
                         "related": "http://localhostx:3000/api/user/100035/home_owner_projects"
                     },
                     "data": []
+                },
+                "business_user_roles": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100035/relationships/business_user_roles",
+                        "related": "http://localhostx:3000/api/user/100035/business_user_roles"
+                    },
+                    "data": [
+                        {
+                            "type": "business_User_Roles",
+                            "id": 103034
+                        }
+                    ]
                 },
                 "project_assignments": {
                     "links": {
@@ -6925,38 +6691,38 @@ export default function handler(req, res) {
             "type": "user",
             "id": 100036,
             "attributes": {
-                "created_at": "2024-05-03T23:30:36.669Z",
-                "updated_at": "2024-05-03T23:30:36.669Z",
+                "created_at": "2024-05-21T17:15:09.567Z",
+                "updated_at": "2024-05-21T17:15:09.567Z",
                 "active": true,
-                "username": "sub1_elec1.sub_elec",
-                "email": "sub1_elec1.sub_elec@outlook.com",
-                "first_name": "sub1_elec1",
-                "middle_name": "",
-                "last_name": "sub_elec",
-                "phone_number_mobile": "7012345706",
+                "username": "David.Cantley",
+                "email": "David.Cantley@mail.com",
+                "first_name": "David",
+                "middle_name": "FA",
+                "last_name": "Cantley",
+                "phone_number_mobile": "1234567890",
                 "text_enabled": true,
                 "phone_verified": false,
-                "phone_number_home": "8012345706",
+                "phone_number_home": "9999999999",
                 "email_verified": true,
-                "last_login": "2024-05-20T00:00:00.000Z",
-                "last_failed_login": "2024-05-19T00:00:00.000Z",
+                "last_login": null,
+                "last_failed_login": null,
                 "admin": false,
-                "status": "active",
+                "status": "",
                 "language": [
-                    "English"
+                    ""
                 ],
                 "forced_login": false,
                 "failed_login_count": 0,
-                "address1": "8345",
-                "address2": "peachtreeblvs",
-                "state": "NC",
-                "zipcode": "28217",
-                "profile_picture_url": "/profilepic/sub1_elec1/.jpg",
-                "referral_code": "ABCD",
-                "referred_by": "WEB",
-                "date_of_birth": "2000-05-31T00:00:00.000Z",
-                "user_fully_onboarded": true,
-                "user_type": "sub_elec"
+                "address1": "",
+                "address2": "",
+                "state": "",
+                "zipcode": "",
+                "profile_picture_url": "",
+                "referral_code": "",
+                "referred_by": "",
+                "date_of_birth": null,
+                "user_fully_onboarded": false,
+                "user_type": "business"
             },
             "links": {
                 "self": "http://localhostx:3000/api/user/100036"
@@ -6967,17 +6733,7 @@ export default function handler(req, res) {
                         "self": "http://localhostx:3000/api/user/100036/relationships/business_creator",
                         "related": "http://localhostx:3000/api/user/100036/business_creator"
                     },
-                    "data": {
-                        "type": "business",
-                        "id": 200011
-                    }
-                },
-                "business_user_roles": {
-                    "links": {
-                        "self": "http://localhostx:3000/api/user/100036/relationships/business_user_roles",
-                        "related": "http://localhostx:3000/api/user/100036/business_user_roles"
-                    },
-                    "data": []
+                    "data": null
                 },
                 "business_documents": {
                     "links": {
@@ -6992,6 +6748,18 @@ export default function handler(req, res) {
                         "related": "http://localhostx:3000/api/user/100036/home_owner_projects"
                     },
                     "data": []
+                },
+                "business_user_roles": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100036/relationships/business_user_roles",
+                        "related": "http://localhostx:3000/api/user/100036/business_user_roles"
+                    },
+                    "data": [
+                        {
+                            "type": "business_User_Roles",
+                            "id": 103035
+                        }
+                    ]
                 },
                 "project_assignments": {
                     "links": {
@@ -7111,38 +6879,38 @@ export default function handler(req, res) {
             "type": "user",
             "id": 100037,
             "attributes": {
-                "created_at": "2024-05-03T23:30:36.669Z",
-                "updated_at": "2024-05-03T23:30:36.669Z",
+                "created_at": "2024-05-21T17:15:09.791Z",
+                "updated_at": "2024-05-21T17:15:09.791Z",
                 "active": true,
-                "username": "sub2_elec1.sub_elec",
-                "email": "sub2_elec1.sub_elec@outlook.com",
-                "first_name": "sub2_elec1",
-                "middle_name": "",
-                "last_name": "sub_elec",
-                "phone_number_mobile": "7012345707",
+                "username": "Tom.Cantley",
+                "email": "Tom.Cantley@mail.com",
+                "first_name": "Tom",
+                "middle_name": "PM_ES",
+                "last_name": "Cantley",
+                "phone_number_mobile": "1234567890",
                 "text_enabled": true,
                 "phone_verified": false,
-                "phone_number_home": "8012345707",
+                "phone_number_home": "9999999999",
                 "email_verified": true,
-                "last_login": "2024-05-21T00:00:00.000Z",
-                "last_failed_login": "2024-05-20T00:00:00.000Z",
+                "last_login": null,
+                "last_failed_login": null,
                 "admin": false,
-                "status": "active",
+                "status": "",
                 "language": [
-                    "English"
+                    ""
                 ],
                 "forced_login": false,
                 "failed_login_count": 0,
-                "address1": "8345",
-                "address2": "peachtreeblvs",
-                "state": "NC",
-                "zipcode": "28217",
-                "profile_picture_url": "/profilepic/sub2_elec1/.jpg",
-                "referral_code": "ABCD",
-                "referred_by": "WEB",
-                "date_of_birth": "2000-06-01T00:00:00.000Z",
-                "user_fully_onboarded": true,
-                "user_type": "sub_elec"
+                "address1": "",
+                "address2": "",
+                "state": "",
+                "zipcode": "",
+                "profile_picture_url": "",
+                "referral_code": "",
+                "referred_by": "",
+                "date_of_birth": null,
+                "user_fully_onboarded": false,
+                "user_type": "business"
             },
             "links": {
                 "self": "http://localhostx:3000/api/user/100037"
@@ -7153,17 +6921,7 @@ export default function handler(req, res) {
                         "self": "http://localhostx:3000/api/user/100037/relationships/business_creator",
                         "related": "http://localhostx:3000/api/user/100037/business_creator"
                     },
-                    "data": {
-                        "type": "business",
-                        "id": 200012
-                    }
-                },
-                "business_user_roles": {
-                    "links": {
-                        "self": "http://localhostx:3000/api/user/100037/relationships/business_user_roles",
-                        "related": "http://localhostx:3000/api/user/100037/business_user_roles"
-                    },
-                    "data": []
+                    "data": null
                 },
                 "business_documents": {
                     "links": {
@@ -7178,6 +6936,18 @@ export default function handler(req, res) {
                         "related": "http://localhostx:3000/api/user/100037/home_owner_projects"
                     },
                     "data": []
+                },
+                "business_user_roles": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100037/relationships/business_user_roles",
+                        "related": "http://localhostx:3000/api/user/100037/business_user_roles"
+                    },
+                    "data": [
+                        {
+                            "type": "business_User_Roles",
+                            "id": 103036
+                        }
+                    ]
                 },
                 "project_assignments": {
                     "links": {
@@ -7297,38 +7067,38 @@ export default function handler(req, res) {
             "type": "user",
             "id": 100038,
             "attributes": {
-                "created_at": "2024-05-03T23:30:36.669Z",
-                "updated_at": "2024-05-03T23:30:36.669Z",
+                "created_at": "2024-05-21T17:15:10.018Z",
+                "updated_at": "2024-05-21T17:15:10.018Z",
                 "active": true,
-                "username": "sub1_framing1.sub_framing",
-                "email": "sub1_framing1.sub_framing@outlook.com",
-                "first_name": "sub1_framing1",
-                "middle_name": "",
-                "last_name": "sub_framing",
-                "phone_number_mobile": "7012345708",
+                "username": "Peter.Doggett",
+                "email": "Peter.Doggett@mail.com",
+                "first_name": "Peter",
+                "middle_name": "FA_PM_ES",
+                "last_name": "Doggett",
+                "phone_number_mobile": "1234567890",
                 "text_enabled": true,
                 "phone_verified": false,
-                "phone_number_home": "8012345708",
+                "phone_number_home": "9999999999",
                 "email_verified": true,
-                "last_login": "2024-05-22T00:00:00.000Z",
-                "last_failed_login": "2024-05-21T00:00:00.000Z",
+                "last_login": null,
+                "last_failed_login": null,
                 "admin": false,
-                "status": "active",
+                "status": "",
                 "language": [
-                    "English"
+                    ""
                 ],
                 "forced_login": false,
                 "failed_login_count": 0,
-                "address1": "8345",
-                "address2": "peachtreeblvs",
-                "state": "NC",
-                "zipcode": "28217",
-                "profile_picture_url": "/profilepic/sub1_framing1/.jpg",
-                "referral_code": "BCDE",
-                "referred_by": "WEB",
-                "date_of_birth": "2000-06-02T00:00:00.000Z",
-                "user_fully_onboarded": true,
-                "user_type": "sub_framing"
+                "address1": "",
+                "address2": "",
+                "state": "",
+                "zipcode": "",
+                "profile_picture_url": "",
+                "referral_code": "",
+                "referred_by": "",
+                "date_of_birth": null,
+                "user_fully_onboarded": false,
+                "user_type": "business"
             },
             "links": {
                 "self": "http://localhostx:3000/api/user/100038"
@@ -7339,14 +7109,10 @@ export default function handler(req, res) {
                         "self": "http://localhostx:3000/api/user/100038/relationships/business_creator",
                         "related": "http://localhostx:3000/api/user/100038/business_creator"
                     },
-                    "data": null
-                },
-                "business_user_roles": {
-                    "links": {
-                        "self": "http://localhostx:3000/api/user/100038/relationships/business_user_roles",
-                        "related": "http://localhostx:3000/api/user/100038/business_user_roles"
-                    },
-                    "data": []
+                    "data": {
+                        "type": "business",
+                        "id": 101008
+                    }
                 },
                 "business_documents": {
                     "links": {
@@ -7361,6 +7127,18 @@ export default function handler(req, res) {
                         "related": "http://localhostx:3000/api/user/100038/home_owner_projects"
                     },
                     "data": []
+                },
+                "business_user_roles": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100038/relationships/business_user_roles",
+                        "related": "http://localhostx:3000/api/user/100038/business_user_roles"
+                    },
+                    "data": [
+                        {
+                            "type": "business_User_Roles",
+                            "id": 103037
+                        }
+                    ]
                 },
                 "project_assignments": {
                     "links": {
@@ -7480,38 +7258,38 @@ export default function handler(req, res) {
             "type": "user",
             "id": 100039,
             "attributes": {
-                "created_at": "2024-05-03T23:30:36.669Z",
-                "updated_at": "2024-05-03T23:30:36.669Z",
+                "created_at": "2024-05-21T17:15:10.406Z",
+                "updated_at": "2024-05-21T17:15:10.406Z",
                 "active": true,
-                "username": "sub2_framing1.sub_framing",
-                "email": "sub2_framing1.sub_framing@outlook.com",
-                "first_name": "sub2_framing1",
-                "middle_name": "",
-                "last_name": "sub_framing",
-                "phone_number_mobile": "7012345709",
+                "username": "Chris.Doggett",
+                "email": "Chris.Doggett@mail.com",
+                "first_name": "Chris",
+                "middle_name": "FA",
+                "last_name": "Doggett",
+                "phone_number_mobile": "1234567890",
                 "text_enabled": true,
                 "phone_verified": false,
-                "phone_number_home": "8012345709",
+                "phone_number_home": "9999999999",
                 "email_verified": true,
-                "last_login": "2024-05-23T00:00:00.000Z",
-                "last_failed_login": "2024-05-22T00:00:00.000Z",
+                "last_login": null,
+                "last_failed_login": null,
                 "admin": false,
-                "status": "active",
+                "status": "",
                 "language": [
-                    "English"
+                    ""
                 ],
                 "forced_login": false,
                 "failed_login_count": 0,
-                "address1": "8345",
-                "address2": "peachtreeblvs",
-                "state": "NC",
-                "zipcode": "28217",
-                "profile_picture_url": "/profilepic/sub2_framing1/.jpg",
-                "referral_code": "ABCD",
-                "referred_by": "WEB",
-                "date_of_birth": "2000-06-03T00:00:00.000Z",
-                "user_fully_onboarded": true,
-                "user_type": "sub_framing"
+                "address1": "",
+                "address2": "",
+                "state": "",
+                "zipcode": "",
+                "profile_picture_url": "",
+                "referral_code": "",
+                "referred_by": "",
+                "date_of_birth": null,
+                "user_fully_onboarded": false,
+                "user_type": "business"
             },
             "links": {
                 "self": "http://localhostx:3000/api/user/100039"
@@ -7523,13 +7301,6 @@ export default function handler(req, res) {
                         "related": "http://localhostx:3000/api/user/100039/business_creator"
                     },
                     "data": null
-                },
-                "business_user_roles": {
-                    "links": {
-                        "self": "http://localhostx:3000/api/user/100039/relationships/business_user_roles",
-                        "related": "http://localhostx:3000/api/user/100039/business_user_roles"
-                    },
-                    "data": []
                 },
                 "business_documents": {
                     "links": {
@@ -7544,6 +7315,18 @@ export default function handler(req, res) {
                         "related": "http://localhostx:3000/api/user/100039/home_owner_projects"
                     },
                     "data": []
+                },
+                "business_user_roles": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100039/relationships/business_user_roles",
+                        "related": "http://localhostx:3000/api/user/100039/business_user_roles"
+                    },
+                    "data": [
+                        {
+                            "type": "business_User_Roles",
+                            "id": 103038
+                        }
+                    ]
                 },
                 "project_assignments": {
                     "links": {
@@ -7663,38 +7446,38 @@ export default function handler(req, res) {
             "type": "user",
             "id": 100040,
             "attributes": {
-                "created_at": "2024-05-03T23:30:36.669Z",
-                "updated_at": "2024-05-03T23:30:36.669Z",
+                "created_at": "2024-05-21T17:15:10.639Z",
+                "updated_at": "2024-05-21T17:15:10.639Z",
                 "active": true,
-                "username": "sub1_hvac1.sub_hvac",
-                "email": "sub1_hvac1.sub_hvac@outlook.com",
-                "first_name": "sub1_hvac1",
-                "middle_name": "",
-                "last_name": "sub_hvac",
-                "phone_number_mobile": "7012345710",
+                "username": "Patrick.Doggett",
+                "email": "Patrick.Doggett@mail.com",
+                "first_name": "Patrick",
+                "middle_name": "OM_BK",
+                "last_name": "Doggett",
+                "phone_number_mobile": "1234567890",
                 "text_enabled": true,
                 "phone_verified": false,
-                "phone_number_home": "8012345710",
+                "phone_number_home": "9999999999",
                 "email_verified": true,
-                "last_login": "2024-05-24T00:00:00.000Z",
-                "last_failed_login": "2024-05-23T00:00:00.000Z",
+                "last_login": null,
+                "last_failed_login": null,
                 "admin": false,
-                "status": "active",
+                "status": "",
                 "language": [
-                    "English"
+                    ""
                 ],
                 "forced_login": false,
                 "failed_login_count": 0,
-                "address1": "8345",
-                "address2": "peachtreeblvs",
-                "state": "NC",
-                "zipcode": "28217",
-                "profile_picture_url": "/profilepic/sub1_hvac1/.jpg",
-                "referral_code": "CDAB",
-                "referred_by": "WEB",
-                "date_of_birth": "2000-06-04T00:00:00.000Z",
-                "user_fully_onboarded": true,
-                "user_type": "sub_hvac"
+                "address1": "",
+                "address2": "",
+                "state": "",
+                "zipcode": "",
+                "profile_picture_url": "",
+                "referral_code": "",
+                "referred_by": "",
+                "date_of_birth": null,
+                "user_fully_onboarded": false,
+                "user_type": "business"
             },
             "links": {
                 "self": "http://localhostx:3000/api/user/100040"
@@ -7705,14 +7488,10 @@ export default function handler(req, res) {
                         "self": "http://localhostx:3000/api/user/100040/relationships/business_creator",
                         "related": "http://localhostx:3000/api/user/100040/business_creator"
                     },
-                    "data": null
-                },
-                "business_user_roles": {
-                    "links": {
-                        "self": "http://localhostx:3000/api/user/100040/relationships/business_user_roles",
-                        "related": "http://localhostx:3000/api/user/100040/business_user_roles"
-                    },
-                    "data": []
+                    "data": {
+                        "type": "business",
+                        "id": 101009
+                    }
                 },
                 "business_documents": {
                     "links": {
@@ -7727,6 +7506,18 @@ export default function handler(req, res) {
                         "related": "http://localhostx:3000/api/user/100040/home_owner_projects"
                     },
                     "data": []
+                },
+                "business_user_roles": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100040/relationships/business_user_roles",
+                        "related": "http://localhostx:3000/api/user/100040/business_user_roles"
+                    },
+                    "data": [
+                        {
+                            "type": "business_User_Roles",
+                            "id": 103039
+                        }
+                    ]
                 },
                 "project_assignments": {
                     "links": {
@@ -7846,38 +7637,38 @@ export default function handler(req, res) {
             "type": "user",
             "id": 100041,
             "attributes": {
-                "created_at": "2024-05-03T23:30:36.669Z",
-                "updated_at": "2024-05-03T23:30:36.669Z",
+                "created_at": "2024-05-21T17:15:10.859Z",
+                "updated_at": "2024-05-21T17:15:10.859Z",
                 "active": true,
-                "username": "sub2_hvac1.sub_hvac",
-                "email": "sub2_hvac1.sub_hvac@outlook.com",
-                "first_name": "sub2_hvac1",
-                "middle_name": "",
-                "last_name": "sub_hvac",
-                "phone_number_mobile": "7012345711",
+                "username": "Alex.Masterpiece",
+                "email": "Alex.Masterpiece@mail.com",
+                "first_name": "Alex",
+                "middle_name": "FA",
+                "last_name": "Masterpiece",
+                "phone_number_mobile": "1234567890",
                 "text_enabled": true,
                 "phone_verified": false,
-                "phone_number_home": "8012345711",
+                "phone_number_home": "9999999999",
                 "email_verified": true,
-                "last_login": "2024-05-25T00:00:00.000Z",
-                "last_failed_login": "2024-05-24T00:00:00.000Z",
+                "last_login": null,
+                "last_failed_login": null,
                 "admin": false,
-                "status": "active",
+                "status": "",
                 "language": [
-                    "English"
+                    ""
                 ],
                 "forced_login": false,
                 "failed_login_count": 0,
-                "address1": "8345",
-                "address2": "peachtreeblvs",
-                "state": "NC",
-                "zipcode": "28217",
-                "profile_picture_url": "/profilepic/sub2_hvac1/.jpg",
-                "referral_code": "DABC",
-                "referred_by": "WEB",
-                "date_of_birth": "2000-06-05T00:00:00.000Z",
-                "user_fully_onboarded": true,
-                "user_type": "sub_hvac"
+                "address1": "",
+                "address2": "",
+                "state": "",
+                "zipcode": "",
+                "profile_picture_url": "",
+                "referral_code": "",
+                "referred_by": "",
+                "date_of_birth": null,
+                "user_fully_onboarded": false,
+                "user_type": "business"
             },
             "links": {
                 "self": "http://localhostx:3000/api/user/100041"
@@ -7889,13 +7680,6 @@ export default function handler(req, res) {
                         "related": "http://localhostx:3000/api/user/100041/business_creator"
                     },
                     "data": null
-                },
-                "business_user_roles": {
-                    "links": {
-                        "self": "http://localhostx:3000/api/user/100041/relationships/business_user_roles",
-                        "related": "http://localhostx:3000/api/user/100041/business_user_roles"
-                    },
-                    "data": []
                 },
                 "business_documents": {
                     "links": {
@@ -7910,6 +7694,18 @@ export default function handler(req, res) {
                         "related": "http://localhostx:3000/api/user/100041/home_owner_projects"
                     },
                     "data": []
+                },
+                "business_user_roles": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100041/relationships/business_user_roles",
+                        "related": "http://localhostx:3000/api/user/100041/business_user_roles"
+                    },
+                    "data": [
+                        {
+                            "type": "business_User_Roles",
+                            "id": 103040
+                        }
+                    ]
                 },
                 "project_assignments": {
                     "links": {
@@ -8029,38 +7825,38 @@ export default function handler(req, res) {
             "type": "user",
             "id": 100042,
             "attributes": {
-                "created_at": "2024-05-03T23:30:36.669Z",
-                "updated_at": "2024-05-03T23:30:36.669Z",
+                "created_at": "2024-05-21T17:15:11.177Z",
+                "updated_at": "2024-05-21T17:15:11.177Z",
                 "active": true,
-                "username": "sub1_roof1.sub_roof",
-                "email": "sub1_roof1.sub_roof@outlook.com",
-                "first_name": "sub1_roof1",
-                "middle_name": "",
-                "last_name": "sub_roof",
-                "phone_number_mobile": "7012345712",
+                "username": "Les.Masterpiece",
+                "email": "Les.Masterpiece@mail.com",
+                "first_name": "Les",
+                "middle_name": "FA",
+                "last_name": "Masterpiece",
+                "phone_number_mobile": "1234567890",
                 "text_enabled": true,
                 "phone_verified": false,
-                "phone_number_home": "8012345712",
+                "phone_number_home": "9999999999",
                 "email_verified": true,
-                "last_login": "2024-05-26T00:00:00.000Z",
-                "last_failed_login": "2024-05-25T00:00:00.000Z",
+                "last_login": null,
+                "last_failed_login": null,
                 "admin": false,
-                "status": "active",
+                "status": "",
                 "language": [
-                    "English"
+                    ""
                 ],
                 "forced_login": false,
                 "failed_login_count": 0,
-                "address1": "8345",
-                "address2": "peachtreeblvs",
-                "state": "NC",
-                "zipcode": "28217",
-                "profile_picture_url": "/profilepic/sub1_roof1/.jpg",
-                "referral_code": "CDAB",
-                "referred_by": "WEB",
-                "date_of_birth": "2000-06-06T00:00:00.000Z",
-                "user_fully_onboarded": true,
-                "user_type": "sub_roof"
+                "address1": "",
+                "address2": "",
+                "state": "",
+                "zipcode": "",
+                "profile_picture_url": "",
+                "referral_code": "",
+                "referred_by": "",
+                "date_of_birth": null,
+                "user_fully_onboarded": false,
+                "user_type": "business"
             },
             "links": {
                 "self": "http://localhostx:3000/api/user/100042"
@@ -8071,14 +7867,10 @@ export default function handler(req, res) {
                         "self": "http://localhostx:3000/api/user/100042/relationships/business_creator",
                         "related": "http://localhostx:3000/api/user/100042/business_creator"
                     },
-                    "data": null
-                },
-                "business_user_roles": {
-                    "links": {
-                        "self": "http://localhostx:3000/api/user/100042/relationships/business_user_roles",
-                        "related": "http://localhostx:3000/api/user/100042/business_user_roles"
-                    },
-                    "data": []
+                    "data": {
+                        "type": "business",
+                        "id": 101010
+                    }
                 },
                 "business_documents": {
                     "links": {
@@ -8093,6 +7885,18 @@ export default function handler(req, res) {
                         "related": "http://localhostx:3000/api/user/100042/home_owner_projects"
                     },
                     "data": []
+                },
+                "business_user_roles": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100042/relationships/business_user_roles",
+                        "related": "http://localhostx:3000/api/user/100042/business_user_roles"
+                    },
+                    "data": [
+                        {
+                            "type": "business_User_Roles",
+                            "id": 103041
+                        }
+                    ]
                 },
                 "project_assignments": {
                     "links": {
@@ -8212,38 +8016,38 @@ export default function handler(req, res) {
             "type": "user",
             "id": 100043,
             "attributes": {
-                "created_at": "2024-05-03T23:30:36.669Z",
-                "updated_at": "2024-05-03T23:30:36.669Z",
+                "created_at": "2024-05-21T17:15:11.399Z",
+                "updated_at": "2024-05-21T17:15:11.399Z",
                 "active": true,
-                "username": "sub2_roof1.sub_roof",
-                "email": "sub2_roof1.sub_roof@outlook.com",
-                "first_name": "sub2_roof1",
-                "middle_name": "",
-                "last_name": "sub_roof",
-                "phone_number_mobile": "7012345713",
+                "username": "John.Framing1",
+                "email": "John.Framing1@mail.com",
+                "first_name": "John",
+                "middle_name": "FA",
+                "last_name": "Framing1",
+                "phone_number_mobile": "1234567890",
                 "text_enabled": true,
                 "phone_verified": false,
-                "phone_number_home": "8012345713",
+                "phone_number_home": "9999999999",
                 "email_verified": true,
-                "last_login": "2024-05-27T00:00:00.000Z",
-                "last_failed_login": "2024-05-26T00:00:00.000Z",
+                "last_login": null,
+                "last_failed_login": null,
                 "admin": false,
-                "status": "active",
+                "status": "",
                 "language": [
-                    "English"
+                    ""
                 ],
                 "forced_login": false,
                 "failed_login_count": 0,
-                "address1": "8345",
-                "address2": "peachtreeblvs",
-                "state": "NC",
-                "zipcode": "28217",
-                "profile_picture_url": "/profilepic/sub2_roof1/.jpg",
-                "referral_code": "CDAB",
-                "referred_by": "WEB",
-                "date_of_birth": "2000-06-07T00:00:00.000Z",
-                "user_fully_onboarded": true,
-                "user_type": "sub_roof"
+                "address1": "",
+                "address2": "",
+                "state": "",
+                "zipcode": "",
+                "profile_picture_url": "",
+                "referral_code": "",
+                "referred_by": "",
+                "date_of_birth": null,
+                "user_fully_onboarded": false,
+                "user_type": "business"
             },
             "links": {
                 "self": "http://localhostx:3000/api/user/100043"
@@ -8254,14 +8058,10 @@ export default function handler(req, res) {
                         "self": "http://localhostx:3000/api/user/100043/relationships/business_creator",
                         "related": "http://localhostx:3000/api/user/100043/business_creator"
                     },
-                    "data": null
-                },
-                "business_user_roles": {
-                    "links": {
-                        "self": "http://localhostx:3000/api/user/100043/relationships/business_user_roles",
-                        "related": "http://localhostx:3000/api/user/100043/business_user_roles"
-                    },
-                    "data": []
+                    "data": {
+                        "type": "business",
+                        "id": 101011
+                    }
                 },
                 "business_documents": {
                     "links": {
@@ -8276,6 +8076,18 @@ export default function handler(req, res) {
                         "related": "http://localhostx:3000/api/user/100043/home_owner_projects"
                     },
                     "data": []
+                },
+                "business_user_roles": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100043/relationships/business_user_roles",
+                        "related": "http://localhostx:3000/api/user/100043/business_user_roles"
+                    },
+                    "data": [
+                        {
+                            "type": "business_User_Roles",
+                            "id": 103042
+                        }
+                    ]
                 },
                 "project_assignments": {
                     "links": {
@@ -8395,38 +8207,38 @@ export default function handler(req, res) {
             "type": "user",
             "id": 100044,
             "attributes": {
-                "created_at": "2024-05-03T23:30:36.669Z",
-                "updated_at": "2024-05-03T23:30:36.669Z",
+                "created_at": "2024-05-21T17:15:11.596Z",
+                "updated_at": "2024-05-21T17:15:11.596Z",
                 "active": true,
-                "username": "sub1_doorswindows1.sub_doorswindows",
-                "email": "sub1_doorswindows1.sub_doorswindows@outlook.com",
-                "first_name": "sub1_doorswindows1",
-                "middle_name": "",
-                "last_name": "sub_doorswindows",
-                "phone_number_mobile": "7012345714",
+                "username": "David.Framing2",
+                "email": "David.Framing2@mail.com",
+                "first_name": "David",
+                "middle_name": "FA",
+                "last_name": "Framing2",
+                "phone_number_mobile": "1234567890",
                 "text_enabled": true,
                 "phone_verified": false,
-                "phone_number_home": "8012345714",
+                "phone_number_home": "9999999999",
                 "email_verified": true,
-                "last_login": "2024-05-28T00:00:00.000Z",
-                "last_failed_login": "2024-05-27T00:00:00.000Z",
+                "last_login": null,
+                "last_failed_login": null,
                 "admin": false,
-                "status": "active",
+                "status": "",
                 "language": [
-                    "English"
+                    ""
                 ],
                 "forced_login": false,
                 "failed_login_count": 0,
-                "address1": "8345",
-                "address2": "peachtreeblvs",
-                "state": "NC",
-                "zipcode": "28217",
-                "profile_picture_url": "/profilepic/sub1_doorswindows1/.jpg",
-                "referral_code": "DABC",
-                "referred_by": "WEB",
-                "date_of_birth": "2000-06-08T00:00:00.000Z",
-                "user_fully_onboarded": true,
-                "user_type": "sub_doorswindows"
+                "address1": "",
+                "address2": "",
+                "state": "",
+                "zipcode": "",
+                "profile_picture_url": "",
+                "referral_code": "",
+                "referred_by": "",
+                "date_of_birth": null,
+                "user_fully_onboarded": false,
+                "user_type": "business"
             },
             "links": {
                 "self": "http://localhostx:3000/api/user/100044"
@@ -8438,13 +8250,6 @@ export default function handler(req, res) {
                         "related": "http://localhostx:3000/api/user/100044/business_creator"
                     },
                     "data": null
-                },
-                "business_user_roles": {
-                    "links": {
-                        "self": "http://localhostx:3000/api/user/100044/relationships/business_user_roles",
-                        "related": "http://localhostx:3000/api/user/100044/business_user_roles"
-                    },
-                    "data": []
                 },
                 "business_documents": {
                     "links": {
@@ -8459,6 +8264,18 @@ export default function handler(req, res) {
                         "related": "http://localhostx:3000/api/user/100044/home_owner_projects"
                     },
                     "data": []
+                },
+                "business_user_roles": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100044/relationships/business_user_roles",
+                        "related": "http://localhostx:3000/api/user/100044/business_user_roles"
+                    },
+                    "data": [
+                        {
+                            "type": "business_User_Roles",
+                            "id": 103043
+                        }
+                    ]
                 },
                 "project_assignments": {
                     "links": {
@@ -8578,38 +8395,38 @@ export default function handler(req, res) {
             "type": "user",
             "id": 100045,
             "attributes": {
-                "created_at": "2024-05-03T23:30:36.669Z",
-                "updated_at": "2024-05-03T23:30:36.669Z",
+                "created_at": "2024-05-21T17:15:11.804Z",
+                "updated_at": "2024-05-21T17:15:11.804Z",
                 "active": true,
-                "username": "sub2_doorswindows1.sub_doorswindows",
-                "email": "sub2_doorswindows1.sub_doorswindows@outlook.com",
-                "first_name": "sub2_doorswindows1",
-                "middle_name": "",
-                "last_name": "sub_doorswindows",
-                "phone_number_mobile": "7012345715",
+                "username": "Tom.Framing2",
+                "email": "Tom.Framing2@mail.com",
+                "first_name": "Tom",
+                "middle_name": "PM",
+                "last_name": "Framing2",
+                "phone_number_mobile": "1234567890",
                 "text_enabled": true,
                 "phone_verified": false,
-                "phone_number_home": "8012345715",
+                "phone_number_home": "9999999999",
                 "email_verified": true,
-                "last_login": "2024-05-29T00:00:00.000Z",
-                "last_failed_login": "2024-05-28T00:00:00.000Z",
+                "last_login": null,
+                "last_failed_login": null,
                 "admin": false,
-                "status": "active",
+                "status": "",
                 "language": [
-                    "English"
+                    ""
                 ],
                 "forced_login": false,
                 "failed_login_count": 0,
-                "address1": "8345",
-                "address2": "peachtreeblvs",
-                "state": "NC",
-                "zipcode": "28217",
-                "profile_picture_url": "/profilepic/sub2_doorswindows1/.jpg",
-                "referral_code": "ABCD",
-                "referred_by": "WEB",
-                "date_of_birth": "2000-06-09T00:00:00.000Z",
-                "user_fully_onboarded": true,
-                "user_type": "sub_doorswindows"
+                "address1": "",
+                "address2": "",
+                "state": "",
+                "zipcode": "",
+                "profile_picture_url": "",
+                "referral_code": "",
+                "referred_by": "",
+                "date_of_birth": null,
+                "user_fully_onboarded": false,
+                "user_type": "business"
             },
             "links": {
                 "self": "http://localhostx:3000/api/user/100045"
@@ -8620,14 +8437,10 @@ export default function handler(req, res) {
                         "self": "http://localhostx:3000/api/user/100045/relationships/business_creator",
                         "related": "http://localhostx:3000/api/user/100045/business_creator"
                     },
-                    "data": null
-                },
-                "business_user_roles": {
-                    "links": {
-                        "self": "http://localhostx:3000/api/user/100045/relationships/business_user_roles",
-                        "related": "http://localhostx:3000/api/user/100045/business_user_roles"
-                    },
-                    "data": []
+                    "data": {
+                        "type": "business",
+                        "id": 101012
+                    }
                 },
                 "business_documents": {
                     "links": {
@@ -8642,6 +8455,18 @@ export default function handler(req, res) {
                         "related": "http://localhostx:3000/api/user/100045/home_owner_projects"
                     },
                     "data": []
+                },
+                "business_user_roles": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100045/relationships/business_user_roles",
+                        "related": "http://localhostx:3000/api/user/100045/business_user_roles"
+                    },
+                    "data": [
+                        {
+                            "type": "business_User_Roles",
+                            "id": 103044
+                        }
+                    ]
                 },
                 "project_assignments": {
                     "links": {
@@ -8761,38 +8586,38 @@ export default function handler(req, res) {
             "type": "user",
             "id": 100046,
             "attributes": {
-                "created_at": "2024-05-03T23:30:36.669Z",
-                "updated_at": "2024-05-03T23:30:36.669Z",
+                "created_at": "2024-05-21T17:15:12.099Z",
+                "updated_at": "2024-05-21T17:15:12.099Z",
                 "active": true,
-                "username": "sub1_masonry1.sub_masonry",
-                "email": "sub1_masonry1.sub_masonry@outlook.com",
-                "first_name": "sub1_masonry1",
-                "middle_name": "",
-                "last_name": "sub_masonry",
-                "phone_number_mobile": "7012345716",
+                "username": "Peter.Bates",
+                "email": "Peter.Bates@mail.com",
+                "first_name": "Peter",
+                "middle_name": "FA",
+                "last_name": "Bates",
+                "phone_number_mobile": "1234567890",
                 "text_enabled": true,
                 "phone_verified": false,
-                "phone_number_home": "8012345716",
+                "phone_number_home": "9999999999",
                 "email_verified": true,
-                "last_login": "2024-05-30T00:00:00.000Z",
-                "last_failed_login": "2024-05-29T00:00:00.000Z",
+                "last_login": null,
+                "last_failed_login": null,
                 "admin": false,
-                "status": "active",
+                "status": "",
                 "language": [
-                    "English"
+                    ""
                 ],
                 "forced_login": false,
                 "failed_login_count": 0,
-                "address1": "8345",
-                "address2": "peachtreeblvs",
-                "state": "NC",
-                "zipcode": "28217",
-                "profile_picture_url": "/profilepic/sub1_masonry1/.jpg",
-                "referral_code": "ABCD",
-                "referred_by": "WEB",
-                "date_of_birth": "2000-06-10T00:00:00.000Z",
-                "user_fully_onboarded": true,
-                "user_type": "sub_masonry"
+                "address1": "",
+                "address2": "",
+                "state": "",
+                "zipcode": "",
+                "profile_picture_url": "",
+                "referral_code": "",
+                "referred_by": "",
+                "date_of_birth": null,
+                "user_fully_onboarded": false,
+                "user_type": "business"
             },
             "links": {
                 "self": "http://localhostx:3000/api/user/100046"
@@ -8804,13 +8629,6 @@ export default function handler(req, res) {
                         "related": "http://localhostx:3000/api/user/100046/business_creator"
                     },
                     "data": null
-                },
-                "business_user_roles": {
-                    "links": {
-                        "self": "http://localhostx:3000/api/user/100046/relationships/business_user_roles",
-                        "related": "http://localhostx:3000/api/user/100046/business_user_roles"
-                    },
-                    "data": []
                 },
                 "business_documents": {
                     "links": {
@@ -8825,6 +8643,18 @@ export default function handler(req, res) {
                         "related": "http://localhostx:3000/api/user/100046/home_owner_projects"
                     },
                     "data": []
+                },
+                "business_user_roles": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100046/relationships/business_user_roles",
+                        "related": "http://localhostx:3000/api/user/100046/business_user_roles"
+                    },
+                    "data": [
+                        {
+                            "type": "business_User_Roles",
+                            "id": 103045
+                        }
+                    ]
                 },
                 "project_assignments": {
                     "links": {
@@ -8944,38 +8774,38 @@ export default function handler(req, res) {
             "type": "user",
             "id": 100047,
             "attributes": {
-                "created_at": "2024-05-03T23:30:36.669Z",
-                "updated_at": "2024-05-03T23:30:36.669Z",
+                "created_at": "2024-05-21T17:15:12.317Z",
+                "updated_at": "2024-05-21T17:15:12.317Z",
                 "active": true,
-                "username": "sub2_masonry1.sub_masonry",
-                "email": "sub2_masonry1.sub_masonry@outlook.com",
-                "first_name": "sub2_masonry1",
-                "middle_name": "",
-                "last_name": "sub_masonry",
-                "phone_number_mobile": "7012345717",
+                "username": "Chris.Bates",
+                "email": "Chris.Bates@mail.com",
+                "first_name": "Chris",
+                "middle_name": "PM_FC",
+                "last_name": "Bates",
+                "phone_number_mobile": "1234567890",
                 "text_enabled": true,
                 "phone_verified": false,
-                "phone_number_home": "8012345717",
+                "phone_number_home": "9999999999",
                 "email_verified": true,
-                "last_login": "2024-05-31T00:00:00.000Z",
-                "last_failed_login": "2024-05-30T00:00:00.000Z",
+                "last_login": null,
+                "last_failed_login": null,
                 "admin": false,
-                "status": "active",
+                "status": "",
                 "language": [
-                    "English"
+                    ""
                 ],
                 "forced_login": false,
                 "failed_login_count": 0,
-                "address1": "8345",
-                "address2": "peachtreeblvs",
-                "state": "NC",
-                "zipcode": "28217",
-                "profile_picture_url": "/profilepic/sub2_masonry1/.jpg",
-                "referral_code": "BCDE",
-                "referred_by": "WEB",
-                "date_of_birth": "2000-06-11T00:00:00.000Z",
-                "user_fully_onboarded": true,
-                "user_type": "sub_masonry"
+                "address1": "",
+                "address2": "",
+                "state": "",
+                "zipcode": "",
+                "profile_picture_url": "",
+                "referral_code": "",
+                "referred_by": "",
+                "date_of_birth": null,
+                "user_fully_onboarded": false,
+                "user_type": "business"
             },
             "links": {
                 "self": "http://localhostx:3000/api/user/100047"
@@ -8987,13 +8817,6 @@ export default function handler(req, res) {
                         "related": "http://localhostx:3000/api/user/100047/business_creator"
                     },
                     "data": null
-                },
-                "business_user_roles": {
-                    "links": {
-                        "self": "http://localhostx:3000/api/user/100047/relationships/business_user_roles",
-                        "related": "http://localhostx:3000/api/user/100047/business_user_roles"
-                    },
-                    "data": []
                 },
                 "business_documents": {
                     "links": {
@@ -9008,6 +8831,18 @@ export default function handler(req, res) {
                         "related": "http://localhostx:3000/api/user/100047/home_owner_projects"
                     },
                     "data": []
+                },
+                "business_user_roles": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100047/relationships/business_user_roles",
+                        "related": "http://localhostx:3000/api/user/100047/business_user_roles"
+                    },
+                    "data": [
+                        {
+                            "type": "business_User_Roles",
+                            "id": 103046
+                        }
+                    ]
                 },
                 "project_assignments": {
                     "links": {
@@ -9127,38 +8962,38 @@ export default function handler(req, res) {
             "type": "user",
             "id": 100048,
             "attributes": {
-                "created_at": "2024-05-03T23:30:36.669Z",
-                "updated_at": "2024-05-03T23:30:36.669Z",
+                "created_at": "2024-05-21T17:15:12.559Z",
+                "updated_at": "2024-05-21T17:15:12.559Z",
                 "active": true,
-                "username": "sub1_siding1.sub_siding",
-                "email": "sub1_siding1.sub_siding@outlook.com",
-                "first_name": "sub1_siding1",
-                "middle_name": "",
-                "last_name": "sub_siding",
-                "phone_number_mobile": "7012345718",
+                "username": "Patrick.Bates",
+                "email": "Patrick.Bates@mail.com",
+                "first_name": "Patrick",
+                "middle_name": "PM",
+                "last_name": "Bates",
+                "phone_number_mobile": "1234567890",
                 "text_enabled": true,
                 "phone_verified": false,
-                "phone_number_home": "8012345718",
+                "phone_number_home": "9999999999",
                 "email_verified": true,
-                "last_login": "2024-06-01T00:00:00.000Z",
-                "last_failed_login": "2024-05-31T00:00:00.000Z",
+                "last_login": null,
+                "last_failed_login": null,
                 "admin": false,
-                "status": "active",
+                "status": "",
                 "language": [
-                    "English"
+                    ""
                 ],
                 "forced_login": false,
                 "failed_login_count": 0,
-                "address1": "8345",
-                "address2": "peachtreeblvs",
-                "state": "NC",
-                "zipcode": "28217",
-                "profile_picture_url": "/profilepic/sub1_siding1/.jpg",
-                "referral_code": "ABCD",
-                "referred_by": "WEB",
-                "date_of_birth": "2000-06-12T00:00:00.000Z",
-                "user_fully_onboarded": true,
-                "user_type": "sub_siding"
+                "address1": "",
+                "address2": "",
+                "state": "",
+                "zipcode": "",
+                "profile_picture_url": "",
+                "referral_code": "",
+                "referred_by": "",
+                "date_of_birth": null,
+                "user_fully_onboarded": false,
+                "user_type": "business"
             },
             "links": {
                 "self": "http://localhostx:3000/api/user/100048"
@@ -9169,14 +9004,10 @@ export default function handler(req, res) {
                         "self": "http://localhostx:3000/api/user/100048/relationships/business_creator",
                         "related": "http://localhostx:3000/api/user/100048/business_creator"
                     },
-                    "data": null
-                },
-                "business_user_roles": {
-                    "links": {
-                        "self": "http://localhostx:3000/api/user/100048/relationships/business_user_roles",
-                        "related": "http://localhostx:3000/api/user/100048/business_user_roles"
-                    },
-                    "data": []
+                    "data": {
+                        "type": "business",
+                        "id": 101013
+                    }
                 },
                 "business_documents": {
                     "links": {
@@ -9191,6 +9022,18 @@ export default function handler(req, res) {
                         "related": "http://localhostx:3000/api/user/100048/home_owner_projects"
                     },
                     "data": []
+                },
+                "business_user_roles": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100048/relationships/business_user_roles",
+                        "related": "http://localhostx:3000/api/user/100048/business_user_roles"
+                    },
+                    "data": [
+                        {
+                            "type": "business_User_Roles",
+                            "id": 103047
+                        }
+                    ]
                 },
                 "project_assignments": {
                     "links": {
@@ -9310,38 +9153,38 @@ export default function handler(req, res) {
             "type": "user",
             "id": 100049,
             "attributes": {
-                "created_at": "2024-05-03T23:30:36.669Z",
-                "updated_at": "2024-05-03T23:30:36.669Z",
+                "created_at": "2024-05-21T17:15:12.775Z",
+                "updated_at": "2024-05-21T17:15:12.775Z",
                 "active": true,
-                "username": "sub2_siding1.sub_siding",
-                "email": "sub2_siding1.sub_siding@outlook.com",
-                "first_name": "sub2_siding1",
-                "middle_name": "",
-                "last_name": "sub_siding",
-                "phone_number_mobile": "7012345719",
+                "username": "Alex.Summit",
+                "email": "Alex.Summit@mail.com",
+                "first_name": "Alex",
+                "middle_name": "FA",
+                "last_name": "Summit",
+                "phone_number_mobile": "1234567890",
                 "text_enabled": true,
                 "phone_verified": false,
-                "phone_number_home": "8012345719",
+                "phone_number_home": "9999999999",
                 "email_verified": true,
-                "last_login": "2024-06-02T00:00:00.000Z",
-                "last_failed_login": "2024-06-01T00:00:00.000Z",
+                "last_login": null,
+                "last_failed_login": null,
                 "admin": false,
-                "status": "active",
+                "status": "",
                 "language": [
-                    "English"
+                    ""
                 ],
                 "forced_login": false,
                 "failed_login_count": 0,
-                "address1": "8345",
-                "address2": "peachtreeblvs",
-                "state": "NC",
-                "zipcode": "28217",
-                "profile_picture_url": "/profilepic/sub2_siding1/.jpg",
-                "referral_code": "CDAB",
-                "referred_by": "WEB",
-                "date_of_birth": "2000-06-13T00:00:00.000Z",
-                "user_fully_onboarded": true,
-                "user_type": "sub_siding"
+                "address1": "",
+                "address2": "",
+                "state": "",
+                "zipcode": "",
+                "profile_picture_url": "",
+                "referral_code": "",
+                "referred_by": "",
+                "date_of_birth": null,
+                "user_fully_onboarded": false,
+                "user_type": "business"
             },
             "links": {
                 "self": "http://localhostx:3000/api/user/100049"
@@ -9353,13 +9196,6 @@ export default function handler(req, res) {
                         "related": "http://localhostx:3000/api/user/100049/business_creator"
                     },
                     "data": null
-                },
-                "business_user_roles": {
-                    "links": {
-                        "self": "http://localhostx:3000/api/user/100049/relationships/business_user_roles",
-                        "related": "http://localhostx:3000/api/user/100049/business_user_roles"
-                    },
-                    "data": []
                 },
                 "business_documents": {
                     "links": {
@@ -9374,6 +9210,18 @@ export default function handler(req, res) {
                         "related": "http://localhostx:3000/api/user/100049/home_owner_projects"
                     },
                     "data": []
+                },
+                "business_user_roles": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100049/relationships/business_user_roles",
+                        "related": "http://localhostx:3000/api/user/100049/business_user_roles"
+                    },
+                    "data": [
+                        {
+                            "type": "business_User_Roles",
+                            "id": 103048
+                        }
+                    ]
                 },
                 "project_assignments": {
                     "links": {
@@ -9493,38 +9341,38 @@ export default function handler(req, res) {
             "type": "user",
             "id": 100050,
             "attributes": {
-                "created_at": "2024-05-03T23:30:36.669Z",
-                "updated_at": "2024-05-03T23:30:36.669Z",
+                "created_at": "2024-05-21T17:15:12.991Z",
+                "updated_at": "2024-05-21T17:15:12.991Z",
                 "active": true,
-                "username": "sub1_insulation1.sub_insulation",
-                "email": "sub1_insulation1.sub_insulation@outlook.com",
-                "first_name": "sub1_insulation1",
-                "middle_name": "",
-                "last_name": "sub_insulation",
-                "phone_number_mobile": "7012345720",
+                "username": "Les.Summit",
+                "email": "Les.Summit@mail.com",
+                "first_name": "Les",
+                "middle_name": "PM_FC",
+                "last_name": "Summit",
+                "phone_number_mobile": "1234567890",
                 "text_enabled": true,
                 "phone_verified": false,
-                "phone_number_home": "8012345720",
+                "phone_number_home": "9999999999",
                 "email_verified": true,
-                "last_login": "2024-06-03T00:00:00.000Z",
-                "last_failed_login": "2024-06-02T00:00:00.000Z",
+                "last_login": null,
+                "last_failed_login": null,
                 "admin": false,
-                "status": "active",
+                "status": "",
                 "language": [
-                    "English"
+                    ""
                 ],
                 "forced_login": false,
                 "failed_login_count": 0,
-                "address1": "8345",
-                "address2": "peachtreeblvs",
-                "state": "NC",
-                "zipcode": "28217",
-                "profile_picture_url": "/profilepic/sub1_insulation1/.jpg",
-                "referral_code": "DABC",
-                "referred_by": "WEB",
-                "date_of_birth": "2000-06-14T00:00:00.000Z",
-                "user_fully_onboarded": true,
-                "user_type": "sub_insulation"
+                "address1": "",
+                "address2": "",
+                "state": "",
+                "zipcode": "",
+                "profile_picture_url": "",
+                "referral_code": "",
+                "referred_by": "",
+                "date_of_birth": null,
+                "user_fully_onboarded": false,
+                "user_type": "business"
             },
             "links": {
                 "self": "http://localhostx:3000/api/user/100050"
@@ -9536,13 +9384,6 @@ export default function handler(req, res) {
                         "related": "http://localhostx:3000/api/user/100050/business_creator"
                     },
                     "data": null
-                },
-                "business_user_roles": {
-                    "links": {
-                        "self": "http://localhostx:3000/api/user/100050/relationships/business_user_roles",
-                        "related": "http://localhostx:3000/api/user/100050/business_user_roles"
-                    },
-                    "data": []
                 },
                 "business_documents": {
                     "links": {
@@ -9557,6 +9398,18 @@ export default function handler(req, res) {
                         "related": "http://localhostx:3000/api/user/100050/home_owner_projects"
                     },
                     "data": []
+                },
+                "business_user_roles": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100050/relationships/business_user_roles",
+                        "related": "http://localhostx:3000/api/user/100050/business_user_roles"
+                    },
+                    "data": [
+                        {
+                            "type": "business_User_Roles",
+                            "id": 103049
+                        }
+                    ]
                 },
                 "project_assignments": {
                     "links": {
@@ -9676,38 +9529,38 @@ export default function handler(req, res) {
             "type": "user",
             "id": 100051,
             "attributes": {
-                "created_at": "2024-05-03T23:30:36.669Z",
-                "updated_at": "2024-05-03T23:30:36.669Z",
+                "created_at": "2024-05-21T17:15:13.224Z",
+                "updated_at": "2024-05-21T17:15:13.224Z",
                 "active": true,
-                "username": "sub2_insulation1.sub_insulation",
-                "email": "sub2_insulation1.sub_insulation@outlook.com",
-                "first_name": "sub2_insulation1",
-                "middle_name": "",
-                "last_name": "sub_insulation",
-                "phone_number_mobile": "7012345721",
+                "username": "John.Summit",
+                "email": "John.Summit@mail.com",
+                "first_name": "John",
+                "middle_name": "BK_OS",
+                "last_name": "Summit",
+                "phone_number_mobile": "1234567890",
                 "text_enabled": true,
                 "phone_verified": false,
-                "phone_number_home": "8012345721",
+                "phone_number_home": "9999999999",
                 "email_verified": true,
-                "last_login": "2024-06-04T00:00:00.000Z",
-                "last_failed_login": "2024-06-03T00:00:00.000Z",
+                "last_login": null,
+                "last_failed_login": null,
                 "admin": false,
-                "status": "active",
+                "status": "",
                 "language": [
-                    "English"
+                    ""
                 ],
                 "forced_login": false,
                 "failed_login_count": 0,
-                "address1": "8345",
-                "address2": "peachtreeblvs",
-                "state": "NC",
-                "zipcode": "28217",
-                "profile_picture_url": "/profilepic/sub2_insulation1/.jpg",
-                "referral_code": "CDAB",
-                "referred_by": "WEB",
-                "date_of_birth": "2000-06-15T00:00:00.000Z",
-                "user_fully_onboarded": true,
-                "user_type": "sub_insulation"
+                "address1": "",
+                "address2": "",
+                "state": "",
+                "zipcode": "",
+                "profile_picture_url": "",
+                "referral_code": "",
+                "referred_by": "",
+                "date_of_birth": null,
+                "user_fully_onboarded": false,
+                "user_type": "business"
             },
             "links": {
                 "self": "http://localhostx:3000/api/user/100051"
@@ -9719,13 +9572,6 @@ export default function handler(req, res) {
                         "related": "http://localhostx:3000/api/user/100051/business_creator"
                     },
                     "data": null
-                },
-                "business_user_roles": {
-                    "links": {
-                        "self": "http://localhostx:3000/api/user/100051/relationships/business_user_roles",
-                        "related": "http://localhostx:3000/api/user/100051/business_user_roles"
-                    },
-                    "data": []
                 },
                 "business_documents": {
                     "links": {
@@ -9740,6 +9586,18 @@ export default function handler(req, res) {
                         "related": "http://localhostx:3000/api/user/100051/home_owner_projects"
                     },
                     "data": []
+                },
+                "business_user_roles": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100051/relationships/business_user_roles",
+                        "related": "http://localhostx:3000/api/user/100051/business_user_roles"
+                    },
+                    "data": [
+                        {
+                            "type": "business_User_Roles",
+                            "id": 103050
+                        }
+                    ]
                 },
                 "project_assignments": {
                     "links": {
@@ -9859,38 +9717,38 @@ export default function handler(req, res) {
             "type": "user",
             "id": 100052,
             "attributes": {
-                "created_at": "2024-05-03T23:30:36.669Z",
-                "updated_at": "2024-05-03T23:30:36.669Z",
+                "created_at": "2024-05-21T17:15:13.587Z",
+                "updated_at": "2024-05-21T17:15:13.587Z",
                 "active": true,
-                "username": "sub1_drywall1.sub_drywall",
-                "email": "sub1_drywall1.sub_drywall@outlook.com",
-                "first_name": "sub1_drywall1",
-                "middle_name": "",
-                "last_name": "sub_drywall",
-                "phone_number_mobile": "7012345722",
+                "username": "David.Summit",
+                "email": "David.Summit@mail.com",
+                "first_name": "David",
+                "middle_name": "SM",
+                "last_name": "Summit",
+                "phone_number_mobile": "1234567890",
                 "text_enabled": true,
                 "phone_verified": false,
-                "phone_number_home": "8012345722",
+                "phone_number_home": "9999999999",
                 "email_verified": true,
-                "last_login": "2024-06-05T00:00:00.000Z",
-                "last_failed_login": "2024-06-04T00:00:00.000Z",
+                "last_login": null,
+                "last_failed_login": null,
                 "admin": false,
-                "status": "active",
+                "status": "",
                 "language": [
-                    "English"
+                    ""
                 ],
                 "forced_login": false,
                 "failed_login_count": 0,
-                "address1": "8345",
-                "address2": "peachtreeblvs",
-                "state": "NC",
-                "zipcode": "28217",
-                "profile_picture_url": "/profilepic/sub1_drywall1/.jpg",
-                "referral_code": "CDAB",
-                "referred_by": "WEB",
-                "date_of_birth": "2000-06-16T00:00:00.000Z",
-                "user_fully_onboarded": true,
-                "user_type": "sub_drywall"
+                "address1": "",
+                "address2": "",
+                "state": "",
+                "zipcode": "",
+                "profile_picture_url": "",
+                "referral_code": "",
+                "referred_by": "",
+                "date_of_birth": null,
+                "user_fully_onboarded": false,
+                "user_type": "business"
             },
             "links": {
                 "self": "http://localhostx:3000/api/user/100052"
@@ -9902,13 +9760,6 @@ export default function handler(req, res) {
                         "related": "http://localhostx:3000/api/user/100052/business_creator"
                     },
                     "data": null
-                },
-                "business_user_roles": {
-                    "links": {
-                        "self": "http://localhostx:3000/api/user/100052/relationships/business_user_roles",
-                        "related": "http://localhostx:3000/api/user/100052/business_user_roles"
-                    },
-                    "data": []
                 },
                 "business_documents": {
                     "links": {
@@ -9923,6 +9774,18 @@ export default function handler(req, res) {
                         "related": "http://localhostx:3000/api/user/100052/home_owner_projects"
                     },
                     "data": []
+                },
+                "business_user_roles": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100052/relationships/business_user_roles",
+                        "related": "http://localhostx:3000/api/user/100052/business_user_roles"
+                    },
+                    "data": [
+                        {
+                            "type": "business_User_Roles",
+                            "id": 103051
+                        }
+                    ]
                 },
                 "project_assignments": {
                     "links": {
@@ -10042,38 +9905,38 @@ export default function handler(req, res) {
             "type": "user",
             "id": 100053,
             "attributes": {
-                "created_at": "2024-05-03T23:30:36.669Z",
-                "updated_at": "2024-05-03T23:30:36.669Z",
+                "created_at": "2024-05-21T17:15:13.788Z",
+                "updated_at": "2024-05-21T17:15:13.788Z",
                 "active": true,
-                "username": "sub2_drywall1.sub_drywall",
-                "email": "sub2_drywall1.sub_drywall@outlook.com",
-                "first_name": "sub2_drywall1",
-                "middle_name": "",
-                "last_name": "sub_drywall",
-                "phone_number_mobile": "7012345723",
+                "username": "Tom.Summit",
+                "email": "Tom.Summit@mail.com",
+                "first_name": "Tom",
+                "middle_name": "PM_FC",
+                "last_name": "Summit",
+                "phone_number_mobile": "1234567890",
                 "text_enabled": true,
                 "phone_verified": false,
-                "phone_number_home": "8012345723",
+                "phone_number_home": "9999999999",
                 "email_verified": true,
-                "last_login": "2024-06-06T00:00:00.000Z",
-                "last_failed_login": "2024-06-05T00:00:00.000Z",
+                "last_login": null,
+                "last_failed_login": null,
                 "admin": false,
-                "status": "active",
+                "status": "",
                 "language": [
-                    "English"
+                    ""
                 ],
                 "forced_login": false,
                 "failed_login_count": 0,
-                "address1": "8345",
-                "address2": "peachtreeblvs",
-                "state": "NC",
-                "zipcode": "28217",
-                "profile_picture_url": "/profilepic/sub2_drywall1/.jpg",
-                "referral_code": "DABC",
-                "referred_by": "WEB",
-                "date_of_birth": "2000-06-17T00:00:00.000Z",
-                "user_fully_onboarded": true,
-                "user_type": "sub_drywall"
+                "address1": "",
+                "address2": "",
+                "state": "",
+                "zipcode": "",
+                "profile_picture_url": "",
+                "referral_code": "",
+                "referred_by": "",
+                "date_of_birth": null,
+                "user_fully_onboarded": false,
+                "user_type": "business"
             },
             "links": {
                 "self": "http://localhostx:3000/api/user/100053"
@@ -10084,14 +9947,10 @@ export default function handler(req, res) {
                         "self": "http://localhostx:3000/api/user/100053/relationships/business_creator",
                         "related": "http://localhostx:3000/api/user/100053/business_creator"
                     },
-                    "data": null
-                },
-                "business_user_roles": {
-                    "links": {
-                        "self": "http://localhostx:3000/api/user/100053/relationships/business_user_roles",
-                        "related": "http://localhostx:3000/api/user/100053/business_user_roles"
-                    },
-                    "data": []
+                    "data": {
+                        "type": "business",
+                        "id": 101014
+                    }
                 },
                 "business_documents": {
                     "links": {
@@ -10106,6 +9965,18 @@ export default function handler(req, res) {
                         "related": "http://localhostx:3000/api/user/100053/home_owner_projects"
                     },
                     "data": []
+                },
+                "business_user_roles": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100053/relationships/business_user_roles",
+                        "related": "http://localhostx:3000/api/user/100053/business_user_roles"
+                    },
+                    "data": [
+                        {
+                            "type": "business_User_Roles",
+                            "id": 103052
+                        }
+                    ]
                 },
                 "project_assignments": {
                     "links": {
@@ -10225,38 +10096,38 @@ export default function handler(req, res) {
             "type": "user",
             "id": 100054,
             "attributes": {
-                "created_at": "2024-05-03T23:30:36.669Z",
-                "updated_at": "2024-05-03T23:30:36.669Z",
+                "created_at": "2024-05-21T17:15:13.986Z",
+                "updated_at": "2024-05-21T17:15:13.986Z",
                 "active": true,
-                "username": "sub1_painter1.sub_painter",
-                "email": "sub1_painter1.sub_painter@outlook.com",
-                "first_name": "sub1_painter1",
-                "middle_name": "",
-                "last_name": "sub_painter",
-                "phone_number_mobile": "7012345724",
+                "username": "Peter.Electrician",
+                "email": "Peter.Electrician@mail.com",
+                "first_name": "Peter",
+                "middle_name": "FA",
+                "last_name": "Electrician",
+                "phone_number_mobile": "1234567890",
                 "text_enabled": true,
                 "phone_verified": false,
-                "phone_number_home": "8012345724",
+                "phone_number_home": "9999999999",
                 "email_verified": true,
-                "last_login": "2024-06-07T00:00:00.000Z",
-                "last_failed_login": "2024-06-06T00:00:00.000Z",
+                "last_login": null,
+                "last_failed_login": null,
                 "admin": false,
-                "status": "active",
+                "status": "",
                 "language": [
-                    "English"
+                    ""
                 ],
                 "forced_login": false,
                 "failed_login_count": 0,
-                "address1": "8345",
-                "address2": "peachtreeblvs",
-                "state": "NC",
-                "zipcode": "28217",
-                "profile_picture_url": "/profilepic/sub1_painter1/.jpg",
-                "referral_code": "ABCD",
-                "referred_by": "WEB",
-                "date_of_birth": "2000-06-18T00:00:00.000Z",
-                "user_fully_onboarded": true,
-                "user_type": "sub_painter"
+                "address1": "",
+                "address2": "",
+                "state": "",
+                "zipcode": "",
+                "profile_picture_url": "",
+                "referral_code": "",
+                "referred_by": "",
+                "date_of_birth": null,
+                "user_fully_onboarded": false,
+                "user_type": "business"
             },
             "links": {
                 "self": "http://localhostx:3000/api/user/100054"
@@ -10267,14 +10138,10 @@ export default function handler(req, res) {
                         "self": "http://localhostx:3000/api/user/100054/relationships/business_creator",
                         "related": "http://localhostx:3000/api/user/100054/business_creator"
                     },
-                    "data": null
-                },
-                "business_user_roles": {
-                    "links": {
-                        "self": "http://localhostx:3000/api/user/100054/relationships/business_user_roles",
-                        "related": "http://localhostx:3000/api/user/100054/business_user_roles"
-                    },
-                    "data": []
+                    "data": {
+                        "type": "business",
+                        "id": 101015
+                    }
                 },
                 "business_documents": {
                     "links": {
@@ -10289,6 +10156,18 @@ export default function handler(req, res) {
                         "related": "http://localhostx:3000/api/user/100054/home_owner_projects"
                     },
                     "data": []
+                },
+                "business_user_roles": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100054/relationships/business_user_roles",
+                        "related": "http://localhostx:3000/api/user/100054/business_user_roles"
+                    },
+                    "data": [
+                        {
+                            "type": "business_User_Roles",
+                            "id": 103053
+                        }
+                    ]
                 },
                 "project_assignments": {
                     "links": {
@@ -10408,38 +10287,38 @@ export default function handler(req, res) {
             "type": "user",
             "id": 100055,
             "attributes": {
-                "created_at": "2024-05-03T23:30:36.669Z",
-                "updated_at": "2024-05-03T23:30:36.669Z",
+                "created_at": "2024-05-21T17:15:14.196Z",
+                "updated_at": "2024-05-21T17:15:14.196Z",
                 "active": true,
-                "username": "sub2_painter1.sub_painter",
-                "email": "sub2_painter1.sub_painter@outlook.com",
-                "first_name": "sub2_painter1",
-                "middle_name": "",
-                "last_name": "sub_painter",
-                "phone_number_mobile": "7012345725",
+                "username": "Chris.Bliss",
+                "email": "Chris.Bliss@mail.com",
+                "first_name": "Chris",
+                "middle_name": "FA",
+                "last_name": "Bliss",
+                "phone_number_mobile": "1234567890",
                 "text_enabled": true,
                 "phone_verified": false,
-                "phone_number_home": "8012345725",
+                "phone_number_home": "9999999999",
                 "email_verified": true,
-                "last_login": "2024-06-08T00:00:00.000Z",
-                "last_failed_login": "2024-06-07T00:00:00.000Z",
+                "last_login": null,
+                "last_failed_login": null,
                 "admin": false,
-                "status": "active",
+                "status": "",
                 "language": [
-                    "English"
+                    ""
                 ],
                 "forced_login": false,
                 "failed_login_count": 0,
-                "address1": "8345",
-                "address2": "peachtreeblvs",
-                "state": "NC",
-                "zipcode": "28217",
-                "profile_picture_url": "/profilepic/sub2_painter1/.jpg",
-                "referral_code": "ABCD",
-                "referred_by": "WEB",
-                "date_of_birth": "2000-06-19T00:00:00.000Z",
-                "user_fully_onboarded": true,
-                "user_type": "sub_painter"
+                "address1": "",
+                "address2": "",
+                "state": "",
+                "zipcode": "",
+                "profile_picture_url": "",
+                "referral_code": "",
+                "referred_by": "",
+                "date_of_birth": null,
+                "user_fully_onboarded": false,
+                "user_type": "business"
             },
             "links": {
                 "self": "http://localhostx:3000/api/user/100055"
@@ -10451,13 +10330,6 @@ export default function handler(req, res) {
                         "related": "http://localhostx:3000/api/user/100055/business_creator"
                     },
                     "data": null
-                },
-                "business_user_roles": {
-                    "links": {
-                        "self": "http://localhostx:3000/api/user/100055/relationships/business_user_roles",
-                        "related": "http://localhostx:3000/api/user/100055/business_user_roles"
-                    },
-                    "data": []
                 },
                 "business_documents": {
                     "links": {
@@ -10472,6 +10344,18 @@ export default function handler(req, res) {
                         "related": "http://localhostx:3000/api/user/100055/home_owner_projects"
                     },
                     "data": []
+                },
+                "business_user_roles": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100055/relationships/business_user_roles",
+                        "related": "http://localhostx:3000/api/user/100055/business_user_roles"
+                    },
+                    "data": [
+                        {
+                            "type": "business_User_Roles",
+                            "id": 103054
+                        }
+                    ]
                 },
                 "project_assignments": {
                     "links": {
@@ -10591,38 +10475,38 @@ export default function handler(req, res) {
             "type": "user",
             "id": 100056,
             "attributes": {
-                "created_at": "2024-05-03T23:30:36.669Z",
-                "updated_at": "2024-05-03T23:30:36.669Z",
+                "created_at": "2024-05-21T17:15:14.391Z",
+                "updated_at": "2024-05-21T17:15:14.391Z",
                 "active": true,
-                "username": "sub1_cabinet1.sub_cabinet",
-                "email": "sub1_cabinet1.sub_cabinet@outlook.com",
-                "first_name": "sub1_cabinet1",
-                "middle_name": "",
-                "last_name": "sub_cabinet",
-                "phone_number_mobile": "7012345726",
+                "username": "Patrick.Bliss",
+                "email": "Patrick.Bliss@mail.com",
+                "first_name": "Patrick",
+                "middle_name": "PM_FC",
+                "last_name": "Bliss",
+                "phone_number_mobile": "1234567890",
                 "text_enabled": true,
                 "phone_verified": false,
-                "phone_number_home": "8012345726",
+                "phone_number_home": "9999999999",
                 "email_verified": true,
-                "last_login": "2024-06-09T00:00:00.000Z",
-                "last_failed_login": "2024-06-08T00:00:00.000Z",
+                "last_login": null,
+                "last_failed_login": null,
                 "admin": false,
-                "status": "active",
+                "status": "",
                 "language": [
-                    "English"
+                    ""
                 ],
                 "forced_login": false,
                 "failed_login_count": 0,
-                "address1": "8345",
-                "address2": "peachtreeblvs",
-                "state": "NC",
-                "zipcode": "28217",
-                "profile_picture_url": "/profilepic/sub1_cabinet1/.jpg",
-                "referral_code": "BCDE",
-                "referred_by": "WEB",
-                "date_of_birth": "2000-06-20T00:00:00.000Z",
-                "user_fully_onboarded": true,
-                "user_type": "sub_cabinet"
+                "address1": "",
+                "address2": "",
+                "state": "",
+                "zipcode": "",
+                "profile_picture_url": "",
+                "referral_code": "",
+                "referred_by": "",
+                "date_of_birth": null,
+                "user_fully_onboarded": false,
+                "user_type": "business"
             },
             "links": {
                 "self": "http://localhostx:3000/api/user/100056"
@@ -10634,13 +10518,6 @@ export default function handler(req, res) {
                         "related": "http://localhostx:3000/api/user/100056/business_creator"
                     },
                     "data": null
-                },
-                "business_user_roles": {
-                    "links": {
-                        "self": "http://localhostx:3000/api/user/100056/relationships/business_user_roles",
-                        "related": "http://localhostx:3000/api/user/100056/business_user_roles"
-                    },
-                    "data": []
                 },
                 "business_documents": {
                     "links": {
@@ -10655,6 +10532,18 @@ export default function handler(req, res) {
                         "related": "http://localhostx:3000/api/user/100056/home_owner_projects"
                     },
                     "data": []
+                },
+                "business_user_roles": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100056/relationships/business_user_roles",
+                        "related": "http://localhostx:3000/api/user/100056/business_user_roles"
+                    },
+                    "data": [
+                        {
+                            "type": "business_User_Roles",
+                            "id": 103055
+                        }
+                    ]
                 },
                 "project_assignments": {
                     "links": {
@@ -10774,38 +10663,38 @@ export default function handler(req, res) {
             "type": "user",
             "id": 100057,
             "attributes": {
-                "created_at": "2024-05-03T23:30:36.669Z",
-                "updated_at": "2024-05-03T23:30:36.669Z",
+                "created_at": "2024-05-21T17:15:14.627Z",
+                "updated_at": "2024-05-21T17:15:14.627Z",
                 "active": true,
-                "username": "sub2_cabinet1.sub_cabinet",
-                "email": "sub2_cabinet1.sub_cabinet@outlook.com",
-                "first_name": "sub2_cabinet1",
-                "middle_name": "",
-                "last_name": "sub_cabinet",
-                "phone_number_mobile": "7012345727",
+                "username": "Alex.Bliss",
+                "email": "Alex.Bliss@mail.com",
+                "first_name": "Alex",
+                "middle_name": "SM",
+                "last_name": "Bliss",
+                "phone_number_mobile": "1234567890",
                 "text_enabled": true,
                 "phone_verified": false,
-                "phone_number_home": "8012345727",
+                "phone_number_home": "9999999999",
                 "email_verified": true,
-                "last_login": "2024-06-10T00:00:00.000Z",
-                "last_failed_login": "2024-06-09T00:00:00.000Z",
+                "last_login": null,
+                "last_failed_login": null,
                 "admin": false,
-                "status": "active",
+                "status": "",
                 "language": [
-                    "English"
+                    ""
                 ],
                 "forced_login": false,
                 "failed_login_count": 0,
-                "address1": "8345",
-                "address2": "peachtreeblvs",
-                "state": "NC",
-                "zipcode": "28217",
-                "profile_picture_url": "/profilepic/sub2_cabinet1/.jpg",
-                "referral_code": "ABCD",
-                "referred_by": "WEB",
-                "date_of_birth": "2000-06-21T00:00:00.000Z",
-                "user_fully_onboarded": true,
-                "user_type": "sub_cabinet"
+                "address1": "",
+                "address2": "",
+                "state": "",
+                "zipcode": "",
+                "profile_picture_url": "",
+                "referral_code": "",
+                "referred_by": "",
+                "date_of_birth": null,
+                "user_fully_onboarded": false,
+                "user_type": "business"
             },
             "links": {
                 "self": "http://localhostx:3000/api/user/100057"
@@ -10816,14 +10705,10 @@ export default function handler(req, res) {
                         "self": "http://localhostx:3000/api/user/100057/relationships/business_creator",
                         "related": "http://localhostx:3000/api/user/100057/business_creator"
                     },
-                    "data": null
-                },
-                "business_user_roles": {
-                    "links": {
-                        "self": "http://localhostx:3000/api/user/100057/relationships/business_user_roles",
-                        "related": "http://localhostx:3000/api/user/100057/business_user_roles"
-                    },
-                    "data": []
+                    "data": {
+                        "type": "business",
+                        "id": 101016
+                    }
                 },
                 "business_documents": {
                     "links": {
@@ -10838,6 +10723,18 @@ export default function handler(req, res) {
                         "related": "http://localhostx:3000/api/user/100057/home_owner_projects"
                     },
                     "data": []
+                },
+                "business_user_roles": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100057/relationships/business_user_roles",
+                        "related": "http://localhostx:3000/api/user/100057/business_user_roles"
+                    },
+                    "data": [
+                        {
+                            "type": "business_User_Roles",
+                            "id": 103056
+                        }
+                    ]
                 },
                 "project_assignments": {
                     "links": {
@@ -10957,38 +10854,38 @@ export default function handler(req, res) {
             "type": "user",
             "id": 100058,
             "attributes": {
-                "created_at": "2024-05-03T23:30:36.669Z",
-                "updated_at": "2024-05-03T23:30:36.669Z",
+                "created_at": "2024-05-21T17:15:14.857Z",
+                "updated_at": "2024-05-21T17:15:14.857Z",
                 "active": true,
-                "username": "sub1_trimmer1.sub_trimmer",
-                "email": "sub1_trimmer1.sub_trimmer@outlook.com",
-                "first_name": "sub1_trimmer1",
-                "middle_name": "",
-                "last_name": "sub_trimmer",
-                "phone_number_mobile": "7012345728",
+                "username": "Les.Superior",
+                "email": "Les.Superior@mail.com",
+                "first_name": "Les",
+                "middle_name": "FA",
+                "last_name": "Superior",
+                "phone_number_mobile": "1234567890",
                 "text_enabled": true,
                 "phone_verified": false,
-                "phone_number_home": "8012345728",
+                "phone_number_home": "9999999999",
                 "email_verified": true,
-                "last_login": "2024-06-11T00:00:00.000Z",
-                "last_failed_login": "2024-06-10T00:00:00.000Z",
+                "last_login": null,
+                "last_failed_login": null,
                 "admin": false,
-                "status": "active",
+                "status": "",
                 "language": [
-                    "English"
+                    ""
                 ],
                 "forced_login": false,
                 "failed_login_count": 0,
-                "address1": "8345",
-                "address2": "peachtreeblvs",
-                "state": "NC",
-                "zipcode": "28217",
-                "profile_picture_url": "/profilepic/sub1_trimmer1/.jpg",
-                "referral_code": "CDAB",
-                "referred_by": "WEB",
-                "date_of_birth": "2000-06-22T00:00:00.000Z",
-                "user_fully_onboarded": true,
-                "user_type": "sub_trimmer"
+                "address1": "",
+                "address2": "",
+                "state": "",
+                "zipcode": "",
+                "profile_picture_url": "",
+                "referral_code": "",
+                "referred_by": "",
+                "date_of_birth": null,
+                "user_fully_onboarded": false,
+                "user_type": "business"
             },
             "links": {
                 "self": "http://localhostx:3000/api/user/100058"
@@ -11000,13 +10897,6 @@ export default function handler(req, res) {
                         "related": "http://localhostx:3000/api/user/100058/business_creator"
                     },
                     "data": null
-                },
-                "business_user_roles": {
-                    "links": {
-                        "self": "http://localhostx:3000/api/user/100058/relationships/business_user_roles",
-                        "related": "http://localhostx:3000/api/user/100058/business_user_roles"
-                    },
-                    "data": []
                 },
                 "business_documents": {
                     "links": {
@@ -11021,6 +10911,18 @@ export default function handler(req, res) {
                         "related": "http://localhostx:3000/api/user/100058/home_owner_projects"
                     },
                     "data": []
+                },
+                "business_user_roles": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100058/relationships/business_user_roles",
+                        "related": "http://localhostx:3000/api/user/100058/business_user_roles"
+                    },
+                    "data": [
+                        {
+                            "type": "business_User_Roles",
+                            "id": 103057
+                        }
+                    ]
                 },
                 "project_assignments": {
                     "links": {
@@ -11140,38 +11042,38 @@ export default function handler(req, res) {
             "type": "user",
             "id": 100059,
             "attributes": {
-                "created_at": "2024-05-03T23:30:36.669Z",
-                "updated_at": "2024-05-03T23:30:36.669Z",
+                "created_at": "2024-05-21T17:15:15.068Z",
+                "updated_at": "2024-05-21T17:15:15.068Z",
                 "active": true,
-                "username": "sub2_trimmer1.sub_trimmer",
-                "email": "sub2_trimmer1.sub_trimmer@outlook.com",
-                "first_name": "sub2_trimmer1",
-                "middle_name": "",
-                "last_name": "sub_trimmer",
-                "phone_number_mobile": "7012345729",
+                "username": "Peter.Superior",
+                "email": "Peter.Superior@mail.com",
+                "first_name": "Peter",
+                "middle_name": "FA",
+                "last_name": "Superior",
+                "phone_number_mobile": "1234567890",
                 "text_enabled": true,
                 "phone_verified": false,
-                "phone_number_home": "8012345729",
+                "phone_number_home": "9999999999",
                 "email_verified": true,
-                "last_login": "2024-06-12T00:00:00.000Z",
-                "last_failed_login": "2024-06-11T00:00:00.000Z",
+                "last_login": null,
+                "last_failed_login": null,
                 "admin": false,
-                "status": "active",
+                "status": "",
                 "language": [
-                    "English"
+                    ""
                 ],
                 "forced_login": false,
                 "failed_login_count": 0,
-                "address1": "8345",
-                "address2": "peachtreeblvs",
-                "state": "NC",
-                "zipcode": "28217",
-                "profile_picture_url": "/profilepic/sub2_trimmer1/.jpg",
-                "referral_code": "DABC",
-                "referred_by": "WEB",
-                "date_of_birth": "2000-06-23T00:00:00.000Z",
-                "user_fully_onboarded": true,
-                "user_type": "sub_trimmer"
+                "address1": "",
+                "address2": "",
+                "state": "",
+                "zipcode": "",
+                "profile_picture_url": "",
+                "referral_code": "",
+                "referred_by": "",
+                "date_of_birth": null,
+                "user_fully_onboarded": false,
+                "user_type": "business"
             },
             "links": {
                 "self": "http://localhostx:3000/api/user/100059"
@@ -11182,14 +11084,10 @@ export default function handler(req, res) {
                         "self": "http://localhostx:3000/api/user/100059/relationships/business_creator",
                         "related": "http://localhostx:3000/api/user/100059/business_creator"
                     },
-                    "data": null
-                },
-                "business_user_roles": {
-                    "links": {
-                        "self": "http://localhostx:3000/api/user/100059/relationships/business_user_roles",
-                        "related": "http://localhostx:3000/api/user/100059/business_user_roles"
-                    },
-                    "data": []
+                    "data": {
+                        "type": "business",
+                        "id": 101017
+                    }
                 },
                 "business_documents": {
                     "links": {
@@ -11204,6 +11102,18 @@ export default function handler(req, res) {
                         "related": "http://localhostx:3000/api/user/100059/home_owner_projects"
                     },
                     "data": []
+                },
+                "business_user_roles": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100059/relationships/business_user_roles",
+                        "related": "http://localhostx:3000/api/user/100059/business_user_roles"
+                    },
+                    "data": [
+                        {
+                            "type": "business_User_Roles",
+                            "id": 103058
+                        }
+                    ]
                 },
                 "project_assignments": {
                     "links": {
@@ -11323,38 +11233,38 @@ export default function handler(req, res) {
             "type": "user",
             "id": 100060,
             "attributes": {
-                "created_at": "2024-05-03T23:30:36.669Z",
-                "updated_at": "2024-05-03T23:30:36.669Z",
+                "created_at": "2024-05-21T17:15:15.294Z",
+                "updated_at": "2024-05-21T17:15:15.294Z",
                 "active": true,
-                "username": "sub1_flooring1.sub_flooring",
-                "email": "sub1_flooring1.sub_flooring@outlook.com",
-                "first_name": "sub1_flooring1",
-                "middle_name": "",
-                "last_name": "sub_flooring",
-                "phone_number_mobile": "7012345730",
+                "username": "Chris.CharlotteHeatAndAir",
+                "email": "Chris.CharlotteHeatAndAir@mail.com",
+                "first_name": "Chris",
+                "middle_name": "FA",
+                "last_name": "CharlotteHeatAndAir",
+                "phone_number_mobile": "1234567890",
                 "text_enabled": true,
                 "phone_verified": false,
-                "phone_number_home": "8012345730",
+                "phone_number_home": "9999999999",
                 "email_verified": true,
-                "last_login": "2024-06-13T00:00:00.000Z",
-                "last_failed_login": "2024-06-12T00:00:00.000Z",
+                "last_login": null,
+                "last_failed_login": null,
                 "admin": false,
-                "status": "active",
+                "status": "",
                 "language": [
-                    "English"
+                    ""
                 ],
                 "forced_login": false,
                 "failed_login_count": 0,
-                "address1": "8345",
-                "address2": "peachtreeblvs",
-                "state": "NC",
-                "zipcode": "28217",
-                "profile_picture_url": "/profilepic/sub1_flooring1/.jpg",
-                "referral_code": "CDAB",
-                "referred_by": "WEB",
-                "date_of_birth": "2000-06-24T00:00:00.000Z",
-                "user_fully_onboarded": true,
-                "user_type": "sub_flooring"
+                "address1": "",
+                "address2": "",
+                "state": "",
+                "zipcode": "",
+                "profile_picture_url": "",
+                "referral_code": "",
+                "referred_by": "",
+                "date_of_birth": null,
+                "user_fully_onboarded": false,
+                "user_type": "business"
             },
             "links": {
                 "self": "http://localhostx:3000/api/user/100060"
@@ -11366,13 +11276,6 @@ export default function handler(req, res) {
                         "related": "http://localhostx:3000/api/user/100060/business_creator"
                     },
                     "data": null
-                },
-                "business_user_roles": {
-                    "links": {
-                        "self": "http://localhostx:3000/api/user/100060/relationships/business_user_roles",
-                        "related": "http://localhostx:3000/api/user/100060/business_user_roles"
-                    },
-                    "data": []
                 },
                 "business_documents": {
                     "links": {
@@ -11387,6 +11290,18 @@ export default function handler(req, res) {
                         "related": "http://localhostx:3000/api/user/100060/home_owner_projects"
                     },
                     "data": []
+                },
+                "business_user_roles": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100060/relationships/business_user_roles",
+                        "related": "http://localhostx:3000/api/user/100060/business_user_roles"
+                    },
+                    "data": [
+                        {
+                            "type": "business_User_Roles",
+                            "id": 103059
+                        }
+                    ]
                 },
                 "project_assignments": {
                     "links": {
@@ -11506,38 +11421,38 @@ export default function handler(req, res) {
             "type": "user",
             "id": 100061,
             "attributes": {
-                "created_at": "2024-05-03T23:30:36.669Z",
-                "updated_at": "2024-05-03T23:30:36.669Z",
+                "created_at": "2024-05-21T17:15:15.509Z",
+                "updated_at": "2024-05-21T17:15:15.509Z",
                 "active": true,
-                "username": "sub2_flooring1.sub_flooring",
-                "email": "sub2_flooring1.sub_flooring@outlook.com",
-                "first_name": "sub2_flooring1",
-                "middle_name": "",
-                "last_name": "sub_flooring",
-                "phone_number_mobile": "7012345731",
+                "username": "Patrick.CharlotteHeatAndAir",
+                "email": "Patrick.CharlotteHeatAndAir@mail.com",
+                "first_name": "Patrick",
+                "middle_name": "FA_PM_ES",
+                "last_name": "CharlotteHeatAndAir",
+                "phone_number_mobile": "1234567890",
                 "text_enabled": true,
                 "phone_verified": false,
-                "phone_number_home": "8012345731",
+                "phone_number_home": "9999999999",
                 "email_verified": true,
-                "last_login": "2024-06-14T00:00:00.000Z",
-                "last_failed_login": "2024-06-13T00:00:00.000Z",
+                "last_login": null,
+                "last_failed_login": null,
                 "admin": false,
-                "status": "active",
+                "status": "",
                 "language": [
-                    "English"
+                    ""
                 ],
                 "forced_login": false,
                 "failed_login_count": 0,
-                "address1": "8345",
-                "address2": "peachtreeblvs",
-                "state": "NC",
-                "zipcode": "28217",
-                "profile_picture_url": "/profilepic/sub2_flooring1/.jpg",
-                "referral_code": "CDAB",
-                "referred_by": "WEB",
-                "date_of_birth": "2000-06-25T00:00:00.000Z",
-                "user_fully_onboarded": true,
-                "user_type": "sub_flooring"
+                "address1": "",
+                "address2": "",
+                "state": "",
+                "zipcode": "",
+                "profile_picture_url": "",
+                "referral_code": "",
+                "referred_by": "",
+                "date_of_birth": null,
+                "user_fully_onboarded": false,
+                "user_type": "business"
             },
             "links": {
                 "self": "http://localhostx:3000/api/user/100061"
@@ -11549,13 +11464,6 @@ export default function handler(req, res) {
                         "related": "http://localhostx:3000/api/user/100061/business_creator"
                     },
                     "data": null
-                },
-                "business_user_roles": {
-                    "links": {
-                        "self": "http://localhostx:3000/api/user/100061/relationships/business_user_roles",
-                        "related": "http://localhostx:3000/api/user/100061/business_user_roles"
-                    },
-                    "data": []
                 },
                 "business_documents": {
                     "links": {
@@ -11570,6 +11478,18 @@ export default function handler(req, res) {
                         "related": "http://localhostx:3000/api/user/100061/home_owner_projects"
                     },
                     "data": []
+                },
+                "business_user_roles": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100061/relationships/business_user_roles",
+                        "related": "http://localhostx:3000/api/user/100061/business_user_roles"
+                    },
+                    "data": [
+                        {
+                            "type": "business_User_Roles",
+                            "id": 103060
+                        }
+                    ]
                 },
                 "project_assignments": {
                     "links": {
@@ -11689,38 +11609,38 @@ export default function handler(req, res) {
             "type": "user",
             "id": 100062,
             "attributes": {
-                "created_at": "2024-05-03T23:30:36.669Z",
-                "updated_at": "2024-05-03T23:30:36.669Z",
+                "created_at": "2024-05-21T17:15:15.744Z",
+                "updated_at": "2024-05-21T17:15:15.744Z",
                 "active": true,
-                "username": "sub1_landscaper1.sub_landscaper",
-                "email": "sub1_landscaper1.sub_landscaper@outlook.com",
-                "first_name": "sub1_landscaper1",
-                "middle_name": "",
-                "last_name": "sub_landscaper",
-                "phone_number_mobile": "7012345732",
+                "username": "Alex.CharlotteHeatAndAir",
+                "email": "Alex.CharlotteHeatAndAir@mail.com",
+                "first_name": "Alex",
+                "middle_name": "FA_PM_ES",
+                "last_name": "CharlotteHeatAndAir",
+                "phone_number_mobile": "1234567890",
                 "text_enabled": true,
                 "phone_verified": false,
-                "phone_number_home": "8012345732",
+                "phone_number_home": "9999999999",
                 "email_verified": true,
-                "last_login": "2024-06-15T00:00:00.000Z",
-                "last_failed_login": "2024-06-14T00:00:00.000Z",
+                "last_login": null,
+                "last_failed_login": null,
                 "admin": false,
-                "status": "active",
+                "status": "",
                 "language": [
-                    "English"
+                    ""
                 ],
                 "forced_login": false,
                 "failed_login_count": 0,
-                "address1": "8345",
-                "address2": "peachtreeblvs",
-                "state": "NC",
-                "zipcode": "28217",
-                "profile_picture_url": "/profilepic/sub1_landscaper1/.jpg",
-                "referral_code": "DABC",
-                "referred_by": "WEB",
-                "date_of_birth": "2000-06-26T00:00:00.000Z",
-                "user_fully_onboarded": true,
-                "user_type": "sub_landscaper"
+                "address1": "",
+                "address2": "",
+                "state": "",
+                "zipcode": "",
+                "profile_picture_url": "",
+                "referral_code": "",
+                "referred_by": "",
+                "date_of_birth": null,
+                "user_fully_onboarded": false,
+                "user_type": "business"
             },
             "links": {
                 "self": "http://localhostx:3000/api/user/100062"
@@ -11731,14 +11651,10 @@ export default function handler(req, res) {
                         "self": "http://localhostx:3000/api/user/100062/relationships/business_creator",
                         "related": "http://localhostx:3000/api/user/100062/business_creator"
                     },
-                    "data": null
-                },
-                "business_user_roles": {
-                    "links": {
-                        "self": "http://localhostx:3000/api/user/100062/relationships/business_user_roles",
-                        "related": "http://localhostx:3000/api/user/100062/business_user_roles"
-                    },
-                    "data": []
+                    "data": {
+                        "type": "business",
+                        "id": 101018
+                    }
                 },
                 "business_documents": {
                     "links": {
@@ -11753,6 +11669,18 @@ export default function handler(req, res) {
                         "related": "http://localhostx:3000/api/user/100062/home_owner_projects"
                     },
                     "data": []
+                },
+                "business_user_roles": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100062/relationships/business_user_roles",
+                        "related": "http://localhostx:3000/api/user/100062/business_user_roles"
+                    },
+                    "data": [
+                        {
+                            "type": "business_User_Roles",
+                            "id": 103061
+                        }
+                    ]
                 },
                 "project_assignments": {
                     "links": {
@@ -11872,38 +11800,38 @@ export default function handler(req, res) {
             "type": "user",
             "id": 100063,
             "attributes": {
-                "created_at": "2024-05-03T23:30:36.669Z",
-                "updated_at": "2024-05-03T23:30:36.669Z",
+                "created_at": "2024-05-21T17:15:15.946Z",
+                "updated_at": "2024-05-21T17:15:15.946Z",
                 "active": true,
-                "username": "sub2_landscaper1.sub_landscaper",
-                "email": "sub2_landscaper1.sub_landscaper@outlook.com",
-                "first_name": "sub2_landscaper1",
-                "middle_name": "",
-                "last_name": "sub_landscaper",
-                "phone_number_mobile": "7012345733",
+                "username": "Les.Southern",
+                "email": "Les.Southern@mail.com",
+                "first_name": "Les",
+                "middle_name": "FA",
+                "last_name": "Southern",
+                "phone_number_mobile": "1234567890",
                 "text_enabled": true,
                 "phone_verified": false,
-                "phone_number_home": "8012345733",
+                "phone_number_home": "9999999999",
                 "email_verified": true,
-                "last_login": "2024-06-16T00:00:00.000Z",
-                "last_failed_login": "2024-06-15T00:00:00.000Z",
+                "last_login": null,
+                "last_failed_login": null,
                 "admin": false,
-                "status": "active",
+                "status": "",
                 "language": [
-                    "English"
+                    ""
                 ],
                 "forced_login": false,
                 "failed_login_count": 0,
-                "address1": "8345",
-                "address2": "peachtreeblvs",
-                "state": "NC",
-                "zipcode": "28217",
-                "profile_picture_url": "/profilepic/sub2_landscaper1/.jpg",
-                "referral_code": "ABCD",
-                "referred_by": "WEB",
-                "date_of_birth": "2000-06-27T00:00:00.000Z",
-                "user_fully_onboarded": true,
-                "user_type": "sub_landscaper"
+                "address1": "",
+                "address2": "",
+                "state": "",
+                "zipcode": "",
+                "profile_picture_url": "",
+                "referral_code": "",
+                "referred_by": "",
+                "date_of_birth": null,
+                "user_fully_onboarded": false,
+                "user_type": "business"
             },
             "links": {
                 "self": "http://localhostx:3000/api/user/100063"
@@ -11914,14 +11842,10 @@ export default function handler(req, res) {
                         "self": "http://localhostx:3000/api/user/100063/relationships/business_creator",
                         "related": "http://localhostx:3000/api/user/100063/business_creator"
                     },
-                    "data": null
-                },
-                "business_user_roles": {
-                    "links": {
-                        "self": "http://localhostx:3000/api/user/100063/relationships/business_user_roles",
-                        "related": "http://localhostx:3000/api/user/100063/business_user_roles"
-                    },
-                    "data": []
+                    "data": {
+                        "type": "business",
+                        "id": 101019
+                    }
                 },
                 "business_documents": {
                     "links": {
@@ -11936,6 +11860,18 @@ export default function handler(req, res) {
                         "related": "http://localhostx:3000/api/user/100063/home_owner_projects"
                     },
                     "data": []
+                },
+                "business_user_roles": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100063/relationships/business_user_roles",
+                        "related": "http://localhostx:3000/api/user/100063/business_user_roles"
+                    },
+                    "data": [
+                        {
+                            "type": "business_User_Roles",
+                            "id": 103062
+                        }
+                    ]
                 },
                 "project_assignments": {
                     "links": {
@@ -12055,38 +11991,38 @@ export default function handler(req, res) {
             "type": "user",
             "id": 100064,
             "attributes": {
-                "created_at": "2024-05-03T23:30:36.669Z",
-                "updated_at": "2024-05-03T23:30:36.669Z",
+                "created_at": "2024-05-21T17:15:16.237Z",
+                "updated_at": "2024-05-21T17:15:16.237Z",
                 "active": true,
-                "username": "sub1_countertop1.sub_countertop",
-                "email": "sub1_countertop1.sub_countertop@outlook.com",
-                "first_name": "sub1_countertop1",
-                "middle_name": "",
-                "last_name": "sub_countertop",
-                "phone_number_mobile": "7012345734",
+                "username": "John.LifetimeRoofing",
+                "email": "John.LifetimeRoofing@mail.com",
+                "first_name": "John",
+                "middle_name": "FA",
+                "last_name": "LifetimeRoofing",
+                "phone_number_mobile": "1234567890",
                 "text_enabled": true,
                 "phone_verified": false,
-                "phone_number_home": "8012345734",
+                "phone_number_home": "9999999999",
                 "email_verified": true,
-                "last_login": "2024-06-17T00:00:00.000Z",
-                "last_failed_login": "2024-06-16T00:00:00.000Z",
+                "last_login": null,
+                "last_failed_login": null,
                 "admin": false,
-                "status": "active",
+                "status": "",
                 "language": [
-                    "English"
+                    ""
                 ],
                 "forced_login": false,
                 "failed_login_count": 0,
-                "address1": "8345",
-                "address2": "peachtreeblvs",
-                "state": "NC",
-                "zipcode": "28217",
-                "profile_picture_url": "/profilepic/sub1_countertop1/.jpg",
-                "referral_code": "ABCD",
-                "referred_by": "WEB",
-                "date_of_birth": "2000-06-28T00:00:00.000Z",
-                "user_fully_onboarded": true,
-                "user_type": "sub_countertop"
+                "address1": "",
+                "address2": "",
+                "state": "",
+                "zipcode": "",
+                "profile_picture_url": "",
+                "referral_code": "",
+                "referred_by": "",
+                "date_of_birth": null,
+                "user_fully_onboarded": false,
+                "user_type": "business"
             },
             "links": {
                 "self": "http://localhostx:3000/api/user/100064"
@@ -12098,13 +12034,6 @@ export default function handler(req, res) {
                         "related": "http://localhostx:3000/api/user/100064/business_creator"
                     },
                     "data": null
-                },
-                "business_user_roles": {
-                    "links": {
-                        "self": "http://localhostx:3000/api/user/100064/relationships/business_user_roles",
-                        "related": "http://localhostx:3000/api/user/100064/business_user_roles"
-                    },
-                    "data": []
                 },
                 "business_documents": {
                     "links": {
@@ -12119,6 +12048,18 @@ export default function handler(req, res) {
                         "related": "http://localhostx:3000/api/user/100064/home_owner_projects"
                     },
                     "data": []
+                },
+                "business_user_roles": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100064/relationships/business_user_roles",
+                        "related": "http://localhostx:3000/api/user/100064/business_user_roles"
+                    },
+                    "data": [
+                        {
+                            "type": "business_User_Roles",
+                            "id": 103063
+                        }
+                    ]
                 },
                 "project_assignments": {
                     "links": {
@@ -12238,38 +12179,38 @@ export default function handler(req, res) {
             "type": "user",
             "id": 100065,
             "attributes": {
-                "created_at": "2024-05-03T23:30:36.669Z",
-                "updated_at": "2024-05-03T23:30:36.669Z",
+                "created_at": "2024-05-21T17:15:16.530Z",
+                "updated_at": "2024-05-21T17:15:16.530Z",
                 "active": true,
-                "username": "sub2_countertop1.sub_countertop",
-                "email": "sub2_countertop1.sub_countertop@outlook.com",
-                "first_name": "sub2_countertop1",
-                "middle_name": "",
-                "last_name": "sub_countertop",
-                "phone_number_mobile": "7012345735",
+                "username": "David.LifetimeRoofing",
+                "email": "David.LifetimeRoofing@mail.com",
+                "first_name": "David",
+                "middle_name": "SM_ES_FC",
+                "last_name": "LifetimeRoofing",
+                "phone_number_mobile": "1234567890",
                 "text_enabled": true,
                 "phone_verified": false,
-                "phone_number_home": "8012345735",
+                "phone_number_home": "9999999999",
                 "email_verified": true,
-                "last_login": "2024-06-18T00:00:00.000Z",
-                "last_failed_login": "2024-06-17T00:00:00.000Z",
+                "last_login": null,
+                "last_failed_login": null,
                 "admin": false,
-                "status": "active",
+                "status": "",
                 "language": [
-                    "English"
+                    ""
                 ],
                 "forced_login": false,
                 "failed_login_count": 0,
-                "address1": "8345",
-                "address2": "peachtreeblvs",
-                "state": "NC",
-                "zipcode": "28217",
-                "profile_picture_url": "/profilepic/sub2_countertop1/.jpg",
-                "referral_code": "BCDE",
-                "referred_by": "WEB",
-                "date_of_birth": "2000-06-29T00:00:00.000Z",
-                "user_fully_onboarded": true,
-                "user_type": "sub_countertop"
+                "address1": "",
+                "address2": "",
+                "state": "",
+                "zipcode": "",
+                "profile_picture_url": "",
+                "referral_code": "",
+                "referred_by": "",
+                "date_of_birth": null,
+                "user_fully_onboarded": false,
+                "user_type": "business"
             },
             "links": {
                 "self": "http://localhostx:3000/api/user/100065"
@@ -12281,13 +12222,6 @@ export default function handler(req, res) {
                         "related": "http://localhostx:3000/api/user/100065/business_creator"
                     },
                     "data": null
-                },
-                "business_user_roles": {
-                    "links": {
-                        "self": "http://localhostx:3000/api/user/100065/relationships/business_user_roles",
-                        "related": "http://localhostx:3000/api/user/100065/business_user_roles"
-                    },
-                    "data": []
                 },
                 "business_documents": {
                     "links": {
@@ -12302,6 +12236,18 @@ export default function handler(req, res) {
                         "related": "http://localhostx:3000/api/user/100065/home_owner_projects"
                     },
                     "data": []
+                },
+                "business_user_roles": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100065/relationships/business_user_roles",
+                        "related": "http://localhostx:3000/api/user/100065/business_user_roles"
+                    },
+                    "data": [
+                        {
+                            "type": "business_User_Roles",
+                            "id": 103064
+                        }
+                    ]
                 },
                 "project_assignments": {
                     "links": {
@@ -12421,38 +12367,38 @@ export default function handler(req, res) {
             "type": "user",
             "id": 100066,
             "attributes": {
-                "created_at": "2024-05-03T23:30:36.669Z",
-                "updated_at": "2024-05-03T23:30:36.669Z",
+                "created_at": "2024-05-21T17:15:16.753Z",
+                "updated_at": "2024-05-21T17:15:16.753Z",
                 "active": true,
-                "username": "sub1_handyman1.sub_handyman",
-                "email": "sub1_handyman1.sub_handyman@outlook.com",
-                "first_name": "sub1_handyman1",
-                "middle_name": "",
-                "last_name": "sub_handyman",
-                "phone_number_mobile": "7012345736",
+                "username": "Tom.LifetimeRoofing",
+                "email": "Tom.LifetimeRoofing@mail.com",
+                "first_name": "Tom",
+                "middle_name": "BK_OS",
+                "last_name": "LifetimeRoofing",
+                "phone_number_mobile": "1234567890",
                 "text_enabled": true,
                 "phone_verified": false,
-                "phone_number_home": "8012345736",
+                "phone_number_home": "9999999999",
                 "email_verified": true,
-                "last_login": "2024-06-19T00:00:00.000Z",
-                "last_failed_login": "2024-06-18T00:00:00.000Z",
+                "last_login": null,
+                "last_failed_login": null,
                 "admin": false,
-                "status": "active",
+                "status": "",
                 "language": [
-                    "English"
+                    ""
                 ],
                 "forced_login": false,
                 "failed_login_count": 0,
-                "address1": "8345",
-                "address2": "peachtreeblvs",
-                "state": "NC",
-                "zipcode": "28217",
-                "profile_picture_url": "/profilepic/sub1_handyman1/.jpg",
-                "referral_code": "ABCD",
-                "referred_by": "WEB",
-                "date_of_birth": "2000-06-30T00:00:00.000Z",
-                "user_fully_onboarded": true,
-                "user_type": "sub_handyman"
+                "address1": "",
+                "address2": "",
+                "state": "",
+                "zipcode": "",
+                "profile_picture_url": "",
+                "referral_code": "",
+                "referred_by": "",
+                "date_of_birth": null,
+                "user_fully_onboarded": false,
+                "user_type": "business"
             },
             "links": {
                 "self": "http://localhostx:3000/api/user/100066"
@@ -12463,14 +12409,10 @@ export default function handler(req, res) {
                         "self": "http://localhostx:3000/api/user/100066/relationships/business_creator",
                         "related": "http://localhostx:3000/api/user/100066/business_creator"
                     },
-                    "data": null
-                },
-                "business_user_roles": {
-                    "links": {
-                        "self": "http://localhostx:3000/api/user/100066/relationships/business_user_roles",
-                        "related": "http://localhostx:3000/api/user/100066/business_user_roles"
-                    },
-                    "data": []
+                    "data": {
+                        "type": "business",
+                        "id": 101020
+                    }
                 },
                 "business_documents": {
                     "links": {
@@ -12485,6 +12427,18 @@ export default function handler(req, res) {
                         "related": "http://localhostx:3000/api/user/100066/home_owner_projects"
                     },
                     "data": []
+                },
+                "business_user_roles": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100066/relationships/business_user_roles",
+                        "related": "http://localhostx:3000/api/user/100066/business_user_roles"
+                    },
+                    "data": [
+                        {
+                            "type": "business_User_Roles",
+                            "id": 103065
+                        }
+                    ]
                 },
                 "project_assignments": {
                     "links": {
@@ -12604,38 +12558,38 @@ export default function handler(req, res) {
             "type": "user",
             "id": 100067,
             "attributes": {
-                "created_at": "2024-05-03T23:30:36.669Z",
-                "updated_at": "2024-05-03T23:30:36.669Z",
+                "created_at": "2024-05-21T17:15:16.963Z",
+                "updated_at": "2024-05-21T17:15:16.963Z",
                 "active": true,
-                "username": "sub2_handyman1.sub_handyman",
-                "email": "sub2_handyman1.sub_handyman@outlook.com",
-                "first_name": "sub2_handyman1",
-                "middle_name": "",
-                "last_name": "sub_handyman",
-                "phone_number_mobile": "7012345737",
+                "username": "Peter.Koala",
+                "email": "Peter.Koala@mail.com",
+                "first_name": "Peter",
+                "middle_name": "FA",
+                "last_name": "Koala",
+                "phone_number_mobile": "1234567890",
                 "text_enabled": true,
                 "phone_verified": false,
-                "phone_number_home": "8012345737",
+                "phone_number_home": "9999999999",
                 "email_verified": true,
-                "last_login": "2024-06-20T00:00:00.000Z",
-                "last_failed_login": "2024-06-19T00:00:00.000Z",
+                "last_login": null,
+                "last_failed_login": null,
                 "admin": false,
-                "status": "active",
+                "status": "",
                 "language": [
-                    "English"
+                    ""
                 ],
                 "forced_login": false,
                 "failed_login_count": 0,
-                "address1": "8345",
-                "address2": "peachtreeblvs",
-                "state": "NC",
-                "zipcode": "28217",
-                "profile_picture_url": "/profilepic/sub2_handyman1/.jpg",
-                "referral_code": "CDAB",
-                "referred_by": "WEB",
-                "date_of_birth": "2000-07-01T00:00:00.000Z",
-                "user_fully_onboarded": true,
-                "user_type": "sub_handyman"
+                "address1": "",
+                "address2": "",
+                "state": "",
+                "zipcode": "",
+                "profile_picture_url": "",
+                "referral_code": "",
+                "referred_by": "",
+                "date_of_birth": null,
+                "user_fully_onboarded": false,
+                "user_type": "business"
             },
             "links": {
                 "self": "http://localhostx:3000/api/user/100067"
@@ -12647,13 +12601,6 @@ export default function handler(req, res) {
                         "related": "http://localhostx:3000/api/user/100067/business_creator"
                     },
                     "data": null
-                },
-                "business_user_roles": {
-                    "links": {
-                        "self": "http://localhostx:3000/api/user/100067/relationships/business_user_roles",
-                        "related": "http://localhostx:3000/api/user/100067/business_user_roles"
-                    },
-                    "data": []
                 },
                 "business_documents": {
                     "links": {
@@ -12668,6 +12615,18 @@ export default function handler(req, res) {
                         "related": "http://localhostx:3000/api/user/100067/home_owner_projects"
                     },
                     "data": []
+                },
+                "business_user_roles": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100067/relationships/business_user_roles",
+                        "related": "http://localhostx:3000/api/user/100067/business_user_roles"
+                    },
+                    "data": [
+                        {
+                            "type": "business_User_Roles",
+                            "id": 103066
+                        }
+                    ]
                 },
                 "project_assignments": {
                     "links": {
@@ -12787,38 +12746,38 @@ export default function handler(req, res) {
             "type": "user",
             "id": 100068,
             "attributes": {
-                "created_at": "2024-05-03T23:30:36.669Z",
-                "updated_at": "2024-05-03T23:30:36.669Z",
+                "created_at": "2024-05-21T17:15:17.165Z",
+                "updated_at": "2024-05-21T17:15:17.165Z",
                 "active": true,
-                "username": "sub1_fence1.sub_fence",
-                "email": "sub1_fence1.sub_fence@outlook.com",
-                "first_name": "sub1_fence1",
-                "middle_name": "",
-                "last_name": "sub_fence",
-                "phone_number_mobile": "7012345738",
+                "username": "Chris.Koala",
+                "email": "Chris.Koala@mail.com",
+                "first_name": "Chris",
+                "middle_name": "FA",
+                "last_name": "Koala",
+                "phone_number_mobile": "1234567890",
                 "text_enabled": true,
                 "phone_verified": false,
-                "phone_number_home": "8012345738",
+                "phone_number_home": "9999999999",
                 "email_verified": true,
-                "last_login": "2024-06-21T00:00:00.000Z",
-                "last_failed_login": "2024-06-20T00:00:00.000Z",
+                "last_login": null,
+                "last_failed_login": null,
                 "admin": false,
-                "status": "active",
+                "status": "",
                 "language": [
-                    "English"
+                    ""
                 ],
                 "forced_login": false,
                 "failed_login_count": 0,
-                "address1": "8345",
-                "address2": "peachtreeblvs",
-                "state": "NC",
-                "zipcode": "28217",
-                "profile_picture_url": "/profilepic/sub1_fence1/.jpg",
-                "referral_code": "DABC",
-                "referred_by": "WEB",
-                "date_of_birth": "2000-07-02T00:00:00.000Z",
-                "user_fully_onboarded": true,
-                "user_type": "sub_fence"
+                "address1": "",
+                "address2": "",
+                "state": "",
+                "zipcode": "",
+                "profile_picture_url": "",
+                "referral_code": "",
+                "referred_by": "",
+                "date_of_birth": null,
+                "user_fully_onboarded": false,
+                "user_type": "business"
             },
             "links": {
                 "self": "http://localhostx:3000/api/user/100068"
@@ -12829,14 +12788,10 @@ export default function handler(req, res) {
                         "self": "http://localhostx:3000/api/user/100068/relationships/business_creator",
                         "related": "http://localhostx:3000/api/user/100068/business_creator"
                     },
-                    "data": null
-                },
-                "business_user_roles": {
-                    "links": {
-                        "self": "http://localhostx:3000/api/user/100068/relationships/business_user_roles",
-                        "related": "http://localhostx:3000/api/user/100068/business_user_roles"
-                    },
-                    "data": []
+                    "data": {
+                        "type": "business",
+                        "id": 101021
+                    }
                 },
                 "business_documents": {
                     "links": {
@@ -12851,6 +12806,18 @@ export default function handler(req, res) {
                         "related": "http://localhostx:3000/api/user/100068/home_owner_projects"
                     },
                     "data": []
+                },
+                "business_user_roles": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100068/relationships/business_user_roles",
+                        "related": "http://localhostx:3000/api/user/100068/business_user_roles"
+                    },
+                    "data": [
+                        {
+                            "type": "business_User_Roles",
+                            "id": 103067
+                        }
+                    ]
                 },
                 "project_assignments": {
                     "links": {
@@ -12970,38 +12937,38 @@ export default function handler(req, res) {
             "type": "user",
             "id": 100069,
             "attributes": {
-                "created_at": "2024-05-03T23:30:36.669Z",
-                "updated_at": "2024-05-03T23:30:36.669Z",
+                "created_at": "2024-05-21T17:15:17.383Z",
+                "updated_at": "2024-05-21T17:15:17.383Z",
                 "active": true,
-                "username": "sub2_fence1.sub_fence",
-                "email": "sub2_fence1.sub_fence@outlook.com",
-                "first_name": "sub2_fence1",
-                "middle_name": "",
-                "last_name": "sub_fence",
-                "phone_number_mobile": "7012345739",
+                "username": "Patrick.StandardInsulation",
+                "email": "Patrick.StandardInsulation@mail.com",
+                "first_name": "Patrick",
+                "middle_name": "FA",
+                "last_name": "StandardInsulation",
+                "phone_number_mobile": "1234567890",
                 "text_enabled": true,
                 "phone_verified": false,
-                "phone_number_home": "8012345739",
+                "phone_number_home": "9999999999",
                 "email_verified": true,
-                "last_login": "2024-06-22T00:00:00.000Z",
-                "last_failed_login": "2024-06-21T00:00:00.000Z",
+                "last_login": null,
+                "last_failed_login": null,
                 "admin": false,
-                "status": "active",
+                "status": "",
                 "language": [
-                    "English"
+                    ""
                 ],
                 "forced_login": false,
                 "failed_login_count": 0,
-                "address1": "8345",
-                "address2": "peachtreeblvs",
-                "state": "NC",
-                "zipcode": "28217",
-                "profile_picture_url": "/profilepic/sub2_fence1/.jpg",
-                "referral_code": "CDAB",
-                "referred_by": "WEB",
-                "date_of_birth": "2000-07-03T00:00:00.000Z",
-                "user_fully_onboarded": true,
-                "user_type": "sub_fence"
+                "address1": "",
+                "address2": "",
+                "state": "",
+                "zipcode": "",
+                "profile_picture_url": "",
+                "referral_code": "",
+                "referred_by": "",
+                "date_of_birth": null,
+                "user_fully_onboarded": false,
+                "user_type": "business"
             },
             "links": {
                 "self": "http://localhostx:3000/api/user/100069"
@@ -13013,13 +12980,6 @@ export default function handler(req, res) {
                         "related": "http://localhostx:3000/api/user/100069/business_creator"
                     },
                     "data": null
-                },
-                "business_user_roles": {
-                    "links": {
-                        "self": "http://localhostx:3000/api/user/100069/relationships/business_user_roles",
-                        "related": "http://localhostx:3000/api/user/100069/business_user_roles"
-                    },
-                    "data": []
                 },
                 "business_documents": {
                     "links": {
@@ -13034,6 +12994,18 @@ export default function handler(req, res) {
                         "related": "http://localhostx:3000/api/user/100069/home_owner_projects"
                     },
                     "data": []
+                },
+                "business_user_roles": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100069/relationships/business_user_roles",
+                        "related": "http://localhostx:3000/api/user/100069/business_user_roles"
+                    },
+                    "data": [
+                        {
+                            "type": "business_User_Roles",
+                            "id": 103068
+                        }
+                    ]
                 },
                 "project_assignments": {
                     "links": {
@@ -13153,38 +13125,38 @@ export default function handler(req, res) {
             "type": "user",
             "id": 100070,
             "attributes": {
-                "created_at": "2024-05-03T23:30:36.669Z",
-                "updated_at": "2024-05-03T23:30:36.669Z",
+                "created_at": "2024-05-21T17:15:17.597Z",
+                "updated_at": "2024-05-21T17:15:17.597Z",
                 "active": true,
-                "username": "sub1_mirror1.sub_mirror",
-                "email": "sub1_mirror1.sub_mirror@outlook.com",
-                "first_name": "sub1_mirror1",
-                "middle_name": "",
-                "last_name": "sub_mirror",
-                "phone_number_mobile": "7012345742",
+                "username": "Alex.StandardInsulation",
+                "email": "Alex.StandardInsulation@mail.com",
+                "first_name": "Alex",
+                "middle_name": "FC_PM",
+                "last_name": "StandardInsulation",
+                "phone_number_mobile": "1234567890",
                 "text_enabled": true,
                 "phone_verified": false,
-                "phone_number_home": "8012345742",
+                "phone_number_home": "9999999999",
                 "email_verified": true,
-                "last_login": "2024-06-25T00:00:00.000Z",
-                "last_failed_login": "2024-06-24T00:00:00.000Z",
+                "last_login": null,
+                "last_failed_login": null,
                 "admin": false,
-                "status": "active",
+                "status": "",
                 "language": [
-                    "English"
+                    ""
                 ],
                 "forced_login": false,
                 "failed_login_count": 0,
-                "address1": "8345",
-                "address2": "peachtreeblvs",
-                "state": "NC",
-                "zipcode": "28217",
-                "profile_picture_url": "/profilepic/sub1_mirror1/.jpg",
-                "referral_code": "ABCD",
-                "referred_by": "WEB",
-                "date_of_birth": "2000-07-06T00:00:00.000Z",
-                "user_fully_onboarded": true,
-                "user_type": "sub_mirror"
+                "address1": "",
+                "address2": "",
+                "state": "",
+                "zipcode": "",
+                "profile_picture_url": "",
+                "referral_code": "",
+                "referred_by": "",
+                "date_of_birth": null,
+                "user_fully_onboarded": false,
+                "user_type": "business"
             },
             "links": {
                 "self": "http://localhostx:3000/api/user/100070"
@@ -13195,14 +13167,10 @@ export default function handler(req, res) {
                         "self": "http://localhostx:3000/api/user/100070/relationships/business_creator",
                         "related": "http://localhostx:3000/api/user/100070/business_creator"
                     },
-                    "data": null
-                },
-                "business_user_roles": {
-                    "links": {
-                        "self": "http://localhostx:3000/api/user/100070/relationships/business_user_roles",
-                        "related": "http://localhostx:3000/api/user/100070/business_user_roles"
-                    },
-                    "data": []
+                    "data": {
+                        "type": "business",
+                        "id": 101022
+                    }
                 },
                 "business_documents": {
                     "links": {
@@ -13217,6 +13185,18 @@ export default function handler(req, res) {
                         "related": "http://localhostx:3000/api/user/100070/home_owner_projects"
                     },
                     "data": []
+                },
+                "business_user_roles": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100070/relationships/business_user_roles",
+                        "related": "http://localhostx:3000/api/user/100070/business_user_roles"
+                    },
+                    "data": [
+                        {
+                            "type": "business_User_Roles",
+                            "id": 103069
+                        }
+                    ]
                 },
                 "project_assignments": {
                     "links": {
@@ -13336,38 +13316,38 @@ export default function handler(req, res) {
             "type": "user",
             "id": 100071,
             "attributes": {
-                "created_at": "2024-05-03T23:30:36.669Z",
-                "updated_at": "2024-05-03T23:30:36.669Z",
+                "created_at": "2024-05-21T17:15:17.814Z",
+                "updated_at": "2024-05-21T17:15:17.814Z",
                 "active": true,
-                "username": "sub2_mirror2.sub_mirror",
-                "email": "sub2_mirror2.sub_mirror@outlook.com",
-                "first_name": "sub2_mirror2",
-                "middle_name": "",
-                "last_name": "sub_mirror",
-                "phone_number_mobile": "7012345743",
+                "username": "Les.Framing2",
+                "email": "Les.Framing2@mail.com",
+                "first_name": "Les",
+                "middle_name": "FA",
+                "last_name": "Framing2",
+                "phone_number_mobile": "1234567890",
                 "text_enabled": true,
                 "phone_verified": false,
-                "phone_number_home": "8012345743",
+                "phone_number_home": "9999999999",
                 "email_verified": true,
-                "last_login": "2024-06-26T00:00:00.000Z",
-                "last_failed_login": "2024-06-25T00:00:00.000Z",
+                "last_login": null,
+                "last_failed_login": null,
                 "admin": false,
-                "status": "active",
+                "status": "",
                 "language": [
-                    "English"
+                    ""
                 ],
                 "forced_login": false,
                 "failed_login_count": 0,
-                "address1": "8345",
-                "address2": "peachtreeblvs",
-                "state": "NC",
-                "zipcode": "28217",
-                "profile_picture_url": "/profilepic/sub2_mirror2/.jpg",
-                "referral_code": "ABCD",
-                "referred_by": "WEB",
-                "date_of_birth": "2000-07-07T00:00:00.000Z",
-                "user_fully_onboarded": true,
-                "user_type": "sub_mirror"
+                "address1": "",
+                "address2": "",
+                "state": "",
+                "zipcode": "",
+                "profile_picture_url": "",
+                "referral_code": "",
+                "referred_by": "",
+                "date_of_birth": null,
+                "user_fully_onboarded": false,
+                "user_type": "business"
             },
             "links": {
                 "self": "http://localhostx:3000/api/user/100071"
@@ -13378,14 +13358,10 @@ export default function handler(req, res) {
                         "self": "http://localhostx:3000/api/user/100071/relationships/business_creator",
                         "related": "http://localhostx:3000/api/user/100071/business_creator"
                     },
-                    "data": null
-                },
-                "business_user_roles": {
-                    "links": {
-                        "self": "http://localhostx:3000/api/user/100071/relationships/business_user_roles",
-                        "related": "http://localhostx:3000/api/user/100071/business_user_roles"
-                    },
-                    "data": []
+                    "data": {
+                        "type": "business",
+                        "id": 101023
+                    }
                 },
                 "business_documents": {
                     "links": {
@@ -13400,6 +13376,18 @@ export default function handler(req, res) {
                         "related": "http://localhostx:3000/api/user/100071/home_owner_projects"
                     },
                     "data": []
+                },
+                "business_user_roles": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100071/relationships/business_user_roles",
+                        "related": "http://localhostx:3000/api/user/100071/business_user_roles"
+                    },
+                    "data": [
+                        {
+                            "type": "business_User_Roles",
+                            "id": 103070
+                        }
+                    ]
                 },
                 "project_assignments": {
                     "links": {
@@ -13519,38 +13507,38 @@ export default function handler(req, res) {
             "type": "user",
             "id": 100072,
             "attributes": {
-                "created_at": "2024-05-03T23:30:36.669Z",
-                "updated_at": "2024-05-03T23:30:36.669Z",
+                "created_at": "2024-05-21T17:15:18.036Z",
+                "updated_at": "2024-05-21T17:15:18.036Z",
                 "active": true,
-                "username": "sub1_sepctic1.sub_sepctic",
-                "email": "sub1_sepctic1.sub_sepctic@outlook.com",
-                "first_name": "sub1_sepctic1",
-                "middle_name": "",
-                "last_name": "sub_sepctic",
-                "phone_number_mobile": "7012345744",
+                "username": "John.JuanBricker",
+                "email": "John.JuanBricker@mail.com",
+                "first_name": "John",
+                "middle_name": "FA",
+                "last_name": "JuanBricker",
+                "phone_number_mobile": "1234567890",
                 "text_enabled": true,
                 "phone_verified": false,
-                "phone_number_home": "8012345744",
+                "phone_number_home": "9999999999",
                 "email_verified": true,
-                "last_login": "2024-06-27T00:00:00.000Z",
-                "last_failed_login": "2024-06-26T00:00:00.000Z",
+                "last_login": null,
+                "last_failed_login": null,
                 "admin": false,
-                "status": "active",
+                "status": "",
                 "language": [
-                    "English"
+                    ""
                 ],
                 "forced_login": false,
                 "failed_login_count": 0,
-                "address1": "8345",
-                "address2": "peachtreeblvs",
-                "state": "NC",
-                "zipcode": "28217",
-                "profile_picture_url": "/profilepic/sub1_sepctic1/.jpg",
-                "referral_code": "BCDE",
-                "referred_by": "WEB",
-                "date_of_birth": "2000-07-08T00:00:00.000Z",
-                "user_fully_onboarded": true,
-                "user_type": "sub_sepctic"
+                "address1": "",
+                "address2": "",
+                "state": "",
+                "zipcode": "",
+                "profile_picture_url": "",
+                "referral_code": "",
+                "referred_by": "",
+                "date_of_birth": null,
+                "user_fully_onboarded": false,
+                "user_type": "business"
             },
             "links": {
                 "self": "http://localhostx:3000/api/user/100072"
@@ -13562,13 +13550,6 @@ export default function handler(req, res) {
                         "related": "http://localhostx:3000/api/user/100072/business_creator"
                     },
                     "data": null
-                },
-                "business_user_roles": {
-                    "links": {
-                        "self": "http://localhostx:3000/api/user/100072/relationships/business_user_roles",
-                        "related": "http://localhostx:3000/api/user/100072/business_user_roles"
-                    },
-                    "data": []
                 },
                 "business_documents": {
                     "links": {
@@ -13583,6 +13564,18 @@ export default function handler(req, res) {
                         "related": "http://localhostx:3000/api/user/100072/home_owner_projects"
                     },
                     "data": []
+                },
+                "business_user_roles": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100072/relationships/business_user_roles",
+                        "related": "http://localhostx:3000/api/user/100072/business_user_roles"
+                    },
+                    "data": [
+                        {
+                            "type": "business_User_Roles",
+                            "id": 103071
+                        }
+                    ]
                 },
                 "project_assignments": {
                     "links": {
@@ -13702,38 +13695,38 @@ export default function handler(req, res) {
             "type": "user",
             "id": 100073,
             "attributes": {
-                "created_at": "2024-05-03T23:30:36.669Z",
-                "updated_at": "2024-05-03T23:30:36.669Z",
+                "created_at": "2024-05-21T17:15:18.247Z",
+                "updated_at": "2024-05-21T17:15:18.247Z",
                 "active": true,
-                "username": "sub2_sepctic1.sub_sepctic",
-                "email": "sub2_sepctic1.sub_sepctic@outlook.com",
-                "first_name": "sub2_sepctic1",
-                "middle_name": "",
-                "last_name": "sub_sepctic",
-                "phone_number_mobile": "7012345745",
+                "username": "David.JuanBricker",
+                "email": "David.JuanBricker@mail.com",
+                "first_name": "David",
+                "middle_name": "FA",
+                "last_name": "JuanBricker",
+                "phone_number_mobile": "1234567890",
                 "text_enabled": true,
                 "phone_verified": false,
-                "phone_number_home": "8012345745",
+                "phone_number_home": "9999999999",
                 "email_verified": true,
-                "last_login": "2024-06-28T00:00:00.000Z",
-                "last_failed_login": "2024-06-27T00:00:00.000Z",
+                "last_login": null,
+                "last_failed_login": null,
                 "admin": false,
-                "status": "active",
+                "status": "",
                 "language": [
-                    "English"
+                    ""
                 ],
                 "forced_login": false,
                 "failed_login_count": 0,
-                "address1": "8345",
-                "address2": "peachtreeblvs",
-                "state": "NC",
-                "zipcode": "28217",
-                "profile_picture_url": "/profilepic/sub2_sepctic1/.jpg",
-                "referral_code": "ABCD",
-                "referred_by": "WEB",
-                "date_of_birth": "2000-07-09T00:00:00.000Z",
-                "user_fully_onboarded": true,
-                "user_type": "sub_sepctic"
+                "address1": "",
+                "address2": "",
+                "state": "",
+                "zipcode": "",
+                "profile_picture_url": "",
+                "referral_code": "",
+                "referred_by": "",
+                "date_of_birth": null,
+                "user_fully_onboarded": false,
+                "user_type": "business"
             },
             "links": {
                 "self": "http://localhostx:3000/api/user/100073"
@@ -13744,14 +13737,10 @@ export default function handler(req, res) {
                         "self": "http://localhostx:3000/api/user/100073/relationships/business_creator",
                         "related": "http://localhostx:3000/api/user/100073/business_creator"
                     },
-                    "data": null
-                },
-                "business_user_roles": {
-                    "links": {
-                        "self": "http://localhostx:3000/api/user/100073/relationships/business_user_roles",
-                        "related": "http://localhostx:3000/api/user/100073/business_user_roles"
-                    },
-                    "data": []
+                    "data": {
+                        "type": "business",
+                        "id": 101024
+                    }
                 },
                 "business_documents": {
                     "links": {
@@ -13766,6 +13755,18 @@ export default function handler(req, res) {
                         "related": "http://localhostx:3000/api/user/100073/home_owner_projects"
                     },
                     "data": []
+                },
+                "business_user_roles": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100073/relationships/business_user_roles",
+                        "related": "http://localhostx:3000/api/user/100073/business_user_roles"
+                    },
+                    "data": [
+                        {
+                            "type": "business_User_Roles",
+                            "id": 103072
+                        }
+                    ]
                 },
                 "project_assignments": {
                     "links": {
@@ -13885,38 +13886,38 @@ export default function handler(req, res) {
             "type": "user",
             "id": 100074,
             "attributes": {
-                "created_at": "2024-05-03T23:30:36.669Z",
-                "updated_at": "2024-05-03T23:30:36.669Z",
+                "created_at": "2024-05-21T17:15:18.460Z",
+                "updated_at": "2024-05-21T17:15:18.460Z",
                 "active": true,
-                "username": "sub1_well1.sub_well",
-                "email": "sub1_well1.sub_well@outlook.com",
-                "first_name": "sub1_well1",
-                "middle_name": "",
-                "last_name": "sub_well",
-                "phone_number_mobile": "7012345746",
+                "username": "Tom.GriffinMasonry",
+                "email": "Tom.GriffinMasonry@mail.com",
+                "first_name": "Tom",
+                "middle_name": "FA",
+                "last_name": "GriffinMasonry",
+                "phone_number_mobile": "1234567890",
                 "text_enabled": true,
                 "phone_verified": false,
-                "phone_number_home": "8012345746",
+                "phone_number_home": "9999999999",
                 "email_verified": true,
-                "last_login": "2024-06-29T00:00:00.000Z",
-                "last_failed_login": "2024-06-28T00:00:00.000Z",
+                "last_login": null,
+                "last_failed_login": null,
                 "admin": false,
-                "status": "active",
+                "status": "",
                 "language": [
-                    "English"
+                    ""
                 ],
                 "forced_login": false,
                 "failed_login_count": 0,
-                "address1": "8345",
-                "address2": "peachtreeblvs",
-                "state": "NC",
-                "zipcode": "28217",
-                "profile_picture_url": "/profilepic/sub1_well1/.jpg",
-                "referral_code": "CDAB",
-                "referred_by": "WEB",
-                "date_of_birth": "2000-07-10T00:00:00.000Z",
-                "user_fully_onboarded": true,
-                "user_type": "sub_well"
+                "address1": "",
+                "address2": "",
+                "state": "",
+                "zipcode": "",
+                "profile_picture_url": "",
+                "referral_code": "",
+                "referred_by": "",
+                "date_of_birth": null,
+                "user_fully_onboarded": false,
+                "user_type": "business"
             },
             "links": {
                 "self": "http://localhostx:3000/api/user/100074"
@@ -13928,13 +13929,6 @@ export default function handler(req, res) {
                         "related": "http://localhostx:3000/api/user/100074/business_creator"
                     },
                     "data": null
-                },
-                "business_user_roles": {
-                    "links": {
-                        "self": "http://localhostx:3000/api/user/100074/relationships/business_user_roles",
-                        "related": "http://localhostx:3000/api/user/100074/business_user_roles"
-                    },
-                    "data": []
                 },
                 "business_documents": {
                     "links": {
@@ -13949,6 +13943,18 @@ export default function handler(req, res) {
                         "related": "http://localhostx:3000/api/user/100074/home_owner_projects"
                     },
                     "data": []
+                },
+                "business_user_roles": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100074/relationships/business_user_roles",
+                        "related": "http://localhostx:3000/api/user/100074/business_user_roles"
+                    },
+                    "data": [
+                        {
+                            "type": "business_User_Roles",
+                            "id": 103073
+                        }
+                    ]
                 },
                 "project_assignments": {
                     "links": {
@@ -14068,38 +14074,38 @@ export default function handler(req, res) {
             "type": "user",
             "id": 100075,
             "attributes": {
-                "created_at": "2024-05-03T23:30:36.669Z",
-                "updated_at": "2024-05-03T23:30:36.669Z",
+                "created_at": "2024-05-21T17:15:18.666Z",
+                "updated_at": "2024-05-21T17:15:18.666Z",
                 "active": true,
-                "username": "sub2_well1.sub_well",
-                "email": "sub2_well1.sub_well@outlook.com",
-                "first_name": "sub2_well1",
-                "middle_name": "",
-                "last_name": "sub_well",
-                "phone_number_mobile": "7012345747",
+                "username": "Peter.GriffinMasonry",
+                "email": "Peter.GriffinMasonry@mail.com",
+                "first_name": "Peter",
+                "middle_name": "PM_FC",
+                "last_name": "GriffinMasonry",
+                "phone_number_mobile": "1234567890",
                 "text_enabled": true,
                 "phone_verified": false,
-                "phone_number_home": "8012345747",
+                "phone_number_home": "9999999999",
                 "email_verified": true,
-                "last_login": "2024-06-30T00:00:00.000Z",
-                "last_failed_login": "2024-06-29T00:00:00.000Z",
+                "last_login": null,
+                "last_failed_login": null,
                 "admin": false,
-                "status": "active",
+                "status": "",
                 "language": [
-                    "English"
+                    ""
                 ],
                 "forced_login": false,
                 "failed_login_count": 0,
-                "address1": "8345",
-                "address2": "peachtreeblvs",
-                "state": "NC",
-                "zipcode": "28217",
-                "profile_picture_url": "/profilepic/sub2_well1/.jpg",
-                "referral_code": "DABC",
-                "referred_by": "WEB",
-                "date_of_birth": "2000-07-11T00:00:00.000Z",
-                "user_fully_onboarded": true,
-                "user_type": "sub_well"
+                "address1": "",
+                "address2": "",
+                "state": "",
+                "zipcode": "",
+                "profile_picture_url": "",
+                "referral_code": "",
+                "referred_by": "",
+                "date_of_birth": null,
+                "user_fully_onboarded": false,
+                "user_type": "business"
             },
             "links": {
                 "self": "http://localhostx:3000/api/user/100075"
@@ -14110,14 +14116,10 @@ export default function handler(req, res) {
                         "self": "http://localhostx:3000/api/user/100075/relationships/business_creator",
                         "related": "http://localhostx:3000/api/user/100075/business_creator"
                     },
-                    "data": null
-                },
-                "business_user_roles": {
-                    "links": {
-                        "self": "http://localhostx:3000/api/user/100075/relationships/business_user_roles",
-                        "related": "http://localhostx:3000/api/user/100075/business_user_roles"
-                    },
-                    "data": []
+                    "data": {
+                        "type": "business",
+                        "id": 101025
+                    }
                 },
                 "business_documents": {
                     "links": {
@@ -14132,6 +14134,18 @@ export default function handler(req, res) {
                         "related": "http://localhostx:3000/api/user/100075/home_owner_projects"
                     },
                     "data": []
+                },
+                "business_user_roles": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100075/relationships/business_user_roles",
+                        "related": "http://localhostx:3000/api/user/100075/business_user_roles"
+                    },
+                    "data": [
+                        {
+                            "type": "business_User_Roles",
+                            "id": 103074
+                        }
+                    ]
                 },
                 "project_assignments": {
                     "links": {
@@ -14246,6 +14260,4748 @@ export default function handler(req, res) {
                     "data": []
                 }
             }
+        },
+        {
+            "type": "user",
+            "id": 100076,
+            "attributes": {
+                "created_at": "2024-05-21T17:15:18.893Z",
+                "updated_at": "2024-05-21T17:15:18.893Z",
+                "active": true,
+                "username": "Chris.KaiserRoofing",
+                "email": "Chris.KaiserRoofing@mail.com",
+                "first_name": "Chris",
+                "middle_name": "FA",
+                "last_name": "KaiserRoofing",
+                "phone_number_mobile": "1234567890",
+                "text_enabled": true,
+                "phone_verified": false,
+                "phone_number_home": "9999999999",
+                "email_verified": true,
+                "last_login": null,
+                "last_failed_login": null,
+                "admin": false,
+                "status": "",
+                "language": [
+                    ""
+                ],
+                "forced_login": false,
+                "failed_login_count": 0,
+                "address1": "",
+                "address2": "",
+                "state": "",
+                "zipcode": "",
+                "profile_picture_url": "",
+                "referral_code": "",
+                "referred_by": "",
+                "date_of_birth": null,
+                "user_fully_onboarded": false,
+                "user_type": "business"
+            },
+            "links": {
+                "self": "http://localhostx:3000/api/user/100076"
+            },
+            "relationships": {
+                "business_creator": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100076/relationships/business_creator",
+                        "related": "http://localhostx:3000/api/user/100076/business_creator"
+                    },
+                    "data": null
+                },
+                "business_documents": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100076/relationships/business_documents",
+                        "related": "http://localhostx:3000/api/user/100076/business_documents"
+                    },
+                    "data": []
+                },
+                "home_owner_projects": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100076/relationships/home_owner_projects",
+                        "related": "http://localhostx:3000/api/user/100076/home_owner_projects"
+                    },
+                    "data": []
+                },
+                "business_user_roles": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100076/relationships/business_user_roles",
+                        "related": "http://localhostx:3000/api/user/100076/business_user_roles"
+                    },
+                    "data": [
+                        {
+                            "type": "business_User_Roles",
+                            "id": 103075
+                        }
+                    ]
+                },
+                "project_assignments": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100076/relationships/project_assignments",
+                        "related": "http://localhostx:3000/api/user/100076/project_assignments"
+                    },
+                    "data": []
+                },
+                "tasks": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100076/relationships/tasks",
+                        "related": "http://localhostx:3000/api/user/100076/tasks"
+                    },
+                    "data": []
+                },
+                "punch_list": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100076/relationships/punch_list",
+                        "related": "http://localhostx:3000/api/user/100076/punch_list"
+                    },
+                    "data": []
+                },
+                "daily_logs": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100076/relationships/daily_logs",
+                        "related": "http://localhostx:3000/api/user/100076/daily_logs"
+                    },
+                    "data": []
+                },
+                "progression_notes": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100076/relationships/progression_notes",
+                        "related": "http://localhostx:3000/api/user/100076/progression_notes"
+                    },
+                    "data": []
+                },
+                "change_orders_creator": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100076/relationships/change_orders_creator",
+                        "related": "http://localhostx:3000/api/user/100076/change_orders_creator"
+                    },
+                    "data": []
+                },
+                "change_orders_reviewer": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100076/relationships/change_orders_reviewer",
+                        "related": "http://localhostx:3000/api/user/100076/change_orders_reviewer"
+                    },
+                    "data": []
+                },
+                "change_orders_approver": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100076/relationships/change_orders_approver",
+                        "related": "http://localhostx:3000/api/user/100076/change_orders_approver"
+                    },
+                    "data": []
+                },
+                "bids_requested": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100076/relationships/bids_requested",
+                        "related": "http://localhostx:3000/api/user/100076/bids_requested"
+                    },
+                    "data": []
+                },
+                "bids_created": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100076/relationships/bids_created",
+                        "related": "http://localhostx:3000/api/user/100076/bids_created"
+                    },
+                    "data": []
+                },
+                "bids_reviewed": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100076/relationships/bids_reviewed",
+                        "related": "http://localhostx:3000/api/user/100076/bids_reviewed"
+                    },
+                    "data": []
+                },
+                "bids_approved": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100076/relationships/bids_approved",
+                        "related": "http://localhostx:3000/api/user/100076/bids_approved"
+                    },
+                    "data": []
+                },
+                "files_owned": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100076/relationships/files_owned",
+                        "related": "http://localhostx:3000/api/user/100076/files_owned"
+                    },
+                    "data": []
+                },
+                "file_permissions": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100076/relationships/file_permissions",
+                        "related": "http://localhostx:3000/api/user/100076/file_permissions"
+                    },
+                    "data": []
+                },
+                "api_log": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100076/relationships/api_log",
+                        "related": "http://localhostx:3000/api/user/100076/api_log"
+                    },
+                    "data": []
+                },
+                "clicks_activity": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100076/relationships/clicks_activity",
+                        "related": "http://localhostx:3000/api/user/100076/clicks_activity"
+                    },
+                    "data": []
+                }
+            }
+        },
+        {
+            "type": "user",
+            "id": 100077,
+            "attributes": {
+                "created_at": "2024-05-21T17:15:19.096Z",
+                "updated_at": "2024-05-21T17:15:19.096Z",
+                "active": true,
+                "username": "Patrick.KaiserRoofing",
+                "email": "Patrick.KaiserRoofing@mail.com",
+                "first_name": "Patrick",
+                "middle_name": "FA",
+                "last_name": "KaiserRoofing",
+                "phone_number_mobile": "1234567890",
+                "text_enabled": true,
+                "phone_verified": false,
+                "phone_number_home": "9999999999",
+                "email_verified": true,
+                "last_login": null,
+                "last_failed_login": null,
+                "admin": false,
+                "status": "",
+                "language": [
+                    ""
+                ],
+                "forced_login": false,
+                "failed_login_count": 0,
+                "address1": "",
+                "address2": "",
+                "state": "",
+                "zipcode": "",
+                "profile_picture_url": "",
+                "referral_code": "",
+                "referred_by": "",
+                "date_of_birth": null,
+                "user_fully_onboarded": false,
+                "user_type": "business"
+            },
+            "links": {
+                "self": "http://localhostx:3000/api/user/100077"
+            },
+            "relationships": {
+                "business_creator": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100077/relationships/business_creator",
+                        "related": "http://localhostx:3000/api/user/100077/business_creator"
+                    },
+                    "data": {
+                        "type": "business",
+                        "id": 101026
+                    }
+                },
+                "business_documents": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100077/relationships/business_documents",
+                        "related": "http://localhostx:3000/api/user/100077/business_documents"
+                    },
+                    "data": []
+                },
+                "home_owner_projects": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100077/relationships/home_owner_projects",
+                        "related": "http://localhostx:3000/api/user/100077/home_owner_projects"
+                    },
+                    "data": []
+                },
+                "business_user_roles": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100077/relationships/business_user_roles",
+                        "related": "http://localhostx:3000/api/user/100077/business_user_roles"
+                    },
+                    "data": [
+                        {
+                            "type": "business_User_Roles",
+                            "id": 103076
+                        }
+                    ]
+                },
+                "project_assignments": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100077/relationships/project_assignments",
+                        "related": "http://localhostx:3000/api/user/100077/project_assignments"
+                    },
+                    "data": []
+                },
+                "tasks": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100077/relationships/tasks",
+                        "related": "http://localhostx:3000/api/user/100077/tasks"
+                    },
+                    "data": []
+                },
+                "punch_list": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100077/relationships/punch_list",
+                        "related": "http://localhostx:3000/api/user/100077/punch_list"
+                    },
+                    "data": []
+                },
+                "daily_logs": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100077/relationships/daily_logs",
+                        "related": "http://localhostx:3000/api/user/100077/daily_logs"
+                    },
+                    "data": []
+                },
+                "progression_notes": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100077/relationships/progression_notes",
+                        "related": "http://localhostx:3000/api/user/100077/progression_notes"
+                    },
+                    "data": []
+                },
+                "change_orders_creator": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100077/relationships/change_orders_creator",
+                        "related": "http://localhostx:3000/api/user/100077/change_orders_creator"
+                    },
+                    "data": []
+                },
+                "change_orders_reviewer": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100077/relationships/change_orders_reviewer",
+                        "related": "http://localhostx:3000/api/user/100077/change_orders_reviewer"
+                    },
+                    "data": []
+                },
+                "change_orders_approver": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100077/relationships/change_orders_approver",
+                        "related": "http://localhostx:3000/api/user/100077/change_orders_approver"
+                    },
+                    "data": []
+                },
+                "bids_requested": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100077/relationships/bids_requested",
+                        "related": "http://localhostx:3000/api/user/100077/bids_requested"
+                    },
+                    "data": []
+                },
+                "bids_created": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100077/relationships/bids_created",
+                        "related": "http://localhostx:3000/api/user/100077/bids_created"
+                    },
+                    "data": []
+                },
+                "bids_reviewed": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100077/relationships/bids_reviewed",
+                        "related": "http://localhostx:3000/api/user/100077/bids_reviewed"
+                    },
+                    "data": []
+                },
+                "bids_approved": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100077/relationships/bids_approved",
+                        "related": "http://localhostx:3000/api/user/100077/bids_approved"
+                    },
+                    "data": []
+                },
+                "files_owned": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100077/relationships/files_owned",
+                        "related": "http://localhostx:3000/api/user/100077/files_owned"
+                    },
+                    "data": []
+                },
+                "file_permissions": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100077/relationships/file_permissions",
+                        "related": "http://localhostx:3000/api/user/100077/file_permissions"
+                    },
+                    "data": []
+                },
+                "api_log": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100077/relationships/api_log",
+                        "related": "http://localhostx:3000/api/user/100077/api_log"
+                    },
+                    "data": []
+                },
+                "clicks_activity": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100077/relationships/clicks_activity",
+                        "related": "http://localhostx:3000/api/user/100077/clicks_activity"
+                    },
+                    "data": []
+                }
+            }
+        },
+        {
+            "type": "user",
+            "id": 100078,
+            "attributes": {
+                "created_at": "2024-05-21T17:15:19.306Z",
+                "updated_at": "2024-05-21T17:15:19.306Z",
+                "active": true,
+                "username": "Alex.CrownRoofing",
+                "email": "Alex.CrownRoofing@mail.com",
+                "first_name": "Alex",
+                "middle_name": "FA",
+                "last_name": "CrownRoofing",
+                "phone_number_mobile": "1234567890",
+                "text_enabled": true,
+                "phone_verified": false,
+                "phone_number_home": "9999999999",
+                "email_verified": true,
+                "last_login": null,
+                "last_failed_login": null,
+                "admin": false,
+                "status": "",
+                "language": [
+                    ""
+                ],
+                "forced_login": false,
+                "failed_login_count": 0,
+                "address1": "",
+                "address2": "",
+                "state": "",
+                "zipcode": "",
+                "profile_picture_url": "",
+                "referral_code": "",
+                "referred_by": "",
+                "date_of_birth": null,
+                "user_fully_onboarded": false,
+                "user_type": "business"
+            },
+            "links": {
+                "self": "http://localhostx:3000/api/user/100078"
+            },
+            "relationships": {
+                "business_creator": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100078/relationships/business_creator",
+                        "related": "http://localhostx:3000/api/user/100078/business_creator"
+                    },
+                    "data": null
+                },
+                "business_documents": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100078/relationships/business_documents",
+                        "related": "http://localhostx:3000/api/user/100078/business_documents"
+                    },
+                    "data": []
+                },
+                "home_owner_projects": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100078/relationships/home_owner_projects",
+                        "related": "http://localhostx:3000/api/user/100078/home_owner_projects"
+                    },
+                    "data": []
+                },
+                "business_user_roles": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100078/relationships/business_user_roles",
+                        "related": "http://localhostx:3000/api/user/100078/business_user_roles"
+                    },
+                    "data": [
+                        {
+                            "type": "business_User_Roles",
+                            "id": 103077
+                        }
+                    ]
+                },
+                "project_assignments": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100078/relationships/project_assignments",
+                        "related": "http://localhostx:3000/api/user/100078/project_assignments"
+                    },
+                    "data": []
+                },
+                "tasks": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100078/relationships/tasks",
+                        "related": "http://localhostx:3000/api/user/100078/tasks"
+                    },
+                    "data": []
+                },
+                "punch_list": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100078/relationships/punch_list",
+                        "related": "http://localhostx:3000/api/user/100078/punch_list"
+                    },
+                    "data": []
+                },
+                "daily_logs": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100078/relationships/daily_logs",
+                        "related": "http://localhostx:3000/api/user/100078/daily_logs"
+                    },
+                    "data": []
+                },
+                "progression_notes": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100078/relationships/progression_notes",
+                        "related": "http://localhostx:3000/api/user/100078/progression_notes"
+                    },
+                    "data": []
+                },
+                "change_orders_creator": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100078/relationships/change_orders_creator",
+                        "related": "http://localhostx:3000/api/user/100078/change_orders_creator"
+                    },
+                    "data": []
+                },
+                "change_orders_reviewer": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100078/relationships/change_orders_reviewer",
+                        "related": "http://localhostx:3000/api/user/100078/change_orders_reviewer"
+                    },
+                    "data": []
+                },
+                "change_orders_approver": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100078/relationships/change_orders_approver",
+                        "related": "http://localhostx:3000/api/user/100078/change_orders_approver"
+                    },
+                    "data": []
+                },
+                "bids_requested": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100078/relationships/bids_requested",
+                        "related": "http://localhostx:3000/api/user/100078/bids_requested"
+                    },
+                    "data": []
+                },
+                "bids_created": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100078/relationships/bids_created",
+                        "related": "http://localhostx:3000/api/user/100078/bids_created"
+                    },
+                    "data": []
+                },
+                "bids_reviewed": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100078/relationships/bids_reviewed",
+                        "related": "http://localhostx:3000/api/user/100078/bids_reviewed"
+                    },
+                    "data": []
+                },
+                "bids_approved": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100078/relationships/bids_approved",
+                        "related": "http://localhostx:3000/api/user/100078/bids_approved"
+                    },
+                    "data": []
+                },
+                "files_owned": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100078/relationships/files_owned",
+                        "related": "http://localhostx:3000/api/user/100078/files_owned"
+                    },
+                    "data": []
+                },
+                "file_permissions": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100078/relationships/file_permissions",
+                        "related": "http://localhostx:3000/api/user/100078/file_permissions"
+                    },
+                    "data": []
+                },
+                "api_log": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100078/relationships/api_log",
+                        "related": "http://localhostx:3000/api/user/100078/api_log"
+                    },
+                    "data": []
+                },
+                "clicks_activity": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100078/relationships/clicks_activity",
+                        "related": "http://localhostx:3000/api/user/100078/clicks_activity"
+                    },
+                    "data": []
+                }
+            }
+        },
+        {
+            "type": "user",
+            "id": 100079,
+            "attributes": {
+                "created_at": "2024-05-21T17:15:19.514Z",
+                "updated_at": "2024-05-21T17:15:19.514Z",
+                "active": true,
+                "username": "Les.CrownRoofing",
+                "email": "Les.CrownRoofing@mail.com",
+                "first_name": "Les",
+                "middle_name": "PM_FC",
+                "last_name": "CrownRoofing",
+                "phone_number_mobile": "1234567890",
+                "text_enabled": true,
+                "phone_verified": false,
+                "phone_number_home": "9999999999",
+                "email_verified": true,
+                "last_login": null,
+                "last_failed_login": null,
+                "admin": false,
+                "status": "",
+                "language": [
+                    ""
+                ],
+                "forced_login": false,
+                "failed_login_count": 0,
+                "address1": "",
+                "address2": "",
+                "state": "",
+                "zipcode": "",
+                "profile_picture_url": "",
+                "referral_code": "",
+                "referred_by": "",
+                "date_of_birth": null,
+                "user_fully_onboarded": false,
+                "user_type": "business"
+            },
+            "links": {
+                "self": "http://localhostx:3000/api/user/100079"
+            },
+            "relationships": {
+                "business_creator": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100079/relationships/business_creator",
+                        "related": "http://localhostx:3000/api/user/100079/business_creator"
+                    },
+                    "data": null
+                },
+                "business_documents": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100079/relationships/business_documents",
+                        "related": "http://localhostx:3000/api/user/100079/business_documents"
+                    },
+                    "data": []
+                },
+                "home_owner_projects": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100079/relationships/home_owner_projects",
+                        "related": "http://localhostx:3000/api/user/100079/home_owner_projects"
+                    },
+                    "data": []
+                },
+                "business_user_roles": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100079/relationships/business_user_roles",
+                        "related": "http://localhostx:3000/api/user/100079/business_user_roles"
+                    },
+                    "data": [
+                        {
+                            "type": "business_User_Roles",
+                            "id": 103078
+                        }
+                    ]
+                },
+                "project_assignments": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100079/relationships/project_assignments",
+                        "related": "http://localhostx:3000/api/user/100079/project_assignments"
+                    },
+                    "data": []
+                },
+                "tasks": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100079/relationships/tasks",
+                        "related": "http://localhostx:3000/api/user/100079/tasks"
+                    },
+                    "data": []
+                },
+                "punch_list": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100079/relationships/punch_list",
+                        "related": "http://localhostx:3000/api/user/100079/punch_list"
+                    },
+                    "data": []
+                },
+                "daily_logs": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100079/relationships/daily_logs",
+                        "related": "http://localhostx:3000/api/user/100079/daily_logs"
+                    },
+                    "data": []
+                },
+                "progression_notes": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100079/relationships/progression_notes",
+                        "related": "http://localhostx:3000/api/user/100079/progression_notes"
+                    },
+                    "data": []
+                },
+                "change_orders_creator": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100079/relationships/change_orders_creator",
+                        "related": "http://localhostx:3000/api/user/100079/change_orders_creator"
+                    },
+                    "data": []
+                },
+                "change_orders_reviewer": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100079/relationships/change_orders_reviewer",
+                        "related": "http://localhostx:3000/api/user/100079/change_orders_reviewer"
+                    },
+                    "data": []
+                },
+                "change_orders_approver": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100079/relationships/change_orders_approver",
+                        "related": "http://localhostx:3000/api/user/100079/change_orders_approver"
+                    },
+                    "data": []
+                },
+                "bids_requested": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100079/relationships/bids_requested",
+                        "related": "http://localhostx:3000/api/user/100079/bids_requested"
+                    },
+                    "data": []
+                },
+                "bids_created": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100079/relationships/bids_created",
+                        "related": "http://localhostx:3000/api/user/100079/bids_created"
+                    },
+                    "data": []
+                },
+                "bids_reviewed": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100079/relationships/bids_reviewed",
+                        "related": "http://localhostx:3000/api/user/100079/bids_reviewed"
+                    },
+                    "data": []
+                },
+                "bids_approved": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100079/relationships/bids_approved",
+                        "related": "http://localhostx:3000/api/user/100079/bids_approved"
+                    },
+                    "data": []
+                },
+                "files_owned": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100079/relationships/files_owned",
+                        "related": "http://localhostx:3000/api/user/100079/files_owned"
+                    },
+                    "data": []
+                },
+                "file_permissions": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100079/relationships/file_permissions",
+                        "related": "http://localhostx:3000/api/user/100079/file_permissions"
+                    },
+                    "data": []
+                },
+                "api_log": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100079/relationships/api_log",
+                        "related": "http://localhostx:3000/api/user/100079/api_log"
+                    },
+                    "data": []
+                },
+                "clicks_activity": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100079/relationships/clicks_activity",
+                        "related": "http://localhostx:3000/api/user/100079/clicks_activity"
+                    },
+                    "data": []
+                }
+            }
+        },
+        {
+            "type": "user",
+            "id": 100080,
+            "attributes": {
+                "created_at": "2024-05-21T17:15:19.719Z",
+                "updated_at": "2024-05-21T17:15:19.719Z",
+                "active": true,
+                "username": "John.CrownRoofing",
+                "email": "John.CrownRoofing@mail.com",
+                "first_name": "John",
+                "middle_name": "PM_FC",
+                "last_name": "CrownRoofing",
+                "phone_number_mobile": "1234567890",
+                "text_enabled": true,
+                "phone_verified": false,
+                "phone_number_home": "9999999999",
+                "email_verified": true,
+                "last_login": null,
+                "last_failed_login": null,
+                "admin": false,
+                "status": "",
+                "language": [
+                    ""
+                ],
+                "forced_login": false,
+                "failed_login_count": 0,
+                "address1": "",
+                "address2": "",
+                "state": "",
+                "zipcode": "",
+                "profile_picture_url": "",
+                "referral_code": "",
+                "referred_by": "",
+                "date_of_birth": null,
+                "user_fully_onboarded": false,
+                "user_type": "business"
+            },
+            "links": {
+                "self": "http://localhostx:3000/api/user/100080"
+            },
+            "relationships": {
+                "business_creator": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100080/relationships/business_creator",
+                        "related": "http://localhostx:3000/api/user/100080/business_creator"
+                    },
+                    "data": {
+                        "type": "business",
+                        "id": 101027
+                    }
+                },
+                "business_documents": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100080/relationships/business_documents",
+                        "related": "http://localhostx:3000/api/user/100080/business_documents"
+                    },
+                    "data": []
+                },
+                "home_owner_projects": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100080/relationships/home_owner_projects",
+                        "related": "http://localhostx:3000/api/user/100080/home_owner_projects"
+                    },
+                    "data": []
+                },
+                "business_user_roles": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100080/relationships/business_user_roles",
+                        "related": "http://localhostx:3000/api/user/100080/business_user_roles"
+                    },
+                    "data": [
+                        {
+                            "type": "business_User_Roles",
+                            "id": 103079
+                        }
+                    ]
+                },
+                "project_assignments": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100080/relationships/project_assignments",
+                        "related": "http://localhostx:3000/api/user/100080/project_assignments"
+                    },
+                    "data": []
+                },
+                "tasks": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100080/relationships/tasks",
+                        "related": "http://localhostx:3000/api/user/100080/tasks"
+                    },
+                    "data": []
+                },
+                "punch_list": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100080/relationships/punch_list",
+                        "related": "http://localhostx:3000/api/user/100080/punch_list"
+                    },
+                    "data": []
+                },
+                "daily_logs": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100080/relationships/daily_logs",
+                        "related": "http://localhostx:3000/api/user/100080/daily_logs"
+                    },
+                    "data": []
+                },
+                "progression_notes": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100080/relationships/progression_notes",
+                        "related": "http://localhostx:3000/api/user/100080/progression_notes"
+                    },
+                    "data": []
+                },
+                "change_orders_creator": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100080/relationships/change_orders_creator",
+                        "related": "http://localhostx:3000/api/user/100080/change_orders_creator"
+                    },
+                    "data": []
+                },
+                "change_orders_reviewer": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100080/relationships/change_orders_reviewer",
+                        "related": "http://localhostx:3000/api/user/100080/change_orders_reviewer"
+                    },
+                    "data": []
+                },
+                "change_orders_approver": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100080/relationships/change_orders_approver",
+                        "related": "http://localhostx:3000/api/user/100080/change_orders_approver"
+                    },
+                    "data": []
+                },
+                "bids_requested": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100080/relationships/bids_requested",
+                        "related": "http://localhostx:3000/api/user/100080/bids_requested"
+                    },
+                    "data": []
+                },
+                "bids_created": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100080/relationships/bids_created",
+                        "related": "http://localhostx:3000/api/user/100080/bids_created"
+                    },
+                    "data": []
+                },
+                "bids_reviewed": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100080/relationships/bids_reviewed",
+                        "related": "http://localhostx:3000/api/user/100080/bids_reviewed"
+                    },
+                    "data": []
+                },
+                "bids_approved": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100080/relationships/bids_approved",
+                        "related": "http://localhostx:3000/api/user/100080/bids_approved"
+                    },
+                    "data": []
+                },
+                "files_owned": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100080/relationships/files_owned",
+                        "related": "http://localhostx:3000/api/user/100080/files_owned"
+                    },
+                    "data": []
+                },
+                "file_permissions": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100080/relationships/file_permissions",
+                        "related": "http://localhostx:3000/api/user/100080/file_permissions"
+                    },
+                    "data": []
+                },
+                "api_log": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100080/relationships/api_log",
+                        "related": "http://localhostx:3000/api/user/100080/api_log"
+                    },
+                    "data": []
+                },
+                "clicks_activity": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100080/relationships/clicks_activity",
+                        "related": "http://localhostx:3000/api/user/100080/clicks_activity"
+                    },
+                    "data": []
+                }
+            }
+        },
+        {
+            "type": "user",
+            "id": 100081,
+            "attributes": {
+                "created_at": "2024-05-21T17:15:19.934Z",
+                "updated_at": "2024-05-21T17:15:19.934Z",
+                "active": true,
+                "username": "Peter.CharlotteDC",
+                "email": "Peter.CharlotteDC@mail.com",
+                "first_name": "Peter",
+                "middle_name": "FA",
+                "last_name": "CharlotteDC",
+                "phone_number_mobile": "1234567890",
+                "text_enabled": true,
+                "phone_verified": false,
+                "phone_number_home": "9999999999",
+                "email_verified": true,
+                "last_login": null,
+                "last_failed_login": null,
+                "admin": false,
+                "status": "",
+                "language": [
+                    ""
+                ],
+                "forced_login": false,
+                "failed_login_count": 0,
+                "address1": "",
+                "address2": "",
+                "state": "",
+                "zipcode": "",
+                "profile_picture_url": "",
+                "referral_code": "",
+                "referred_by": "",
+                "date_of_birth": null,
+                "user_fully_onboarded": false,
+                "user_type": "business"
+            },
+            "links": {
+                "self": "http://localhostx:3000/api/user/100081"
+            },
+            "relationships": {
+                "business_creator": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100081/relationships/business_creator",
+                        "related": "http://localhostx:3000/api/user/100081/business_creator"
+                    },
+                    "data": null
+                },
+                "business_documents": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100081/relationships/business_documents",
+                        "related": "http://localhostx:3000/api/user/100081/business_documents"
+                    },
+                    "data": []
+                },
+                "home_owner_projects": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100081/relationships/home_owner_projects",
+                        "related": "http://localhostx:3000/api/user/100081/home_owner_projects"
+                    },
+                    "data": []
+                },
+                "business_user_roles": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100081/relationships/business_user_roles",
+                        "related": "http://localhostx:3000/api/user/100081/business_user_roles"
+                    },
+                    "data": [
+                        {
+                            "type": "business_User_Roles",
+                            "id": 103080
+                        }
+                    ]
+                },
+                "project_assignments": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100081/relationships/project_assignments",
+                        "related": "http://localhostx:3000/api/user/100081/project_assignments"
+                    },
+                    "data": []
+                },
+                "tasks": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100081/relationships/tasks",
+                        "related": "http://localhostx:3000/api/user/100081/tasks"
+                    },
+                    "data": []
+                },
+                "punch_list": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100081/relationships/punch_list",
+                        "related": "http://localhostx:3000/api/user/100081/punch_list"
+                    },
+                    "data": []
+                },
+                "daily_logs": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100081/relationships/daily_logs",
+                        "related": "http://localhostx:3000/api/user/100081/daily_logs"
+                    },
+                    "data": []
+                },
+                "progression_notes": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100081/relationships/progression_notes",
+                        "related": "http://localhostx:3000/api/user/100081/progression_notes"
+                    },
+                    "data": []
+                },
+                "change_orders_creator": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100081/relationships/change_orders_creator",
+                        "related": "http://localhostx:3000/api/user/100081/change_orders_creator"
+                    },
+                    "data": []
+                },
+                "change_orders_reviewer": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100081/relationships/change_orders_reviewer",
+                        "related": "http://localhostx:3000/api/user/100081/change_orders_reviewer"
+                    },
+                    "data": []
+                },
+                "change_orders_approver": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100081/relationships/change_orders_approver",
+                        "related": "http://localhostx:3000/api/user/100081/change_orders_approver"
+                    },
+                    "data": []
+                },
+                "bids_requested": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100081/relationships/bids_requested",
+                        "related": "http://localhostx:3000/api/user/100081/bids_requested"
+                    },
+                    "data": []
+                },
+                "bids_created": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100081/relationships/bids_created",
+                        "related": "http://localhostx:3000/api/user/100081/bids_created"
+                    },
+                    "data": []
+                },
+                "bids_reviewed": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100081/relationships/bids_reviewed",
+                        "related": "http://localhostx:3000/api/user/100081/bids_reviewed"
+                    },
+                    "data": []
+                },
+                "bids_approved": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100081/relationships/bids_approved",
+                        "related": "http://localhostx:3000/api/user/100081/bids_approved"
+                    },
+                    "data": []
+                },
+                "files_owned": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100081/relationships/files_owned",
+                        "related": "http://localhostx:3000/api/user/100081/files_owned"
+                    },
+                    "data": []
+                },
+                "file_permissions": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100081/relationships/file_permissions",
+                        "related": "http://localhostx:3000/api/user/100081/file_permissions"
+                    },
+                    "data": []
+                },
+                "api_log": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100081/relationships/api_log",
+                        "related": "http://localhostx:3000/api/user/100081/api_log"
+                    },
+                    "data": []
+                },
+                "clicks_activity": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100081/relationships/clicks_activity",
+                        "related": "http://localhostx:3000/api/user/100081/clicks_activity"
+                    },
+                    "data": []
+                }
+            }
+        },
+        {
+            "type": "user",
+            "id": 100082,
+            "attributes": {
+                "created_at": "2024-05-21T17:15:20.137Z",
+                "updated_at": "2024-05-21T17:15:20.137Z",
+                "active": true,
+                "username": "Chris.CharlotteDC",
+                "email": "Chris.CharlotteDC@mail.com",
+                "first_name": "Chris",
+                "middle_name": "PM_FC",
+                "last_name": "CharlotteDC",
+                "phone_number_mobile": "1234567890",
+                "text_enabled": true,
+                "phone_verified": false,
+                "phone_number_home": "9999999999",
+                "email_verified": true,
+                "last_login": null,
+                "last_failed_login": null,
+                "admin": false,
+                "status": "",
+                "language": [
+                    ""
+                ],
+                "forced_login": false,
+                "failed_login_count": 0,
+                "address1": "",
+                "address2": "",
+                "state": "",
+                "zipcode": "",
+                "profile_picture_url": "",
+                "referral_code": "",
+                "referred_by": "",
+                "date_of_birth": null,
+                "user_fully_onboarded": false,
+                "user_type": "business"
+            },
+            "links": {
+                "self": "http://localhostx:3000/api/user/100082"
+            },
+            "relationships": {
+                "business_creator": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100082/relationships/business_creator",
+                        "related": "http://localhostx:3000/api/user/100082/business_creator"
+                    },
+                    "data": {
+                        "type": "business",
+                        "id": 101028
+                    }
+                },
+                "business_documents": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100082/relationships/business_documents",
+                        "related": "http://localhostx:3000/api/user/100082/business_documents"
+                    },
+                    "data": []
+                },
+                "home_owner_projects": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100082/relationships/home_owner_projects",
+                        "related": "http://localhostx:3000/api/user/100082/home_owner_projects"
+                    },
+                    "data": []
+                },
+                "business_user_roles": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100082/relationships/business_user_roles",
+                        "related": "http://localhostx:3000/api/user/100082/business_user_roles"
+                    },
+                    "data": [
+                        {
+                            "type": "business_User_Roles",
+                            "id": 103081
+                        }
+                    ]
+                },
+                "project_assignments": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100082/relationships/project_assignments",
+                        "related": "http://localhostx:3000/api/user/100082/project_assignments"
+                    },
+                    "data": []
+                },
+                "tasks": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100082/relationships/tasks",
+                        "related": "http://localhostx:3000/api/user/100082/tasks"
+                    },
+                    "data": []
+                },
+                "punch_list": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100082/relationships/punch_list",
+                        "related": "http://localhostx:3000/api/user/100082/punch_list"
+                    },
+                    "data": []
+                },
+                "daily_logs": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100082/relationships/daily_logs",
+                        "related": "http://localhostx:3000/api/user/100082/daily_logs"
+                    },
+                    "data": []
+                },
+                "progression_notes": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100082/relationships/progression_notes",
+                        "related": "http://localhostx:3000/api/user/100082/progression_notes"
+                    },
+                    "data": []
+                },
+                "change_orders_creator": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100082/relationships/change_orders_creator",
+                        "related": "http://localhostx:3000/api/user/100082/change_orders_creator"
+                    },
+                    "data": []
+                },
+                "change_orders_reviewer": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100082/relationships/change_orders_reviewer",
+                        "related": "http://localhostx:3000/api/user/100082/change_orders_reviewer"
+                    },
+                    "data": []
+                },
+                "change_orders_approver": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100082/relationships/change_orders_approver",
+                        "related": "http://localhostx:3000/api/user/100082/change_orders_approver"
+                    },
+                    "data": []
+                },
+                "bids_requested": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100082/relationships/bids_requested",
+                        "related": "http://localhostx:3000/api/user/100082/bids_requested"
+                    },
+                    "data": []
+                },
+                "bids_created": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100082/relationships/bids_created",
+                        "related": "http://localhostx:3000/api/user/100082/bids_created"
+                    },
+                    "data": []
+                },
+                "bids_reviewed": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100082/relationships/bids_reviewed",
+                        "related": "http://localhostx:3000/api/user/100082/bids_reviewed"
+                    },
+                    "data": []
+                },
+                "bids_approved": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100082/relationships/bids_approved",
+                        "related": "http://localhostx:3000/api/user/100082/bids_approved"
+                    },
+                    "data": []
+                },
+                "files_owned": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100082/relationships/files_owned",
+                        "related": "http://localhostx:3000/api/user/100082/files_owned"
+                    },
+                    "data": []
+                },
+                "file_permissions": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100082/relationships/file_permissions",
+                        "related": "http://localhostx:3000/api/user/100082/file_permissions"
+                    },
+                    "data": []
+                },
+                "api_log": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100082/relationships/api_log",
+                        "related": "http://localhostx:3000/api/user/100082/api_log"
+                    },
+                    "data": []
+                },
+                "clicks_activity": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100082/relationships/clicks_activity",
+                        "related": "http://localhostx:3000/api/user/100082/clicks_activity"
+                    },
+                    "data": []
+                }
+            }
+        },
+        {
+            "type": "user",
+            "id": 100083,
+            "attributes": {
+                "created_at": "2024-05-21T17:15:20.344Z",
+                "updated_at": "2024-05-21T17:15:20.344Z",
+                "active": true,
+                "username": "David.MarcoDrywaller",
+                "email": "David.MarcoDrywaller@mail.com",
+                "first_name": "David",
+                "middle_name": "FA",
+                "last_name": "MarcoDrywaller",
+                "phone_number_mobile": "1234567890",
+                "text_enabled": true,
+                "phone_verified": false,
+                "phone_number_home": "9999999999",
+                "email_verified": true,
+                "last_login": null,
+                "last_failed_login": null,
+                "admin": false,
+                "status": "",
+                "language": [
+                    ""
+                ],
+                "forced_login": false,
+                "failed_login_count": 0,
+                "address1": "",
+                "address2": "",
+                "state": "",
+                "zipcode": "",
+                "profile_picture_url": "",
+                "referral_code": "",
+                "referred_by": "",
+                "date_of_birth": null,
+                "user_fully_onboarded": false,
+                "user_type": "business"
+            },
+            "links": {
+                "self": "http://localhostx:3000/api/user/100083"
+            },
+            "relationships": {
+                "business_creator": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100083/relationships/business_creator",
+                        "related": "http://localhostx:3000/api/user/100083/business_creator"
+                    },
+                    "data": {
+                        "type": "business",
+                        "id": 101029
+                    }
+                },
+                "business_documents": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100083/relationships/business_documents",
+                        "related": "http://localhostx:3000/api/user/100083/business_documents"
+                    },
+                    "data": []
+                },
+                "home_owner_projects": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100083/relationships/home_owner_projects",
+                        "related": "http://localhostx:3000/api/user/100083/home_owner_projects"
+                    },
+                    "data": []
+                },
+                "business_user_roles": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100083/relationships/business_user_roles",
+                        "related": "http://localhostx:3000/api/user/100083/business_user_roles"
+                    },
+                    "data": [
+                        {
+                            "type": "business_User_Roles",
+                            "id": 103082
+                        }
+                    ]
+                },
+                "project_assignments": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100083/relationships/project_assignments",
+                        "related": "http://localhostx:3000/api/user/100083/project_assignments"
+                    },
+                    "data": []
+                },
+                "tasks": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100083/relationships/tasks",
+                        "related": "http://localhostx:3000/api/user/100083/tasks"
+                    },
+                    "data": []
+                },
+                "punch_list": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100083/relationships/punch_list",
+                        "related": "http://localhostx:3000/api/user/100083/punch_list"
+                    },
+                    "data": []
+                },
+                "daily_logs": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100083/relationships/daily_logs",
+                        "related": "http://localhostx:3000/api/user/100083/daily_logs"
+                    },
+                    "data": []
+                },
+                "progression_notes": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100083/relationships/progression_notes",
+                        "related": "http://localhostx:3000/api/user/100083/progression_notes"
+                    },
+                    "data": []
+                },
+                "change_orders_creator": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100083/relationships/change_orders_creator",
+                        "related": "http://localhostx:3000/api/user/100083/change_orders_creator"
+                    },
+                    "data": []
+                },
+                "change_orders_reviewer": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100083/relationships/change_orders_reviewer",
+                        "related": "http://localhostx:3000/api/user/100083/change_orders_reviewer"
+                    },
+                    "data": []
+                },
+                "change_orders_approver": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100083/relationships/change_orders_approver",
+                        "related": "http://localhostx:3000/api/user/100083/change_orders_approver"
+                    },
+                    "data": []
+                },
+                "bids_requested": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100083/relationships/bids_requested",
+                        "related": "http://localhostx:3000/api/user/100083/bids_requested"
+                    },
+                    "data": []
+                },
+                "bids_created": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100083/relationships/bids_created",
+                        "related": "http://localhostx:3000/api/user/100083/bids_created"
+                    },
+                    "data": []
+                },
+                "bids_reviewed": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100083/relationships/bids_reviewed",
+                        "related": "http://localhostx:3000/api/user/100083/bids_reviewed"
+                    },
+                    "data": []
+                },
+                "bids_approved": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100083/relationships/bids_approved",
+                        "related": "http://localhostx:3000/api/user/100083/bids_approved"
+                    },
+                    "data": []
+                },
+                "files_owned": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100083/relationships/files_owned",
+                        "related": "http://localhostx:3000/api/user/100083/files_owned"
+                    },
+                    "data": []
+                },
+                "file_permissions": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100083/relationships/file_permissions",
+                        "related": "http://localhostx:3000/api/user/100083/file_permissions"
+                    },
+                    "data": []
+                },
+                "api_log": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100083/relationships/api_log",
+                        "related": "http://localhostx:3000/api/user/100083/api_log"
+                    },
+                    "data": []
+                },
+                "clicks_activity": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100083/relationships/clicks_activity",
+                        "related": "http://localhostx:3000/api/user/100083/clicks_activity"
+                    },
+                    "data": []
+                }
+            }
+        },
+        {
+            "type": "user",
+            "id": 100084,
+            "attributes": {
+                "created_at": "2024-05-21T17:15:20.581Z",
+                "updated_at": "2024-05-21T17:15:20.581Z",
+                "active": true,
+                "username": "Tom.MonroyPainting",
+                "email": "Tom.MonroyPainting@mail.com",
+                "first_name": "Tom",
+                "middle_name": "FA",
+                "last_name": "MonroyPainting",
+                "phone_number_mobile": "1234567890",
+                "text_enabled": true,
+                "phone_verified": false,
+                "phone_number_home": "9999999999",
+                "email_verified": true,
+                "last_login": null,
+                "last_failed_login": null,
+                "admin": false,
+                "status": "",
+                "language": [
+                    ""
+                ],
+                "forced_login": false,
+                "failed_login_count": 0,
+                "address1": "",
+                "address2": "",
+                "state": "",
+                "zipcode": "",
+                "profile_picture_url": "",
+                "referral_code": "",
+                "referred_by": "",
+                "date_of_birth": null,
+                "user_fully_onboarded": false,
+                "user_type": "business"
+            },
+            "links": {
+                "self": "http://localhostx:3000/api/user/100084"
+            },
+            "relationships": {
+                "business_creator": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100084/relationships/business_creator",
+                        "related": "http://localhostx:3000/api/user/100084/business_creator"
+                    },
+                    "data": {
+                        "type": "business",
+                        "id": 101030
+                    }
+                },
+                "business_documents": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100084/relationships/business_documents",
+                        "related": "http://localhostx:3000/api/user/100084/business_documents"
+                    },
+                    "data": []
+                },
+                "home_owner_projects": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100084/relationships/home_owner_projects",
+                        "related": "http://localhostx:3000/api/user/100084/home_owner_projects"
+                    },
+                    "data": []
+                },
+                "business_user_roles": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100084/relationships/business_user_roles",
+                        "related": "http://localhostx:3000/api/user/100084/business_user_roles"
+                    },
+                    "data": [
+                        {
+                            "type": "business_User_Roles",
+                            "id": 103083
+                        }
+                    ]
+                },
+                "project_assignments": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100084/relationships/project_assignments",
+                        "related": "http://localhostx:3000/api/user/100084/project_assignments"
+                    },
+                    "data": []
+                },
+                "tasks": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100084/relationships/tasks",
+                        "related": "http://localhostx:3000/api/user/100084/tasks"
+                    },
+                    "data": []
+                },
+                "punch_list": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100084/relationships/punch_list",
+                        "related": "http://localhostx:3000/api/user/100084/punch_list"
+                    },
+                    "data": []
+                },
+                "daily_logs": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100084/relationships/daily_logs",
+                        "related": "http://localhostx:3000/api/user/100084/daily_logs"
+                    },
+                    "data": []
+                },
+                "progression_notes": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100084/relationships/progression_notes",
+                        "related": "http://localhostx:3000/api/user/100084/progression_notes"
+                    },
+                    "data": []
+                },
+                "change_orders_creator": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100084/relationships/change_orders_creator",
+                        "related": "http://localhostx:3000/api/user/100084/change_orders_creator"
+                    },
+                    "data": []
+                },
+                "change_orders_reviewer": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100084/relationships/change_orders_reviewer",
+                        "related": "http://localhostx:3000/api/user/100084/change_orders_reviewer"
+                    },
+                    "data": []
+                },
+                "change_orders_approver": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100084/relationships/change_orders_approver",
+                        "related": "http://localhostx:3000/api/user/100084/change_orders_approver"
+                    },
+                    "data": []
+                },
+                "bids_requested": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100084/relationships/bids_requested",
+                        "related": "http://localhostx:3000/api/user/100084/bids_requested"
+                    },
+                    "data": []
+                },
+                "bids_created": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100084/relationships/bids_created",
+                        "related": "http://localhostx:3000/api/user/100084/bids_created"
+                    },
+                    "data": []
+                },
+                "bids_reviewed": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100084/relationships/bids_reviewed",
+                        "related": "http://localhostx:3000/api/user/100084/bids_reviewed"
+                    },
+                    "data": []
+                },
+                "bids_approved": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100084/relationships/bids_approved",
+                        "related": "http://localhostx:3000/api/user/100084/bids_approved"
+                    },
+                    "data": []
+                },
+                "files_owned": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100084/relationships/files_owned",
+                        "related": "http://localhostx:3000/api/user/100084/files_owned"
+                    },
+                    "data": []
+                },
+                "file_permissions": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100084/relationships/file_permissions",
+                        "related": "http://localhostx:3000/api/user/100084/file_permissions"
+                    },
+                    "data": []
+                },
+                "api_log": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100084/relationships/api_log",
+                        "related": "http://localhostx:3000/api/user/100084/api_log"
+                    },
+                    "data": []
+                },
+                "clicks_activity": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100084/relationships/clicks_activity",
+                        "related": "http://localhostx:3000/api/user/100084/clicks_activity"
+                    },
+                    "data": []
+                }
+            }
+        },
+        {
+            "type": "user",
+            "id": 100085,
+            "attributes": {
+                "created_at": "2024-05-21T17:15:20.788Z",
+                "updated_at": "2024-05-21T17:15:20.788Z",
+                "active": true,
+                "username": "Patrick.JuanPainter",
+                "email": "Patrick.JuanPainter@mail.com",
+                "first_name": "Patrick",
+                "middle_name": "FA",
+                "last_name": "JuanPainter",
+                "phone_number_mobile": "1234567890",
+                "text_enabled": true,
+                "phone_verified": false,
+                "phone_number_home": "9999999999",
+                "email_verified": true,
+                "last_login": null,
+                "last_failed_login": null,
+                "admin": false,
+                "status": "",
+                "language": [
+                    ""
+                ],
+                "forced_login": false,
+                "failed_login_count": 0,
+                "address1": "",
+                "address2": "",
+                "state": "",
+                "zipcode": "",
+                "profile_picture_url": "",
+                "referral_code": "",
+                "referred_by": "",
+                "date_of_birth": null,
+                "user_fully_onboarded": false,
+                "user_type": "business"
+            },
+            "links": {
+                "self": "http://localhostx:3000/api/user/100085"
+            },
+            "relationships": {
+                "business_creator": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100085/relationships/business_creator",
+                        "related": "http://localhostx:3000/api/user/100085/business_creator"
+                    },
+                    "data": {
+                        "type": "business",
+                        "id": 101031
+                    }
+                },
+                "business_documents": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100085/relationships/business_documents",
+                        "related": "http://localhostx:3000/api/user/100085/business_documents"
+                    },
+                    "data": []
+                },
+                "home_owner_projects": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100085/relationships/home_owner_projects",
+                        "related": "http://localhostx:3000/api/user/100085/home_owner_projects"
+                    },
+                    "data": []
+                },
+                "business_user_roles": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100085/relationships/business_user_roles",
+                        "related": "http://localhostx:3000/api/user/100085/business_user_roles"
+                    },
+                    "data": [
+                        {
+                            "type": "business_User_Roles",
+                            "id": 103084
+                        }
+                    ]
+                },
+                "project_assignments": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100085/relationships/project_assignments",
+                        "related": "http://localhostx:3000/api/user/100085/project_assignments"
+                    },
+                    "data": []
+                },
+                "tasks": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100085/relationships/tasks",
+                        "related": "http://localhostx:3000/api/user/100085/tasks"
+                    },
+                    "data": []
+                },
+                "punch_list": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100085/relationships/punch_list",
+                        "related": "http://localhostx:3000/api/user/100085/punch_list"
+                    },
+                    "data": []
+                },
+                "daily_logs": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100085/relationships/daily_logs",
+                        "related": "http://localhostx:3000/api/user/100085/daily_logs"
+                    },
+                    "data": []
+                },
+                "progression_notes": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100085/relationships/progression_notes",
+                        "related": "http://localhostx:3000/api/user/100085/progression_notes"
+                    },
+                    "data": []
+                },
+                "change_orders_creator": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100085/relationships/change_orders_creator",
+                        "related": "http://localhostx:3000/api/user/100085/change_orders_creator"
+                    },
+                    "data": []
+                },
+                "change_orders_reviewer": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100085/relationships/change_orders_reviewer",
+                        "related": "http://localhostx:3000/api/user/100085/change_orders_reviewer"
+                    },
+                    "data": []
+                },
+                "change_orders_approver": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100085/relationships/change_orders_approver",
+                        "related": "http://localhostx:3000/api/user/100085/change_orders_approver"
+                    },
+                    "data": []
+                },
+                "bids_requested": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100085/relationships/bids_requested",
+                        "related": "http://localhostx:3000/api/user/100085/bids_requested"
+                    },
+                    "data": []
+                },
+                "bids_created": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100085/relationships/bids_created",
+                        "related": "http://localhostx:3000/api/user/100085/bids_created"
+                    },
+                    "data": []
+                },
+                "bids_reviewed": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100085/relationships/bids_reviewed",
+                        "related": "http://localhostx:3000/api/user/100085/bids_reviewed"
+                    },
+                    "data": []
+                },
+                "bids_approved": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100085/relationships/bids_approved",
+                        "related": "http://localhostx:3000/api/user/100085/bids_approved"
+                    },
+                    "data": []
+                },
+                "files_owned": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100085/relationships/files_owned",
+                        "related": "http://localhostx:3000/api/user/100085/files_owned"
+                    },
+                    "data": []
+                },
+                "file_permissions": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100085/relationships/file_permissions",
+                        "related": "http://localhostx:3000/api/user/100085/file_permissions"
+                    },
+                    "data": []
+                },
+                "api_log": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100085/relationships/api_log",
+                        "related": "http://localhostx:3000/api/user/100085/api_log"
+                    },
+                    "data": []
+                },
+                "clicks_activity": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100085/relationships/clicks_activity",
+                        "related": "http://localhostx:3000/api/user/100085/clicks_activity"
+                    },
+                    "data": []
+                }
+            }
+        },
+        {
+            "type": "user",
+            "id": 100086,
+            "attributes": {
+                "created_at": "2024-05-21T17:15:20.979Z",
+                "updated_at": "2024-05-21T17:15:20.979Z",
+                "active": true,
+                "username": "Alex.GrierTrimmer",
+                "email": "Alex.GrierTrimmer@mail.com",
+                "first_name": "Alex",
+                "middle_name": "FA",
+                "last_name": "GrierTrimmer",
+                "phone_number_mobile": "1234567890",
+                "text_enabled": true,
+                "phone_verified": false,
+                "phone_number_home": "9999999999",
+                "email_verified": true,
+                "last_login": null,
+                "last_failed_login": null,
+                "admin": false,
+                "status": "",
+                "language": [
+                    ""
+                ],
+                "forced_login": false,
+                "failed_login_count": 0,
+                "address1": "",
+                "address2": "",
+                "state": "",
+                "zipcode": "",
+                "profile_picture_url": "",
+                "referral_code": "",
+                "referred_by": "",
+                "date_of_birth": null,
+                "user_fully_onboarded": false,
+                "user_type": "business"
+            },
+            "links": {
+                "self": "http://localhostx:3000/api/user/100086"
+            },
+            "relationships": {
+                "business_creator": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100086/relationships/business_creator",
+                        "related": "http://localhostx:3000/api/user/100086/business_creator"
+                    },
+                    "data": {
+                        "type": "business",
+                        "id": 101032
+                    }
+                },
+                "business_documents": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100086/relationships/business_documents",
+                        "related": "http://localhostx:3000/api/user/100086/business_documents"
+                    },
+                    "data": []
+                },
+                "home_owner_projects": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100086/relationships/home_owner_projects",
+                        "related": "http://localhostx:3000/api/user/100086/home_owner_projects"
+                    },
+                    "data": []
+                },
+                "business_user_roles": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100086/relationships/business_user_roles",
+                        "related": "http://localhostx:3000/api/user/100086/business_user_roles"
+                    },
+                    "data": [
+                        {
+                            "type": "business_User_Roles",
+                            "id": 103085
+                        }
+                    ]
+                },
+                "project_assignments": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100086/relationships/project_assignments",
+                        "related": "http://localhostx:3000/api/user/100086/project_assignments"
+                    },
+                    "data": []
+                },
+                "tasks": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100086/relationships/tasks",
+                        "related": "http://localhostx:3000/api/user/100086/tasks"
+                    },
+                    "data": []
+                },
+                "punch_list": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100086/relationships/punch_list",
+                        "related": "http://localhostx:3000/api/user/100086/punch_list"
+                    },
+                    "data": []
+                },
+                "daily_logs": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100086/relationships/daily_logs",
+                        "related": "http://localhostx:3000/api/user/100086/daily_logs"
+                    },
+                    "data": []
+                },
+                "progression_notes": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100086/relationships/progression_notes",
+                        "related": "http://localhostx:3000/api/user/100086/progression_notes"
+                    },
+                    "data": []
+                },
+                "change_orders_creator": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100086/relationships/change_orders_creator",
+                        "related": "http://localhostx:3000/api/user/100086/change_orders_creator"
+                    },
+                    "data": []
+                },
+                "change_orders_reviewer": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100086/relationships/change_orders_reviewer",
+                        "related": "http://localhostx:3000/api/user/100086/change_orders_reviewer"
+                    },
+                    "data": []
+                },
+                "change_orders_approver": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100086/relationships/change_orders_approver",
+                        "related": "http://localhostx:3000/api/user/100086/change_orders_approver"
+                    },
+                    "data": []
+                },
+                "bids_requested": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100086/relationships/bids_requested",
+                        "related": "http://localhostx:3000/api/user/100086/bids_requested"
+                    },
+                    "data": []
+                },
+                "bids_created": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100086/relationships/bids_created",
+                        "related": "http://localhostx:3000/api/user/100086/bids_created"
+                    },
+                    "data": []
+                },
+                "bids_reviewed": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100086/relationships/bids_reviewed",
+                        "related": "http://localhostx:3000/api/user/100086/bids_reviewed"
+                    },
+                    "data": []
+                },
+                "bids_approved": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100086/relationships/bids_approved",
+                        "related": "http://localhostx:3000/api/user/100086/bids_approved"
+                    },
+                    "data": []
+                },
+                "files_owned": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100086/relationships/files_owned",
+                        "related": "http://localhostx:3000/api/user/100086/files_owned"
+                    },
+                    "data": []
+                },
+                "file_permissions": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100086/relationships/file_permissions",
+                        "related": "http://localhostx:3000/api/user/100086/file_permissions"
+                    },
+                    "data": []
+                },
+                "api_log": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100086/relationships/api_log",
+                        "related": "http://localhostx:3000/api/user/100086/api_log"
+                    },
+                    "data": []
+                },
+                "clicks_activity": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100086/relationships/clicks_activity",
+                        "related": "http://localhostx:3000/api/user/100086/clicks_activity"
+                    },
+                    "data": []
+                }
+            }
+        },
+        {
+            "type": "user",
+            "id": 100087,
+            "attributes": {
+                "created_at": "2024-05-21T17:15:21.191Z",
+                "updated_at": "2024-05-21T17:15:21.191Z",
+                "active": true,
+                "username": "Marcus.MarcusTrimmer",
+                "email": "Marcus.MarcusTrimmer@mail.com",
+                "first_name": "Marcus",
+                "middle_name": "FA",
+                "last_name": "MarcusTrimmer",
+                "phone_number_mobile": "1234567890",
+                "text_enabled": true,
+                "phone_verified": false,
+                "phone_number_home": "9999999999",
+                "email_verified": true,
+                "last_login": null,
+                "last_failed_login": null,
+                "admin": false,
+                "status": "",
+                "language": [
+                    ""
+                ],
+                "forced_login": false,
+                "failed_login_count": 0,
+                "address1": "",
+                "address2": "",
+                "state": "",
+                "zipcode": "",
+                "profile_picture_url": "",
+                "referral_code": "",
+                "referred_by": "",
+                "date_of_birth": null,
+                "user_fully_onboarded": false,
+                "user_type": "business"
+            },
+            "links": {
+                "self": "http://localhostx:3000/api/user/100087"
+            },
+            "relationships": {
+                "business_creator": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100087/relationships/business_creator",
+                        "related": "http://localhostx:3000/api/user/100087/business_creator"
+                    },
+                    "data": null
+                },
+                "business_documents": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100087/relationships/business_documents",
+                        "related": "http://localhostx:3000/api/user/100087/business_documents"
+                    },
+                    "data": []
+                },
+                "home_owner_projects": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100087/relationships/home_owner_projects",
+                        "related": "http://localhostx:3000/api/user/100087/home_owner_projects"
+                    },
+                    "data": []
+                },
+                "business_user_roles": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100087/relationships/business_user_roles",
+                        "related": "http://localhostx:3000/api/user/100087/business_user_roles"
+                    },
+                    "data": [
+                        {
+                            "type": "business_User_Roles",
+                            "id": 103086
+                        }
+                    ]
+                },
+                "project_assignments": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100087/relationships/project_assignments",
+                        "related": "http://localhostx:3000/api/user/100087/project_assignments"
+                    },
+                    "data": []
+                },
+                "tasks": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100087/relationships/tasks",
+                        "related": "http://localhostx:3000/api/user/100087/tasks"
+                    },
+                    "data": []
+                },
+                "punch_list": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100087/relationships/punch_list",
+                        "related": "http://localhostx:3000/api/user/100087/punch_list"
+                    },
+                    "data": []
+                },
+                "daily_logs": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100087/relationships/daily_logs",
+                        "related": "http://localhostx:3000/api/user/100087/daily_logs"
+                    },
+                    "data": []
+                },
+                "progression_notes": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100087/relationships/progression_notes",
+                        "related": "http://localhostx:3000/api/user/100087/progression_notes"
+                    },
+                    "data": []
+                },
+                "change_orders_creator": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100087/relationships/change_orders_creator",
+                        "related": "http://localhostx:3000/api/user/100087/change_orders_creator"
+                    },
+                    "data": []
+                },
+                "change_orders_reviewer": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100087/relationships/change_orders_reviewer",
+                        "related": "http://localhostx:3000/api/user/100087/change_orders_reviewer"
+                    },
+                    "data": []
+                },
+                "change_orders_approver": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100087/relationships/change_orders_approver",
+                        "related": "http://localhostx:3000/api/user/100087/change_orders_approver"
+                    },
+                    "data": []
+                },
+                "bids_requested": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100087/relationships/bids_requested",
+                        "related": "http://localhostx:3000/api/user/100087/bids_requested"
+                    },
+                    "data": []
+                },
+                "bids_created": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100087/relationships/bids_created",
+                        "related": "http://localhostx:3000/api/user/100087/bids_created"
+                    },
+                    "data": []
+                },
+                "bids_reviewed": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100087/relationships/bids_reviewed",
+                        "related": "http://localhostx:3000/api/user/100087/bids_reviewed"
+                    },
+                    "data": []
+                },
+                "bids_approved": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100087/relationships/bids_approved",
+                        "related": "http://localhostx:3000/api/user/100087/bids_approved"
+                    },
+                    "data": []
+                },
+                "files_owned": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100087/relationships/files_owned",
+                        "related": "http://localhostx:3000/api/user/100087/files_owned"
+                    },
+                    "data": []
+                },
+                "file_permissions": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100087/relationships/file_permissions",
+                        "related": "http://localhostx:3000/api/user/100087/file_permissions"
+                    },
+                    "data": []
+                },
+                "api_log": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100087/relationships/api_log",
+                        "related": "http://localhostx:3000/api/user/100087/api_log"
+                    },
+                    "data": []
+                },
+                "clicks_activity": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100087/relationships/clicks_activity",
+                        "related": "http://localhostx:3000/api/user/100087/clicks_activity"
+                    },
+                    "data": []
+                }
+            }
+        },
+        {
+            "type": "user",
+            "id": 100088,
+            "attributes": {
+                "created_at": "2024-05-21T17:15:21.406Z",
+                "updated_at": "2024-05-21T17:15:21.406Z",
+                "active": true,
+                "username": "Samuel.MarcusTrimmer",
+                "email": "Samuel.MarcusTrimmer@mail.com",
+                "first_name": "Samuel",
+                "middle_name": "FA",
+                "last_name": "MarcusTrimmer",
+                "phone_number_mobile": "1234567890",
+                "text_enabled": true,
+                "phone_verified": false,
+                "phone_number_home": "9999999999",
+                "email_verified": true,
+                "last_login": null,
+                "last_failed_login": null,
+                "admin": false,
+                "status": "",
+                "language": [
+                    ""
+                ],
+                "forced_login": false,
+                "failed_login_count": 0,
+                "address1": "",
+                "address2": "",
+                "state": "",
+                "zipcode": "",
+                "profile_picture_url": "",
+                "referral_code": "",
+                "referred_by": "",
+                "date_of_birth": null,
+                "user_fully_onboarded": false,
+                "user_type": "business"
+            },
+            "links": {
+                "self": "http://localhostx:3000/api/user/100088"
+            },
+            "relationships": {
+                "business_creator": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100088/relationships/business_creator",
+                        "related": "http://localhostx:3000/api/user/100088/business_creator"
+                    },
+                    "data": {
+                        "type": "business",
+                        "id": 101033
+                    }
+                },
+                "business_documents": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100088/relationships/business_documents",
+                        "related": "http://localhostx:3000/api/user/100088/business_documents"
+                    },
+                    "data": []
+                },
+                "home_owner_projects": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100088/relationships/home_owner_projects",
+                        "related": "http://localhostx:3000/api/user/100088/home_owner_projects"
+                    },
+                    "data": []
+                },
+                "business_user_roles": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100088/relationships/business_user_roles",
+                        "related": "http://localhostx:3000/api/user/100088/business_user_roles"
+                    },
+                    "data": [
+                        {
+                            "type": "business_User_Roles",
+                            "id": 103087
+                        }
+                    ]
+                },
+                "project_assignments": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100088/relationships/project_assignments",
+                        "related": "http://localhostx:3000/api/user/100088/project_assignments"
+                    },
+                    "data": []
+                },
+                "tasks": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100088/relationships/tasks",
+                        "related": "http://localhostx:3000/api/user/100088/tasks"
+                    },
+                    "data": []
+                },
+                "punch_list": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100088/relationships/punch_list",
+                        "related": "http://localhostx:3000/api/user/100088/punch_list"
+                    },
+                    "data": []
+                },
+                "daily_logs": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100088/relationships/daily_logs",
+                        "related": "http://localhostx:3000/api/user/100088/daily_logs"
+                    },
+                    "data": []
+                },
+                "progression_notes": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100088/relationships/progression_notes",
+                        "related": "http://localhostx:3000/api/user/100088/progression_notes"
+                    },
+                    "data": []
+                },
+                "change_orders_creator": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100088/relationships/change_orders_creator",
+                        "related": "http://localhostx:3000/api/user/100088/change_orders_creator"
+                    },
+                    "data": []
+                },
+                "change_orders_reviewer": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100088/relationships/change_orders_reviewer",
+                        "related": "http://localhostx:3000/api/user/100088/change_orders_reviewer"
+                    },
+                    "data": []
+                },
+                "change_orders_approver": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100088/relationships/change_orders_approver",
+                        "related": "http://localhostx:3000/api/user/100088/change_orders_approver"
+                    },
+                    "data": []
+                },
+                "bids_requested": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100088/relationships/bids_requested",
+                        "related": "http://localhostx:3000/api/user/100088/bids_requested"
+                    },
+                    "data": []
+                },
+                "bids_created": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100088/relationships/bids_created",
+                        "related": "http://localhostx:3000/api/user/100088/bids_created"
+                    },
+                    "data": []
+                },
+                "bids_reviewed": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100088/relationships/bids_reviewed",
+                        "related": "http://localhostx:3000/api/user/100088/bids_reviewed"
+                    },
+                    "data": []
+                },
+                "bids_approved": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100088/relationships/bids_approved",
+                        "related": "http://localhostx:3000/api/user/100088/bids_approved"
+                    },
+                    "data": []
+                },
+                "files_owned": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100088/relationships/files_owned",
+                        "related": "http://localhostx:3000/api/user/100088/files_owned"
+                    },
+                    "data": []
+                },
+                "file_permissions": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100088/relationships/file_permissions",
+                        "related": "http://localhostx:3000/api/user/100088/file_permissions"
+                    },
+                    "data": []
+                },
+                "api_log": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100088/relationships/api_log",
+                        "related": "http://localhostx:3000/api/user/100088/api_log"
+                    },
+                    "data": []
+                },
+                "clicks_activity": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100088/relationships/clicks_activity",
+                        "related": "http://localhostx:3000/api/user/100088/clicks_activity"
+                    },
+                    "data": []
+                }
+            }
+        },
+        {
+            "type": "user",
+            "id": 100089,
+            "attributes": {
+                "created_at": "2024-05-21T17:15:21.629Z",
+                "updated_at": "2024-05-21T17:15:21.629Z",
+                "active": true,
+                "username": "Manuel.Landscape",
+                "email": "Manuel.Landscape@mail.com",
+                "first_name": "Manuel",
+                "middle_name": "FA",
+                "last_name": "Landscape",
+                "phone_number_mobile": "1234567890",
+                "text_enabled": true,
+                "phone_verified": false,
+                "phone_number_home": "9999999999",
+                "email_verified": true,
+                "last_login": null,
+                "last_failed_login": null,
+                "admin": false,
+                "status": "",
+                "language": [
+                    ""
+                ],
+                "forced_login": false,
+                "failed_login_count": 0,
+                "address1": "",
+                "address2": "",
+                "state": "",
+                "zipcode": "",
+                "profile_picture_url": "",
+                "referral_code": "",
+                "referred_by": "",
+                "date_of_birth": null,
+                "user_fully_onboarded": false,
+                "user_type": "business"
+            },
+            "links": {
+                "self": "http://localhostx:3000/api/user/100089"
+            },
+            "relationships": {
+                "business_creator": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100089/relationships/business_creator",
+                        "related": "http://localhostx:3000/api/user/100089/business_creator"
+                    },
+                    "data": {
+                        "type": "business",
+                        "id": 101034
+                    }
+                },
+                "business_documents": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100089/relationships/business_documents",
+                        "related": "http://localhostx:3000/api/user/100089/business_documents"
+                    },
+                    "data": []
+                },
+                "home_owner_projects": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100089/relationships/home_owner_projects",
+                        "related": "http://localhostx:3000/api/user/100089/home_owner_projects"
+                    },
+                    "data": []
+                },
+                "business_user_roles": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100089/relationships/business_user_roles",
+                        "related": "http://localhostx:3000/api/user/100089/business_user_roles"
+                    },
+                    "data": [
+                        {
+                            "type": "business_User_Roles",
+                            "id": 103088
+                        }
+                    ]
+                },
+                "project_assignments": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100089/relationships/project_assignments",
+                        "related": "http://localhostx:3000/api/user/100089/project_assignments"
+                    },
+                    "data": []
+                },
+                "tasks": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100089/relationships/tasks",
+                        "related": "http://localhostx:3000/api/user/100089/tasks"
+                    },
+                    "data": []
+                },
+                "punch_list": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100089/relationships/punch_list",
+                        "related": "http://localhostx:3000/api/user/100089/punch_list"
+                    },
+                    "data": []
+                },
+                "daily_logs": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100089/relationships/daily_logs",
+                        "related": "http://localhostx:3000/api/user/100089/daily_logs"
+                    },
+                    "data": []
+                },
+                "progression_notes": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100089/relationships/progression_notes",
+                        "related": "http://localhostx:3000/api/user/100089/progression_notes"
+                    },
+                    "data": []
+                },
+                "change_orders_creator": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100089/relationships/change_orders_creator",
+                        "related": "http://localhostx:3000/api/user/100089/change_orders_creator"
+                    },
+                    "data": []
+                },
+                "change_orders_reviewer": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100089/relationships/change_orders_reviewer",
+                        "related": "http://localhostx:3000/api/user/100089/change_orders_reviewer"
+                    },
+                    "data": []
+                },
+                "change_orders_approver": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100089/relationships/change_orders_approver",
+                        "related": "http://localhostx:3000/api/user/100089/change_orders_approver"
+                    },
+                    "data": []
+                },
+                "bids_requested": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100089/relationships/bids_requested",
+                        "related": "http://localhostx:3000/api/user/100089/bids_requested"
+                    },
+                    "data": []
+                },
+                "bids_created": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100089/relationships/bids_created",
+                        "related": "http://localhostx:3000/api/user/100089/bids_created"
+                    },
+                    "data": []
+                },
+                "bids_reviewed": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100089/relationships/bids_reviewed",
+                        "related": "http://localhostx:3000/api/user/100089/bids_reviewed"
+                    },
+                    "data": []
+                },
+                "bids_approved": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100089/relationships/bids_approved",
+                        "related": "http://localhostx:3000/api/user/100089/bids_approved"
+                    },
+                    "data": []
+                },
+                "files_owned": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100089/relationships/files_owned",
+                        "related": "http://localhostx:3000/api/user/100089/files_owned"
+                    },
+                    "data": []
+                },
+                "file_permissions": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100089/relationships/file_permissions",
+                        "related": "http://localhostx:3000/api/user/100089/file_permissions"
+                    },
+                    "data": []
+                },
+                "api_log": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100089/relationships/api_log",
+                        "related": "http://localhostx:3000/api/user/100089/api_log"
+                    },
+                    "data": []
+                },
+                "clicks_activity": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100089/relationships/clicks_activity",
+                        "related": "http://localhostx:3000/api/user/100089/clicks_activity"
+                    },
+                    "data": []
+                }
+            }
+        },
+        {
+            "type": "user",
+            "id": 100090,
+            "attributes": {
+                "created_at": "2024-05-21T17:15:21.828Z",
+                "updated_at": "2024-05-21T17:15:21.828Z",
+                "active": true,
+                "username": "John.JHLandsacpe",
+                "email": "John.JHLandsacpe@mail.com",
+                "first_name": "John",
+                "middle_name": "FA",
+                "last_name": "JHLandsacpe",
+                "phone_number_mobile": "1234567890",
+                "text_enabled": true,
+                "phone_verified": false,
+                "phone_number_home": "9999999999",
+                "email_verified": true,
+                "last_login": null,
+                "last_failed_login": null,
+                "admin": false,
+                "status": "",
+                "language": [
+                    ""
+                ],
+                "forced_login": false,
+                "failed_login_count": 0,
+                "address1": "",
+                "address2": "",
+                "state": "",
+                "zipcode": "",
+                "profile_picture_url": "",
+                "referral_code": "",
+                "referred_by": "",
+                "date_of_birth": null,
+                "user_fully_onboarded": false,
+                "user_type": "business"
+            },
+            "links": {
+                "self": "http://localhostx:3000/api/user/100090"
+            },
+            "relationships": {
+                "business_creator": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100090/relationships/business_creator",
+                        "related": "http://localhostx:3000/api/user/100090/business_creator"
+                    },
+                    "data": null
+                },
+                "business_documents": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100090/relationships/business_documents",
+                        "related": "http://localhostx:3000/api/user/100090/business_documents"
+                    },
+                    "data": []
+                },
+                "home_owner_projects": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100090/relationships/home_owner_projects",
+                        "related": "http://localhostx:3000/api/user/100090/home_owner_projects"
+                    },
+                    "data": []
+                },
+                "business_user_roles": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100090/relationships/business_user_roles",
+                        "related": "http://localhostx:3000/api/user/100090/business_user_roles"
+                    },
+                    "data": [
+                        {
+                            "type": "business_User_Roles",
+                            "id": 103089
+                        }
+                    ]
+                },
+                "project_assignments": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100090/relationships/project_assignments",
+                        "related": "http://localhostx:3000/api/user/100090/project_assignments"
+                    },
+                    "data": []
+                },
+                "tasks": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100090/relationships/tasks",
+                        "related": "http://localhostx:3000/api/user/100090/tasks"
+                    },
+                    "data": []
+                },
+                "punch_list": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100090/relationships/punch_list",
+                        "related": "http://localhostx:3000/api/user/100090/punch_list"
+                    },
+                    "data": []
+                },
+                "daily_logs": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100090/relationships/daily_logs",
+                        "related": "http://localhostx:3000/api/user/100090/daily_logs"
+                    },
+                    "data": []
+                },
+                "progression_notes": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100090/relationships/progression_notes",
+                        "related": "http://localhostx:3000/api/user/100090/progression_notes"
+                    },
+                    "data": []
+                },
+                "change_orders_creator": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100090/relationships/change_orders_creator",
+                        "related": "http://localhostx:3000/api/user/100090/change_orders_creator"
+                    },
+                    "data": []
+                },
+                "change_orders_reviewer": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100090/relationships/change_orders_reviewer",
+                        "related": "http://localhostx:3000/api/user/100090/change_orders_reviewer"
+                    },
+                    "data": []
+                },
+                "change_orders_approver": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100090/relationships/change_orders_approver",
+                        "related": "http://localhostx:3000/api/user/100090/change_orders_approver"
+                    },
+                    "data": []
+                },
+                "bids_requested": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100090/relationships/bids_requested",
+                        "related": "http://localhostx:3000/api/user/100090/bids_requested"
+                    },
+                    "data": []
+                },
+                "bids_created": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100090/relationships/bids_created",
+                        "related": "http://localhostx:3000/api/user/100090/bids_created"
+                    },
+                    "data": []
+                },
+                "bids_reviewed": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100090/relationships/bids_reviewed",
+                        "related": "http://localhostx:3000/api/user/100090/bids_reviewed"
+                    },
+                    "data": []
+                },
+                "bids_approved": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100090/relationships/bids_approved",
+                        "related": "http://localhostx:3000/api/user/100090/bids_approved"
+                    },
+                    "data": []
+                },
+                "files_owned": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100090/relationships/files_owned",
+                        "related": "http://localhostx:3000/api/user/100090/files_owned"
+                    },
+                    "data": []
+                },
+                "file_permissions": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100090/relationships/file_permissions",
+                        "related": "http://localhostx:3000/api/user/100090/file_permissions"
+                    },
+                    "data": []
+                },
+                "api_log": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100090/relationships/api_log",
+                        "related": "http://localhostx:3000/api/user/100090/api_log"
+                    },
+                    "data": []
+                },
+                "clicks_activity": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100090/relationships/clicks_activity",
+                        "related": "http://localhostx:3000/api/user/100090/clicks_activity"
+                    },
+                    "data": []
+                }
+            }
+        },
+        {
+            "type": "user",
+            "id": 100091,
+            "attributes": {
+                "created_at": "2024-05-21T17:15:22.030Z",
+                "updated_at": "2024-05-21T17:15:22.030Z",
+                "active": true,
+                "username": "David.JHLandsacpe",
+                "email": "David.JHLandsacpe@mail.com",
+                "first_name": "David",
+                "middle_name": "PM_FC",
+                "last_name": "JHLandsacpe",
+                "phone_number_mobile": "1234567890",
+                "text_enabled": true,
+                "phone_verified": false,
+                "phone_number_home": "9999999999",
+                "email_verified": true,
+                "last_login": null,
+                "last_failed_login": null,
+                "admin": false,
+                "status": "",
+                "language": [
+                    ""
+                ],
+                "forced_login": false,
+                "failed_login_count": 0,
+                "address1": "",
+                "address2": "",
+                "state": "",
+                "zipcode": "",
+                "profile_picture_url": "",
+                "referral_code": "",
+                "referred_by": "",
+                "date_of_birth": null,
+                "user_fully_onboarded": false,
+                "user_type": "business"
+            },
+            "links": {
+                "self": "http://localhostx:3000/api/user/100091"
+            },
+            "relationships": {
+                "business_creator": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100091/relationships/business_creator",
+                        "related": "http://localhostx:3000/api/user/100091/business_creator"
+                    },
+                    "data": null
+                },
+                "business_documents": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100091/relationships/business_documents",
+                        "related": "http://localhostx:3000/api/user/100091/business_documents"
+                    },
+                    "data": []
+                },
+                "home_owner_projects": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100091/relationships/home_owner_projects",
+                        "related": "http://localhostx:3000/api/user/100091/home_owner_projects"
+                    },
+                    "data": []
+                },
+                "business_user_roles": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100091/relationships/business_user_roles",
+                        "related": "http://localhostx:3000/api/user/100091/business_user_roles"
+                    },
+                    "data": [
+                        {
+                            "type": "business_User_Roles",
+                            "id": 103090
+                        }
+                    ]
+                },
+                "project_assignments": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100091/relationships/project_assignments",
+                        "related": "http://localhostx:3000/api/user/100091/project_assignments"
+                    },
+                    "data": []
+                },
+                "tasks": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100091/relationships/tasks",
+                        "related": "http://localhostx:3000/api/user/100091/tasks"
+                    },
+                    "data": []
+                },
+                "punch_list": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100091/relationships/punch_list",
+                        "related": "http://localhostx:3000/api/user/100091/punch_list"
+                    },
+                    "data": []
+                },
+                "daily_logs": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100091/relationships/daily_logs",
+                        "related": "http://localhostx:3000/api/user/100091/daily_logs"
+                    },
+                    "data": []
+                },
+                "progression_notes": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100091/relationships/progression_notes",
+                        "related": "http://localhostx:3000/api/user/100091/progression_notes"
+                    },
+                    "data": []
+                },
+                "change_orders_creator": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100091/relationships/change_orders_creator",
+                        "related": "http://localhostx:3000/api/user/100091/change_orders_creator"
+                    },
+                    "data": []
+                },
+                "change_orders_reviewer": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100091/relationships/change_orders_reviewer",
+                        "related": "http://localhostx:3000/api/user/100091/change_orders_reviewer"
+                    },
+                    "data": []
+                },
+                "change_orders_approver": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100091/relationships/change_orders_approver",
+                        "related": "http://localhostx:3000/api/user/100091/change_orders_approver"
+                    },
+                    "data": []
+                },
+                "bids_requested": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100091/relationships/bids_requested",
+                        "related": "http://localhostx:3000/api/user/100091/bids_requested"
+                    },
+                    "data": []
+                },
+                "bids_created": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100091/relationships/bids_created",
+                        "related": "http://localhostx:3000/api/user/100091/bids_created"
+                    },
+                    "data": []
+                },
+                "bids_reviewed": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100091/relationships/bids_reviewed",
+                        "related": "http://localhostx:3000/api/user/100091/bids_reviewed"
+                    },
+                    "data": []
+                },
+                "bids_approved": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100091/relationships/bids_approved",
+                        "related": "http://localhostx:3000/api/user/100091/bids_approved"
+                    },
+                    "data": []
+                },
+                "files_owned": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100091/relationships/files_owned",
+                        "related": "http://localhostx:3000/api/user/100091/files_owned"
+                    },
+                    "data": []
+                },
+                "file_permissions": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100091/relationships/file_permissions",
+                        "related": "http://localhostx:3000/api/user/100091/file_permissions"
+                    },
+                    "data": []
+                },
+                "api_log": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100091/relationships/api_log",
+                        "related": "http://localhostx:3000/api/user/100091/api_log"
+                    },
+                    "data": []
+                },
+                "clicks_activity": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100091/relationships/clicks_activity",
+                        "related": "http://localhostx:3000/api/user/100091/clicks_activity"
+                    },
+                    "data": []
+                }
+            }
+        },
+        {
+            "type": "user",
+            "id": 100092,
+            "attributes": {
+                "created_at": "2024-05-21T17:15:22.242Z",
+                "updated_at": "2024-05-21T17:15:22.242Z",
+                "active": true,
+                "username": "Tom.AmericanCrownCabinets",
+                "email": "Tom.AmericanCrownCabinets@mail.com",
+                "first_name": "Tom",
+                "middle_name": "FA",
+                "last_name": "AmericanCrownCabinets",
+                "phone_number_mobile": "1234567890",
+                "text_enabled": true,
+                "phone_verified": false,
+                "phone_number_home": "9999999999",
+                "email_verified": true,
+                "last_login": null,
+                "last_failed_login": null,
+                "admin": false,
+                "status": "",
+                "language": [
+                    ""
+                ],
+                "forced_login": false,
+                "failed_login_count": 0,
+                "address1": "",
+                "address2": "",
+                "state": "",
+                "zipcode": "",
+                "profile_picture_url": "",
+                "referral_code": "",
+                "referred_by": "",
+                "date_of_birth": null,
+                "user_fully_onboarded": false,
+                "user_type": "business"
+            },
+            "links": {
+                "self": "http://localhostx:3000/api/user/100092"
+            },
+            "relationships": {
+                "business_creator": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100092/relationships/business_creator",
+                        "related": "http://localhostx:3000/api/user/100092/business_creator"
+                    },
+                    "data": {
+                        "type": "business",
+                        "id": 101035
+                    }
+                },
+                "business_documents": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100092/relationships/business_documents",
+                        "related": "http://localhostx:3000/api/user/100092/business_documents"
+                    },
+                    "data": []
+                },
+                "home_owner_projects": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100092/relationships/home_owner_projects",
+                        "related": "http://localhostx:3000/api/user/100092/home_owner_projects"
+                    },
+                    "data": []
+                },
+                "business_user_roles": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100092/relationships/business_user_roles",
+                        "related": "http://localhostx:3000/api/user/100092/business_user_roles"
+                    },
+                    "data": [
+                        {
+                            "type": "business_User_Roles",
+                            "id": 103091
+                        }
+                    ]
+                },
+                "project_assignments": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100092/relationships/project_assignments",
+                        "related": "http://localhostx:3000/api/user/100092/project_assignments"
+                    },
+                    "data": []
+                },
+                "tasks": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100092/relationships/tasks",
+                        "related": "http://localhostx:3000/api/user/100092/tasks"
+                    },
+                    "data": []
+                },
+                "punch_list": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100092/relationships/punch_list",
+                        "related": "http://localhostx:3000/api/user/100092/punch_list"
+                    },
+                    "data": []
+                },
+                "daily_logs": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100092/relationships/daily_logs",
+                        "related": "http://localhostx:3000/api/user/100092/daily_logs"
+                    },
+                    "data": []
+                },
+                "progression_notes": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100092/relationships/progression_notes",
+                        "related": "http://localhostx:3000/api/user/100092/progression_notes"
+                    },
+                    "data": []
+                },
+                "change_orders_creator": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100092/relationships/change_orders_creator",
+                        "related": "http://localhostx:3000/api/user/100092/change_orders_creator"
+                    },
+                    "data": []
+                },
+                "change_orders_reviewer": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100092/relationships/change_orders_reviewer",
+                        "related": "http://localhostx:3000/api/user/100092/change_orders_reviewer"
+                    },
+                    "data": []
+                },
+                "change_orders_approver": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100092/relationships/change_orders_approver",
+                        "related": "http://localhostx:3000/api/user/100092/change_orders_approver"
+                    },
+                    "data": []
+                },
+                "bids_requested": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100092/relationships/bids_requested",
+                        "related": "http://localhostx:3000/api/user/100092/bids_requested"
+                    },
+                    "data": []
+                },
+                "bids_created": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100092/relationships/bids_created",
+                        "related": "http://localhostx:3000/api/user/100092/bids_created"
+                    },
+                    "data": []
+                },
+                "bids_reviewed": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100092/relationships/bids_reviewed",
+                        "related": "http://localhostx:3000/api/user/100092/bids_reviewed"
+                    },
+                    "data": []
+                },
+                "bids_approved": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100092/relationships/bids_approved",
+                        "related": "http://localhostx:3000/api/user/100092/bids_approved"
+                    },
+                    "data": []
+                },
+                "files_owned": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100092/relationships/files_owned",
+                        "related": "http://localhostx:3000/api/user/100092/files_owned"
+                    },
+                    "data": []
+                },
+                "file_permissions": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100092/relationships/file_permissions",
+                        "related": "http://localhostx:3000/api/user/100092/file_permissions"
+                    },
+                    "data": []
+                },
+                "api_log": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100092/relationships/api_log",
+                        "related": "http://localhostx:3000/api/user/100092/api_log"
+                    },
+                    "data": []
+                },
+                "clicks_activity": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100092/relationships/clicks_activity",
+                        "related": "http://localhostx:3000/api/user/100092/clicks_activity"
+                    },
+                    "data": []
+                }
+            }
+        },
+        {
+            "type": "user",
+            "id": 100093,
+            "attributes": {
+                "created_at": "2024-05-21T17:15:22.451Z",
+                "updated_at": "2024-05-21T17:15:22.451Z",
+                "active": true,
+                "username": "Patrick.AmericanCrownCabinets",
+                "email": "Patrick.AmericanCrownCabinets@mail.com",
+                "first_name": "Patrick",
+                "middle_name": "PM_FC",
+                "last_name": "AmericanCrownCabinets",
+                "phone_number_mobile": "1234567890",
+                "text_enabled": true,
+                "phone_verified": false,
+                "phone_number_home": "9999999999",
+                "email_verified": true,
+                "last_login": null,
+                "last_failed_login": null,
+                "admin": false,
+                "status": "",
+                "language": [
+                    ""
+                ],
+                "forced_login": false,
+                "failed_login_count": 0,
+                "address1": "",
+                "address2": "",
+                "state": "",
+                "zipcode": "",
+                "profile_picture_url": "",
+                "referral_code": "",
+                "referred_by": "",
+                "date_of_birth": null,
+                "user_fully_onboarded": false,
+                "user_type": "business"
+            },
+            "links": {
+                "self": "http://localhostx:3000/api/user/100093"
+            },
+            "relationships": {
+                "business_creator": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100093/relationships/business_creator",
+                        "related": "http://localhostx:3000/api/user/100093/business_creator"
+                    },
+                    "data": null
+                },
+                "business_documents": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100093/relationships/business_documents",
+                        "related": "http://localhostx:3000/api/user/100093/business_documents"
+                    },
+                    "data": []
+                },
+                "home_owner_projects": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100093/relationships/home_owner_projects",
+                        "related": "http://localhostx:3000/api/user/100093/home_owner_projects"
+                    },
+                    "data": []
+                },
+                "business_user_roles": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100093/relationships/business_user_roles",
+                        "related": "http://localhostx:3000/api/user/100093/business_user_roles"
+                    },
+                    "data": [
+                        {
+                            "type": "business_User_Roles",
+                            "id": 103092
+                        }
+                    ]
+                },
+                "project_assignments": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100093/relationships/project_assignments",
+                        "related": "http://localhostx:3000/api/user/100093/project_assignments"
+                    },
+                    "data": []
+                },
+                "tasks": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100093/relationships/tasks",
+                        "related": "http://localhostx:3000/api/user/100093/tasks"
+                    },
+                    "data": []
+                },
+                "punch_list": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100093/relationships/punch_list",
+                        "related": "http://localhostx:3000/api/user/100093/punch_list"
+                    },
+                    "data": []
+                },
+                "daily_logs": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100093/relationships/daily_logs",
+                        "related": "http://localhostx:3000/api/user/100093/daily_logs"
+                    },
+                    "data": []
+                },
+                "progression_notes": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100093/relationships/progression_notes",
+                        "related": "http://localhostx:3000/api/user/100093/progression_notes"
+                    },
+                    "data": []
+                },
+                "change_orders_creator": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100093/relationships/change_orders_creator",
+                        "related": "http://localhostx:3000/api/user/100093/change_orders_creator"
+                    },
+                    "data": []
+                },
+                "change_orders_reviewer": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100093/relationships/change_orders_reviewer",
+                        "related": "http://localhostx:3000/api/user/100093/change_orders_reviewer"
+                    },
+                    "data": []
+                },
+                "change_orders_approver": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100093/relationships/change_orders_approver",
+                        "related": "http://localhostx:3000/api/user/100093/change_orders_approver"
+                    },
+                    "data": []
+                },
+                "bids_requested": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100093/relationships/bids_requested",
+                        "related": "http://localhostx:3000/api/user/100093/bids_requested"
+                    },
+                    "data": []
+                },
+                "bids_created": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100093/relationships/bids_created",
+                        "related": "http://localhostx:3000/api/user/100093/bids_created"
+                    },
+                    "data": []
+                },
+                "bids_reviewed": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100093/relationships/bids_reviewed",
+                        "related": "http://localhostx:3000/api/user/100093/bids_reviewed"
+                    },
+                    "data": []
+                },
+                "bids_approved": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100093/relationships/bids_approved",
+                        "related": "http://localhostx:3000/api/user/100093/bids_approved"
+                    },
+                    "data": []
+                },
+                "files_owned": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100093/relationships/files_owned",
+                        "related": "http://localhostx:3000/api/user/100093/files_owned"
+                    },
+                    "data": []
+                },
+                "file_permissions": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100093/relationships/file_permissions",
+                        "related": "http://localhostx:3000/api/user/100093/file_permissions"
+                    },
+                    "data": []
+                },
+                "api_log": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100093/relationships/api_log",
+                        "related": "http://localhostx:3000/api/user/100093/api_log"
+                    },
+                    "data": []
+                },
+                "clicks_activity": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100093/relationships/clicks_activity",
+                        "related": "http://localhostx:3000/api/user/100093/clicks_activity"
+                    },
+                    "data": []
+                }
+            }
+        },
+        {
+            "type": "user",
+            "id": 100094,
+            "attributes": {
+                "created_at": "2024-05-21T17:15:22.659Z",
+                "updated_at": "2024-05-21T17:15:22.659Z",
+                "active": true,
+                "username": "Alex.eccabinetsandcountertops",
+                "email": "Alex.eccabinetsandcountertops@mail.com",
+                "first_name": "Alex",
+                "middle_name": "FA",
+                "last_name": "eccabinetsandcountertops",
+                "phone_number_mobile": "1234567890",
+                "text_enabled": true,
+                "phone_verified": false,
+                "phone_number_home": "9999999999",
+                "email_verified": true,
+                "last_login": null,
+                "last_failed_login": null,
+                "admin": false,
+                "status": "",
+                "language": [
+                    ""
+                ],
+                "forced_login": false,
+                "failed_login_count": 0,
+                "address1": "",
+                "address2": "",
+                "state": "",
+                "zipcode": "",
+                "profile_picture_url": "",
+                "referral_code": "",
+                "referred_by": "",
+                "date_of_birth": null,
+                "user_fully_onboarded": false,
+                "user_type": "business"
+            },
+            "links": {
+                "self": "http://localhostx:3000/api/user/100094"
+            },
+            "relationships": {
+                "business_creator": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100094/relationships/business_creator",
+                        "related": "http://localhostx:3000/api/user/100094/business_creator"
+                    },
+                    "data": {
+                        "type": "business",
+                        "id": 101036
+                    }
+                },
+                "business_documents": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100094/relationships/business_documents",
+                        "related": "http://localhostx:3000/api/user/100094/business_documents"
+                    },
+                    "data": []
+                },
+                "home_owner_projects": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100094/relationships/home_owner_projects",
+                        "related": "http://localhostx:3000/api/user/100094/home_owner_projects"
+                    },
+                    "data": []
+                },
+                "business_user_roles": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100094/relationships/business_user_roles",
+                        "related": "http://localhostx:3000/api/user/100094/business_user_roles"
+                    },
+                    "data": [
+                        {
+                            "type": "business_User_Roles",
+                            "id": 103093
+                        }
+                    ]
+                },
+                "project_assignments": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100094/relationships/project_assignments",
+                        "related": "http://localhostx:3000/api/user/100094/project_assignments"
+                    },
+                    "data": []
+                },
+                "tasks": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100094/relationships/tasks",
+                        "related": "http://localhostx:3000/api/user/100094/tasks"
+                    },
+                    "data": []
+                },
+                "punch_list": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100094/relationships/punch_list",
+                        "related": "http://localhostx:3000/api/user/100094/punch_list"
+                    },
+                    "data": []
+                },
+                "daily_logs": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100094/relationships/daily_logs",
+                        "related": "http://localhostx:3000/api/user/100094/daily_logs"
+                    },
+                    "data": []
+                },
+                "progression_notes": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100094/relationships/progression_notes",
+                        "related": "http://localhostx:3000/api/user/100094/progression_notes"
+                    },
+                    "data": []
+                },
+                "change_orders_creator": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100094/relationships/change_orders_creator",
+                        "related": "http://localhostx:3000/api/user/100094/change_orders_creator"
+                    },
+                    "data": []
+                },
+                "change_orders_reviewer": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100094/relationships/change_orders_reviewer",
+                        "related": "http://localhostx:3000/api/user/100094/change_orders_reviewer"
+                    },
+                    "data": []
+                },
+                "change_orders_approver": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100094/relationships/change_orders_approver",
+                        "related": "http://localhostx:3000/api/user/100094/change_orders_approver"
+                    },
+                    "data": []
+                },
+                "bids_requested": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100094/relationships/bids_requested",
+                        "related": "http://localhostx:3000/api/user/100094/bids_requested"
+                    },
+                    "data": []
+                },
+                "bids_created": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100094/relationships/bids_created",
+                        "related": "http://localhostx:3000/api/user/100094/bids_created"
+                    },
+                    "data": []
+                },
+                "bids_reviewed": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100094/relationships/bids_reviewed",
+                        "related": "http://localhostx:3000/api/user/100094/bids_reviewed"
+                    },
+                    "data": []
+                },
+                "bids_approved": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100094/relationships/bids_approved",
+                        "related": "http://localhostx:3000/api/user/100094/bids_approved"
+                    },
+                    "data": []
+                },
+                "files_owned": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100094/relationships/files_owned",
+                        "related": "http://localhostx:3000/api/user/100094/files_owned"
+                    },
+                    "data": []
+                },
+                "file_permissions": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100094/relationships/file_permissions",
+                        "related": "http://localhostx:3000/api/user/100094/file_permissions"
+                    },
+                    "data": []
+                },
+                "api_log": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100094/relationships/api_log",
+                        "related": "http://localhostx:3000/api/user/100094/api_log"
+                    },
+                    "data": []
+                },
+                "clicks_activity": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100094/relationships/clicks_activity",
+                        "related": "http://localhostx:3000/api/user/100094/clicks_activity"
+                    },
+                    "data": []
+                }
+            }
+        },
+        {
+            "type": "user",
+            "id": 100095,
+            "attributes": {
+                "created_at": "2024-05-21T17:15:22.880Z",
+                "updated_at": "2024-05-21T17:15:22.880Z",
+                "active": true,
+                "username": "Marcus.eccabinetsandcountertops",
+                "email": "Marcus.eccabinetsandcountertops@mail.com",
+                "first_name": "Marcus",
+                "middle_name": "PM_FC",
+                "last_name": "eccabinetsandcountertops",
+                "phone_number_mobile": "1234567890",
+                "text_enabled": true,
+                "phone_verified": false,
+                "phone_number_home": "9999999999",
+                "email_verified": true,
+                "last_login": null,
+                "last_failed_login": null,
+                "admin": false,
+                "status": "",
+                "language": [
+                    ""
+                ],
+                "forced_login": false,
+                "failed_login_count": 0,
+                "address1": "",
+                "address2": "",
+                "state": "",
+                "zipcode": "",
+                "profile_picture_url": "",
+                "referral_code": "",
+                "referred_by": "",
+                "date_of_birth": null,
+                "user_fully_onboarded": false,
+                "user_type": "business"
+            },
+            "links": {
+                "self": "http://localhostx:3000/api/user/100095"
+            },
+            "relationships": {
+                "business_creator": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100095/relationships/business_creator",
+                        "related": "http://localhostx:3000/api/user/100095/business_creator"
+                    },
+                    "data": null
+                },
+                "business_documents": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100095/relationships/business_documents",
+                        "related": "http://localhostx:3000/api/user/100095/business_documents"
+                    },
+                    "data": []
+                },
+                "home_owner_projects": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100095/relationships/home_owner_projects",
+                        "related": "http://localhostx:3000/api/user/100095/home_owner_projects"
+                    },
+                    "data": []
+                },
+                "business_user_roles": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100095/relationships/business_user_roles",
+                        "related": "http://localhostx:3000/api/user/100095/business_user_roles"
+                    },
+                    "data": [
+                        {
+                            "type": "business_User_Roles",
+                            "id": 103094
+                        }
+                    ]
+                },
+                "project_assignments": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100095/relationships/project_assignments",
+                        "related": "http://localhostx:3000/api/user/100095/project_assignments"
+                    },
+                    "data": []
+                },
+                "tasks": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100095/relationships/tasks",
+                        "related": "http://localhostx:3000/api/user/100095/tasks"
+                    },
+                    "data": []
+                },
+                "punch_list": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100095/relationships/punch_list",
+                        "related": "http://localhostx:3000/api/user/100095/punch_list"
+                    },
+                    "data": []
+                },
+                "daily_logs": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100095/relationships/daily_logs",
+                        "related": "http://localhostx:3000/api/user/100095/daily_logs"
+                    },
+                    "data": []
+                },
+                "progression_notes": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100095/relationships/progression_notes",
+                        "related": "http://localhostx:3000/api/user/100095/progression_notes"
+                    },
+                    "data": []
+                },
+                "change_orders_creator": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100095/relationships/change_orders_creator",
+                        "related": "http://localhostx:3000/api/user/100095/change_orders_creator"
+                    },
+                    "data": []
+                },
+                "change_orders_reviewer": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100095/relationships/change_orders_reviewer",
+                        "related": "http://localhostx:3000/api/user/100095/change_orders_reviewer"
+                    },
+                    "data": []
+                },
+                "change_orders_approver": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100095/relationships/change_orders_approver",
+                        "related": "http://localhostx:3000/api/user/100095/change_orders_approver"
+                    },
+                    "data": []
+                },
+                "bids_requested": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100095/relationships/bids_requested",
+                        "related": "http://localhostx:3000/api/user/100095/bids_requested"
+                    },
+                    "data": []
+                },
+                "bids_created": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100095/relationships/bids_created",
+                        "related": "http://localhostx:3000/api/user/100095/bids_created"
+                    },
+                    "data": []
+                },
+                "bids_reviewed": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100095/relationships/bids_reviewed",
+                        "related": "http://localhostx:3000/api/user/100095/bids_reviewed"
+                    },
+                    "data": []
+                },
+                "bids_approved": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100095/relationships/bids_approved",
+                        "related": "http://localhostx:3000/api/user/100095/bids_approved"
+                    },
+                    "data": []
+                },
+                "files_owned": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100095/relationships/files_owned",
+                        "related": "http://localhostx:3000/api/user/100095/files_owned"
+                    },
+                    "data": []
+                },
+                "file_permissions": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100095/relationships/file_permissions",
+                        "related": "http://localhostx:3000/api/user/100095/file_permissions"
+                    },
+                    "data": []
+                },
+                "api_log": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100095/relationships/api_log",
+                        "related": "http://localhostx:3000/api/user/100095/api_log"
+                    },
+                    "data": []
+                },
+                "clicks_activity": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100095/relationships/clicks_activity",
+                        "related": "http://localhostx:3000/api/user/100095/clicks_activity"
+                    },
+                    "data": []
+                }
+            }
+        },
+        {
+            "type": "user",
+            "id": 100096,
+            "attributes": {
+                "created_at": "2024-05-21T17:15:23.076Z",
+                "updated_at": "2024-05-21T17:15:23.076Z",
+                "active": true,
+                "username": "Samuel.Lowes",
+                "email": "Samuel.Lowes@mail.com",
+                "first_name": "Samuel",
+                "middle_name": "FA",
+                "last_name": "Lowes",
+                "phone_number_mobile": "1234567890",
+                "text_enabled": true,
+                "phone_verified": false,
+                "phone_number_home": "9999999999",
+                "email_verified": true,
+                "last_login": null,
+                "last_failed_login": null,
+                "admin": false,
+                "status": "",
+                "language": [
+                    ""
+                ],
+                "forced_login": false,
+                "failed_login_count": 0,
+                "address1": "",
+                "address2": "",
+                "state": "",
+                "zipcode": "",
+                "profile_picture_url": "",
+                "referral_code": "",
+                "referred_by": "",
+                "date_of_birth": null,
+                "user_fully_onboarded": false,
+                "user_type": "business"
+            },
+            "links": {
+                "self": "http://localhostx:3000/api/user/100096"
+            },
+            "relationships": {
+                "business_creator": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100096/relationships/business_creator",
+                        "related": "http://localhostx:3000/api/user/100096/business_creator"
+                    },
+                    "data": {
+                        "type": "business",
+                        "id": 101037
+                    }
+                },
+                "business_documents": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100096/relationships/business_documents",
+                        "related": "http://localhostx:3000/api/user/100096/business_documents"
+                    },
+                    "data": []
+                },
+                "home_owner_projects": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100096/relationships/home_owner_projects",
+                        "related": "http://localhostx:3000/api/user/100096/home_owner_projects"
+                    },
+                    "data": []
+                },
+                "business_user_roles": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100096/relationships/business_user_roles",
+                        "related": "http://localhostx:3000/api/user/100096/business_user_roles"
+                    },
+                    "data": [
+                        {
+                            "type": "business_User_Roles",
+                            "id": 103095
+                        }
+                    ]
+                },
+                "project_assignments": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100096/relationships/project_assignments",
+                        "related": "http://localhostx:3000/api/user/100096/project_assignments"
+                    },
+                    "data": []
+                },
+                "tasks": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100096/relationships/tasks",
+                        "related": "http://localhostx:3000/api/user/100096/tasks"
+                    },
+                    "data": []
+                },
+                "punch_list": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100096/relationships/punch_list",
+                        "related": "http://localhostx:3000/api/user/100096/punch_list"
+                    },
+                    "data": []
+                },
+                "daily_logs": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100096/relationships/daily_logs",
+                        "related": "http://localhostx:3000/api/user/100096/daily_logs"
+                    },
+                    "data": []
+                },
+                "progression_notes": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100096/relationships/progression_notes",
+                        "related": "http://localhostx:3000/api/user/100096/progression_notes"
+                    },
+                    "data": []
+                },
+                "change_orders_creator": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100096/relationships/change_orders_creator",
+                        "related": "http://localhostx:3000/api/user/100096/change_orders_creator"
+                    },
+                    "data": []
+                },
+                "change_orders_reviewer": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100096/relationships/change_orders_reviewer",
+                        "related": "http://localhostx:3000/api/user/100096/change_orders_reviewer"
+                    },
+                    "data": []
+                },
+                "change_orders_approver": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100096/relationships/change_orders_approver",
+                        "related": "http://localhostx:3000/api/user/100096/change_orders_approver"
+                    },
+                    "data": []
+                },
+                "bids_requested": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100096/relationships/bids_requested",
+                        "related": "http://localhostx:3000/api/user/100096/bids_requested"
+                    },
+                    "data": []
+                },
+                "bids_created": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100096/relationships/bids_created",
+                        "related": "http://localhostx:3000/api/user/100096/bids_created"
+                    },
+                    "data": []
+                },
+                "bids_reviewed": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100096/relationships/bids_reviewed",
+                        "related": "http://localhostx:3000/api/user/100096/bids_reviewed"
+                    },
+                    "data": []
+                },
+                "bids_approved": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100096/relationships/bids_approved",
+                        "related": "http://localhostx:3000/api/user/100096/bids_approved"
+                    },
+                    "data": []
+                },
+                "files_owned": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100096/relationships/files_owned",
+                        "related": "http://localhostx:3000/api/user/100096/files_owned"
+                    },
+                    "data": []
+                },
+                "file_permissions": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100096/relationships/file_permissions",
+                        "related": "http://localhostx:3000/api/user/100096/file_permissions"
+                    },
+                    "data": []
+                },
+                "api_log": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100096/relationships/api_log",
+                        "related": "http://localhostx:3000/api/user/100096/api_log"
+                    },
+                    "data": []
+                },
+                "clicks_activity": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100096/relationships/clicks_activity",
+                        "related": "http://localhostx:3000/api/user/100096/clicks_activity"
+                    },
+                    "data": []
+                }
+            }
+        },
+        {
+            "type": "user",
+            "id": 100097,
+            "attributes": {
+                "created_at": "2024-05-21T17:15:23.272Z",
+                "updated_at": "2024-05-21T17:15:23.272Z",
+                "active": true,
+                "username": "Manuel.neoflooring",
+                "email": "Manuel.neoflooring@mail.com",
+                "first_name": "Manuel",
+                "middle_name": "FA",
+                "last_name": "neoflooring",
+                "phone_number_mobile": "1234567890",
+                "text_enabled": true,
+                "phone_verified": false,
+                "phone_number_home": "9999999999",
+                "email_verified": true,
+                "last_login": null,
+                "last_failed_login": null,
+                "admin": false,
+                "status": "",
+                "language": [
+                    ""
+                ],
+                "forced_login": false,
+                "failed_login_count": 0,
+                "address1": "",
+                "address2": "",
+                "state": "",
+                "zipcode": "",
+                "profile_picture_url": "",
+                "referral_code": "",
+                "referred_by": "",
+                "date_of_birth": null,
+                "user_fully_onboarded": false,
+                "user_type": "business"
+            },
+            "links": {
+                "self": "http://localhostx:3000/api/user/100097"
+            },
+            "relationships": {
+                "business_creator": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100097/relationships/business_creator",
+                        "related": "http://localhostx:3000/api/user/100097/business_creator"
+                    },
+                    "data": null
+                },
+                "business_documents": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100097/relationships/business_documents",
+                        "related": "http://localhostx:3000/api/user/100097/business_documents"
+                    },
+                    "data": []
+                },
+                "home_owner_projects": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100097/relationships/home_owner_projects",
+                        "related": "http://localhostx:3000/api/user/100097/home_owner_projects"
+                    },
+                    "data": []
+                },
+                "business_user_roles": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100097/relationships/business_user_roles",
+                        "related": "http://localhostx:3000/api/user/100097/business_user_roles"
+                    },
+                    "data": [
+                        {
+                            "type": "business_User_Roles",
+                            "id": 103096
+                        }
+                    ]
+                },
+                "project_assignments": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100097/relationships/project_assignments",
+                        "related": "http://localhostx:3000/api/user/100097/project_assignments"
+                    },
+                    "data": []
+                },
+                "tasks": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100097/relationships/tasks",
+                        "related": "http://localhostx:3000/api/user/100097/tasks"
+                    },
+                    "data": []
+                },
+                "punch_list": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100097/relationships/punch_list",
+                        "related": "http://localhostx:3000/api/user/100097/punch_list"
+                    },
+                    "data": []
+                },
+                "daily_logs": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100097/relationships/daily_logs",
+                        "related": "http://localhostx:3000/api/user/100097/daily_logs"
+                    },
+                    "data": []
+                },
+                "progression_notes": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100097/relationships/progression_notes",
+                        "related": "http://localhostx:3000/api/user/100097/progression_notes"
+                    },
+                    "data": []
+                },
+                "change_orders_creator": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100097/relationships/change_orders_creator",
+                        "related": "http://localhostx:3000/api/user/100097/change_orders_creator"
+                    },
+                    "data": []
+                },
+                "change_orders_reviewer": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100097/relationships/change_orders_reviewer",
+                        "related": "http://localhostx:3000/api/user/100097/change_orders_reviewer"
+                    },
+                    "data": []
+                },
+                "change_orders_approver": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100097/relationships/change_orders_approver",
+                        "related": "http://localhostx:3000/api/user/100097/change_orders_approver"
+                    },
+                    "data": []
+                },
+                "bids_requested": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100097/relationships/bids_requested",
+                        "related": "http://localhostx:3000/api/user/100097/bids_requested"
+                    },
+                    "data": []
+                },
+                "bids_created": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100097/relationships/bids_created",
+                        "related": "http://localhostx:3000/api/user/100097/bids_created"
+                    },
+                    "data": []
+                },
+                "bids_reviewed": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100097/relationships/bids_reviewed",
+                        "related": "http://localhostx:3000/api/user/100097/bids_reviewed"
+                    },
+                    "data": []
+                },
+                "bids_approved": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100097/relationships/bids_approved",
+                        "related": "http://localhostx:3000/api/user/100097/bids_approved"
+                    },
+                    "data": []
+                },
+                "files_owned": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100097/relationships/files_owned",
+                        "related": "http://localhostx:3000/api/user/100097/files_owned"
+                    },
+                    "data": []
+                },
+                "file_permissions": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100097/relationships/file_permissions",
+                        "related": "http://localhostx:3000/api/user/100097/file_permissions"
+                    },
+                    "data": []
+                },
+                "api_log": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100097/relationships/api_log",
+                        "related": "http://localhostx:3000/api/user/100097/api_log"
+                    },
+                    "data": []
+                },
+                "clicks_activity": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100097/relationships/clicks_activity",
+                        "related": "http://localhostx:3000/api/user/100097/clicks_activity"
+                    },
+                    "data": []
+                }
+            }
+        },
+        {
+            "type": "user",
+            "id": 100098,
+            "attributes": {
+                "created_at": "2024-05-21T17:15:23.484Z",
+                "updated_at": "2024-05-21T17:15:23.484Z",
+                "active": true,
+                "username": "John.neoflooring",
+                "email": "John.neoflooring@mail.com",
+                "first_name": "John",
+                "middle_name": "PM_FC",
+                "last_name": "neoflooring",
+                "phone_number_mobile": "1234567890",
+                "text_enabled": true,
+                "phone_verified": false,
+                "phone_number_home": "9999999999",
+                "email_verified": true,
+                "last_login": null,
+                "last_failed_login": null,
+                "admin": false,
+                "status": "",
+                "language": [
+                    ""
+                ],
+                "forced_login": false,
+                "failed_login_count": 0,
+                "address1": "",
+                "address2": "",
+                "state": "",
+                "zipcode": "",
+                "profile_picture_url": "",
+                "referral_code": "",
+                "referred_by": "",
+                "date_of_birth": null,
+                "user_fully_onboarded": false,
+                "user_type": "business"
+            },
+            "links": {
+                "self": "http://localhostx:3000/api/user/100098"
+            },
+            "relationships": {
+                "business_creator": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100098/relationships/business_creator",
+                        "related": "http://localhostx:3000/api/user/100098/business_creator"
+                    },
+                    "data": {
+                        "type": "business",
+                        "id": 101038
+                    }
+                },
+                "business_documents": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100098/relationships/business_documents",
+                        "related": "http://localhostx:3000/api/user/100098/business_documents"
+                    },
+                    "data": []
+                },
+                "home_owner_projects": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100098/relationships/home_owner_projects",
+                        "related": "http://localhostx:3000/api/user/100098/home_owner_projects"
+                    },
+                    "data": []
+                },
+                "business_user_roles": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100098/relationships/business_user_roles",
+                        "related": "http://localhostx:3000/api/user/100098/business_user_roles"
+                    },
+                    "data": [
+                        {
+                            "type": "business_User_Roles",
+                            "id": 103097
+                        }
+                    ]
+                },
+                "project_assignments": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100098/relationships/project_assignments",
+                        "related": "http://localhostx:3000/api/user/100098/project_assignments"
+                    },
+                    "data": []
+                },
+                "tasks": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100098/relationships/tasks",
+                        "related": "http://localhostx:3000/api/user/100098/tasks"
+                    },
+                    "data": []
+                },
+                "punch_list": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100098/relationships/punch_list",
+                        "related": "http://localhostx:3000/api/user/100098/punch_list"
+                    },
+                    "data": []
+                },
+                "daily_logs": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100098/relationships/daily_logs",
+                        "related": "http://localhostx:3000/api/user/100098/daily_logs"
+                    },
+                    "data": []
+                },
+                "progression_notes": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100098/relationships/progression_notes",
+                        "related": "http://localhostx:3000/api/user/100098/progression_notes"
+                    },
+                    "data": []
+                },
+                "change_orders_creator": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100098/relationships/change_orders_creator",
+                        "related": "http://localhostx:3000/api/user/100098/change_orders_creator"
+                    },
+                    "data": []
+                },
+                "change_orders_reviewer": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100098/relationships/change_orders_reviewer",
+                        "related": "http://localhostx:3000/api/user/100098/change_orders_reviewer"
+                    },
+                    "data": []
+                },
+                "change_orders_approver": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100098/relationships/change_orders_approver",
+                        "related": "http://localhostx:3000/api/user/100098/change_orders_approver"
+                    },
+                    "data": []
+                },
+                "bids_requested": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100098/relationships/bids_requested",
+                        "related": "http://localhostx:3000/api/user/100098/bids_requested"
+                    },
+                    "data": []
+                },
+                "bids_created": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100098/relationships/bids_created",
+                        "related": "http://localhostx:3000/api/user/100098/bids_created"
+                    },
+                    "data": []
+                },
+                "bids_reviewed": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100098/relationships/bids_reviewed",
+                        "related": "http://localhostx:3000/api/user/100098/bids_reviewed"
+                    },
+                    "data": []
+                },
+                "bids_approved": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100098/relationships/bids_approved",
+                        "related": "http://localhostx:3000/api/user/100098/bids_approved"
+                    },
+                    "data": []
+                },
+                "files_owned": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100098/relationships/files_owned",
+                        "related": "http://localhostx:3000/api/user/100098/files_owned"
+                    },
+                    "data": []
+                },
+                "file_permissions": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100098/relationships/file_permissions",
+                        "related": "http://localhostx:3000/api/user/100098/file_permissions"
+                    },
+                    "data": []
+                },
+                "api_log": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100098/relationships/api_log",
+                        "related": "http://localhostx:3000/api/user/100098/api_log"
+                    },
+                    "data": []
+                },
+                "clicks_activity": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100098/relationships/clicks_activity",
+                        "related": "http://localhostx:3000/api/user/100098/clicks_activity"
+                    },
+                    "data": []
+                }
+            }
+        },
+        {
+            "type": "user",
+            "id": 100099,
+            "attributes": {
+                "created_at": "2024-05-21T17:15:23.691Z",
+                "updated_at": "2024-05-21T17:15:23.691Z",
+                "active": true,
+                "username": "David.Joseconcrete",
+                "email": "David.Joseconcrete@mail.com",
+                "first_name": "David",
+                "middle_name": "FA",
+                "last_name": "Joseconcrete",
+                "phone_number_mobile": "1234567890",
+                "text_enabled": true,
+                "phone_verified": false,
+                "phone_number_home": "9999999999",
+                "email_verified": true,
+                "last_login": null,
+                "last_failed_login": null,
+                "admin": false,
+                "status": "",
+                "language": [
+                    ""
+                ],
+                "forced_login": false,
+                "failed_login_count": 0,
+                "address1": "",
+                "address2": "",
+                "state": "",
+                "zipcode": "",
+                "profile_picture_url": "",
+                "referral_code": "",
+                "referred_by": "",
+                "date_of_birth": null,
+                "user_fully_onboarded": false,
+                "user_type": "business"
+            },
+            "links": {
+                "self": "http://localhostx:3000/api/user/100099"
+            },
+            "relationships": {
+                "business_creator": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100099/relationships/business_creator",
+                        "related": "http://localhostx:3000/api/user/100099/business_creator"
+                    },
+                    "data": {
+                        "type": "business",
+                        "id": 101039
+                    }
+                },
+                "business_documents": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100099/relationships/business_documents",
+                        "related": "http://localhostx:3000/api/user/100099/business_documents"
+                    },
+                    "data": []
+                },
+                "home_owner_projects": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100099/relationships/home_owner_projects",
+                        "related": "http://localhostx:3000/api/user/100099/home_owner_projects"
+                    },
+                    "data": []
+                },
+                "business_user_roles": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100099/relationships/business_user_roles",
+                        "related": "http://localhostx:3000/api/user/100099/business_user_roles"
+                    },
+                    "data": [
+                        {
+                            "type": "business_User_Roles",
+                            "id": 103098
+                        }
+                    ]
+                },
+                "project_assignments": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100099/relationships/project_assignments",
+                        "related": "http://localhostx:3000/api/user/100099/project_assignments"
+                    },
+                    "data": []
+                },
+                "tasks": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100099/relationships/tasks",
+                        "related": "http://localhostx:3000/api/user/100099/tasks"
+                    },
+                    "data": []
+                },
+                "punch_list": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100099/relationships/punch_list",
+                        "related": "http://localhostx:3000/api/user/100099/punch_list"
+                    },
+                    "data": []
+                },
+                "daily_logs": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100099/relationships/daily_logs",
+                        "related": "http://localhostx:3000/api/user/100099/daily_logs"
+                    },
+                    "data": []
+                },
+                "progression_notes": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100099/relationships/progression_notes",
+                        "related": "http://localhostx:3000/api/user/100099/progression_notes"
+                    },
+                    "data": []
+                },
+                "change_orders_creator": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100099/relationships/change_orders_creator",
+                        "related": "http://localhostx:3000/api/user/100099/change_orders_creator"
+                    },
+                    "data": []
+                },
+                "change_orders_reviewer": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100099/relationships/change_orders_reviewer",
+                        "related": "http://localhostx:3000/api/user/100099/change_orders_reviewer"
+                    },
+                    "data": []
+                },
+                "change_orders_approver": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100099/relationships/change_orders_approver",
+                        "related": "http://localhostx:3000/api/user/100099/change_orders_approver"
+                    },
+                    "data": []
+                },
+                "bids_requested": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100099/relationships/bids_requested",
+                        "related": "http://localhostx:3000/api/user/100099/bids_requested"
+                    },
+                    "data": []
+                },
+                "bids_created": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100099/relationships/bids_created",
+                        "related": "http://localhostx:3000/api/user/100099/bids_created"
+                    },
+                    "data": []
+                },
+                "bids_reviewed": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100099/relationships/bids_reviewed",
+                        "related": "http://localhostx:3000/api/user/100099/bids_reviewed"
+                    },
+                    "data": []
+                },
+                "bids_approved": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100099/relationships/bids_approved",
+                        "related": "http://localhostx:3000/api/user/100099/bids_approved"
+                    },
+                    "data": []
+                },
+                "files_owned": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100099/relationships/files_owned",
+                        "related": "http://localhostx:3000/api/user/100099/files_owned"
+                    },
+                    "data": []
+                },
+                "file_permissions": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100099/relationships/file_permissions",
+                        "related": "http://localhostx:3000/api/user/100099/file_permissions"
+                    },
+                    "data": []
+                },
+                "api_log": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100099/relationships/api_log",
+                        "related": "http://localhostx:3000/api/user/100099/api_log"
+                    },
+                    "data": []
+                },
+                "clicks_activity": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100099/relationships/clicks_activity",
+                        "related": "http://localhostx:3000/api/user/100099/clicks_activity"
+                    },
+                    "data": []
+                }
+            }
+        },
+        {
+            "type": "user",
+            "id": 100100,
+            "attributes": {
+                "created_at": "2024-05-21T17:15:23.912Z",
+                "updated_at": "2024-05-21T17:15:23.912Z",
+                "active": true,
+                "username": "Patrick.Joseconcrete",
+                "email": "Patrick.Joseconcrete@mail.com",
+                "first_name": "Patrick",
+                "middle_name": "PM_FC",
+                "last_name": "Joseconcrete",
+                "phone_number_mobile": "1234567890",
+                "text_enabled": true,
+                "phone_verified": false,
+                "phone_number_home": "9999999999",
+                "email_verified": true,
+                "last_login": null,
+                "last_failed_login": null,
+                "admin": false,
+                "status": "",
+                "language": [
+                    ""
+                ],
+                "forced_login": false,
+                "failed_login_count": 0,
+                "address1": "",
+                "address2": "",
+                "state": "",
+                "zipcode": "",
+                "profile_picture_url": "",
+                "referral_code": "",
+                "referred_by": "",
+                "date_of_birth": null,
+                "user_fully_onboarded": false,
+                "user_type": "business"
+            },
+            "links": {
+                "self": "http://localhostx:3000/api/user/100100"
+            },
+            "relationships": {
+                "business_creator": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100100/relationships/business_creator",
+                        "related": "http://localhostx:3000/api/user/100100/business_creator"
+                    },
+                    "data": null
+                },
+                "business_documents": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100100/relationships/business_documents",
+                        "related": "http://localhostx:3000/api/user/100100/business_documents"
+                    },
+                    "data": []
+                },
+                "home_owner_projects": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100100/relationships/home_owner_projects",
+                        "related": "http://localhostx:3000/api/user/100100/home_owner_projects"
+                    },
+                    "data": []
+                },
+                "business_user_roles": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100100/relationships/business_user_roles",
+                        "related": "http://localhostx:3000/api/user/100100/business_user_roles"
+                    },
+                    "data": [
+                        {
+                            "type": "business_User_Roles",
+                            "id": 103099
+                        }
+                    ]
+                },
+                "project_assignments": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100100/relationships/project_assignments",
+                        "related": "http://localhostx:3000/api/user/100100/project_assignments"
+                    },
+                    "data": []
+                },
+                "tasks": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100100/relationships/tasks",
+                        "related": "http://localhostx:3000/api/user/100100/tasks"
+                    },
+                    "data": []
+                },
+                "punch_list": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100100/relationships/punch_list",
+                        "related": "http://localhostx:3000/api/user/100100/punch_list"
+                    },
+                    "data": []
+                },
+                "daily_logs": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100100/relationships/daily_logs",
+                        "related": "http://localhostx:3000/api/user/100100/daily_logs"
+                    },
+                    "data": []
+                },
+                "progression_notes": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100100/relationships/progression_notes",
+                        "related": "http://localhostx:3000/api/user/100100/progression_notes"
+                    },
+                    "data": []
+                },
+                "change_orders_creator": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100100/relationships/change_orders_creator",
+                        "related": "http://localhostx:3000/api/user/100100/change_orders_creator"
+                    },
+                    "data": []
+                },
+                "change_orders_reviewer": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100100/relationships/change_orders_reviewer",
+                        "related": "http://localhostx:3000/api/user/100100/change_orders_reviewer"
+                    },
+                    "data": []
+                },
+                "change_orders_approver": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100100/relationships/change_orders_approver",
+                        "related": "http://localhostx:3000/api/user/100100/change_orders_approver"
+                    },
+                    "data": []
+                },
+                "bids_requested": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100100/relationships/bids_requested",
+                        "related": "http://localhostx:3000/api/user/100100/bids_requested"
+                    },
+                    "data": []
+                },
+                "bids_created": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100100/relationships/bids_created",
+                        "related": "http://localhostx:3000/api/user/100100/bids_created"
+                    },
+                    "data": []
+                },
+                "bids_reviewed": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100100/relationships/bids_reviewed",
+                        "related": "http://localhostx:3000/api/user/100100/bids_reviewed"
+                    },
+                    "data": []
+                },
+                "bids_approved": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100100/relationships/bids_approved",
+                        "related": "http://localhostx:3000/api/user/100100/bids_approved"
+                    },
+                    "data": []
+                },
+                "files_owned": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100100/relationships/files_owned",
+                        "related": "http://localhostx:3000/api/user/100100/files_owned"
+                    },
+                    "data": []
+                },
+                "file_permissions": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100100/relationships/file_permissions",
+                        "related": "http://localhostx:3000/api/user/100100/file_permissions"
+                    },
+                    "data": []
+                },
+                "api_log": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100100/relationships/api_log",
+                        "related": "http://localhostx:3000/api/user/100100/api_log"
+                    },
+                    "data": []
+                },
+                "clicks_activity": {
+                    "links": {
+                        "self": "http://localhostx:3000/api/user/100100/relationships/clicks_activity",
+                        "related": "http://localhostx:3000/api/user/100100/clicks_activity"
+                    },
+                    "data": []
+                }
+            }
         }
     ],
     "meta": {
@@ -14263,28 +19019,10 @@ export default function handler(req, res) {
                 "data.1.attributes.updated_at": [
                     "Date"
                 ],
-                "data.1.attributes.last_login": [
-                    "Date"
-                ],
-                "data.1.attributes.last_failed_login": [
-                    "Date"
-                ],
-                "data.1.attributes.date_of_birth": [
-                    "Date"
-                ],
                 "data.2.attributes.created_at": [
                     "Date"
                 ],
                 "data.2.attributes.updated_at": [
-                    "Date"
-                ],
-                "data.2.attributes.last_login": [
-                    "Date"
-                ],
-                "data.2.attributes.last_failed_login": [
-                    "Date"
-                ],
-                "data.2.attributes.date_of_birth": [
                     "Date"
                 ],
                 "data.3.attributes.created_at": [
@@ -14293,28 +19031,10 @@ export default function handler(req, res) {
                 "data.3.attributes.updated_at": [
                     "Date"
                 ],
-                "data.3.attributes.last_login": [
-                    "Date"
-                ],
-                "data.3.attributes.last_failed_login": [
-                    "Date"
-                ],
-                "data.3.attributes.date_of_birth": [
-                    "Date"
-                ],
                 "data.4.attributes.created_at": [
                     "Date"
                 ],
                 "data.4.attributes.updated_at": [
-                    "Date"
-                ],
-                "data.4.attributes.last_login": [
-                    "Date"
-                ],
-                "data.4.attributes.last_failed_login": [
-                    "Date"
-                ],
-                "data.4.attributes.date_of_birth": [
                     "Date"
                 ],
                 "data.5.attributes.created_at": [
@@ -14323,28 +19043,10 @@ export default function handler(req, res) {
                 "data.5.attributes.updated_at": [
                     "Date"
                 ],
-                "data.5.attributes.last_login": [
-                    "Date"
-                ],
-                "data.5.attributes.last_failed_login": [
-                    "Date"
-                ],
-                "data.5.attributes.date_of_birth": [
-                    "Date"
-                ],
                 "data.6.attributes.created_at": [
                     "Date"
                 ],
                 "data.6.attributes.updated_at": [
-                    "Date"
-                ],
-                "data.6.attributes.last_login": [
-                    "Date"
-                ],
-                "data.6.attributes.last_failed_login": [
-                    "Date"
-                ],
-                "data.6.attributes.date_of_birth": [
                     "Date"
                 ],
                 "data.7.attributes.created_at": [
@@ -14353,28 +19055,10 @@ export default function handler(req, res) {
                 "data.7.attributes.updated_at": [
                     "Date"
                 ],
-                "data.7.attributes.last_login": [
-                    "Date"
-                ],
-                "data.7.attributes.last_failed_login": [
-                    "Date"
-                ],
-                "data.7.attributes.date_of_birth": [
-                    "Date"
-                ],
                 "data.8.attributes.created_at": [
                     "Date"
                 ],
                 "data.8.attributes.updated_at": [
-                    "Date"
-                ],
-                "data.8.attributes.last_login": [
-                    "Date"
-                ],
-                "data.8.attributes.last_failed_login": [
-                    "Date"
-                ],
-                "data.8.attributes.date_of_birth": [
                     "Date"
                 ],
                 "data.9.attributes.created_at": [
@@ -14383,28 +19067,10 @@ export default function handler(req, res) {
                 "data.9.attributes.updated_at": [
                     "Date"
                 ],
-                "data.9.attributes.last_login": [
-                    "Date"
-                ],
-                "data.9.attributes.last_failed_login": [
-                    "Date"
-                ],
-                "data.9.attributes.date_of_birth": [
-                    "Date"
-                ],
                 "data.10.attributes.created_at": [
                     "Date"
                 ],
                 "data.10.attributes.updated_at": [
-                    "Date"
-                ],
-                "data.10.attributes.last_login": [
-                    "Date"
-                ],
-                "data.10.attributes.last_failed_login": [
-                    "Date"
-                ],
-                "data.10.attributes.date_of_birth": [
                     "Date"
                 ],
                 "data.11.attributes.created_at": [
@@ -14413,28 +19079,10 @@ export default function handler(req, res) {
                 "data.11.attributes.updated_at": [
                     "Date"
                 ],
-                "data.11.attributes.last_login": [
-                    "Date"
-                ],
-                "data.11.attributes.last_failed_login": [
-                    "Date"
-                ],
-                "data.11.attributes.date_of_birth": [
-                    "Date"
-                ],
                 "data.12.attributes.created_at": [
                     "Date"
                 ],
                 "data.12.attributes.updated_at": [
-                    "Date"
-                ],
-                "data.12.attributes.last_login": [
-                    "Date"
-                ],
-                "data.12.attributes.last_failed_login": [
-                    "Date"
-                ],
-                "data.12.attributes.date_of_birth": [
                     "Date"
                 ],
                 "data.13.attributes.created_at": [
@@ -14443,28 +19091,10 @@ export default function handler(req, res) {
                 "data.13.attributes.updated_at": [
                     "Date"
                 ],
-                "data.13.attributes.last_login": [
-                    "Date"
-                ],
-                "data.13.attributes.last_failed_login": [
-                    "Date"
-                ],
-                "data.13.attributes.date_of_birth": [
-                    "Date"
-                ],
                 "data.14.attributes.created_at": [
                     "Date"
                 ],
                 "data.14.attributes.updated_at": [
-                    "Date"
-                ],
-                "data.14.attributes.last_login": [
-                    "Date"
-                ],
-                "data.14.attributes.last_failed_login": [
-                    "Date"
-                ],
-                "data.14.attributes.date_of_birth": [
                     "Date"
                 ],
                 "data.15.attributes.created_at": [
@@ -14473,28 +19103,10 @@ export default function handler(req, res) {
                 "data.15.attributes.updated_at": [
                     "Date"
                 ],
-                "data.15.attributes.last_login": [
-                    "Date"
-                ],
-                "data.15.attributes.last_failed_login": [
-                    "Date"
-                ],
-                "data.15.attributes.date_of_birth": [
-                    "Date"
-                ],
                 "data.16.attributes.created_at": [
                     "Date"
                 ],
                 "data.16.attributes.updated_at": [
-                    "Date"
-                ],
-                "data.16.attributes.last_login": [
-                    "Date"
-                ],
-                "data.16.attributes.last_failed_login": [
-                    "Date"
-                ],
-                "data.16.attributes.date_of_birth": [
                     "Date"
                 ],
                 "data.17.attributes.created_at": [
@@ -14503,28 +19115,10 @@ export default function handler(req, res) {
                 "data.17.attributes.updated_at": [
                     "Date"
                 ],
-                "data.17.attributes.last_login": [
-                    "Date"
-                ],
-                "data.17.attributes.last_failed_login": [
-                    "Date"
-                ],
-                "data.17.attributes.date_of_birth": [
-                    "Date"
-                ],
                 "data.18.attributes.created_at": [
                     "Date"
                 ],
                 "data.18.attributes.updated_at": [
-                    "Date"
-                ],
-                "data.18.attributes.last_login": [
-                    "Date"
-                ],
-                "data.18.attributes.last_failed_login": [
-                    "Date"
-                ],
-                "data.18.attributes.date_of_birth": [
                     "Date"
                 ],
                 "data.19.attributes.created_at": [
@@ -14533,28 +19127,10 @@ export default function handler(req, res) {
                 "data.19.attributes.updated_at": [
                     "Date"
                 ],
-                "data.19.attributes.last_login": [
-                    "Date"
-                ],
-                "data.19.attributes.last_failed_login": [
-                    "Date"
-                ],
-                "data.19.attributes.date_of_birth": [
-                    "Date"
-                ],
                 "data.20.attributes.created_at": [
                     "Date"
                 ],
                 "data.20.attributes.updated_at": [
-                    "Date"
-                ],
-                "data.20.attributes.last_login": [
-                    "Date"
-                ],
-                "data.20.attributes.last_failed_login": [
-                    "Date"
-                ],
-                "data.20.attributes.date_of_birth": [
                     "Date"
                 ],
                 "data.21.attributes.created_at": [
@@ -14563,28 +19139,10 @@ export default function handler(req, res) {
                 "data.21.attributes.updated_at": [
                     "Date"
                 ],
-                "data.21.attributes.last_login": [
-                    "Date"
-                ],
-                "data.21.attributes.last_failed_login": [
-                    "Date"
-                ],
-                "data.21.attributes.date_of_birth": [
-                    "Date"
-                ],
                 "data.22.attributes.created_at": [
                     "Date"
                 ],
                 "data.22.attributes.updated_at": [
-                    "Date"
-                ],
-                "data.22.attributes.last_login": [
-                    "Date"
-                ],
-                "data.22.attributes.last_failed_login": [
-                    "Date"
-                ],
-                "data.22.attributes.date_of_birth": [
                     "Date"
                 ],
                 "data.23.attributes.created_at": [
@@ -14593,28 +19151,10 @@ export default function handler(req, res) {
                 "data.23.attributes.updated_at": [
                     "Date"
                 ],
-                "data.23.attributes.last_login": [
-                    "Date"
-                ],
-                "data.23.attributes.last_failed_login": [
-                    "Date"
-                ],
-                "data.23.attributes.date_of_birth": [
-                    "Date"
-                ],
                 "data.24.attributes.created_at": [
                     "Date"
                 ],
                 "data.24.attributes.updated_at": [
-                    "Date"
-                ],
-                "data.24.attributes.last_login": [
-                    "Date"
-                ],
-                "data.24.attributes.last_failed_login": [
-                    "Date"
-                ],
-                "data.24.attributes.date_of_birth": [
                     "Date"
                 ],
                 "data.25.attributes.created_at": [
@@ -14623,28 +19163,10 @@ export default function handler(req, res) {
                 "data.25.attributes.updated_at": [
                     "Date"
                 ],
-                "data.25.attributes.last_login": [
-                    "Date"
-                ],
-                "data.25.attributes.last_failed_login": [
-                    "Date"
-                ],
-                "data.25.attributes.date_of_birth": [
-                    "Date"
-                ],
                 "data.26.attributes.created_at": [
                     "Date"
                 ],
                 "data.26.attributes.updated_at": [
-                    "Date"
-                ],
-                "data.26.attributes.last_login": [
-                    "Date"
-                ],
-                "data.26.attributes.last_failed_login": [
-                    "Date"
-                ],
-                "data.26.attributes.date_of_birth": [
                     "Date"
                 ],
                 "data.27.attributes.created_at": [
@@ -14653,28 +19175,10 @@ export default function handler(req, res) {
                 "data.27.attributes.updated_at": [
                     "Date"
                 ],
-                "data.27.attributes.last_login": [
-                    "Date"
-                ],
-                "data.27.attributes.last_failed_login": [
-                    "Date"
-                ],
-                "data.27.attributes.date_of_birth": [
-                    "Date"
-                ],
                 "data.28.attributes.created_at": [
                     "Date"
                 ],
                 "data.28.attributes.updated_at": [
-                    "Date"
-                ],
-                "data.28.attributes.last_login": [
-                    "Date"
-                ],
-                "data.28.attributes.last_failed_login": [
-                    "Date"
-                ],
-                "data.28.attributes.date_of_birth": [
                     "Date"
                 ],
                 "data.29.attributes.created_at": [
@@ -14683,28 +19187,10 @@ export default function handler(req, res) {
                 "data.29.attributes.updated_at": [
                     "Date"
                 ],
-                "data.29.attributes.last_login": [
-                    "Date"
-                ],
-                "data.29.attributes.last_failed_login": [
-                    "Date"
-                ],
-                "data.29.attributes.date_of_birth": [
-                    "Date"
-                ],
                 "data.30.attributes.created_at": [
                     "Date"
                 ],
                 "data.30.attributes.updated_at": [
-                    "Date"
-                ],
-                "data.30.attributes.last_login": [
-                    "Date"
-                ],
-                "data.30.attributes.last_failed_login": [
-                    "Date"
-                ],
-                "data.30.attributes.date_of_birth": [
                     "Date"
                 ],
                 "data.31.attributes.created_at": [
@@ -14713,28 +19199,10 @@ export default function handler(req, res) {
                 "data.31.attributes.updated_at": [
                     "Date"
                 ],
-                "data.31.attributes.last_login": [
-                    "Date"
-                ],
-                "data.31.attributes.last_failed_login": [
-                    "Date"
-                ],
-                "data.31.attributes.date_of_birth": [
-                    "Date"
-                ],
                 "data.32.attributes.created_at": [
                     "Date"
                 ],
                 "data.32.attributes.updated_at": [
-                    "Date"
-                ],
-                "data.32.attributes.last_login": [
-                    "Date"
-                ],
-                "data.32.attributes.last_failed_login": [
-                    "Date"
-                ],
-                "data.32.attributes.date_of_birth": [
                     "Date"
                 ],
                 "data.33.attributes.created_at": [
@@ -14743,28 +19211,10 @@ export default function handler(req, res) {
                 "data.33.attributes.updated_at": [
                     "Date"
                 ],
-                "data.33.attributes.last_login": [
-                    "Date"
-                ],
-                "data.33.attributes.last_failed_login": [
-                    "Date"
-                ],
-                "data.33.attributes.date_of_birth": [
-                    "Date"
-                ],
                 "data.34.attributes.created_at": [
                     "Date"
                 ],
                 "data.34.attributes.updated_at": [
-                    "Date"
-                ],
-                "data.34.attributes.last_login": [
-                    "Date"
-                ],
-                "data.34.attributes.last_failed_login": [
-                    "Date"
-                ],
-                "data.34.attributes.date_of_birth": [
                     "Date"
                 ],
                 "data.35.attributes.created_at": [
@@ -14773,28 +19223,10 @@ export default function handler(req, res) {
                 "data.35.attributes.updated_at": [
                     "Date"
                 ],
-                "data.35.attributes.last_login": [
-                    "Date"
-                ],
-                "data.35.attributes.last_failed_login": [
-                    "Date"
-                ],
-                "data.35.attributes.date_of_birth": [
-                    "Date"
-                ],
                 "data.36.attributes.created_at": [
                     "Date"
                 ],
                 "data.36.attributes.updated_at": [
-                    "Date"
-                ],
-                "data.36.attributes.last_login": [
-                    "Date"
-                ],
-                "data.36.attributes.last_failed_login": [
-                    "Date"
-                ],
-                "data.36.attributes.date_of_birth": [
                     "Date"
                 ],
                 "data.37.attributes.created_at": [
@@ -14803,28 +19235,10 @@ export default function handler(req, res) {
                 "data.37.attributes.updated_at": [
                     "Date"
                 ],
-                "data.37.attributes.last_login": [
-                    "Date"
-                ],
-                "data.37.attributes.last_failed_login": [
-                    "Date"
-                ],
-                "data.37.attributes.date_of_birth": [
-                    "Date"
-                ],
                 "data.38.attributes.created_at": [
                     "Date"
                 ],
                 "data.38.attributes.updated_at": [
-                    "Date"
-                ],
-                "data.38.attributes.last_login": [
-                    "Date"
-                ],
-                "data.38.attributes.last_failed_login": [
-                    "Date"
-                ],
-                "data.38.attributes.date_of_birth": [
                     "Date"
                 ],
                 "data.39.attributes.created_at": [
@@ -14833,28 +19247,10 @@ export default function handler(req, res) {
                 "data.39.attributes.updated_at": [
                     "Date"
                 ],
-                "data.39.attributes.last_login": [
-                    "Date"
-                ],
-                "data.39.attributes.last_failed_login": [
-                    "Date"
-                ],
-                "data.39.attributes.date_of_birth": [
-                    "Date"
-                ],
                 "data.40.attributes.created_at": [
                     "Date"
                 ],
                 "data.40.attributes.updated_at": [
-                    "Date"
-                ],
-                "data.40.attributes.last_login": [
-                    "Date"
-                ],
-                "data.40.attributes.last_failed_login": [
-                    "Date"
-                ],
-                "data.40.attributes.date_of_birth": [
                     "Date"
                 ],
                 "data.41.attributes.created_at": [
@@ -14863,28 +19259,10 @@ export default function handler(req, res) {
                 "data.41.attributes.updated_at": [
                     "Date"
                 ],
-                "data.41.attributes.last_login": [
-                    "Date"
-                ],
-                "data.41.attributes.last_failed_login": [
-                    "Date"
-                ],
-                "data.41.attributes.date_of_birth": [
-                    "Date"
-                ],
                 "data.42.attributes.created_at": [
                     "Date"
                 ],
                 "data.42.attributes.updated_at": [
-                    "Date"
-                ],
-                "data.42.attributes.last_login": [
-                    "Date"
-                ],
-                "data.42.attributes.last_failed_login": [
-                    "Date"
-                ],
-                "data.42.attributes.date_of_birth": [
                     "Date"
                 ],
                 "data.43.attributes.created_at": [
@@ -14893,28 +19271,10 @@ export default function handler(req, res) {
                 "data.43.attributes.updated_at": [
                     "Date"
                 ],
-                "data.43.attributes.last_login": [
-                    "Date"
-                ],
-                "data.43.attributes.last_failed_login": [
-                    "Date"
-                ],
-                "data.43.attributes.date_of_birth": [
-                    "Date"
-                ],
                 "data.44.attributes.created_at": [
                     "Date"
                 ],
                 "data.44.attributes.updated_at": [
-                    "Date"
-                ],
-                "data.44.attributes.last_login": [
-                    "Date"
-                ],
-                "data.44.attributes.last_failed_login": [
-                    "Date"
-                ],
-                "data.44.attributes.date_of_birth": [
                     "Date"
                 ],
                 "data.45.attributes.created_at": [
@@ -14923,28 +19283,10 @@ export default function handler(req, res) {
                 "data.45.attributes.updated_at": [
                     "Date"
                 ],
-                "data.45.attributes.last_login": [
-                    "Date"
-                ],
-                "data.45.attributes.last_failed_login": [
-                    "Date"
-                ],
-                "data.45.attributes.date_of_birth": [
-                    "Date"
-                ],
                 "data.46.attributes.created_at": [
                     "Date"
                 ],
                 "data.46.attributes.updated_at": [
-                    "Date"
-                ],
-                "data.46.attributes.last_login": [
-                    "Date"
-                ],
-                "data.46.attributes.last_failed_login": [
-                    "Date"
-                ],
-                "data.46.attributes.date_of_birth": [
                     "Date"
                 ],
                 "data.47.attributes.created_at": [
@@ -14953,28 +19295,10 @@ export default function handler(req, res) {
                 "data.47.attributes.updated_at": [
                     "Date"
                 ],
-                "data.47.attributes.last_login": [
-                    "Date"
-                ],
-                "data.47.attributes.last_failed_login": [
-                    "Date"
-                ],
-                "data.47.attributes.date_of_birth": [
-                    "Date"
-                ],
                 "data.48.attributes.created_at": [
                     "Date"
                 ],
                 "data.48.attributes.updated_at": [
-                    "Date"
-                ],
-                "data.48.attributes.last_login": [
-                    "Date"
-                ],
-                "data.48.attributes.last_failed_login": [
-                    "Date"
-                ],
-                "data.48.attributes.date_of_birth": [
                     "Date"
                 ],
                 "data.49.attributes.created_at": [
@@ -14983,28 +19307,10 @@ export default function handler(req, res) {
                 "data.49.attributes.updated_at": [
                     "Date"
                 ],
-                "data.49.attributes.last_login": [
-                    "Date"
-                ],
-                "data.49.attributes.last_failed_login": [
-                    "Date"
-                ],
-                "data.49.attributes.date_of_birth": [
-                    "Date"
-                ],
                 "data.50.attributes.created_at": [
                     "Date"
                 ],
                 "data.50.attributes.updated_at": [
-                    "Date"
-                ],
-                "data.50.attributes.last_login": [
-                    "Date"
-                ],
-                "data.50.attributes.last_failed_login": [
-                    "Date"
-                ],
-                "data.50.attributes.date_of_birth": [
                     "Date"
                 ],
                 "data.51.attributes.created_at": [
@@ -15013,28 +19319,10 @@ export default function handler(req, res) {
                 "data.51.attributes.updated_at": [
                     "Date"
                 ],
-                "data.51.attributes.last_login": [
-                    "Date"
-                ],
-                "data.51.attributes.last_failed_login": [
-                    "Date"
-                ],
-                "data.51.attributes.date_of_birth": [
-                    "Date"
-                ],
                 "data.52.attributes.created_at": [
                     "Date"
                 ],
                 "data.52.attributes.updated_at": [
-                    "Date"
-                ],
-                "data.52.attributes.last_login": [
-                    "Date"
-                ],
-                "data.52.attributes.last_failed_login": [
-                    "Date"
-                ],
-                "data.52.attributes.date_of_birth": [
                     "Date"
                 ],
                 "data.53.attributes.created_at": [
@@ -15043,28 +19331,10 @@ export default function handler(req, res) {
                 "data.53.attributes.updated_at": [
                     "Date"
                 ],
-                "data.53.attributes.last_login": [
-                    "Date"
-                ],
-                "data.53.attributes.last_failed_login": [
-                    "Date"
-                ],
-                "data.53.attributes.date_of_birth": [
-                    "Date"
-                ],
                 "data.54.attributes.created_at": [
                     "Date"
                 ],
                 "data.54.attributes.updated_at": [
-                    "Date"
-                ],
-                "data.54.attributes.last_login": [
-                    "Date"
-                ],
-                "data.54.attributes.last_failed_login": [
-                    "Date"
-                ],
-                "data.54.attributes.date_of_birth": [
                     "Date"
                 ],
                 "data.55.attributes.created_at": [
@@ -15073,28 +19343,10 @@ export default function handler(req, res) {
                 "data.55.attributes.updated_at": [
                     "Date"
                 ],
-                "data.55.attributes.last_login": [
-                    "Date"
-                ],
-                "data.55.attributes.last_failed_login": [
-                    "Date"
-                ],
-                "data.55.attributes.date_of_birth": [
-                    "Date"
-                ],
                 "data.56.attributes.created_at": [
                     "Date"
                 ],
                 "data.56.attributes.updated_at": [
-                    "Date"
-                ],
-                "data.56.attributes.last_login": [
-                    "Date"
-                ],
-                "data.56.attributes.last_failed_login": [
-                    "Date"
-                ],
-                "data.56.attributes.date_of_birth": [
                     "Date"
                 ],
                 "data.57.attributes.created_at": [
@@ -15103,28 +19355,10 @@ export default function handler(req, res) {
                 "data.57.attributes.updated_at": [
                     "Date"
                 ],
-                "data.57.attributes.last_login": [
-                    "Date"
-                ],
-                "data.57.attributes.last_failed_login": [
-                    "Date"
-                ],
-                "data.57.attributes.date_of_birth": [
-                    "Date"
-                ],
                 "data.58.attributes.created_at": [
                     "Date"
                 ],
                 "data.58.attributes.updated_at": [
-                    "Date"
-                ],
-                "data.58.attributes.last_login": [
-                    "Date"
-                ],
-                "data.58.attributes.last_failed_login": [
-                    "Date"
-                ],
-                "data.58.attributes.date_of_birth": [
                     "Date"
                 ],
                 "data.59.attributes.created_at": [
@@ -15133,28 +19367,10 @@ export default function handler(req, res) {
                 "data.59.attributes.updated_at": [
                     "Date"
                 ],
-                "data.59.attributes.last_login": [
-                    "Date"
-                ],
-                "data.59.attributes.last_failed_login": [
-                    "Date"
-                ],
-                "data.59.attributes.date_of_birth": [
-                    "Date"
-                ],
                 "data.60.attributes.created_at": [
                     "Date"
                 ],
                 "data.60.attributes.updated_at": [
-                    "Date"
-                ],
-                "data.60.attributes.last_login": [
-                    "Date"
-                ],
-                "data.60.attributes.last_failed_login": [
-                    "Date"
-                ],
-                "data.60.attributes.date_of_birth": [
                     "Date"
                 ],
                 "data.61.attributes.created_at": [
@@ -15163,28 +19379,10 @@ export default function handler(req, res) {
                 "data.61.attributes.updated_at": [
                     "Date"
                 ],
-                "data.61.attributes.last_login": [
-                    "Date"
-                ],
-                "data.61.attributes.last_failed_login": [
-                    "Date"
-                ],
-                "data.61.attributes.date_of_birth": [
-                    "Date"
-                ],
                 "data.62.attributes.created_at": [
                     "Date"
                 ],
                 "data.62.attributes.updated_at": [
-                    "Date"
-                ],
-                "data.62.attributes.last_login": [
-                    "Date"
-                ],
-                "data.62.attributes.last_failed_login": [
-                    "Date"
-                ],
-                "data.62.attributes.date_of_birth": [
                     "Date"
                 ],
                 "data.63.attributes.created_at": [
@@ -15193,28 +19391,10 @@ export default function handler(req, res) {
                 "data.63.attributes.updated_at": [
                     "Date"
                 ],
-                "data.63.attributes.last_login": [
-                    "Date"
-                ],
-                "data.63.attributes.last_failed_login": [
-                    "Date"
-                ],
-                "data.63.attributes.date_of_birth": [
-                    "Date"
-                ],
                 "data.64.attributes.created_at": [
                     "Date"
                 ],
                 "data.64.attributes.updated_at": [
-                    "Date"
-                ],
-                "data.64.attributes.last_login": [
-                    "Date"
-                ],
-                "data.64.attributes.last_failed_login": [
-                    "Date"
-                ],
-                "data.64.attributes.date_of_birth": [
                     "Date"
                 ],
                 "data.65.attributes.created_at": [
@@ -15223,28 +19403,10 @@ export default function handler(req, res) {
                 "data.65.attributes.updated_at": [
                     "Date"
                 ],
-                "data.65.attributes.last_login": [
-                    "Date"
-                ],
-                "data.65.attributes.last_failed_login": [
-                    "Date"
-                ],
-                "data.65.attributes.date_of_birth": [
-                    "Date"
-                ],
                 "data.66.attributes.created_at": [
                     "Date"
                 ],
                 "data.66.attributes.updated_at": [
-                    "Date"
-                ],
-                "data.66.attributes.last_login": [
-                    "Date"
-                ],
-                "data.66.attributes.last_failed_login": [
-                    "Date"
-                ],
-                "data.66.attributes.date_of_birth": [
                     "Date"
                 ],
                 "data.67.attributes.created_at": [
@@ -15253,28 +19415,10 @@ export default function handler(req, res) {
                 "data.67.attributes.updated_at": [
                     "Date"
                 ],
-                "data.67.attributes.last_login": [
-                    "Date"
-                ],
-                "data.67.attributes.last_failed_login": [
-                    "Date"
-                ],
-                "data.67.attributes.date_of_birth": [
-                    "Date"
-                ],
                 "data.68.attributes.created_at": [
                     "Date"
                 ],
                 "data.68.attributes.updated_at": [
-                    "Date"
-                ],
-                "data.68.attributes.last_login": [
-                    "Date"
-                ],
-                "data.68.attributes.last_failed_login": [
-                    "Date"
-                ],
-                "data.68.attributes.date_of_birth": [
                     "Date"
                 ],
                 "data.69.attributes.created_at": [
@@ -15283,28 +19427,10 @@ export default function handler(req, res) {
                 "data.69.attributes.updated_at": [
                     "Date"
                 ],
-                "data.69.attributes.last_login": [
-                    "Date"
-                ],
-                "data.69.attributes.last_failed_login": [
-                    "Date"
-                ],
-                "data.69.attributes.date_of_birth": [
-                    "Date"
-                ],
                 "data.70.attributes.created_at": [
                     "Date"
                 ],
                 "data.70.attributes.updated_at": [
-                    "Date"
-                ],
-                "data.70.attributes.last_login": [
-                    "Date"
-                ],
-                "data.70.attributes.last_failed_login": [
-                    "Date"
-                ],
-                "data.70.attributes.date_of_birth": [
                     "Date"
                 ],
                 "data.71.attributes.created_at": [
@@ -15313,28 +19439,10 @@ export default function handler(req, res) {
                 "data.71.attributes.updated_at": [
                     "Date"
                 ],
-                "data.71.attributes.last_login": [
-                    "Date"
-                ],
-                "data.71.attributes.last_failed_login": [
-                    "Date"
-                ],
-                "data.71.attributes.date_of_birth": [
-                    "Date"
-                ],
                 "data.72.attributes.created_at": [
                     "Date"
                 ],
                 "data.72.attributes.updated_at": [
-                    "Date"
-                ],
-                "data.72.attributes.last_login": [
-                    "Date"
-                ],
-                "data.72.attributes.last_failed_login": [
-                    "Date"
-                ],
-                "data.72.attributes.date_of_birth": [
                     "Date"
                 ],
                 "data.73.attributes.created_at": [
@@ -15343,28 +19451,10 @@ export default function handler(req, res) {
                 "data.73.attributes.updated_at": [
                     "Date"
                 ],
-                "data.73.attributes.last_login": [
-                    "Date"
-                ],
-                "data.73.attributes.last_failed_login": [
-                    "Date"
-                ],
-                "data.73.attributes.date_of_birth": [
-                    "Date"
-                ],
                 "data.74.attributes.created_at": [
                     "Date"
                 ],
                 "data.74.attributes.updated_at": [
-                    "Date"
-                ],
-                "data.74.attributes.last_login": [
-                    "Date"
-                ],
-                "data.74.attributes.last_failed_login": [
-                    "Date"
-                ],
-                "data.74.attributes.date_of_birth": [
                     "Date"
                 ],
                 "data.75.attributes.created_at": [
@@ -15373,18 +19463,153 @@ export default function handler(req, res) {
                 "data.75.attributes.updated_at": [
                     "Date"
                 ],
-                "data.75.attributes.last_login": [
+                "data.76.attributes.created_at": [
                     "Date"
                 ],
-                "data.75.attributes.last_failed_login": [
+                "data.76.attributes.updated_at": [
                     "Date"
                 ],
-                "data.75.attributes.date_of_birth": [
+                "data.77.attributes.created_at": [
+                    "Date"
+                ],
+                "data.77.attributes.updated_at": [
+                    "Date"
+                ],
+                "data.78.attributes.created_at": [
+                    "Date"
+                ],
+                "data.78.attributes.updated_at": [
+                    "Date"
+                ],
+                "data.79.attributes.created_at": [
+                    "Date"
+                ],
+                "data.79.attributes.updated_at": [
+                    "Date"
+                ],
+                "data.80.attributes.created_at": [
+                    "Date"
+                ],
+                "data.80.attributes.updated_at": [
+                    "Date"
+                ],
+                "data.81.attributes.created_at": [
+                    "Date"
+                ],
+                "data.81.attributes.updated_at": [
+                    "Date"
+                ],
+                "data.82.attributes.created_at": [
+                    "Date"
+                ],
+                "data.82.attributes.updated_at": [
+                    "Date"
+                ],
+                "data.83.attributes.created_at": [
+                    "Date"
+                ],
+                "data.83.attributes.updated_at": [
+                    "Date"
+                ],
+                "data.84.attributes.created_at": [
+                    "Date"
+                ],
+                "data.84.attributes.updated_at": [
+                    "Date"
+                ],
+                "data.85.attributes.created_at": [
+                    "Date"
+                ],
+                "data.85.attributes.updated_at": [
+                    "Date"
+                ],
+                "data.86.attributes.created_at": [
+                    "Date"
+                ],
+                "data.86.attributes.updated_at": [
+                    "Date"
+                ],
+                "data.87.attributes.created_at": [
+                    "Date"
+                ],
+                "data.87.attributes.updated_at": [
+                    "Date"
+                ],
+                "data.88.attributes.created_at": [
+                    "Date"
+                ],
+                "data.88.attributes.updated_at": [
+                    "Date"
+                ],
+                "data.89.attributes.created_at": [
+                    "Date"
+                ],
+                "data.89.attributes.updated_at": [
+                    "Date"
+                ],
+                "data.90.attributes.created_at": [
+                    "Date"
+                ],
+                "data.90.attributes.updated_at": [
+                    "Date"
+                ],
+                "data.91.attributes.created_at": [
+                    "Date"
+                ],
+                "data.91.attributes.updated_at": [
+                    "Date"
+                ],
+                "data.92.attributes.created_at": [
+                    "Date"
+                ],
+                "data.92.attributes.updated_at": [
+                    "Date"
+                ],
+                "data.93.attributes.created_at": [
+                    "Date"
+                ],
+                "data.93.attributes.updated_at": [
+                    "Date"
+                ],
+                "data.94.attributes.created_at": [
+                    "Date"
+                ],
+                "data.94.attributes.updated_at": [
+                    "Date"
+                ],
+                "data.95.attributes.created_at": [
+                    "Date"
+                ],
+                "data.95.attributes.updated_at": [
+                    "Date"
+                ],
+                "data.96.attributes.created_at": [
+                    "Date"
+                ],
+                "data.96.attributes.updated_at": [
+                    "Date"
+                ],
+                "data.97.attributes.created_at": [
+                    "Date"
+                ],
+                "data.97.attributes.updated_at": [
+                    "Date"
+                ],
+                "data.98.attributes.created_at": [
+                    "Date"
+                ],
+                "data.98.attributes.updated_at": [
+                    "Date"
+                ],
+                "data.99.attributes.created_at": [
+                    "Date"
+                ],
+                "data.99.attributes.updated_at": [
                     "Date"
                 ]
             }
         },
-        "total": 76
+        "total": 115
     }
 })
 }

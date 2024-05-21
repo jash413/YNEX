@@ -7,16 +7,15 @@ import network from "@/config";
 import { useTable, useSortBy, useGlobalFilter } from "react-table";
 
 const ViewTasks = () => {
-  const [bidsData, setTasksData] = useState([]);
-  const [filteredTasksData, setFilteredTasksData] = useState([]);
+  const [tasksData, setTasksData] = useState([]);
   const [addToCompareTask, setAddToCompareTask] = useState([]);
   const [completedTasks, setCompletedTasks] = useState(0);
   const [inProgressTasks, setInProgressTasks] = useState(0);
   const [pendingTasks, setPendingTasks] = useState(0);
-  const [newbids, setNewTasks] = useState(0);
   const [displayToast, setDisplayToast] = useState(false);
   const [selectedUser, setSelectedUser] = useState(null);
   const [selectedProjects, setSelectedProjects] = useState([]);
+  const [selectedProject, setSelectedProject] = useState(null);
 
   const handleAddToCompare = (e) => {
     // Cannot select different tasks
@@ -33,26 +32,8 @@ const ViewTasks = () => {
     }
   };
 
-  useEffect(() => {
-    getUserDataFromLocalStorage();
-    getDataFromLocalStorage();
-  }, []);
-  const getUserDataFromLocalStorage = () => {
-    if (
-      localStorage.getItem("selectedUser") !== null &&
-      localStorage.getItem("selectedUser") !== "undefined"
-    ) {
-      const selectedUser = JSON.parse(localStorage.getItem("selectedUser"));
-      setSelectedUser(selectedUser);
-      if (selectedUser && selectedUser.relationships) {
-        setSelectedProjects(selectedUser.relationships.home_owner_projects.data);
-      } else {
-        setSelectedProjects([]);
-      }
-    }
-  };
 
-  const getDataFromLocalStorage = () => {
+  const getProjectDataFromLocalStorage = () => {
     if (
       localStorage.getItem("selectedProject") !== null &&
       localStorage.getItem("selectedProject") !== "undefined"
@@ -60,17 +41,25 @@ const ViewTasks = () => {
       const selectedProject = JSON.parse(
         localStorage.getItem("selectedProject")
       );
-      if (!selectedProject) {
-        setFilteredTasksData(bidsData);
-      }
-      const bids = bidsData.filter(
-        (bid) => bid.project_id === selectedProject.project_id
-      );
-      setFilteredTasksData(bids);
+      setSelectedProject(selectedProject);
     } else {
-      setFilteredTasksData(bidsData);
+      setSelectedProject(null);
     }
   };
+  const getUserDataFromLocalStorage = () => {
+    if (
+      localStorage.getItem("selectedUser") !== null &&
+      localStorage.getItem("selectedUser") !== "undefined"
+    ) {
+      const selectedUser = JSON.parse(localStorage.getItem("selectedUser"));
+      setSelectedUser(selectedUser);
+  }
+};
+useEffect(() => {
+  getUserDataFromLocalStorage();
+  getProjectDataFromLocalStorage();
+
+}, []);
 
   useEffect(() => {
     localStorage.setItem("addToCompareTask", JSON.stringify(addToCompareTask));
@@ -92,376 +81,350 @@ const ViewTasks = () => {
 
   useEffect(() => {
     axios
-      .get(`${network.serverUrl}api/bidData/`)
-      .then((response) => {
-        if (
-          localStorage.getItem("selectedProject") !== null &&
-          localStorage.getItem("selectedProject") !== "undefined"
-        ) {
-          const selectedProject = JSON.parse(
-            localStorage.getItem("selectedProject")
-          );
-          if (selectedProject) {
-            const bids = response.data.filter(
-              (bid) => bid.project_id === selectedProject.project_id
-            );
-            setFilteredTasksData(bids);
-          } else {
-            setFilteredTasksData(response.data);
-          }
-        } else {
-          setFilteredTasksData(response.data);
-        }
-        setTasksData(response.data);
+      .get(`${network.serverUrl}api/task/`)
+      .then((response) =>{
+        if(selectedProject){
+        setTasksData(response.data.body.data.filter((task) => task.attributes.project_id === selectedProject.id));
+        console.log(tasksData);
         setCompletedTasks(
-          response.data.filter((bid) => bid.status === "Completed").length
+          tasksData.filter((task) => task.attributes.percentage_complete === 100).length
         );
         setInProgressTasks(
-          response.data.filter((bid) => bid.status === "Inprogress").length
+          tasksData.filter((task) => task.attributes.percentage_complete > 0).length
         );
         setPendingTasks(
-          response.data.filter((bid) => bid.status === "Pending").length
+          tasksData.filter((task) => task.attributes.percentage_complete === null).length
         );
-        setNewTasks(response.data.length);
-      })
+      }})
       .catch((error) => {
         console.log(error);
       });
-  }, []);
+  }, [selectedProject]);
 
-  function TasksTable({
-    bidsData,
-    handleAddToCompare,
-    addToCompareTask,
-    statusColor,
-  }) {
-    const data = React.useMemo(() => bidsData, [bidsData]);
+  // function TasksTable({
+  //   tasksData,
+  //   handleAddToCompare,
+  //   addToCompareTask,
+  //   statusColor,
+  // }) {
+  //   const data = React.useMemo(() => tasksData, [tasksData]);
 
-    const columns = React.useMemo(
-      () => [
-        {
-          Header: "Subcontractor",
-          accessor: "subcontractor_id.Name",
-          Cell: ({ value }) => {
-            // const randomImageNumber = Math.floor(Math.random() * 17) + 1;
-            return (
-              <div className={`hs-tooltip ti-main-tooltip`}>
-                <div className="flex items-center">
-                  <div className="me-2 lh-1">
-                    <span className="avatar avatar-sm">
-                      <img src={`../../../assets/images/faces/10.jpg`} alt="" />
-                    </span>
-                  </div>
-                  <div
-                    className="text-sm"
-                    style={{
-                      color: "#0d6efd",
-                    }}
-                  >
-                    <Link href="/components/business-hub/summary/">
-                      {value}
-                    </Link>
-                  </div>
-                </div>
-                <span
-                  className="hs-tooltip-content  ti-main-tooltip-content !bg-black !text-xs !font-medium !text-white shadow-sm "
-                  role="tooltip"
-                >
-                  Subcontractor Details
-                </span>
-              </div>
-            );
-          },
-        },
-        {
-          Header: "Task ID",
-          accessor: "bid_id",
-          Cell: ({ value }) => (
-            <div className={`hs-tooltip ti-main-tooltip`}>
-              <div className="flex items-center">
-                <Link
-                  style={{
-                    color: "#0d6efd",
-                  }}
-                  href={`/components/bids/${value}`}
-                >
-                  {value}
-                </Link>
-              </div>
-              <span
-                className="hs-tooltip-content ti-main-tooltip-content !bg-black !text-xs !font-medium !text-white shadow-sm"
-                role="tooltip"
-              >
-                View Task
-              </span>
-            </div>
-          ),
-        },
-        {
-          Header: "Task Name",
-          accessor: "task_name",
-        },
-        {
-          Header: "Cost Code",
-          accessor: "cost_code_id",
-        },
-        {
-          Header: "Price Quoted",
-          accessor: "bid_amount_from_sub",
-          Cell: ({ value }) => (
-            <div style={{ textAlign: "right" }}>$ {value.toLocaleString()}</div>
-          ),
-        },
-        {
-          Header: "Received Date",
-          accessor: "bid_recieved_date",
-          Cell: ({ value }) =>
-            new Date(value).toLocaleDateString("en-GB", {
-              day: "2-digit",
-              month: "short",
-              year: "numeric",
-            }),
-        },
-        {
-          Header: "Expiration Date",
-          accessor: "bid_expiration_date",
-          Cell: ({ value }) =>
-            new Date(value).toLocaleDateString("en-GB", {
-              day: "2-digit",
-              month: "short",
-              year: "numeric",
-            }),
-        },
-        {
-          Header: "Action",
-          accessor: "action_bid_id",
-          Cell: ({ row: { original } }) => (
-            <div className="hs-dropdown ti-dropdown">
-              <a
-                href="#!"
-                className="ti-btn ti-btn-primary !bg-primary !text-white !py-1 !px-2 !text-[0.75rem] !m-0 !gap-0 !font-medium"
-                aria-expanded="false"
-              >
-                Actions
-                <i className="ri-arrow-down-s-line align-middle ms-1 inline-block"></i>
-              </a>
-              <ul
-                className="hs-dropdown-menu ti-dropdown-menu !-mt-2 hidden"
-                role="menu"
-              >
-                <li>
-                  <a
-                    className="ti-dropdown-item !py-2 !px-[0.9375rem] !text-[0.8125rem] !font-medium block"
-                    href={`/components/bids/${original.bid_id}`}
-                  >
-                    View Task
-                  </a>
-                </li>
-                <li>
-                  <a
-                    className="ti-dropdown-item !py-2 !px-[0.9375rem] !text-[0.8125rem] !font-medium block"
-                    href={`/components/bids/editTask/${original.bid_id}`}
-                  >
-                    Edit Task
-                  </a>
-                </li>
-                <li>
-                  <a
-                    className="ti-dropdown-item !py-2 !px-[0.9375rem] !text-[0.8125rem] !font-medium block"
-                    href={`/components/bids/${original.bid_id}`}
-                  >
-                    Accept Task
-                  </a>
-                </li>
-                <li>
-                  <a
-                    className="ti-dropdown-item !py-2 !px-[0.9375rem] !text-[0.8125rem] !font-medium block"
-                    href={`/components/bids/${original.bid_id}`}
-                  >
-                    Decline bid
-                  </a>
-                </li>
-                <li>
-                  <a
-                    className="ti-dropdown-item !py-2 !px-[0.9375rem] !text-[0.8125rem] !font-medium block"
-                    href={`/components/bids/${original.bid_id}`}
-                  >
-                    Ask Question
-                  </a>
-                </li>
-                <li>
-                  <a
-                    className="ti-dropdown-item !py-2 !px-[0.9375rem] !text-[0.8125rem] !font-medium block"
-                    href={`/components/bids/${original.bid_id}`}
-                  >
-                    Send Reminder
-                  </a>
-                </li>
-              </ul>
-            </div>
-          ),
-        },
-      ],
-      [handleAddToCompare, addToCompareTask, statusColor]
-    );
+  //   const columns = React.useMemo(
+  //     () => [
+  //       {
+  //         Header: "Subcontractor",
+  //         accessor: "subcontractor_id.Name",
+  //         Cell: ({ value }) => {
+  //           // const randomImageNumber = Math.floor(Math.random() * 17) + 1;
+  //           return (
+  //             <div className={`hs-tooltip ti-main-tooltip`}>
+  //               <div className="flex items-center">
+  //                 <div className="me-2 lh-1">
+  //                   <span className="avatar avatar-sm">
+  //                     <img src={`../../../assets/images/faces/10.jpg`} alt="" />
+  //                   </span>
+  //                 </div>
+  //                 <div
+  //                   className="text-sm"
+  //                   style={{
+  //                     color: "#0d6efd",
+  //                   }}
+  //                 >
+  //                   <Link href="/components/business-hub/summary/">
+  //                     {value}
+  //                   </Link>
+  //                 </div>
+  //               </div>
+  //               <span
+  //                 className="hs-tooltip-content  ti-main-tooltip-content !bg-black !text-xs !font-medium !text-white shadow-sm "
+  //                 role="tooltip"
+  //               >
+  //                 Subcontractor Details
+  //               </span>
+  //             </div>
+  //           );
+  //         },
+  //       },
+  //       {
+  //         Header: "Task ID",
+  //         accessor: "bid_id",
+  //         Cell: ({ value }) => (
+  //           <div className={`hs-tooltip ti-main-tooltip`}>
+  //             <div className="flex items-center">
+  //               <Link
+  //                 style={{
+  //                   color: "#0d6efd",
+  //                 }}
+  //                 href={`/components/bids/${value}`}
+  //               >
+  //                 {value}
+  //               </Link>
+  //             </div>
+  //             <span
+  //               className="hs-tooltip-content ti-main-tooltip-content !bg-black !text-xs !font-medium !text-white shadow-sm"
+  //               role="tooltip"
+  //             >
+  //               View Task
+  //             </span>
+  //           </div>
+  //         ),
+  //       },
+  //       {
+  //         Header: "Task Name",
+  //         accessor: "task_name",
+  //       },
+  //       {
+  //         Header: "Cost Code",
+  //         accessor: "cost_code_id",
+  //       },
+  //       {
+  //         Header: "Price Quoted",
+  //         accessor: "bid_amount_from_sub",
+  //         Cell: ({ value }) => (
+  //           <div style={{ textAlign: "right" }}>$ {value.toLocaleString()}</div>
+  //         ),
+  //       },
+  //       {
+  //         Header: "Received Date",
+  //         accessor: "bid_recieved_date",
+  //         Cell: ({ value }) =>
+  //           new Date(value).toLocaleDateString("en-GB", {
+  //             day: "2-digit",
+  //             month: "short",
+  //             year: "numeric",
+  //           }),
+  //       },
+  //       {
+  //         Header: "Expiration Date",
+  //         accessor: "bid_expiration_date",
+  //         Cell: ({ value }) =>
+  //           new Date(value).toLocaleDateString("en-GB", {
+  //             day: "2-digit",
+  //             month: "short",
+  //             year: "numeric",
+  //           }),
+  //       },
+  //       {
+  //         Header: "Action",
+  //         accessor: "action_bid_id",
+  //         Cell: ({ row: { original } }) => (
+  //           <div className="hs-dropdown ti-dropdown">
+  //             <a
+  //               href="#!"
+  //               className="ti-btn ti-btn-primary !bg-primary !text-white !py-1 !px-2 !text-[0.75rem] !m-0 !gap-0 !font-medium"
+  //               aria-expanded="false"
+  //             >
+  //               Actions
+  //               <i className="ri-arrow-down-s-line align-middle ms-1 inline-block"></i>
+  //             </a>
+  //             <ul
+  //               className="hs-dropdown-menu ti-dropdown-menu !-mt-2 hidden"
+  //               role="menu"
+  //             >
+  //               <li>
+  //                 <a
+  //                   className="ti-dropdown-item !py-2 !px-[0.9375rem] !text-[0.8125rem] !font-medium block"
+  //                   href={`/components/bids/${original.bid_id}`}
+  //                 >
+  //                   View Task
+  //                 </a>
+  //               </li>
+  //               <li>
+  //                 <a
+  //                   className="ti-dropdown-item !py-2 !px-[0.9375rem] !text-[0.8125rem] !font-medium block"
+  //                   href={`/components/bids/editTask/${original.bid_id}`}
+  //                 >
+  //                   Edit Task
+  //                 </a>
+  //               </li>
+  //               <li>
+  //                 <a
+  //                   className="ti-dropdown-item !py-2 !px-[0.9375rem] !text-[0.8125rem] !font-medium block"
+  //                   href={`/components/bids/${original.bid_id}`}
+  //                 >
+  //                   Accept Task
+  //                 </a>
+  //               </li>
+  //               <li>
+  //                 <a
+  //                   className="ti-dropdown-item !py-2 !px-[0.9375rem] !text-[0.8125rem] !font-medium block"
+  //                   href={`/components/bids/${original.bid_id}`}
+  //                 >
+  //                   Decline bid
+  //                 </a>
+  //               </li>
+  //               <li>
+  //                 <a
+  //                   className="ti-dropdown-item !py-2 !px-[0.9375rem] !text-[0.8125rem] !font-medium block"
+  //                   href={`/components/bids/${original.bid_id}`}
+  //                 >
+  //                   Ask Question
+  //                 </a>
+  //               </li>
+  //               <li>
+  //                 <a
+  //                   className="ti-dropdown-item !py-2 !px-[0.9375rem] !text-[0.8125rem] !font-medium block"
+  //                   href={`/components/bids/${original.bid_id}`}
+  //                 >
+  //                   Send Reminder
+  //                 </a>
+  //               </li>
+  //             </ul>
+  //           </div>
+  //         ),
+  //       },
+  //     ],
+  //     [handleAddToCompare, addToCompareTask, statusColor]
+  //   );
 
-    function GlobalFilter({
-      preGlobalFilteredRows,
-      globalFilter,
-      setGlobalFilter,
-    }) {
-      const count = preGlobalFilteredRows.length;
-      const [value, setValue] = useState(globalFilter);
+  //   function GlobalFilter({
+  //     preGlobalFilteredRows,
+  //     globalFilter,
+  //     setGlobalFilter,
+  //   }) {
+  //     const count = preGlobalFilteredRows.length;
+  //     const [value, setValue] = useState(globalFilter);
 
-      const handleKeyDown = (event) => {
-        if (event.key === "Enter") {
-          setGlobalFilter(value || undefined);
-        }
-      };
+  //     const handleKeyDown = (event) => {
+  //       if (event.key === "Enter") {
+  //         setGlobalFilter(value || undefined);
+  //       }
+  //     };
 
-      const handleChange = (e) => {
-        setValue(e.target.value);
-        if (e.target.value === "") {
-          setGlobalFilter(undefined);
-        }
-      };
+  //     const handleChange = (e) => {
+  //       setValue(e.target.value);
+  //       if (e.target.value === "") {
+  //         setGlobalFilter(undefined);
+  //       }
+  //     };
 
-      return (
-        <>
-          <span>Search Tasks: </span>
-          <span style={{ marginRight: "auto" }}>
-            <input
-              value={value || ""}
-              onChange={handleChange}
-              onKeyDown={handleKeyDown}
-              placeholder={`${count} records...`}
-              className="form-control"
-              style={{
-                borderColor: "#d2d6dc",
-                padding: "0.375rem 0.75rem",
-                borderRadius: "0.375rem",
-              }}
-            />
-          </span>
-        </>
-      );
-    }
+  //     return (
+  //       <>
+  //         <span>Search Tasks: </span>
+  //         <span style={{ marginRight: "auto" }}>
+  //           <input
+  //             value={value || ""}
+  //             onChange={handleChange}
+  //             onKeyDown={handleKeyDown}
+  //             placeholder={`${count} records...`}
+  //             className="form-control"
+  //             style={{
+  //               borderColor: "#d2d6dc",
+  //               padding: "0.375rem 0.75rem",
+  //               borderRadius: "0.375rem",
+  //             }}
+  //           />
+  //         </span>
+  //       </>
+  //     );
+  //   }
 
-    const {
-      getTableProps,
-      getTableBodyProps,
-      headerGroups,
-      rows,
-      prepareRow,
-      preGlobalFilteredRows,
-      setGlobalFilter,
-      state,
-    } = useTable({ columns, data }, useGlobalFilter, useSortBy);
+  //   const {
+  //     getTableProps,
+  //     getTableBodyProps,
+  //     headerGroups,
+  //     rows,
+  //     prepareRow,
+  //     preGlobalFilteredRows,
+  //     setGlobalFilter,
+  //     state,
+  //   } = useTable({ columns, data }, useGlobalFilter, useSortBy);
 
-    return (
-      <>
-        <div className="box-header justify-between">
-          <div className="box-title">Total Tasks: {bidsData.length} </div>
-          <GlobalFilter
-            preGlobalFilteredRows={preGlobalFilteredRows}
-            globalFilter={state.globalFilter}
-            setGlobalFilter={setGlobalFilter}
-          />
-          <div className="flex">
-            <button
-              type="button"
-              className="hs-dropdown-toggle ti-btn ti-btn-primary-full !py-1 !px-2 !text-[0.75rem]"
-              data-hs-overlay="#create-Task"
-            >
-              <Link href="/components/project-management/create-task/">
-                <i className="ri-add-line font-semibold align-middle"></i>{" "}
-                Create Task
-              </Link>
-            </button>
-            <button
-              type="button"
-              className="hs-dropdown-toggle ti-btn ti-btn-primary-full !py-1 !px-2 !mx-1 !text-[0.75rem] "
-              data-hs-overlay="#compare-Task"
-            >
-              <Link href="/components/project-management/task-kanban/">
-                Kanban View
-              </Link>
-            </button>
-            <button
-              type="button"
-              className="hs-dropdown-toggle ti-btn ti-btn-primary-full !py-1 !px-2 !mx-1 !text-[0.75rem] "
-              data-hs-overlay="#compare-Task"
-            >
-              <Link href="/components/project-management/gantt-chart">
-                Gantt Chart
-              </Link>
-            </button>
-          </div>
-        </div>
-        <div className="box-body">
-          <div className="table-responsive overflow-x-hidden">
-            <table
-              {...getTableProps()}
-              className="table whitespace-nowrap table-bordered min-w-full x-hidden"
-            >
-              <thead>
-                {headerGroups.map((headerGroup) => (
-                  <tr {...headerGroup.getHeaderGroupProps()}>
-                    {headerGroup.headers.map((column, columnIndex) => (
-                      <th
-                        {...column.getHeaderProps()}
-                        {...(columnIndex !== 0
-                          ? column.getSortByToggleProps()
-                          : {})}
-                        scope="col"
-                        className="text-start"
-                      >
-                        {column.render("Header")}
-                        {columnIndex !== 0 && (
-                          // Add space between the icon and the text
-                          <>
-                            <span> </span>
-                            <span>
-                              {column.isSorted ? (
-                                column.isSortedDesc ? (
-                                  <i className="ti ti-arrow-down"></i>
-                                ) : (
-                                  <i className="ti ti-arrow-up"></i>
-                                )
-                              ) : (
-                                <i className="ti ti-arrows-down-up"></i>
-                              )}
-                            </span>
-                          </>
-                        )}
-                      </th>
-                    ))}
-                  </tr>
-                ))}
-              </thead>
-              <tbody {...getTableBodyProps()}>
-                {rows.map((row) => {
-                  prepareRow(row);
-                  return (
-                    <tr
-                      {...row.getRowProps()}
-                      className="border border-defaultborder Task-list"
-                    >
-                      {row.cells.map((cell) => (
-                        <td {...cell.getCellProps()} className={cell.column.id}>
-                          {cell.render("Cell")}
-                        </td>
-                      ))}
-                    </tr>
-                  );
-                })}
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </>
-    );
-  }
+  //   return (
+  //     <>
+  //       <div className="box-header justify-between">
+  //         <div className="box-title">Total Tasks: {tasksData.length} </div>
+  //         <GlobalFilter
+  //           preGlobalFilteredRows={preGlobalFilteredRows}
+  //           globalFilter={state.globalFilter}
+  //           setGlobalFilter={setGlobalFilter}
+  //         />
+  //         <div className="flex">
+  //           <button
+  //             type="button"
+  //             className="hs-dropdown-toggle ti-btn ti-btn-primary-full !py-1 !px-2 !text-[0.75rem]"
+  //             data-hs-overlay="#create-Task"
+  //           >
+  //             <Link href="/components/project-management/create-task/">
+  //               <i className="ri-add-line font-semibold align-middle"></i>{" "}
+  //               Create Task
+  //             </Link>
+  //           </button>
+  //           <button
+  //             type="button"
+  //             className="hs-dropdown-toggle ti-btn ti-btn-primary-full !py-1 !px-2 !mx-1 !text-[0.75rem] "
+  //             data-hs-overlay="#compare-Task"
+  //           >
+  //             <Link href="/components/project-management/task-kanban/">
+  //               Kanban View
+  //             </Link>
+  //           </button>
+  //         </div>
+  //       </div>
+  //       <div className="box-body">
+  //         <div className="table-responsive overflow-x-hidden">
+  //           <table
+  //             {...getTableProps()}
+  //             className="table whitespace-nowrap table-bordered min-w-full x-hidden"
+  //           >
+  //             <thead>
+  //               {headerGroups.map((headerGroup) => (
+  //                 <tr {...headerGroup.getHeaderGroupProps()}>
+  //                   {headerGroup.headers.map((column, columnIndex) => (
+  //                     <th
+  //                       {...column.getHeaderProps()}
+  //                       {...(columnIndex !== 0
+  //                         ? column.getSortByToggleProps()
+  //                         : {})}
+  //                       scope="col"
+  //                       className="text-start"
+  //                     >
+  //                       {column.render("Header")}
+  //                       {columnIndex !== 0 && (
+  //                         // Add space between the icon and the text
+  //                         <>
+  //                           <span> </span>
+  //                           <span>
+  //                             {column.isSorted ? (
+  //                               column.isSortedDesc ? (
+  //                                 <i className="ti ti-arrow-down"></i>
+  //                               ) : (
+  //                                 <i className="ti ti-arrow-up"></i>
+  //                               )
+  //                             ) : (
+  //                               <i className="ti ti-arrows-down-up"></i>
+  //                             )}
+  //                           </span>
+  //                         </>
+  //                       )}
+  //                     </th>
+  //                   ))}
+  //                 </tr>
+  //               ))}
+  //             </thead>
+  //             <tbody {...getTableBodyProps()}>
+  //               {rows.map((row) => {
+  //                 prepareRow(row);
+  //                 return (
+  //                   <tr
+  //                     {...row.getRowProps()}
+  //                     className="border border-defaultborder Task-list"
+  //                   >
+  //                     {row.cells.map((cell) => (
+  //                       <td {...cell.getCellProps()} className={cell.column.id}>
+  //                         {cell.render("Cell")}
+  //                       </td>
+  //                     ))}
+  //                   </tr>
+  //                 );
+  //               })}
+  //             </tbody>
+  //           </table>
+  //         </div>
+  //       </div>
+  //     </>
+  //   );
+  // }
 
   return (
     <div>
@@ -501,51 +464,12 @@ const ViewTasks = () => {
         activepage="View Tasks"
         mainpage="Tasks"
         mainpageurl="/components/project-management/tasks"
-        loadProjectData={getDataFromLocalStorage}
+        loadProjectData={getProjectDataFromLocalStorage}
         loadUserData={getUserDataFromLocalStorage}
       />
       <div className="box">
         <div className="box-body">
-          <div className="grid grid-cols-4">
-            <div className="p-6 border-r dark:border-defaultborder/10 border-solid col-md-3">
-              <div className="svg-icon-background bg-primary/10 me-6">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  data-name="Layer 1"
-                  viewBox="0 0 24 24"
-                  className="svg-primary"
-                >
-                  <path d="M13,16H7a1,1,0,0,0,0,2h6a1,1,0,0,0,0-2ZM9,10h2a1,1,0,0,0,0-2H9a1,1,0,0,0,0,2Zm12,2H18V3a1,1,0,0,0-.5-.87,1,1,0,0,0-1,0l-3,1.72-3-1.72a1,1,0,0,0-1,0l-3,1.72-3-1.72a1,1,0,0,0-1,0A1,1,0,0,0,2,3V19a3,3,0,0,0,3,3H19a3,3,0,0,0,3-3V13A1,1,0,0,0,21,12ZM5,20a1,1,0,0,1-1-1V4.73L6,5.87a1.08,1.08,0,0,0,1,0l3-1.72,3,1.72a1.08,1.08,0,0,0,1,0l2-1.14V19a3,3,0,0,0,.18,1Zm15-1a1,1,0,0,1-2,0V14h2Zm-7-7H7a1,1,0,0,0,0,2h6a1,1,0,0,0,0-2Z" />
-                </svg>
-              </div>
-              <div className="flex-grow">
-                <h6 className="!mb-1 text-[0.75rem]">
-                  New Tasks
-                  <span className="badge bg-primary text-white font-semibold ltr:float-right rtl:float-left">
-                    12,345
-                  </span>
-                </h6>
-                <div className="pb-0 mt-0">
-                  <div>
-                    <h4 className="text-[1.125rem] font-semibold mb-1">
-                      <span className="count-up" data-count="42">
-                        {newbids}
-                      </span>
-                      <span className="text-muted ltr:float-right rtl:float-left text-[.6875rem] font-normal">
-                        Last Year
-                      </span>
-                    </h4>
-                    <p className="text-muted text-[.6875rem] mb-0 leading-none">
-                      <span className="text-success me-1 font-semibold inline-block">
-                        <i className="ri-arrow-up-s-line me-1 align-middle"></i>
-                        3.25%
-                      </span>
-                      <span>this month</span>
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
+          <div className="grid grid-cols-3">
             <div className="p-6 border-r dark:border-defaultborder/10 border-solid col-md-3">
               <div className="svg-icon-background bg-success/10 !fill-success me-6">
                 <svg
@@ -559,26 +483,15 @@ const ViewTasks = () => {
               <div className="flex-grow">
                 <h6 className="mb-1 text-[0.75rem]">
                   Completed Tasks
-                  <span className="badge bg-success text-white font-semibold ltr:float-right rtl:float-left">
-                    4,176
-                  </span>
                 </h6>
                 <div>
                   <h4 className="text-[1.125rem] font-semibold mb-1">
                     <span className="count-up" data-count="319">
                       {completedTasks}
                     </span>
-                    <span className="text-muted ltr:float-right rtl:float-left text-[.6875rem] font-normal">
-                      Last Year
-                    </span>
+                 
                   </h4>
-                  <p className="text-muted text-[.6875rem] mb-0 leading-none">
-                    <span className="text-danger me-1 font-semibold inline-block">
-                      <i className="ri-arrow-down-s-line me-1 align-middle"></i>
-                      1.16%
-                    </span>
-                    <span>this month</span>
-                  </p>
+                 
                 </div>
               </div>
             </div>
@@ -596,26 +509,16 @@ const ViewTasks = () => {
               <div className="flex-grow">
                 <h6 className="mb-1 text-[0.75rem]">
                   Pending Tasks
-                  <span className="badge bg-warning text-white font-semibold ltr:float-right rtl:float-left">
-                    7,064
-                  </span>
+                 
                 </h6>
                 <div>
                   <h4 className="text-[1.125rem] font-semibold mb-1">
                     <span className="count-up" data-count="81">
                       {pendingTasks}
                     </span>
-                    <span className="text-muted ltr:float-right rtl:float-left text-[.6875rem] font-normal">
-                      Last Year
-                    </span>
+                 
                   </h4>
-                  <p className="text-muted text-[.6875rem] mb-0 leading-none">
-                    <span className="text-success me-1 font-semibold inline-block">
-                      <i className="ri-arrow-up-s-line me-1 align-middle"></i>
-                      0.25%
-                    </span>
-                    <span>this month</span>
-                  </p>
+                  
                 </div>
               </div>
             </div>
@@ -633,26 +536,16 @@ const ViewTasks = () => {
               <div className="flex-grow">
                 <h6 className="mb-1 text-[0.75rem]">
                   Inprogress Tasks
-                  <span className="badge bg-secondary text-white font-semibold ltr:float-right rtl:float-left">
-                    1,105
-                  </span>
+                 
                 </h6>
                 <div>
                   <h4 className="text-[1.125rem] font-semibold mb-1">
                     <span className="count-up" data-count="32">
                       {inProgressTasks}
                     </span>
-                    <span className="text-muted ltr:float-right rtl:float-left text-[.6875rem] font-normal">
-                      Last Year
-                    </span>
+              
                   </h4>
-                  <p className="text-muted text-[.6875rem] mb-0 leading-none">
-                    <span className="text-success me-1 font-semibold inline-block">
-                      <i className="ri-arrow-down-s-line me-1 align-middle"></i>
-                      0.46%
-                    </span>
-                    <span>this month</span>
-                  </p>
+                 
                 </div>
               </div>
             </div>
@@ -660,9 +553,9 @@ const ViewTasks = () => {
         </div>
       </div>
 
-      <div className="box">
+      {/* <div className="box">
         <TasksTable
-          bidsData={filteredTasksData}
+          tasksData={tasksData}
           handleAddToCompare={handleAddToCompare}
           addToCompareTask={addToCompareTask}
           statusColor={statusColor}
@@ -698,7 +591,7 @@ const ViewTasks = () => {
             </ul>
           </nav>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

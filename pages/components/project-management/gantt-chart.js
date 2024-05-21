@@ -52,6 +52,7 @@ const GanttChart = () => {
         },
       ];
   const [selectedProject, setSelectedProject] = useState(null);
+  const [selectedUser, setSelectedUser] = useState(null);
   const getProjectDataFromLocalStorage = () => {
     if (
       localStorage.getItem("selectedProject") !== null &&
@@ -65,9 +66,15 @@ const GanttChart = () => {
       setSelectedProject(null);
     }
   };
-  useEffect(() => {
-    getProjectDataFromLocalStorage();
-  }, []);
+  const getUserDataFromLocalStorage = () => {
+    if (
+      localStorage.getItem("selectedUser") !== null &&
+      localStorage.getItem("selectedUser") !== "undefined"
+    ) {
+      const selectedUser = JSON.parse(localStorage.getItem("selectedUser"));
+      setSelectedUser(selectedUser);
+  }
+};
 
   return (
     <Fragment>
@@ -77,6 +84,7 @@ const GanttChart = () => {
         mainpage="Project Summary"
         mainpageurl="/components/project-management/project-summary/"
         loadProjectData={getProjectDataFromLocalStorage}
+        loadUserData={getUserDataFromLocalStorage}
         createProject={true}
       />
       <div className="block">
