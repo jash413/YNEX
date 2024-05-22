@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useEffect } from "react";
+import React, { Fragment, useState, useEffect, use } from "react";
 import Select from "react-select";
 import axios from "axios";
 import network from "@/config";
@@ -13,8 +13,13 @@ const Pageheader = (props) => {
   const [selectedProject, setSelectedProject] = useState(null);
   const [selectedUser, setSelectedUser] = useState(null);
   const [selectedProjects, setSelectedProjects] = useState([]);
+  const [tasks, setTasks] = useState([]);
+  const [projectTasks, setProjectTasks] = useState([]);
+  const [purchaseOrders, setPurchaseOrders] = useState([]);
   const handleUserSelect = (selectedOption) => {
     localStorage.removeItem("selectedProject");
+    localStorage.removeItem("projectTasks");
+    localStorage.removeItem("purchaseOrders");
     setSelectedProject(null);
     const selectedUser = selectedOption
       ? usersData.find((user) => user.id === selectedOption.value)
@@ -31,7 +36,6 @@ const Pageheader = (props) => {
     }
     loadUserData();
   };
-
   useEffect(() => {
     if (
       localStorage.getItem("selectedProject") !== null &&
@@ -69,6 +73,50 @@ const Pageheader = (props) => {
       })
       .catch((error) => console.error("Error fetching data:", error));
   }, []);
+  useEffect(() => {
+    axios.get(`${network.serverUrl}api/task/`).then((response) => {
+      const data = response.data;
+      setTasks(data.data);
+    });    
+  }, []);
+  useEffect(() => {
+    axios.get(`${network.serverUrl}api/purchase-order/`).then((response) => {
+      const data = response.data;
+      setPurchaseOrders(data.data);
+    });
+  }, []);
+
+  const handlePurchaseOrders = () => {
+    console.log(purchaseOrders);
+    const projectPurchaseOrders = purchaseOrders.filter(
+      (purchaseOrder) => purchaseOrder.attributes.project_id === JSON.parse(localStorage.getItem("selectedProject")).id
+    );
+
+    const formattedProjectPurchaseOrders = projectPurchaseOrders.map(purchaseOrder => ({
+      id: purchaseOrder.id,
+      ...purchaseOrder.attributes,
+      updatedAt: new Date(purchaseOrder.attributes.updatedAt).toLocaleString(),
+      createdAt: new Date(purchaseOrder.attributes.createdAt).toLocaleString()
+    }));
+    setPurchaseOrders(formattedProjectPurchaseOrders);
+    localStorage.setItem("purchaseOrders", JSON.stringify(formattedProjectPurchaseOrders));
+  };
+
+  const handleTasks = () => {
+    const projectTasks = tasks.filter(
+      (task) => task.attributes.project_id === JSON.parse(localStorage.getItem("selectedProject")).id
+    );
+  
+    const formattedProjectTasks = projectTasks.map(task => ({
+      id: task.id,
+      ...task.attributes,
+      updated_at: new Date(task.attributes.updated_at).toLocaleString(),
+      created_at: new Date(task.attributes.created_at).toLocaleString()
+    }));
+  
+    setProjectTasks(formattedProjectTasks);
+    localStorage.setItem("projectTasks", JSON.stringify(formattedProjectTasks));
+  };
 
   const handleProjectSelect = (selectedOption) => {
     const selectedProject = selectedOption
@@ -76,6 +124,8 @@ const Pageheader = (props) => {
       : null;
     setSelectedProject(selectedProject);
     localStorage.setItem("selectedProject", JSON.stringify(selectedProject));
+    handleTasks();
+    handlePurchaseOrders();
     loadProjectData();
   };
   

@@ -1,7 +1,6 @@
 export default function handler(req, res) {
-  res.status(200).json({
-    status: 200,
-    body: {
+  res.status(200).json(
+    {
       jsonapi: {
         version: "1.1",
       },
@@ -9922,6 +9921,5 @@ export default function handler(req, res) {
         },
         total: 552,
       },
-    },
-  });
+    });
 }

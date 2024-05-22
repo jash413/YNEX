@@ -985,11 +985,12 @@ export const columns = [
 
 //Resonsive DataTable
 
-export const ResponsiveDataTable = () => {
+export const ResponsiveDataTable = (props) => {
   const tableInstance = useTable(
-    {
-      columns: COLUMNS,
-      data: DATATABLE,
+    { 
+      
+      columns:props.columns,
+      data:  props.data,
     },
     useGlobalFilter,
     useSortBy,

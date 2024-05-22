@@ -21,7 +21,7 @@ const GanttChart = () => {
           type: "task",
           progress: 45,
           isDisabled: true,
-          styles: { progressColor: "green", progressSelectedColor: "white" },
+          styles: { progressColor: "#845adf", progressSelectedColor: "white" },
         },
         {
           start: new Date(2020, 1, 2),
@@ -30,7 +30,7 @@ const GanttChart = () => {
           id: "Task 1",
           type: "task",
           progress: 75,
-          styles: { progressColor: "green", progressSelectedColor: "white" },
+          styles: { progressColor: "#845adf", progressSelectedColor: "white" },
         },
         {
           start: new Date(2020, 1, 3),
@@ -39,7 +39,7 @@ const GanttChart = () => {
           id: "Task 2",
           type: "task",
           progress: 35,
-          styles: { progressColor: "green", progressSelectedColor: "white" },
+          styles: { progressColor: "#845adf", progressSelectedColor: "white" },
         },
         {
           start: new Date(2020, 1, 4),
@@ -48,7 +48,7 @@ const GanttChart = () => {
           id: "Task 3",
           type: "task",
           progress: 50,
-          styles: { progressColor: "green", progressSelectedColor: "white" },
+          styles: { progressColor: "#845adf", progressSelectedColor: "white" },
         },
       ];
   const [selectedProject, setSelectedProject] = useState(null);
@@ -78,11 +78,11 @@ const GanttChart = () => {
 
   return (
     <Fragment>
-      <Seo title={`${selectedProject?.project_name || `Project Summary`}`} />
+      <Seo title={`${selectedProject?.project_name || `Schedule`}`} />
       <Pageheader
-        activepage={`${selectedProject?.project_name || `Project Summary`}`}
-        mainpage="Project Summary"
-        mainpageurl="/components/project-management/project-summary/"
+        activepage={`${selectedProject?.project_name || `Schedule`}`}
+        mainpage="Schedule"
+        mainpageurl="/components/project-management/schedule/"
         loadProjectData={getProjectDataFromLocalStorage}
         loadUserData={getUserDataFromLocalStorage}
         createProject={true}

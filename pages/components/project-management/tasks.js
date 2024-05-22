@@ -1,13 +1,15 @@
 import Pageheader from "@/shared/layout-components/page-header/pageheader";
 import Seo from "@/shared/layout-components/seo/seo";
 import React, { useState, useEffect } from "react";
+import { ResponsiveDataTable } from "@/shared/data/tables/datatabledata";
+import { ReactTabulator } from "react-tabulator";
 import Link from "next/link";
 import axios from "axios";
 import network from "@/config";
 import { useTable, useSortBy, useGlobalFilter } from "react-table";
+import take from "reducers/take";
 
 const ViewTasks = () => {
-  const [tasksData, setTasksData] = useState([]);
   const [addToCompareTask, setAddToCompareTask] = useState([]);
   const [completedTasks, setCompletedTasks] = useState(0);
   const [inProgressTasks, setInProgressTasks] = useState(0);
@@ -16,21 +18,80 @@ const ViewTasks = () => {
   const [selectedUser, setSelectedUser] = useState(null);
   const [selectedProjects, setSelectedProjects] = useState([]);
   const [selectedProject, setSelectedProject] = useState(null);
+  const [tasks, setTasks] = useState([]);
 
-  const handleAddToCompare = (e) => {
-    // Cannot select different tasks
-    if (addToCompareTask.length > 0) {
-      if (addToCompareTask[0].task_name !== e.task_name) {
-        setDisplayToast(true);
-        return;
-      }
-    }
-    if (addToCompareTask.includes(e)) {
-      setAddToCompareTask(addToCompareTask.filter((item) => item !== e));
-    } else {
-      setAddToCompareTask([...addToCompareTask, e]);
-    }
-  };
+  const COLUMNS = [
+    {
+      Header: "Created At",
+      accessor: "created_at",
+    },
+    {
+      Header: "Updated At",
+      accessor: "updated_at",
+    },
+    {
+      Header: "Active",
+      accessor: "active",
+    },
+    {
+      Header: "Project ID",
+      accessor: "project_id",
+    },
+    {
+      Header: "Task Code",
+      accessor: "task_code_id",
+    },
+    {
+      Header: "Task Name",
+      accessor: "task_name",
+    },
+    {
+      Header: "Description",
+      accessor: "description",
+    },
+    {
+      Header: "Start Date",
+      accessor: "start_date",
+    },
+    {
+      Header: "End Date",
+      accessor: "end_date",
+    },
+    {
+      Header: "Task Owner ID",
+      accessor: "task_owner_id",
+    },
+    {
+      Header: "Business ID",
+      accessor: "business_id",
+    },
+    {
+      Header: "Status",
+      accessor: "status",
+    },
+    {
+      Header: "Notes",
+      accessor: "notes",
+    },
+    {
+      Header: "Estimated Budget",
+      accessor: "budget_estimated",
+    },
+    {
+      Header: "Actual Spent",
+      accessor: "actual_spent",
+    },
+    {
+      Header: "Percentage Complete",
+      accessor: "percentage_complete",
+    },
+    {
+      Header: "Files URLs",
+      accessor: "files_urls",
+    },
+  ];
+
+
 
 
   const getProjectDataFromLocalStorage = () => {
@@ -55,376 +116,23 @@ const ViewTasks = () => {
       setSelectedUser(selectedUser);
   }
 };
+const getTaskDataFromLocalStorage = () => {
+  if (
+    localStorage.getItem("projectTasks") !== null &&
+    localStorage.getItem("projectTasks") !== "undefined"
+  ) {
+    const tasks = JSON.parse(localStorage.getItem("projectTasks"));
+    setTasks(tasks);
+  }
+};
 useEffect(() => {
   getUserDataFromLocalStorage();
   getProjectDataFromLocalStorage();
+  getTaskDataFromLocalStorage();
 
 }, []);
 
-  useEffect(() => {
-    localStorage.setItem("addToCompareTask", JSON.stringify(addToCompareTask));
-  }, [addToCompareTask]);
 
-  const statusColor = (status) => {
-    if (status === "New") {
-      return "badge bg-secondary/10 text-secondary";
-    } else if (status === "Completed") {
-      return "badge bg-success/10 text-success";
-    } else if (status === "Inprogress") {
-      return "badge bg-warning/10 text-warning";
-    } else if (status === "Pending") {
-      return "badge bg-danger/10 text-danger";
-    } else {
-      return "badge bg-primary/10 text-primary";
-    }
-  };
-
-  useEffect(() => {
-    axios
-      .get(`${network.serverUrl}api/task/`)
-      .then((response) =>{
-        if(selectedProject){
-        setTasksData(response.data.body.data.filter((task) => task.attributes.project_id === selectedProject.id));
-        console.log(tasksData);
-        setCompletedTasks(
-          tasksData.filter((task) => task.attributes.percentage_complete === 100).length
-        );
-        setInProgressTasks(
-          tasksData.filter((task) => task.attributes.percentage_complete > 0).length
-        );
-        setPendingTasks(
-          tasksData.filter((task) => task.attributes.percentage_complete === null).length
-        );
-      }})
-      .catch((error) => {
-        console.log(error);
-      });
-  }, [selectedProject]);
-
-  // function TasksTable({
-  //   tasksData,
-  //   handleAddToCompare,
-  //   addToCompareTask,
-  //   statusColor,
-  // }) {
-  //   const data = React.useMemo(() => tasksData, [tasksData]);
-
-  //   const columns = React.useMemo(
-  //     () => [
-  //       {
-  //         Header: "Subcontractor",
-  //         accessor: "subcontractor_id.Name",
-  //         Cell: ({ value }) => {
-  //           // const randomImageNumber = Math.floor(Math.random() * 17) + 1;
-  //           return (
-  //             <div className={`hs-tooltip ti-main-tooltip`}>
-  //               <div className="flex items-center">
-  //                 <div className="me-2 lh-1">
-  //                   <span className="avatar avatar-sm">
-  //                     <img src={`../../../assets/images/faces/10.jpg`} alt="" />
-  //                   </span>
-  //                 </div>
-  //                 <div
-  //                   className="text-sm"
-  //                   style={{
-  //                     color: "#0d6efd",
-  //                   }}
-  //                 >
-  //                   <Link href="/components/business-hub/summary/">
-  //                     {value}
-  //                   </Link>
-  //                 </div>
-  //               </div>
-  //               <span
-  //                 className="hs-tooltip-content  ti-main-tooltip-content !bg-black !text-xs !font-medium !text-white shadow-sm "
-  //                 role="tooltip"
-  //               >
-  //                 Subcontractor Details
-  //               </span>
-  //             </div>
-  //           );
-  //         },
-  //       },
-  //       {
-  //         Header: "Task ID",
-  //         accessor: "bid_id",
-  //         Cell: ({ value }) => (
-  //           <div className={`hs-tooltip ti-main-tooltip`}>
-  //             <div className="flex items-center">
-  //               <Link
-  //                 style={{
-  //                   color: "#0d6efd",
-  //                 }}
-  //                 href={`/components/bids/${value}`}
-  //               >
-  //                 {value}
-  //               </Link>
-  //             </div>
-  //             <span
-  //               className="hs-tooltip-content ti-main-tooltip-content !bg-black !text-xs !font-medium !text-white shadow-sm"
-  //               role="tooltip"
-  //             >
-  //               View Task
-  //             </span>
-  //           </div>
-  //         ),
-  //       },
-  //       {
-  //         Header: "Task Name",
-  //         accessor: "task_name",
-  //       },
-  //       {
-  //         Header: "Cost Code",
-  //         accessor: "cost_code_id",
-  //       },
-  //       {
-  //         Header: "Price Quoted",
-  //         accessor: "bid_amount_from_sub",
-  //         Cell: ({ value }) => (
-  //           <div style={{ textAlign: "right" }}>$ {value.toLocaleString()}</div>
-  //         ),
-  //       },
-  //       {
-  //         Header: "Received Date",
-  //         accessor: "bid_recieved_date",
-  //         Cell: ({ value }) =>
-  //           new Date(value).toLocaleDateString("en-GB", {
-  //             day: "2-digit",
-  //             month: "short",
-  //             year: "numeric",
-  //           }),
-  //       },
-  //       {
-  //         Header: "Expiration Date",
-  //         accessor: "bid_expiration_date",
-  //         Cell: ({ value }) =>
-  //           new Date(value).toLocaleDateString("en-GB", {
-  //             day: "2-digit",
-  //             month: "short",
-  //             year: "numeric",
-  //           }),
-  //       },
-  //       {
-  //         Header: "Action",
-  //         accessor: "action_bid_id",
-  //         Cell: ({ row: { original } }) => (
-  //           <div className="hs-dropdown ti-dropdown">
-  //             <a
-  //               href="#!"
-  //               className="ti-btn ti-btn-primary !bg-primary !text-white !py-1 !px-2 !text-[0.75rem] !m-0 !gap-0 !font-medium"
-  //               aria-expanded="false"
-  //             >
-  //               Actions
-  //               <i className="ri-arrow-down-s-line align-middle ms-1 inline-block"></i>
-  //             </a>
-  //             <ul
-  //               className="hs-dropdown-menu ti-dropdown-menu !-mt-2 hidden"
-  //               role="menu"
-  //             >
-  //               <li>
-  //                 <a
-  //                   className="ti-dropdown-item !py-2 !px-[0.9375rem] !text-[0.8125rem] !font-medium block"
-  //                   href={`/components/bids/${original.bid_id}`}
-  //                 >
-  //                   View Task
-  //                 </a>
-  //               </li>
-  //               <li>
-  //                 <a
-  //                   className="ti-dropdown-item !py-2 !px-[0.9375rem] !text-[0.8125rem] !font-medium block"
-  //                   href={`/components/bids/editTask/${original.bid_id}`}
-  //                 >
-  //                   Edit Task
-  //                 </a>
-  //               </li>
-  //               <li>
-  //                 <a
-  //                   className="ti-dropdown-item !py-2 !px-[0.9375rem] !text-[0.8125rem] !font-medium block"
-  //                   href={`/components/bids/${original.bid_id}`}
-  //                 >
-  //                   Accept Task
-  //                 </a>
-  //               </li>
-  //               <li>
-  //                 <a
-  //                   className="ti-dropdown-item !py-2 !px-[0.9375rem] !text-[0.8125rem] !font-medium block"
-  //                   href={`/components/bids/${original.bid_id}`}
-  //                 >
-  //                   Decline bid
-  //                 </a>
-  //               </li>
-  //               <li>
-  //                 <a
-  //                   className="ti-dropdown-item !py-2 !px-[0.9375rem] !text-[0.8125rem] !font-medium block"
-  //                   href={`/components/bids/${original.bid_id}`}
-  //                 >
-  //                   Ask Question
-  //                 </a>
-  //               </li>
-  //               <li>
-  //                 <a
-  //                   className="ti-dropdown-item !py-2 !px-[0.9375rem] !text-[0.8125rem] !font-medium block"
-  //                   href={`/components/bids/${original.bid_id}`}
-  //                 >
-  //                   Send Reminder
-  //                 </a>
-  //               </li>
-  //             </ul>
-  //           </div>
-  //         ),
-  //       },
-  //     ],
-  //     [handleAddToCompare, addToCompareTask, statusColor]
-  //   );
-
-  //   function GlobalFilter({
-  //     preGlobalFilteredRows,
-  //     globalFilter,
-  //     setGlobalFilter,
-  //   }) {
-  //     const count = preGlobalFilteredRows.length;
-  //     const [value, setValue] = useState(globalFilter);
-
-  //     const handleKeyDown = (event) => {
-  //       if (event.key === "Enter") {
-  //         setGlobalFilter(value || undefined);
-  //       }
-  //     };
-
-  //     const handleChange = (e) => {
-  //       setValue(e.target.value);
-  //       if (e.target.value === "") {
-  //         setGlobalFilter(undefined);
-  //       }
-  //     };
-
-  //     return (
-  //       <>
-  //         <span>Search Tasks: </span>
-  //         <span style={{ marginRight: "auto" }}>
-  //           <input
-  //             value={value || ""}
-  //             onChange={handleChange}
-  //             onKeyDown={handleKeyDown}
-  //             placeholder={`${count} records...`}
-  //             className="form-control"
-  //             style={{
-  //               borderColor: "#d2d6dc",
-  //               padding: "0.375rem 0.75rem",
-  //               borderRadius: "0.375rem",
-  //             }}
-  //           />
-  //         </span>
-  //       </>
-  //     );
-  //   }
-
-  //   const {
-  //     getTableProps,
-  //     getTableBodyProps,
-  //     headerGroups,
-  //     rows,
-  //     prepareRow,
-  //     preGlobalFilteredRows,
-  //     setGlobalFilter,
-  //     state,
-  //   } = useTable({ columns, data }, useGlobalFilter, useSortBy);
-
-  //   return (
-  //     <>
-  //       <div className="box-header justify-between">
-  //         <div className="box-title">Total Tasks: {tasksData.length} </div>
-  //         <GlobalFilter
-  //           preGlobalFilteredRows={preGlobalFilteredRows}
-  //           globalFilter={state.globalFilter}
-  //           setGlobalFilter={setGlobalFilter}
-  //         />
-  //         <div className="flex">
-  //           <button
-  //             type="button"
-  //             className="hs-dropdown-toggle ti-btn ti-btn-primary-full !py-1 !px-2 !text-[0.75rem]"
-  //             data-hs-overlay="#create-Task"
-  //           >
-  //             <Link href="/components/project-management/create-task/">
-  //               <i className="ri-add-line font-semibold align-middle"></i>{" "}
-  //               Create Task
-  //             </Link>
-  //           </button>
-  //           <button
-  //             type="button"
-  //             className="hs-dropdown-toggle ti-btn ti-btn-primary-full !py-1 !px-2 !mx-1 !text-[0.75rem] "
-  //             data-hs-overlay="#compare-Task"
-  //           >
-  //             <Link href="/components/project-management/task-kanban/">
-  //               Kanban View
-  //             </Link>
-  //           </button>
-  //         </div>
-  //       </div>
-  //       <div className="box-body">
-  //         <div className="table-responsive overflow-x-hidden">
-  //           <table
-  //             {...getTableProps()}
-  //             className="table whitespace-nowrap table-bordered min-w-full x-hidden"
-  //           >
-  //             <thead>
-  //               {headerGroups.map((headerGroup) => (
-  //                 <tr {...headerGroup.getHeaderGroupProps()}>
-  //                   {headerGroup.headers.map((column, columnIndex) => (
-  //                     <th
-  //                       {...column.getHeaderProps()}
-  //                       {...(columnIndex !== 0
-  //                         ? column.getSortByToggleProps()
-  //                         : {})}
-  //                       scope="col"
-  //                       className="text-start"
-  //                     >
-  //                       {column.render("Header")}
-  //                       {columnIndex !== 0 && (
-  //                         // Add space between the icon and the text
-  //                         <>
-  //                           <span> </span>
-  //                           <span>
-  //                             {column.isSorted ? (
-  //                               column.isSortedDesc ? (
-  //                                 <i className="ti ti-arrow-down"></i>
-  //                               ) : (
-  //                                 <i className="ti ti-arrow-up"></i>
-  //                               )
-  //                             ) : (
-  //                               <i className="ti ti-arrows-down-up"></i>
-  //                             )}
-  //                           </span>
-  //                         </>
-  //                       )}
-  //                     </th>
-  //                   ))}
-  //                 </tr>
-  //               ))}
-  //             </thead>
-  //             <tbody {...getTableBodyProps()}>
-  //               {rows.map((row) => {
-  //                 prepareRow(row);
-  //                 return (
-  //                   <tr
-  //                     {...row.getRowProps()}
-  //                     className="border border-defaultborder Task-list"
-  //                   >
-  //                     {row.cells.map((cell) => (
-  //                       <td {...cell.getCellProps()} className={cell.column.id}>
-  //                         {cell.render("Cell")}
-  //                       </td>
-  //                     ))}
-  //                   </tr>
-  //                 );
-  //               })}
-  //             </tbody>
-  //           </table>
-  //         </div>
-  //       </div>
-  //     </>
-  //   );
-  // }
 
   return (
     <div>
@@ -552,46 +260,45 @@ useEffect(() => {
           </div>
         </div>
       </div>
-
-      {/* <div className="box">
-        <TasksTable
-          tasksData={tasksData}
-          handleAddToCompare={handleAddToCompare}
-          addToCompareTask={addToCompareTask}
-          statusColor={statusColor}
-        />
-        <div className="box-footer">
-          <nav aria-label="Page navigation">
-            <ul className="ti-pagination justify-end mb-0">
-              <li className="page-item disabled">
-                <Link className="page-link px-3 py-[0.375rem]" href="#!">
-                  Prev
-                </Link>
-              </li>
-              <li className="page-item">
-                <Link className="page-link px-3 py-[0.375rem]" href="#!">
-                  1
-                </Link>
-              </li>
-              <li className="page-item">
-                <Link className="page-link active px-3 py-[0.375rem]" href="#!">
-                  2
-                </Link>
-              </li>
-              <li className="page-item">
-                <Link className="page-link px-3 py-[0.375rem]" href="#!">
-                  3
-                </Link>
-              </li>
-              <li className="page-item">
-                <Link className="page-link px-3 py-[0.375rem]" href="#!">
-                  Next
-                </Link>
-              </li>
-            </ul>
-          </nav>
+      <div className="grid grid-cols-12 gap-6">
+        <div className="col-span-12">
+          <div className="box">
+            <div className="box-header">
+              <h5 className="box-title">Tasks Table</h5>
+              <div className="flex">
+            <button
+              type="button"
+              className="hs-dropdown-toggle ti-btn ti-btn-primary-full !py-1 !px-2 !text-[0.75rem]"
+              data-hs-overlay="#create-Task"
+            >
+              <Link href="/components/project-management/create-task/">
+                <i className="ri-add-line font-semibold align-middle"></i>{" "}
+                Create Task
+              </Link>
+            </button>
+            <button
+              type="button"
+              className="hs-dropdown-toggle ti-btn ti-btn-primary-full !py-1 !px-2 !mx-1 !text-[0.75rem] "
+              data-hs-overlay="#compare-Task"
+            >
+              <Link href="/components/project-management/task-kanban/">
+                Kanban View
+              </Link>
+            </button>
+            
+          </div>
+            </div>
+            
+            <div className="box-body space-y-3">
+              <div className="overflow-hidden">
+                <div id="reactivity-table" className="ti-custom-table ti-striped-table ti-custom-table-hover">
+                  <ResponsiveDataTable columns={COLUMNS} data={tasks}  />
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-      </div> */}
+      </div>
     </div>
   );
 };
