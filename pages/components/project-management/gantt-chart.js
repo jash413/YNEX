@@ -15,7 +15,7 @@ const GanttChart = () => {
     const tasks = [
         {
           start: new Date(2020, 1, 1),
-          end: new Date(2020, 1, 2),
+          end: new Date(2020, 1, 12),
           name: "Idea",
           id: "Task 0",
           type: "task",
@@ -25,7 +25,7 @@ const GanttChart = () => {
         },
         {
           start: new Date(2020, 1, 2),
-          end: new Date(2020, 1, 7),
+          end: new Date(2020, 1, 27),
           name: "Development",
           id: "Task 1",
           type: "task",
@@ -34,7 +34,7 @@ const GanttChart = () => {
         },
         {
           start: new Date(2020, 1, 3),
-          end: new Date(2020, 1, 4),
+          end: new Date(2020, 2, 4),
           name: "Testing",
           id: "Task 2",
           type: "task",
@@ -43,7 +43,7 @@ const GanttChart = () => {
         },
         {
           start: new Date(2020, 1, 4),
-          end: new Date(2020, 1, 6),
+          end: new Date(2020, 4, 6),
           name: "Deployment",
           id: "Task 3",
           type: "task",
@@ -89,7 +89,7 @@ const GanttChart = () => {
       />
       <div className="block">
         <div className="gantt-container">
-          <Gantt tasks={tasks}
+          <Gantt tasks={tasks} viewMode="Week"
            />
         </div>
       </div>

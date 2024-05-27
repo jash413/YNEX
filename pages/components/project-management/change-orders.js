@@ -16,14 +16,6 @@ const ChangeOrders = () => {
   const [inProgressChangeOrders, setInProgressChangeOrders] = useState(0);
   const COLUMNS = [
     {
-      Header: "Created At",
-      accessor: "createdAt",
-    },
-    {
-      Header: "Updated At",
-      accessor: "updatedAt",
-    },
-    {
       Header: "Active",
       accessor: "active",
     },

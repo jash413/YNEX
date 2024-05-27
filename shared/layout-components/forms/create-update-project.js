@@ -41,8 +41,8 @@ const CreateUpdateProject = (props) => {
     description: "",
     address1: "",
     address2: "",
-    zipcode : "", // zipcode
-    state : "", // State
+    zipcode: "", // zipcode
+    state: "", // State
     budget: "", // Price for customer/Budget
     start_date: "", // Start date
     end_date: "", // End date
@@ -52,6 +52,10 @@ const CreateUpdateProject = (props) => {
   const [selectedProject, setSelectedProject] = useState(null);
   const [selectTemplate, setSelectTemplate] = useState("");
   const [multiselectdata, setMultiselectdata] = useState([]);
+  const Selectoption1 = [
+    { value: "custom_template", label: "Custom Template" },
+    { value: "remodel_template", label: "Remodel Template" },
+  ];
 
   useEffect(() => {
     fetch("/api/users/")
@@ -86,34 +90,30 @@ const CreateUpdateProject = (props) => {
     }
   };
 
-
-
   const handleSubmit = (event) => {
     event.preventDefault();
 
     try {
       // formDataSchema.parse(formData);
-      setFormData({...formData, projectTemplate: selectTemplate});
+      setFormData({ ...formData, projectTemplate: selectTemplate });
       axios,
-
-      axios.post(`${network.onlineUrl}api/project/`, 
-      formData,
-      {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `${network.token}`,
-
-
-        },
-      }
-
-      ).then((response) => {
-        console.log(response);
-      })
-      .catch((error) => {
-        console.log(error);
-      } )
-      ;
+        axios
+          .post(
+            `${network.onlineUrl}api/project/`,
+            { data: { attributes: formData } },
+            {
+              headers: {
+                "Content-Type": "application/json",
+                Authorization: `${network.token}`,
+              },
+            }
+          )
+          .then((response) => {
+            console.log(response);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
 
       setFormData({
         selectedProject: "",
@@ -122,13 +122,13 @@ const CreateUpdateProject = (props) => {
         description: "",
         address1: "",
         address2: "",
-        zipcode : "", // zipcode
-        state : "", // State
+        zipcode: "", // zipcode
+        state: "", // State
         budget: "", // Price for customer/Budget
         start_date: "", // Start date
         end_date: "", // End date
         customer_invite: "", // Invite customer (including setting permissions - using phone number or email or user id)
-        files: [] // Files drop area → Add the ability to upload multiple files like gmail allows user to upload multiple files with drop and drag functionality
+        files: [], // Files drop area → Add the ability to upload multiple files like gmail allows user to upload multiple files with drop and drag functionality
       });
     } catch (error) {
       console.log(error);
@@ -145,44 +145,9 @@ const CreateUpdateProject = (props) => {
         mainpage="Projects"
         mainpageurl="/components/project-management/project-summary/"
         loadProjectData={getDataFromLocalStorage}
-        createProject = {false}
+        createProject={false}
         isDisabled={true}
       />
-      
-      <div className="hs-dropdown ti-dropdown me-2 ml-6">
-        <button
-          className="ti-btn ti-btn-primary-full ti-dropdown-toggle !py-2"
-          type="button"
-          id="dropdownMenuButton1"
-          aria-expanded="false"
-        >
-          {selectTemplate || "Select Template"}
-          <i className="ri-arrow-down-s-line align-middle ms-1 inline-block"></i>
-        </button>
-        <ul
-          className="hs-dropdown-menu ti-dropdown-menu hidden"
-          aria-labelledby="dropdownMenuButton1"
-        >
-          <li>
-            <Link
-              className="ti-dropdown-item"
-              href="#!"
-              onClick={() => setSelectTemplate("Remodel Template")}
-            >
-              Remodel Template
-            </Link>
-          </li>
-          <li>
-            <Link
-              className="ti-dropdown-item"
-              href="#!"
-              onClick={() => setSelectTemplate("Custom Template")}
-            >
-              Custom Template
-            </Link>
-          </li>
-        </ul>
-      </div>
 
       <div className="box-body">
         <form onSubmit={handleSubmit}>
@@ -198,11 +163,28 @@ const CreateUpdateProject = (props) => {
                 </div>
                 <div className="box-body">
                   <div className="grid grid-cols-12 gap-4">
-                    <div className="xl:col-span-6 col-span-12">
+                    <div className="xl:col-span-4 col-span-12">
+                      <label htmlFor="template" className="form-label">
+                        Select Template :
+                      </label>
+                      <Select
+                        required
+                        name="template"
+                        options={Selectoption1}
+                        className="js-example-basic-single w-full"
+                        isSearchable
+                        menuPlacement="auto"
+                        classNamePrefix="Select2"
+                        defaultValue={[Selectoption1[0]]}
+                        onChange={(option) => setSelectTemplate(option.value)}
+                      />
+                    </div>
+                    <div className="xl:col-span-4 col-span-12">
                       <label htmlFor="selectedProject" className="form-label">
                         Project Name :
                       </label>
                       <input
+                        required
                         type="text"
                         className="form-control"
                         id="selectedProject"
@@ -212,11 +194,12 @@ const CreateUpdateProject = (props) => {
                       />
                     </div>
                     {/* input field for Client Name */}
-                    <div className="xl:col-span-6 col-span-12">
+                    <div className="xl:col-span-4 col-span-12">
                       <label htmlFor="client_name" className="form-label">
                         Client Name :
                       </label>
                       <input
+                        required
                         type="text"
                         className="form-control"
                         id="client_name"
@@ -225,12 +208,14 @@ const CreateUpdateProject = (props) => {
                         onChange={handleInputChange}
                       />
                     </div>
+
                     {/* input field for Budget */}
                     <div className="xl:col-span-6 col-span-12">
                       <label htmlFor="budget" className="form-label">
                         Budget :
                       </label>
                       <input
+                        required
                         type="text"
                         className="form-control"
                         id="budget"
@@ -238,10 +223,6 @@ const CreateUpdateProject = (props) => {
                         value={formData.budget}
                         onChange={handleInputChange}
                       />
-                    
-
-
-                    
                     </div>
                     {/* input field for Project Address */}
                     {/* input field for Project address line one*/}
@@ -250,6 +231,7 @@ const CreateUpdateProject = (props) => {
                         Project Address Line 1:
                       </label>
                       <input
+                        required
                         type="text"
                         className="form-control"
                         id="address1"
@@ -264,6 +246,7 @@ const CreateUpdateProject = (props) => {
                         Project Address Line 2 :
                       </label>
                       <input
+                        required
                         type="text"
                         className="form-control"
                         id="address2"
@@ -278,6 +261,7 @@ const CreateUpdateProject = (props) => {
                         zipcode :
                       </label>
                       <input
+                        required
                         type="text"
                         className="form-control"
                         id="zipcode"
@@ -292,6 +276,7 @@ const CreateUpdateProject = (props) => {
                         State :
                       </label>
                       <input
+                        required
                         type="text"
                         className="form-control"
                         id="state"
@@ -303,6 +288,7 @@ const CreateUpdateProject = (props) => {
                     <div className="xl:col-span-6 col-span-12">
                       <label className="form-label">Assigned To</label>
                       <Select
+                        required
                         isMulti
                         name="state"
                         options={multiselectdata.map((user) => ({
@@ -327,6 +313,7 @@ const CreateUpdateProject = (props) => {
                         Project Description :
                       </label>
                       <textarea
+                        required
                         className="form-control"
                         id="description"
                         rows="3"
@@ -344,6 +331,7 @@ const CreateUpdateProject = (props) => {
                             <i className="ri-calendar-line"></i>
                           </div>
                           <DatePicker
+                            required
                             placeholder="Choose the date"
                             className="ti-form-input ltr:rounded-l-none rtl:rounded-r-none focus:z-10"
                             selected={formData.start_date}
@@ -363,6 +351,7 @@ const CreateUpdateProject = (props) => {
                             <i className="ri-calendar-line"></i>
                           </div>
                           <DatePicker
+                            required
                             placeholder="Choose the date"
                             className="ti-form-input ltr:rounded-l-none rtl:rounded-r-none focus:z-10"
                             selected={formData.end_date}
@@ -378,6 +367,7 @@ const CreateUpdateProject = (props) => {
                         Invite Customer :
                       </label>
                       <input
+                        required
                         type="text"
                         className="form-control"
                         id="customer_invite"
@@ -393,11 +383,23 @@ const CreateUpdateProject = (props) => {
                       </label>
                       <FilePond
                         files={formData.files}
-                        onupdatefiles={(fileItems) => {
-                          // Set current file objects to this.state
+                        onprocessfile={(error, file, response) => {
+                          console.log("File upload complete", file, response);
+                          if (error) {
+                            console.log("Error during file processing:", error);
+                            return;
+                          }
+                          // Set file_url to the server response
                           setFormData({
                             ...formData,
-                            files: fileItems.map((fileItem) => fileItem.file),
+                            files: formData.files.map((fileItem) =>
+                              fileItem.id === file.id
+                                ? {
+                                    ...fileItem,
+                                    file_url: response.body[0].file_url,
+                                  }
+                                : fileItem
+                            ),
                           });
                         }}
                         allowMultiple={true}
@@ -406,7 +408,7 @@ const CreateUpdateProject = (props) => {
                           url: "https://backend-api-topaz.vercel.app/api/upload",
                           process: {
                             headers: {
-                              Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQsImlhdCI6MTcxNTg0OTc4M30.DpXYgKJBljMAuVq1GyKYgkE2prmwt2SEvneeWJdoZWw`,
+                              Authorization: `Bearer ${network.token}`,
                             },
                           },
                         }}

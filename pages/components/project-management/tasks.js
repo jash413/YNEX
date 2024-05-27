@@ -22,14 +22,6 @@ const ViewTasks = () => {
 
   const COLUMNS = [
     {
-      Header: "Created At",
-      accessor: "created_at",
-    },
-    {
-      Header: "Updated At",
-      accessor: "updated_at",
-    },
-    {
       Header: "Active",
       accessor: "active",
     },
