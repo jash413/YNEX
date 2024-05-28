@@ -56,33 +56,54 @@ const Pageheader = (props) => {
       setSelectedUser(selectedUser);
     }
     axios;
-    axios
-      .get(`${network.serverUrl}api/project-data/`)
+    axios.get(`${network.onlineUrl}api/project`, {
+      headers: {
+        Authorization: `Bearer ${network.token}`
+      }
+    })
       .then((response) => {
         const data = response.data;
-        setProjectData(data.data);
+        setProjectData(data.body.data);
       })
       .catch((error) => console.error("Error fetching data:", error));
   }, []);
   useEffect(() => {
     axios
-      .get(`${network.serverUrl}api/users/`)
+      .get(`${network.onlineUrl}api/user`, {
+        headers: {
+          Authorization: `Bearer ${network.token}`
+        }
+      
+      })
       .then((response) => {
         const data = response.data;
-        setUsersData(data.data);
+        setUsersData(data.body.data);
       })
       .catch((error) => console.error("Error fetching data:", error));
   }, []);
   useEffect(() => {
-    axios.get(`${network.serverUrl}api/task/`).then((response) => {
+    axios.get(`${network.onlineUrl}api/task`,{
+      headers: {
+        Authorization: `Bearer ${network.token}`
+      }
+
+
+    }).then((response) => {
       const data = response.data;
-      setTasks(data.data);
+      setTasks(data.body.data);
     });    
   }, []);
   useEffect(() => {
-    axios.get(`${network.serverUrl}api/purchase-order/`).then((response) => {
+    axios.get(`${network.onlineUrl}api/change_Order`, {
+      headers: {
+        Authorization: `Bearer ${network.token}`
+      }
+
+
+
+    }).then((response) => {
       const data = response.data;
-      setPurchaseOrders(data.data);
+      setPurchaseOrders(data.body.data);
     });
   }, []);
 

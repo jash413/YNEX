@@ -95,12 +95,11 @@ const CreateUpdateProject = (props) => {
 
     try {
       // formDataSchema.parse(formData);
-      setFormData({ ...formData, projectTemplate: selectTemplate });
-      axios,
         axios
           .post(
-            `${network.onlineUrl}api/project/`,
-            { data: { attributes: formData } },
+            `${network.onlineUrl}api/project`,
+            { data: {type:"string", attributes: {...formData, projectTemplate: selectTemplate, home_owner_id: 100007,
+              gc_business_id: 101000 } }},
             {
               headers: {
                 "Content-Type": "application/json",
@@ -116,7 +115,7 @@ const CreateUpdateProject = (props) => {
           });
 
       setFormData({
-        selectedProject: "",
+        name: "",
         client_name: "", // Client Name
         assigned_to: [], // Assigned To
         description: "",
@@ -187,9 +186,9 @@ const CreateUpdateProject = (props) => {
                         required
                         type="text"
                         className="form-control"
-                        id="selectedProject"
+                        id="name"
                         placeholder="Enter Project Name"
-                        value={formData.selectedProject}
+                        value={formData.name}
                         onChange={handleInputChange}
                       />
                     </div>
