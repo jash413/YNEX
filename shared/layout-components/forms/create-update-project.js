@@ -102,7 +102,6 @@ const CreateUpdateProject = (props) => {
               gc_business_id: 101000 } }},
             {
               headers: {
-                "Content-Type": "application/json",
                 Authorization: `${network.token}`,
               },
             }
